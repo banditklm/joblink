@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900;1000&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+::selection{
+    color: rgb(187, 255, 0);
+    background-color: black;
+}
+
+.red {
+    /* background: red; */
+}
+body{
+    position: relative;
+    width: 100%;
+    
+    /* background: rgb(0, 255, 0); */
+    
+}
+/* div {
+    border: 2px solid red;
+    margin: 4px;
+}
+span {
+    border: 2px solid green;
+    margin-bottom: 10px;
+    
+} */
+.container {
+    position: relative;
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+}
+.container>div {
+    width: calc(50% - 40px);
+    display: column;
+    justify-content: start;
+    /* background-color: aqua; */
+}
+.nav {
+    justify-content: space-between;
+    border-bottom: 2px solid #bc614e;
+    width: 100%;
+    padding: 2px;
+    /* background-color: blue; */
+}
+.nav .title a {
+    display: flex;
+    /* background-color: rgb(128, 0, 255); */
+    align-items: end;
+}
+.nav .title a h1 {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    /* color: rgb(68, 255, 0); */
+}
+.nav .title a h3 {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    color: #bc614e;
+    
+}
+.nav .login .flex {
+    justify-content: end;
+    gap: 10px;
+}
+.welcome {
+    background-color: #bc614e;
+    background-image: url('/assets/photos/image.jpg');
+     align-items: center;
+     max-width: 100%;
+     margin-top: 20px;
+}
+.welcome .left{
+    width: 60%;
+    height: 500px;
+    justify-content: center;
+    max-width: 100%;
+   
+}
+.welcome .left span {
+    font-size: 4em;
+    font-weight: 500;   
+    background-color: rgb(223, 168, 96);
+    margin: 30px;
+    border-radius: 3px;
+    padding: 0 20px;
+    color: rgb(255, 255, 255);
+}
+.welcome .right {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    
+}
+/* .welcome .right img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+} */
+.welcome .right span {
+    font-size: 20px;
+    font-weight: 500;
+    display: block;
+    color: black;
+}
+.description{
+    background-color: rgb(218, 218, 58);
+}
+.description .candidat h1,
+.description .entreprise h1 {
+    display: grid;
+    justify-content: center;
+    /* background-color: #bc614e; */
+}
+.description .candidat .icons,
+.description .entreprise .icons 
+{
+display: flex;
+gap: 20px;
+justify-content: center;
+}
+.description .candidat .icons div div span,
+.description .icons div div span {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    font-size: 1em;
+    font-weight: 700;
+
+}
+.description .candidat .icons div div i,
+.description .entreprise .icons div div i {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    font-size: 2.5em;
+    font-weight: 600;
+
+}
+
+/* inscrire */
+
+
