@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Espace Condidat</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -145,7 +145,7 @@
 
             <!-- Section: Links  -->
             <section class="">
-                <div class="container red text-center text-md-start mt-5">
+                <div class="container text-center text-md-start mt-5">
                 <!-- Grid row -->
                 <div class="container mt-3">
                     <!-- Grid column -->
