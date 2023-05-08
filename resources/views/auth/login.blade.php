@@ -1,7 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<style>
+    body {
+        background-image: url('/assets/photos/s.jpg');
+        background-repeat: no-repeat;
+    }
+</style>
+<div class="container m">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">

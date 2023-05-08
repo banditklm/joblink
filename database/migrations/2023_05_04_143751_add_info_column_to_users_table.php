@@ -14,7 +14,9 @@ class AddInfoColumnToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('info');
+            $table->string('info')->nullable();
+            $table->string('tel')->unique()->nullable();
+            $table->string('competences')->nullable();          
         });
     }
 
