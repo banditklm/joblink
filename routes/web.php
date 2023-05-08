@@ -27,3 +27,6 @@ Route::get('/test', function () {
 Route::get('/profile', function () {
     return view('profile');
 })->name('profile');
+Route::get('/editProfile', function () {
+    return view('editProfile');
+})->name('editProfile');

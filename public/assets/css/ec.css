@@ -6,8 +6,8 @@
     box-sizing: border-box;
 }
 ::selection{
-    color: rgb(187, 255, 0);
-    background-color: black;
+    color: rgba(32, 61, 175, 0.752);
+    background-color: rgb(255, 255, 255);
 }
 
 .red {
@@ -16,18 +16,22 @@
 body{
     position: relative;
     width: 100%;
+    background-color: #d4e6f4;
     
     /* background: rgb(0, 255, 0); */
     
 }
 /* div {
     border: 2px solid red;
-    margin: 4px;
+    margin: 2px;
 }
 span {
     border: 2px solid green;
-    margin-bottom: 10px;
+    margin-bottom: 2px;
     
+}
+h1 {
+    background: #272727;
 } */
 .container {
     position: relative;
@@ -41,58 +45,76 @@ span {
     width: calc(50% - 40px);
     display: column;
     justify-content: start;
-    /* background-color: aqua; */
 }
+/* navbar */
 .nav {
     justify-content: space-between;
-    border-bottom: 2px solid #bc614e;
+    border-bottom: 2px solid #0A4D68;
     width: 100%;
     padding: 2px;
-    /* background-color: blue; */
+    background-color: #b2bdbf;
+    overflow: hidden;
 }
+/* tiltle */
 .nav .title a {
     display: flex;
-    /* background-color: rgb(128, 0, 255); */
     align-items: end;
 }
 .nav .title a h1 {
     font-family: 'Nunito', sans-serif;
     font-weight: 900;
-    /* color: rgb(68, 255, 0); */
+    color: #05BFDB;
 }
 .nav .title a h3 {
     font-family: 'Nunito', sans-serif;
     font-weight: 800;
-    color: #bc614e;
+    color: #0A4D68;
     
+}
+/* login */
+.nav .login{
+    display: flex;
+    align-items: center;
 }
 .nav .login .flex {
     justify-content: end;
     gap: 10px;
 }
-.welcome {
-    background-color: #bc614e;
-    background-image: url('/assets/photos/image.jpg');
-     align-items: center;
-     max-width: 100%;
-     margin-top: 20px;
+.nav .login .btn{
+    background: none;
+    transition: 0.3s;
+    border-color: #b2bdbf;
+    color: #0A4D68;
 }
+.nav .login .btn:hover{
+    transform: scale(1.3);
+    cursor: pointer;
+}
+/* Welcome */
+.welcome {
+    background-color: #0A4D68;
+    background-image: url('/assets/photos/image.jpg');
+    height: 44rem;
+    align-items: center;
+    max-width: 100%;
+}
+/* welcome_left */
 .welcome .left{
     width: 60%;
     height: 500px;
     justify-content: center;
     max-width: 100%;
-   
 }
-.welcome .left span {
+.welcome .left span{
     font-size: 4em;
     font-weight: 500;   
-    background-color: rgb(223, 168, 96);
+    background-color: #0A4D68;
     margin: 30px;
     border-radius: 3px;
     padding: 0 20px;
     color: rgb(255, 255, 255);
 }
+/* welcome_right */
 .welcome .right {
     position: relative;
     display: flex;
@@ -100,55 +122,84 @@ span {
     gap: 20px;
     
 }
-/* .welcome .right img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    z-index: -1;
-} */
 .welcome .right span {
-    font-size: 20px;
-    font-weight: 500;
+    font-size: 30px;
+    font-weight: 700;
     display: block;
-    color: black;
+    color: rgb(2, 48, 76);
 }
+.welcome .right button{
+    transition: 0.3s;
+}
+.welcome .right button:hover{
+    transform: scale(1.05);
+}
+/* Description */
 .description{
-    background-color: rgb(218, 218, 58);
+    background-color: #d4e6f4;
+    height: 700px;
+    padding: 50px 0;
+    align-items: center;
+    width: 100%;
+}
+.description .candidat  {
+    background-color:#00d5f6;
+    padding: 50px 20px;
+    height: 500px;
+}
+.description .entreprise {
+    background-color:#18dffe;
+    padding: 50px 20px;
+    height: 500px;
 }
 .description .candidat h1,
 .description .entreprise h1 {
-    display: grid;
+    display: flex;
     justify-content: center;
-    /* background-color: #bc614e; */
+    color: #0A4D68;
+    padding: 0 50px;
+    margin:30px 0;
 }
-.description .candidat .icons,
-.description .entreprise .icons 
+.description .candidat .options,
+.description .entreprise .options 
 {
 display: flex;
 gap: 20px;
-justify-content: center;
+width: 100%;
 }
-.description .candidat .icons div div span,
-.description .icons div div span {
+.description .candidat .options .option .icon,
+.description .entreprise .options .option .icon{
+    display: flex;
+    gap: 10px;
+}
+.description .candidat .options .option .icon span,
+.description .options .option .icon span {
     display: flex;
     gap: 20px;
     justify-content: center;
     font-size: 1em;
     font-weight: 700;
-
 }
-.description .candidat .icons div div i,
-.description .entreprise .icons div div i {
+.description .candidat .options .option .icon i,
+.description .entreprise .options .option .icon i {
     display: flex;
     gap: 20px;
     justify-content: center;
     font-size: 2.5em;
     font-weight: 600;
-
+    color: #272727;
 }
-
+.desc{
+    color: aliceblue;
+    display: block;
+}
+.description .entreprise .options 
+{
+display: flex;
+justify-content: end;
+}
 /* inscrire */
 
-
+.footer{
+    
+}
