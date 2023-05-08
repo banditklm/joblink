@@ -54,7 +54,7 @@
                                         </div>
                                         <div class="desc">
                                             <h5>Elmounjid Kaltoum</h5>
-                                            <span class="text text-secondary">kaltoum.elmounjid@gmail.com</span>
+                                            <span class="text text-secondary">{{$user[0]->email}}</span>
                                         </div>
                                     </div>
                                 <!-- tags-1 -->
@@ -67,7 +67,7 @@
                                                         <h4>Informations personnels</h4>
                                                         <div class="champ1">
                                                             &nbsp;&nbsp;<label for="name">Full name</label><br>
-                                                            <input class="form-control" type="text" name="name" id="name" placeholder="full name" value=" ['name'] }} ">
+                                                            <input class="form-control" type="text" name="name" id="name" placeholder="full name" value="{{$user[0]->name}}">
                                                         </div>
                                                         <div class="champ1">
                                                             &nbsp;&nbsp;<label for="Adresse">Adresse</label><br>
@@ -75,7 +75,7 @@
                                                         </div>
                                                         <div class="champ1">
                                                             &nbsp;&nbsp;<label for="info">About</label><br>
-                                                            <textarea class="form-control" name="info" id="info" cols="5" rows="3"> ['info'] }}</textarea>
+                                                            <textarea class="form-control" name="info" id="info" cols="5" rows="3">{{$user[0]->info}}</textarea>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-4">
@@ -133,10 +133,10 @@
                 </div>
                 <div class="detailles">
                     <div class="detaill container-fluid">
-                        <span><i class="fa-solid fa-phone"></i></span>phone :<span> ['tel'] }} </span>
+                        <span><i class="fa-solid fa-phone"></i></span>phone :<span> {{$user[0]->tel}} </span>
                     </div>
                     <div class="detaill container-fluid">
-                        <span><i class="fa-solid fa-envelope"></i></span>email :<span> ['email'] }} </span>
+                        <span><i class="fa-solid fa-envelope"></i></span>email :<span> {{$user[0]->email}} </span>
                     </div>
                     <div class="detaill container-fluid ">
                         <span><i class="fa-solid fa-house"></i></span>adresse :<span>jfreuiytrku</span>
@@ -151,7 +151,7 @@
                     <span class="p1"><h3>Info Profil</h3></span>
                 </div> 
                 <div class="paragraphe"><p> 
-                 ['info'] }} </p>
+                {{$user[0]->info}} </p>
                 </div>
             </section>
             <section class="experience" >

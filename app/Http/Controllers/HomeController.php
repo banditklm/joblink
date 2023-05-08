@@ -28,8 +28,8 @@ class HomeController extends Controller
     }
     public function profile()
     {
-        $user= User::all();
-        // return $user ;
+        $user= User::get();
+        // return dd($user) ;
         return view('profile', ['user'=> $user]);
     }
 }
