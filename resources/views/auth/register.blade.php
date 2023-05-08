@@ -12,7 +12,7 @@
                         @csrf
 
                         <div class="row mb-3">
-                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Fuuuuuul Name') }}</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Full Name') }}</label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
@@ -28,8 +28,8 @@
                         <div class="row mb-3">
                             <label for="role" class="col-md-4 col-form-label text-md-end">{{ __('Role') }}</label>
                             <div class="col-md-6">
-                                <select class="form-select form-control @error('role') is-invalid @enderror" id="inputGroupSelect04" aria-label="Example select with button addon">
-                                    <option value="2">Etudiant</option>
+                                <select name="role" class="form-select form-control @error('role') is-invalid @enderror" id="inputGroupSelect04" aria-label="Example select with button addon">
+                                    <option selected value="2">CANDIDAT</option>
                                     <option value="3">Recruteur</option>
                                 </select>
                             </div>
