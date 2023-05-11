@@ -27,10 +27,4 @@ class HomeController extends Controller
     {
         return view('home');
     }
-    public function profile()
-    {   
-        $id = Auth::id();
-        $user= User::find($id);
-        return view('profile', ['user'=> $user]);
-    }
 }

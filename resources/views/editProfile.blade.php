@@ -12,6 +12,7 @@
       <div>
         <img src="{{asset('assets\photos\file.png')}}" onClick="triggerClick()" id="postDisplay" style="width:20%;height: auto; margin-left:5%;margin-top:2%;border-radius:8px;">
         <input type="file" name="image_donate" onChange="displayImage(this)" id="postImage" class="form-control" style="display: none;">
+        <!-- https://bbbootstrap.com/snippets/bootstrap-5-myprofile-90806631 -->
       </div>
     </div>
     <div class="face2"></div>

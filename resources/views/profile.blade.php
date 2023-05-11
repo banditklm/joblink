@@ -15,35 +15,15 @@
 
 </head> 
 <body>
-    <div class="container-fluid row">
-        <div class="face-1 col-md-3">
-            <section class="cont-1">
-                <div class="photos mt-4">
-                    <div class="photo-1">
-                        <img src="{{asset('assets/photos/tips.jpg')}} "alt="photo de profile" class="photo rounded-circle"/>
-                    </div>
-                </div>
-                <div class="name">
-                        <h1>
-                            <strong>{{$user->name}}</strong>
-                        </h1>
-                </div>
-                <div class="domain">
-                    <h5><span>{{$user->domaine}}</span></h5>
-                </div>
-
-                <div class="edit">
-                  <button type="button" class="mode" data-bs-toggle="modal" data-bs-target="#poste">
-                    Edit my profile
-                   </button> 
-                   <div class="modal fade" id="poste" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-xl" style="width: 80%;">
+<div class="modal fade" id="poste" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog red modal-dialog-scrollable">
                         <div class="modal-content">
                         <!-- modal header -->
                             <div class="modal-header">
                                 <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Profile</h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
+                        <!-- modal header -->    
                         <!-- modal body -->
                             <div class="modal-body">
                                 <div class="cont-bg">
@@ -72,8 +52,16 @@
                                                             <input class="form-control" type="text" name="name" id="name" placeholder="full name" value="{{$user->name}}">
                                                         </div>
                                                         <div class="champ1">
-                                                            &nbsp;&nbsp;<label for="Adresse">Adresse</label><br>
-                                                            <input class="form-control" type="text" name="adresse" id="adresse" placeholder="adresse">
+                                                            &nbsp;&nbsp;<label for="adresse">Adresse</label><br>
+                                                            <input class="form-control" type="text" name="adresse" id="adresse" placeholder="adresse" value="{{$user->adresse}}">
+                                                        </div>
+                                                        <div class="champ1">
+                                                            &nbsp;&nbsp;<label for="tel">Tel</label><br>
+                                                            <input class="form-control" type="tel" name="tel" id="tel" placeholder="tel" value="{{$user->tel}}">
+                                                        </div>
+                                                        <div class="champ1">
+                                                            &nbsp;&nbsp;<label for="domaine">Domaine</label><br>
+                                                            <input class="form-control" type="text" name="domaine" id="domaine" placeholder="domaine" value="{{$user->domaine}}">
                                                         </div>
                                                         <div class="champ1">
                                                             &nbsp;&nbsp;<label for="info">About</label><br>
@@ -99,7 +87,7 @@
                                                     <div class="col-md-4">
                                                         <h4>Compétence</h4>
                                                         <div class="champ3">
-                                                            <input class="form-control" type="text" name="competence" id="competence" placeholder="compétence">
+                                                            <input class="form-control" type="text" name="competence1" id="competence" placeholder="compétence" value="{{$user->competences}}">
                                                             <input class="form-control" type="text" name="competence" id="competence" placeholder="compétence">
                                                             <input class="form-control" type="text" name="competence" id="competence" placeholder="compétence">
                                                         </div>
@@ -122,12 +110,45 @@
                                 <button type="reset" class="btn" data-bs-dismiss="modal">Close</button>
                                 <button type="submit" class="btn">Save changes</button>
                             </div>
-                        </form>
+                         </form>
                         <!-- modal footeer-->
                         </div>
                     </div>
-    </div>
                 </div>
+
+
+
+
+
+
+
+
+
+
+    <div class="container-fluid row">
+        <div class="face-1 col-md-3">
+            <section class="cont-1">
+                <div class="photos mt-4">
+                    <div class="photo-1">
+                        <img src="{{asset('assets/photos/tips.jpg')}} "alt="photo de profile" class="photo rounded-circle"/>
+                    </div>
+                </div>
+                <div class="name">
+                        <h1>
+                            <strong>{{$user->name}}</strong>
+                        </h1>
+                </div>
+                <div class="domain">
+                    <h5><span>{{$user->domaine}}</span></h5>
+                </div>
+
+                <div class="edit">
+                  <button type="button" class="mode" data-bs-toggle="modal" data-bs-target="#poste">
+                    Edit my profile
+                   </button> 
+                </div>
+
+                
             </section>
             <section class="cont-2">
                 <div class="contacte ">
@@ -233,7 +254,7 @@
                     <span class="p1"><h3>COMPETENCE</h3></span>
                 </div>
                 <div class="par paragraphe" >
-                    <h6><i class="fa-solid fa-circle"></i>copy</h6>
+                    <h6><i class="fa-solid fa-circle"></i>{{$user->competences}}</h6>
                     <h6><i class="fa-solid fa-circle"></i>Graphic & Web Design</h6>
                     <h6><i class="fa-solid fa-circle"></i>Graphic & Web Design</h6>
                     
