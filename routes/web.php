@@ -21,18 +21,27 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/monCv', [App\Http\Controllers\UserController::class, 'monCv'])->name('monCv');
+Route::get('/apropos', [App\Http\Controllers\UserController::class, 'apropos'])->name('apropos');//add by me
 Route::get('/profile', [App\Http\Controllers\UserController::class, 'profile'])->name('profile');
 Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update');
 
 
-Route::get('/test', function () {
-    return view('test');
-})->name('test');
 
-Route::get('/test2', function () {
-    return view('/test/test');
-})->name('test');
+Route::get('/cv', function () {
+    return view('cv');
+})->name('cv');
 
-Route::get('/editProfile', function () {
-    return view('editProfile');
-})->name('editProfile');
+
+// Route::get('/apropos', function () { //add by me
+//     return view('apropos');
+// })->name('apropos');
+
+
+// Route::get('/test2', function () {
+//     return view('/test/test');
+// })->name('test');
+
+// Route::get('/editProfile', function () {
+//     return view('editProfile');
+// })->name('editProfile');

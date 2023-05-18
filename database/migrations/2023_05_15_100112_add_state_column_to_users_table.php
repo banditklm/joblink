@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddInfoColumnToUsersTable extends Migration
+class AddStateColumnToUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,12 +14,12 @@ class AddInfoColumnToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
+            $table->string('ville')->nullable();
+            $table->string('region')->nullable();
+            $table->integer('statut')->nullable();
+            $table->string('interet')->nullable();
             
-            $table->string('nom')->nullable();
-            $table->string('prenom')->nullable();
-            $table->string('adresse')->nullable();
-            $table->string('domaine')->nullable();
-            $table->string('tel')->unique()->nullable();       
+            $table->string('description',255)->nullable();
         });
     }
 

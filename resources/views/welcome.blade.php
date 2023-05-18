@@ -22,7 +22,7 @@
             }
         </style>
     </head>
-    <body class="">
+    <body>
 <!-- navbar -->
         <div class="nav">
         <!-- title -->
