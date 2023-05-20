@@ -16,12 +16,19 @@ class UserController extends Controller
     }
     public function monCv()
     {   
+        if(Auth::user()->role !=2)
+        abort(403, 'Unauthorized');
+
         $id = Auth::id();
         $user= User::find($id);
         return view('cv', ['user'=> $user]);
     }
     public function apropos()
     {   
+        if(Auth::user()->role !=3)
+        abort(403, 'Unauthorized');
+
+
         $id = Auth::id();
         $user= User::find($id);
         return view('apropos', ['user'=> $user]);

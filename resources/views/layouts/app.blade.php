@@ -11,23 +11,55 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('assets/js/profile.js') }}" defer></script>
+    
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"> <!-- modified by me-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" /> <!-- add by me-->
+
 
 
     <!-- Styles -->
+    <link href="{{asset('assets/css/cv.css')}}" rel="stylesheet"> <!--add by me-->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{asset('assets/css/profile.css')}}" rel="stylesheet"> <!--add by me-->
+    <link href="{{asset('assets/css/home.css')}}" rel="stylesheet"> <!--add by me-->
+
+
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm d">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    {{ config('app.name', 'laravel') }}
                 </a>
+                @auth
+                <a class="navbar-brand" href="{{ url('/home') }}">
+                    Offres
+                </a>
+               <a class="navbar-brand" href="{{ url('/') }}">
+                Search 
+                </a>
+                @if (Auth::user()->role == 2)
+                <a class="navbar-brand" href="{{ url('/monCv') }}">
+                    Mon Cv
+                </a>
+                @else
+                <a class="navbar-brand" href="{{ url('/apropos') }}">
+                    A propos
+                </a>
+                @endif
+                <a class="navbar-brand" href="{{ url('/profile') }}">
+                Profile
+                </a>
+                <a class="navbar-brand" href="{{ url('/') }}">
+                    Recomendation
+                </a>
+                @endauth
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -66,7 +98,7 @@
                                         {{ __('Logout') }}
                                     </a>
                                     <a class="dropdown-item" href="{{ route('profile') }}">
-                                        {{ __('my profil') }}
+                                        {{ __('my profile') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -82,8 +114,13 @@
 
         <main class="py-4">
             @yield('content')
+            @yield('cv')
+            @yield('profile')
+            
+
         </main>
     </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script> -->
 </html>

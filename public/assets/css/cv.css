@@ -19,15 +19,8 @@ body{
     height: 500px;
     font-family: "Nunito";
 }
-*{
-    margin-bottom: 4px;
- }
- .container-fluid { 
-    display: flex; 
-    height: auto;
-    width: 100%;
-    height: 100%; 
-}
+
+
 /* cont1 */
 .cont-1{
     background-color: #3e3e3e;
@@ -37,10 +30,9 @@ body{
 /* face1 */
 .face-1{
     background-color: #3e3e3e ;
-}
-.face-1{
     color: beige !important;
 }
+
  
  /* profile */
  .face-1 .cont-1>div , 
@@ -69,7 +61,6 @@ justify-content: center;
     object-fit: cover;
    
  }
-  
  /* name */
  .name{
     display: flex;
@@ -82,31 +73,9 @@ justify-content: center;
     justify-content: center;
 
  }
- /* edite */
- .edit{
-    position: relative;
-    width: 90%;
-}
-.edit .mode {
-    display: flex;
-    justify-content: center;
-    padding: 5px 30px;
-    background-color: #c6d0d2;
-    border-radius: 8px;
-    width: 100%;
+  
+ 
 
- }
- .modal{
-    /* background-color: rgb(135, 206, 222); */
-}
-.modal-dialog{
-    max-width: 800px; /* adjust the value to your desired width */
-    width: 80%; /* fallback for older browsers */
-}
-.modal-content{
-    /* background-color: rgb(148, 237, 100); */
-    color: #3c4240;
-}
 .tags-1{
     display: flex;
     justify-content: center;
@@ -130,12 +99,7 @@ justify-content: center;
     margin-top: 10px;
     padding-top: 5px;
 }
-.champ2 input{
-    margin-bottom: 5px;
-}
-.champ3 input{
-    margin-bottom: 5px;
-}
+
 .close {
     color: black;
 }

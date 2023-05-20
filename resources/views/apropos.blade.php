@@ -15,110 +15,6 @@
 
 </head> 
 <body>
-<!-- Edit Apropos -->
-                <div class="modal fade" id="poste" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-xl red">
-                        <div class="modal-content">
-    <!-- modal header -->
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Cv</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                           
-    <!-- modal body -->
-                            <div class="modal-body">
-                                <div class="cont-bg">
-    <!-- tags-1 -->
-                                    <div class="tags-1">
-                                        <div class="imag">
-                                            <a href=""><img src="{{asset('assets/photos/tips.jpg')}}" alt="photo de profile" class="img rounded-circle" width="100px" height="100px"></a>
-                                        </div>
-                                        <div class="desc">
-                                            <h5>{{$user->nom}}&nbsp;{{$user->prenom}}</h5>
-                                            <span class="text text-secondary">{{$user->email}}</span>
-                                        </div>
-                                    </div>
-    <!-- tags-2 -->
-                                    <div class="tags-2">
-                                        <div class="container-fluid">
-                                            <form form method="POST" action="{{ route('users.update', $user->id) }}">
-                                            @csrf
-                                            @method('PUT')
-                                                <div class="row">
-                                                    <div class="col-md-4">
-                                                        <h4>Informations personnels</h4>
-                                                        <div class="champ1">
-                                                            &nbsp;&nbsp;<label for="name">Full name</label><br>
-                                                            <input class="form-control" type="text" name="name" id="name" placeholder="full name" value="{{$user->name}}">
-                                                        </div>
-                                                        <div class="champ1">
-                                                            &nbsp;&nbsp;<label for="adresse">Adresse</label><br>
-                                                            <input class="form-control" type="text" name="adresse" id="adresse" placeholder="adresse" value="{{$user->adresse}}">
-                                                        </div>
-                                                        <div class="champ1">
-                                                            &nbsp;&nbsp;<label for="tel">Tel</label><br>
-                                                            <input class="form-control" type="tel" name="tel" id="tel" placeholder="tel" value="{{$user->tel}}">
-                                                        </div>
-                                                        <div class="champ1">
-                                                            &nbsp;&nbsp;<label for="domaine">Domaine</label><br>
-                                                            <input class="form-control" type="text" name="domaine" id="domaine" placeholder="domaine" value="{{$user->domaine}}">
-                                                        </div>
-                                                        <div class="champ1">
-                                                            &nbsp;&nbsp;<label for="info">About</label><br>
-                                                            <textarea class="form-control" name="info" id="info" cols="5" rows="3">{{$user->description}}</textarea>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <h4>Experience</h4>
-                                                        <div class="champ2">
-                                                            <input class="form-control" type="date" name="start1" id="start1" placeholder="Start" >
-                                                            <input class="form-control" type="date" name="end1" id="end1" placeholder="End" >
-                                                            <input class="form-control" type="text" name="title1" id="title1" placeholder="Title" >
-                                                            <input class="form-control" type="text" name="desc1" id="desc1" placeholder="Description" >
-                                                        </div>
-                                                        <h4>Diplome</h4>
-                                                        <div class="champ2">
-                                                            <input class="form-control" type="date" name="start2" id="start2" placeholder="Start" >
-                                                            <input class="form-control" type="date" name="end2" id="end2" placeholder="End" >
-                                                            <input class="form-control" type="text" name="title2" id="title2" placeholder="Title" >
-                                                            <input class="form-control" type="text" name="desc2" id="desc2" placeholder="Description" >
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <h4>Compétence</h4>
-                                                        <div class="champ3">
-                                                            <input class="form-control" type="text" name="competence1" id="competence" placeholder="compétence" value="{{$user->competences}}">
-                                                            <input class="form-control" type="text" name="competence" id="competence" placeholder="compétence">
-                                                            <input class="form-control" type="text" name="competence" id="competence" placeholder="compétence">
-                                                        </div>
-                                                        <h4>Référence</h4>
-                                                        <div class="champ3">
-                                                            <input class="form-control" type="text" name="reference" id="reference" placeholder="référence">
-                                                            <input class="form-control" type="text" name="domain" id="domain" placeholder="domain">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            
-                                        </div>
-                                    </div>
-    <!-- tags-2 -->
-                                </div>
-                            </div>
-    <!-- modal footeer-->
-                            <div class="modal-footer">
-                                <button type="reset" class="btn" data-bs-dismiss="modal">Close</button>
-                                <button type="submit" class="btn">Save changes</button>
-                            </div>
-                         </form>
-    <!-- modal footeer-->
-                        </div>
-                    </div>
-                </div>
-
-
-
-
-
 
 
 
@@ -141,11 +37,11 @@
                     <h5><span>{{$user->domaine}}</span></h5>
                 </div>
 
-                <div class="edit">
+                <!-- <div class="edit">
                   <button type="button" class="mode" data-bs-toggle="modal" data-bs-target="#poste">
                     Edit 
                    </button> 
-                </div>
+                </div> -->
 
                 
             </section>

@@ -1,18 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link href="{{asset('assets/css/profile.css')}}" rel="stylesheet">
 
-  
-</head>
-<body>
+@extends('layouts.app')
+@section('profile')
 @if (Auth::user()->role == 2)
 <!-- Candidat -->
     <div class="container">
@@ -246,7 +234,7 @@
                                                                         <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                                                                             <img class="rounded-circle mt-5" width="150px" src="{{asset('assets\photos\pic1.jpg')}}" onClick="triggerClick()" id="postDisplay">
                                                                             <input type="file" name="image" onChange="displayImage(this)" id="postImage" class="form-control" accept="image/*" style="display: none;">
-                                                                            <h3 class="font-weight-bold">{{$user->nom}}&nbsp;{{$user->prenom}}</h3><span class="text-black-50">{{$user->email}}</span>
+                                                                            <h3 class="font-weight-bold">{{$user->nom}}<br>{{$user->prenom}}</h3><span class="text-black-50">{{$user->email}}</span>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-5 border-right">
@@ -499,55 +487,55 @@
                                                         <div class="modal-dialog modal-dialog-centered modal-dialog modal-xl">
                                                             <div class="modal-content">
 <!-- Modal Edit Profile recruteur -->
-                                                                    <div class="modal-header">
-                                                                        <h1 class="modal-title fs-5" id="Label">Profile Settings</h1>
-                                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                                    </div>
-                                                                    <div class="modal-body">
-                                                                        <div class="container rounded mt-5 mb-5">
-                                                                            <div class="row">
-                                                                                <div class="col-md-2 border-right">
-                                                                                    <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                                                                                        <img class="rounded-circle mt-5" width="150px" src="{{asset('assets\photos\pic1.jpg')}}" onClick="triggerClick()" id="postDisplay">
-                                                                                        <input type="file" name="image" onChange="displayImage(this)" id="postImage" class="form-control" accept="image/*" style="display: none;">
-                                                                                        <span class="font-weight-bold">{{$user->nom}}</span>
-                                                                                        <span class="text-black-50">{{$user->adresse}}</span>
-                                                                                        
-                                                                                    </div>
+                                                            <div class="modal-header">
+                                                                <h1 class="modal-title fs-5" id="Label">Profile Settings</h1>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <div class="container rounded mt-5 mb-5">
+                                                                    <div class="row">
+                                                                        <div class="col-md-2 border-right">
+                                                                            <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                                                                                <img class="rounded-circle mt-5" width="150px" src="{{asset('assets\photos\pic1.jpg')}}" onClick="triggerClick()" id="postDisplay">
+                                                                                <input type="file" name="image" onChange="displayImage(this)" id="postImage" class="form-control" accept="image/*" style="display: none;">
+                                                                                <span class="font-weight-bold">{{$user->nom}}</span>
+                                                                                <span class="text-black-50">{{$user->adresse}}</span>
+                                                                                
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-5 border-right">
+                                                                            <div class="p-3 py-5">
+                                                                                <div class="row mt-2">
+                                                                                    <input type="hidden" class="form-control" name="user_id" id="nom" value="{{$user->id}}">
+                                                                                    <div class="col-md-6">&nbsp;&nbsp;<label class="labels">Nom</label><input type="text" class="form-control mt-2 mb-2" name="nom" id="nom" value="{{$user->nom}}"></div>
+                                                                                    <!-- <div class="col-md-6">&nbsp;&nbsp;<label class="labels">Prenom</label><input type="text" class="form-control mt-2 mb-2" name="prenom" id="prenom" value="{{$user->prenom}}" ></div> -->
                                                                                 </div>
-                                                                                <div class="col-md-5 border-right">
-                                                                                    <div class="p-3 py-5">
-                                                                                        <div class="row mt-2">
-                                                                                            <input type="hidden" class="form-control" name="user_id" id="nom" value="{{$user->id}}">
-                                                                                            <div class="col-md-6">&nbsp;&nbsp;<label class="labels">Nom</label><input type="text" class="form-control mt-2 mb-2" name="nom" id="nom" value="{{$user->nom}}"></div>
-                                                                                            <!-- <div class="col-md-6">&nbsp;&nbsp;<label class="labels">Prenom</label><input type="text" class="form-control mt-2 mb-2" name="prenom" id="prenom" value="{{$user->prenom}}" ></div> -->
-                                                                                        </div>
-                                                                                        <div class="row mt-3">
-                                                                                            <div class="col-md-12">&nbsp;&nbsp;<label class="labels">Numèro de tétéphone</label><input type="tel" class="form-control mt-2 mb-2" name="tel" id="tel" value="{{$user->tel}}"></div>
-                                                                                            <div class="col-md-12">&nbsp;&nbsp;<label class="labels">Email</label><input type="email" class="form-control mt-2 mb-2" name="email" id="email" value="{{$user->email}}"></div>
-                                                                                            <div class="col-md-12">&nbsp;&nbsp;<label class="labels">Mot de passe</label><input type="password" class="form-control mt-2 mb-2" name="mot" id="mot" value=""></div>
-                                                                                            
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="col-md-5">
-                                                                                    <div class="p-3 py-5">
-                                                                                        <!-- <br><br><br> -->
-                                                                                        <div class="col-md-12">&nbsp;&nbsp;<label class="labels">Addresse</label><input type="text" class="form-control mt-2 mb-2" name="adresse" id="adresse" value="{{$user->adresse}}"></div>
-                                                                                        <div class="col-md-12">&nbsp;&nbsp;<label class="labels">Ville</label><input type="text" class="form-control mt-2 mb-2" name="ville" id="ville" value="{{$user->ville}}"></div>
-                                                                                        <div class="col-md-12">&nbsp;&nbsp;<label class="labels">Region</label><input type="text" class="form-control mt-2 mb-2" name="region" id="region" value="{{$user->region}}"></div>
-                                                                                        <div class="col-md-12">&nbsp;&nbsp;<label class="labels">Date de création</label><input type="date" class="form-control mt-2 mb-2" name="date_creation" id="creation" value="{{$info->date_creation}}"></div>
-                                                                                    </div>
+                                                                                <div class="row mt-3">
+                                                                                    <div class="col-md-12">&nbsp;&nbsp;<label class="labels">Numèro de tétéphone</label><input type="tel" class="form-control mt-2 mb-2" name="tel" id="tel" value="{{$user->tel}}"></div>
+                                                                                    <div class="col-md-12">&nbsp;&nbsp;<label class="labels">Email</label><input type="email" class="form-control mt-2 mb-2" name="email" id="email" value="{{$user->email}}"></div>
+                                                                                    <div class="col-md-12">&nbsp;&nbsp;<label class="labels">Mot de passe</label><input type="password" class="form-control mt-2 mb-2" name="mot" id="mot" value=""></div>
+                                                                                    
                                                                                 </div>
                                                                             </div>
-                                                                                <div class="modal-footer">
-                                                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                                                    <button type="submit" class="btn btn-primary">Save changes</button>
-                                                                                </div>
-                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-5">
+                                                                            <div class="p-3 py-5">
+                                                                                <!-- <br><br><br> -->
+                                                                                <div class="col-md-12">&nbsp;&nbsp;<label class="labels">Addresse</label><input type="text" class="form-control mt-2 mb-2" name="adresse" id="adresse" value="{{$user->adresse}}"></div>
+                                                                                <div class="col-md-12">&nbsp;&nbsp;<label class="labels">Ville</label><input type="text" class="form-control mt-2 mb-2" name="ville" id="ville" value="{{$user->ville}}"></div>
+                                                                                <div class="col-md-12">&nbsp;&nbsp;<label class="labels">Region</label><input type="text" class="form-control mt-2 mb-2" name="region" id="region" value="{{$user->region}}"></div>
+                                                                                <div class="col-md-12">&nbsp;&nbsp;<label class="labels">Date de création</label><input type="date" class="form-control mt-2 mb-2" name="date_creation" id="creation" value="{{$info->date_creation}}"></div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                            <button type="submit" class="btn btn-primary">Save changes</button>
+                                                                        </div>
+                                                                    </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
 
 
                                                             </div>
@@ -567,21 +555,6 @@
         </div>
     <!-- /Recruteur --> 
 @endif
-</body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 
-<script>   
- function triggerClick(e) {
-    document.querySelector('#postImage').click();
-  }
-  function displayImage(e) {
-    if (e.files[0]) {
-      var reader = new FileReader();
-      reader.onload = function(e){
-        document.querySelector('#postDisplay').setAttribute('src', e.target.result);
-      }
-      reader.readAsDataURL(e.files[0]);
-    }
-  }
-</script>
-</html>
+
+@endsection

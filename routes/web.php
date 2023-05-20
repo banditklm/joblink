@@ -28,9 +28,7 @@ Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update
 
 
 
-Route::get('/cv', function () {
-    return view('cv');
-})->name('cv');
+
 
 
 // Route::get('/apropos', function () { //add by me
