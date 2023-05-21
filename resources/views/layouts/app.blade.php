@@ -38,11 +38,11 @@
                     {{ config('app.name', 'laravel') }}
                 </a>
                 @auth
-                <a class="navbar-brand" href="{{ url('/home') }}">
+                <a class="navbar-brand" href="{{ url('/') }}">
+                 Search 
+                 </a>
+                <a class="navbar-brand mr-5" href="{{ url('/home') }}">
                     Offres
-                </a>
-               <a class="navbar-brand" href="{{ url('/') }}">
-                Search 
                 </a>
                 @if (Auth::user()->role == 2)
                 <a class="navbar-brand" href="{{ url('/monCv') }}">
