@@ -46,44 +46,79 @@
                                         <form action="">
                                             <div class="modal-body">
                                                 <div class="row">
-                                                    <div class="col-md-4">
-                                                        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                                                            <option selected>Catégorie</option>
+                                                    <div id="parent" class="col-md-4">
+                                                        <select id="mySelect" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                                                            <option selected disabled>Catégorie</option>
                                                             <option value="1">Etude</option>
                                                             <option value="2">Formation</option>
                                                             <option value="3">Stage</option>
-                                                            <option value="3">Emploi</option>
+                                                            <option value="4">Emploi</option>
                                                         </select>
-                                                        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                                                            <option selected>Niveau</option>
+                                                        <select id="etude" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                                                            <option selected disabled>Niveau</option>
                                                             <option value="1">Bac</option>
                                                             <option value="2">Licence</option>
                                                             <option value="3">Master</option>
-                                                            <option value="3">Doctorat</option>
+                                                            <option value="4">Doctorat</option>
                                                         </select>
-                                                        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                                                            <option selected>Domaine</option>
+                                                        <select id="formation" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                                                            <option selected disabled>formation ?</option>
                                                             <option value="1">Data</option>
                                                             <option value="2">Design</option>
                                                             <option value="3">Web</option>
-                                                            <option value="3">Marketing</option>
+                                                            <option value="4">Marketing</option>
                                                         </select>
-                                                        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                                                            <option selected>Domaine</option>
+                                                        <select id="stage" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                                                            <option selected disabled>stage ?</option>
                                                             <option value="1">Technologie de l'information (TI)</option>
                                                             <option value="2">Finance et comptabilité</option>
                                                             <option value="3">Ingénierie</option>
-                                                            <option value="3">Tourisme et hôtellerie </option>
+                                                            <option value="4">Tourisme et hôtellerie </option>
                                                         </select>
-                                                        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                                                            <option selected>Domaine</option>
-                                                            <option value="1">Technologie de l'information (TI)</option>
-                                                            <option value="2">Finance et comptabilité</option>
-                                                            <option value="3">Ingénierie</option>
-                                                            <option value="3">Tourisme et hôtellerie </option>
+                                                        <select id="emploi" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                                                            <option selected disabled>emploi ?</option>
+                                                            <option value="1">emploi 1</option>
+                                                            <option value="2">emploi 2</option>
+                                                            <option value="3">emploi 3</option>
+                                                            <option value="4">emploi 4</option>
                                                         </select>
 
                                                     </div>
+                                                    <script>
+                                                        var selectElement = document.getElementById('mySelect');
+                                                        var  etude     = document.getElementById('etude');
+                                                        var  formation = document.getElementById('formation');
+                                                        var  stage     = document.getElementById('stage');
+                                                        var  emploi    = document.getElementById('emploi');
+                                                        selectElement.addEventListener('change', function() {
+                                                            var s = selectElement.value;
+                                                            etude.classList.add('d-none');
+                                                            formation.classList.add('d-none');
+                                                            stage.classList.add('d-none');
+                                                            emploi.classList.add('d-none');
+
+                                                           
+                                                            
+                                                            if(s==1)
+                                                                etude.classList.remove('d-none');
+                                                                if(s==2)
+                                                                            formation.classList.remove('d-none');
+                                                                            if(s==3)
+                                                                            stage.classList.remove('d-none');
+                                                                            if(s==4)
+                                                                            emploi.classList.remove('d-none');
+                                                                   
+
+
+                                                                // if (selectedOption === '1'){
+                                                                //     etude.classList.remove('d-none');
+                                                                //     etude.classList.add('d-none');
+                                                                // }else if (selectedOption === '2'){
+                                                                //     prenom.classList.add('d-none');
+                                                                // }
+
+                                                            });
+                                                    </script>
                                                     <div class="col-md-4">
                                                         <textarea name="description" id="description" cols="39" rows="3" placeholder="Ajouter quelque chose!"></textarea>
                                                         <img src="{{asset('assets/photos/hire.jpg')}}" alt="" class="rounded mx-auto d-block w-100">

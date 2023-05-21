@@ -18,7 +18,7 @@ class AddStateColumnToUsersTable extends Migration
             $table->string('region')->nullable();
             $table->integer('statut')->nullable();
             $table->string('interet')->nullable();
-            
+            $table->string('path')->nullable();
             $table->string('description',255)->nullable();
         });
     }
