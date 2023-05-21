@@ -25,6 +25,12 @@ Route::get('/monCv', [App\Http\Controllers\UserController::class, 'monCv'])->nam
 Route::get('/apropos', [App\Http\Controllers\UserController::class, 'apropos'])->name('apropos');//add by me
 Route::get('/profile', [App\Http\Controllers\UserController::class, 'profile'])->name('profile');
 Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update');
+Route::put('/users/{user}/update-description', [UserController::class, 'updateDescription'])->name('users.updateDescription');
+Route::post('/experiences', [UserController::class, 'storeExperiences'])->name('experiences.store');
+Route::delete('/experiences/{experience}',[UserController::class, 'destroy'])->name('experiences.destroy');
+
+
+
 
 
 
