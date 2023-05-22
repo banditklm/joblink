@@ -165,9 +165,9 @@
                     </div>
                 </div>
             <!-- </div> -->
-<!-- /afficher Offre -->
         </div>
     </div>
+    <!-- /afficher Offre -->
 @else
 <!-- Candidat home -->
     <div class="container">

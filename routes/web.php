@@ -17,6 +17,9 @@ use App\Http\Controllers\UserController;
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
+Route::get('/h', function () {
+    return view('search');
+})->name('search');
 
 Auth::routes();
 
