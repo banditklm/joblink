@@ -21,21 +21,3 @@
 .container .card .dropdown button{
     margin:0 0 3px 300px ;
 }
-.container .card .dropdown li button{
-    margin:0 0 3px  ;
-}
-.fiter a{
-    display: flex;
-    align-items: center;
-    justify-content: end;
-    margin-top: 5px;
-}
-.fiter{
-    display: flex;
-    align-items: center;
-    justify-content: end;
-    margin-top: 10px;
-}
-.fiter button:hover{
-    transform: scale(1.05);
-}

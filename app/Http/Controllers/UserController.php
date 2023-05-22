@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Candidat;
 use App\Models\Recruteur;
+use App\Models\Experience;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 class UserController extends Controller
@@ -21,7 +22,12 @@ class UserController extends Controller
 
         $id = Auth::id();
         $user= User::find($id);
-        return view('cv', ['user'=> $user]);
+        $candidate = Candidat::where('user_id',$id)->first();
+        $experiences = $candidate->experiences;
+        // return $experiences;
+        // return $experiences;
+        // $experiences = Experience::all();
+        return view('cv', ['user'=> $user,'experiences'=> $experiences]);
     }
     public function apropos()
     {   
@@ -98,4 +104,42 @@ class UserController extends Controller
         $candidat->save();
         return redirect()->back()->with('success', 'User information updated successfully.');
     }
+    public function updateDescription(Request $request, User $user)
+    {
+        $user->description = $request->input('description');
+        $user->save();
+
+        return redirect()->back()->with('success', 'Description updated successfully.');
+    }
+    public function storeExperiences(Request $request)
+    {
+        $experience = new Experience();
+
+        $experience->candidat_id = Candidat::where('user_id',Auth::id())->first()->id;
+        $experience->title = $request->input('title');
+        $experience->debut = $request->input('debut');
+        $experience->fin = $request->input('fin');
+        $experience->description = $request->input('description');
+        $experience->save();
+
+        return redirect()->back()->with('success', 'Experience added successfully.');
+    }
+    public function destroy(Experience $experience)
+    {
+        $experience->delete();
+
+        return redirect()->back()->with('success', 'Experience deleted successfully.');
+    }
+    public function experiencesUpdate(Request $request, Experience $experience)
+    {
+
+        $experience->title = $request->input('title');
+        $experience->debut = $request->input('debut');
+        $experience->fin = $request->input('fin');
+        $experience->description = $request->input('description');
+        $experience->save();
+
+        return redirect()->back()->with('success', 'Experience added successfully.');
+    }
+
 }

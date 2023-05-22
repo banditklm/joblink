@@ -97,22 +97,22 @@
     </div>
 </div>
 <script>
-                            var selectElement = document.getElementById('mySelect');
-                            var label = document.getElementById('nom');
-                            var prenom = document.getElementById('prenom');
-                            selectElement.addEventListener('change', function() {
-                                var selectedOption = selectElement.value;
+    var selectElement = document.getElementById('mySelect');
+    var label = document.getElementById('nom');
+    var prenom = document.getElementById('prenom');
+    selectElement.addEventListener('change', function() {
+    var selectedOption = selectElement.value;
 
-                                    if (selectedOption === '2'){
-                                        label.textContent = 'Nom';
-                                        label.innerHTML  = 'Nom';
-                                        prenom.classList.remove('d-none');
-                                    }else if (selectedOption === '3'){
-                                        label.textContent = 'Nom Entreprise';
-                                        label.innerHTML  = 'Nom Entreprise';
-                                        prenom.classList.add('d-none');
-                                    }
+        if (selectedOption === '2'){
+            label.textContent = 'Nom';
+            label.innerHTML  = 'Nom';
+            prenom.classList.remove('d-none');
+        }else if (selectedOption === '3'){
+            label.textContent = 'Nom Entreprise';
+            label.innerHTML  = 'Nom Entreprise';
+            prenom.classList.add('d-none');
+        }
 
-                            });
-                        </script>
+    });
+</script>
 @endsection

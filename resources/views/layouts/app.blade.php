@@ -32,7 +32,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm d">
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm d fixed-top">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'laravel') }}
@@ -116,6 +116,7 @@
             @yield('content')
             @yield('cv')
             @yield('profile')
+            @yield('search')
             
 
         </main>

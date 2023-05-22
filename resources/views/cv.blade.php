@@ -89,13 +89,15 @@
                             <h1 class="modal-title fs-5" id="staticBackdropLabel">Ajouter info profile</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-							<form action="">
-								<div class="modal-body">
-									<textarea name="info_profile" id="info_profile"  placeholder="decrivez vous profile" cols="50" rows="5"></textarea>
+							<form method="POST" action="{{ route('users.updateDescription', $user->id) }}">
+                                @csrf
+                                @method('PUT')
+                                <div class="modal-body">
+									<textarea name="description" id="info_profile"  placeholder="decrivez vous profile" cols="50" rows="5"></textarea>
 								</div>
 								<div class="modal-footer">
-								<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-								<button type="submit" class="btn btn-primary">Save changes</button>
+								<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+								<button type="submit" class="btn btn-primary">Enregister</button>
 								</div>
 							</form> 
                         </div>
@@ -114,7 +116,7 @@
                         <span class="p1"><h3> EXPERIRNCES</h3></span>
                     </div>
                     <div class="right">
-                        <button class="btn" data-bs-toggle="modal" data-bs-target="#editexperience" id="ajouter"></button>
+                        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#editexperience" id="ajouter">Ajouter</button>
                     </div>
 
                     <div class="modal fade" id="editexperience" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -125,46 +127,120 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body" id="experiences">
-                            
-                                </div>
-                                <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Understood</button>
-                                </div>
+
+                                    <form method="POST" action="{{ route('experiences.store') }}">
+                                        @csrf
+
+                                        <div class="form-group">
+                                            <label for="Title">Title:</label>
+                                            <select name="title" id="Title" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" required>
+                                                <option selected disabled>Title</option>
+                                                <option value="Etude">Etude</option>
+                                                <option value="Formation">Formation</option>
+                                                <option value="Stage">Stage</option>
+                                                <option value="Emploi">Emploi</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="start_date">Start Date:</label>
+                                            <input type="date" id="start_date" name="debut" class="form-control" required>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="end_date">End Date:</label>
+                                            <input type="date" id="end_date" name="fin" class="form-control">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="description">Description:</label>
+                                            <textarea id="description" name="description" class="form-control" rows="5" required></textarea>
+                                        </div>
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="submit" class="btn btn-primary">Ajouter Experience</button>
+                                            <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                                        </div>
+                                    </form>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="fl">
-                    <span><h6><i class="fa-solid fa-circle-arrow-right"></i><h6></span>
-                    <span><strong> 2012 - 2015 </strong></span>
+                @foreach ($experiences as $experience)
+                <div class="exp">
+
+                    <div class="fl">
+                        <span class="title"><strong><span class="text-muted"> De </span>{{ $experience->debut }}<span class="text-muted"> A </span>{{ $experience->fin }}</strong></span>
+                        
+<!-- experiences.update -->
+                        <div class="modal fade" id="staticBackdrop-{{ $experience->id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form method="POST" action="{{ route('experiences.update', $experience->id) }}">
+                                        @csrf
+                                        @method('PUT')
+
+                                        <div class="form-group">
+                                            <label for="Title">Title:</label>
+                                            <select name="title" id="Title" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" required>
+                                                <option selected disabled>{{ $experience->title }}</option>
+                                                <option value="Etude">Etude</option>
+                                                <option value="Formation">Formation</option>
+                                                <option value="Stage">Stage</option>
+                                                <option value="Emploi">Emploi</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="start_date">Start Date:</label>
+                                            <input type="date" id="start_date" name="debut" class="form-control" value="{{ $experience->debut }}" required>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="end_date">End Date:</label>
+                                            <input type="date" id="end_date" name="fin" class="form-control" value="{{ $experience->fin }}" >
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="description">Description:</label>
+                                            <textarea id="description" name="description" class="form-control" rows="5" required>{{ $experience->description }}</textarea>
+                                        </div>
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="submit" class="btn btn-primary">modifier Experience</button>
+                                            <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
+                    
+                    <div class="paragraphe">
+                        <strong>{{ $experience->title }}</strong>
+                    </div>
+                    <div class="description">
+                        <span>{{ $experience->description }}</span>
+                    </div>
+                    <div class="handel">
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop-{{ $experience->id }}">
+                        Modifier
+                        </button>
+                        <form method="POST" action="{{ route('experiences.destroy', $experience->id) }}" onsubmit="return confirm('Are you sure you want to delete this experience?')">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">Supprimer</button>
+                        </form>  
+                    </div>
                 </div>
-                <div class="paragraphe">
-                    <strong>Junior Graphic DesignerBorcelle Studios</strong>
-                </div>
-                <div class="paragraphe">
-                    <span>Working as graphic designer for 1 year Post Graduated in Website & Graphics Designing. Academic Excellence in Web Design.</span>
-                </div>
-                <div class="fl">
-                    <span><h6><i class="fa-solid fa-circle-arrow-right"></i><h6></span>
-                    <span><strong>2012 - 2015</strong><span>    
-                </div>
-                <div class="paragraphe">
-                    <strong>Junior Graphic DesignerBorcelle Studios</strong>
-                </div>
-                <div class="paragraphe">
-                    <span>Working as graphic designer for 1 year Post Graduated in Website & Graphics Designing. Academic Excellence in Web Design.</span>
-                </div>
-                <div class="fl">
-                    <span><h6><i class="fa-solid fa-circle-arrow-right"></i><h6></span>
-                    <span><strong>2012 - 2015</strong><span>
-                </div>
-                <div class="paragraphe"> 
-                    <strong>Junior Graphic DesignerBorcelle Studios</strong>
-                </div>
-                <div class="paragraphe">
-                    <span>Working as graphic designer for 1 year Post Graduated in Website & Graphics Designing. Academic Excellence in Web Design.</span>
-                </div>
+                @endforeach
             </section>
 <!-- Diplome -->
             <section class="experience"  > 
@@ -311,245 +387,6 @@
                 </div>
             </section>
         </div>
-<!-- Scripts -->
-    <script>
-        function ajouterExperience() {
-        var experiencesDiv = document.getElementById("experiences");
-
-        var experienceDiv = document.createElement("div");
-        experienceDiv.className = "experience";
-
-        var dateDebutLabel = document.createElement("label");
-        dateDebutLabel.innerHTML = "Date de début: ";
-        var dateDebutInput = document.createElement("input");
-        dateDebutInput.type = "date";
-        dateDebutInput.className = "form-control";
-
-        var dateFinLabel = document.createElement("label");
-        dateFinLabel.innerHTML = "Date de fin: ";
-        var dateFinInput = document.createElement("input");
-        dateFinInput.type = "date";
-        dateFinInput.className = "form-control";
-
-            var titreLabel = document.createElement("label");
-            titreLabel.innerHTML = "Titre: ";
-            var titreSelect = document.createElement("select");
-            titreSelect.className = "form-control";
-            titreSelect.style.width = "200px"; 
-            var option1 = document.createElement("option");
-            option1.text = "Stage";
-            titreSelect.add(option1);
-
-            var option2 = document.createElement("option");
-            option2.text = "Fomation";
-            titreSelect.add(option2);
-            var option2 = document.createElement("option");
-            option2.text = "Emploi";
-            titreSelect.add(option2);
-
-
-
-        var descriptionLabel = document.createElement("label");
-        descriptionLabel.innerHTML = "Description: ";
-        var descriptionInput = document.createElement("textarea");
-        descriptionInput.className = "form-control";
-
-
-        var supprimerButton = document.createElement("input");
-            supprimerButton.type = "button";
-            supprimerButton.value = "Supprimer";
-            supprimerButton.className = "btn btn-danger";
-            supprimerButton.onclick = function() {
-                experiencesDiv.removeChild(experienceDiv);
-            };
-        
-            experienceDiv.appendChild(dateDebutLabel);
-            experienceDiv.appendChild(dateDebutInput);
-            experienceDiv.appendChild(dateFinLabel);
-            experienceDiv.appendChild(dateFinInput);
-            experienceDiv.appendChild(titreLabel);
-            experienceDiv.appendChild(titreSelect);
-
-            experienceDiv.appendChild(descriptionLabel);
-            experienceDiv.appendChild(descriptionInput);
-            experienceDiv.appendChild(supprimerButton);
-        
-            experiencesDiv.appendChild(experienceDiv);
-            }
-        
-            var ajouterButton = document.createElement("input");
-            ajouterButton.type = "button";
-            ajouterButton.value = "Ajouter";
-            ajouterButton.className = "btn btn-primary";
-            ajouterButton.onclick = ajouterExperience;
-            document.getElementById("ajouter").appendChild(ajouterButton);
-        </script>
-
-    <script>
-        function ajouterDiplome() {
-        var diplomesDiv = document.getElementById("diplomes");
-    
-        var diplomeDiv = document.createElement("div");
-        diplomeDiv.className = "diplome";
-    
-        var dateDebutLabel = document.createElement("label");
-        dateDebutLabel.innerHTML = "Date de début: ";
-        var dateDebutInput = document.createElement("input");
-        dateDebutInput.type = "date";
-        dateDebutInput.className = "form-control";
-        var dateFinLabel = document.createElement("label");
-        dateFinLabel.innerHTML = "Date de fin: ";
-        var dateFinInput = document.createElement("input");
-        dateFinInput.type = "date";
-        dateFinInput.className = "form-control";
-        var experienceLabel = document.createElement("label");
-        experienceLabel.innerHTML = "Expérience: ";
-        var experienceInput = document.createElement("input");
-        experienceInput.type = "text";
-        experienceInput.className = "form-control";
-        var titreLabel = document.createElement("label");
-            titreLabel.innerHTML = "Titre: ";
-            var titreSelect = document.createElement("select");
-            titreSelect.className = "form-control";
-            titreSelect.style.width = "200px";
-            var option1 = document.createElement("option");
-            option1.text = "BAC";
-            titreSelect.add(option1);
-
-            var option2 = document.createElement("option");
-            option2.text = "DEUG";
-            titreSelect.add(option2);
-            var option2 = document.createElement("option");
-            option2.text = "DEUST";
-            titreSelect.add(option2);
-            var option2 = document.createElement("option");
-            option2.text = "LICENCE";
-            titreSelect.add(option2);
-            var option2 = document.createElement("option");
-            option2.text = "MASTER";
-            titreSelect.add(option2);
-
-        var titreInput = document.createElement("input");
-        titreInput.type = "text";
-    
-        var descriptionLabel = document.createElement("label");
-        descriptionLabel.innerHTML = "Description: ";
-        var descriptionInput = document.createElement("textarea");
-        descriptionInput.className = "form-control";
-        var supprimerButton = document.createElement("input");
-        supprimerButton.type = "button";
-        supprimerButton.value = "Supprimer";
-        supprimerButton.className = "btn btn-danger";
-
-        supprimerButton.onclick = function() {
-        diplomesDiv.removeChild(diplomeDiv);
-        };
-    
-        diplomeDiv.appendChild(dateDebutLabel);
-        diplomeDiv.appendChild(dateDebutInput);
-        diplomeDiv.appendChild(dateFinLabel);
-        diplomeDiv.appendChild(dateFinInput);
-        
-        
-        diplomeDiv.appendChild(titreLabel);
-        diplomeDiv.appendChild(titreSelect);
-        diplomeDiv.appendChild(descriptionLabel);
-        diplomeDiv.appendChild(descriptionInput);
-        diplomeDiv.appendChild(supprimerButton);
-    
-        diplomesDiv.appendChild(diplomeDiv);
-    }
-    
-    var ajouterButton = document.createElement("input");
-    ajouterButton.type = "button";
-    ajouterButton.value = "Ajouter ";
-    ajouterButton.className = "btn btn-primary";
-    ajouterButton.onclick = ajouterDiplome;
-    document.getElementById("ajouterdiplome").appendChild(ajouterButton);
-    
-        </script>
-
-
-
-    <script> 
-        function ajouterCompetence() {
-        var competencesDiv = document.getElementById("competences");
-    
-        var competenceDiv = document.createElement("div");
-        competenceDiv.className = "competence";
-    
-        var typeLabel = document.createElement("label");
-        typeLabel.innerHTML = "Type de compétence: ";
-        var typeInput = document.createElement("input");
-        typeInput.type = "text";
-        typeInput.className = "form-control";
-        var supprimerButton = document.createElement("input");
-        supprimerButton.type = "button";
-        supprimerButton.value = "Supprimer";
-        supprimerButton.className = "btn btn-danger";
-        supprimerButton.onclick = function() {
-        competencesDiv.removeChild(competenceDiv);
-        };
-    
-        competenceDiv.appendChild(typeLabel);
-        competenceDiv.appendChild(typeInput);
-        competenceDiv.appendChild(supprimerButton);
-    
-        competencesDiv.appendChild(competenceDiv);
-    }
-    
-    var ajouterButton = document.createElement("input");
-    ajouterButton.type = "button";
-    ajouterButton.value = "Ajouter ";
-    ajouterButton.className = "btn btn-primary";
-    ajouterButton.onclick = ajouterCompetence;
-    document.getElementById("ajoutercompetence").appendChild(ajouterButton);
-    </script>
-
-
-
-    <script>
-    function ajouterReference() {
-    var referencesDiv = document.getElementById("references");
-  
-    var referenceDiv = document.createElement("div");
-    referenceDiv.className = "reference";
-  
-    var responsableLabel = document.createElement("label");
-    responsableLabel.innerHTML = "Nom du responsable: ";
-    var responsableInput = document.createElement("input");
-    responsableInput.type = "text";
-    responsableInput.className = "form-control";
-    var descriptionLabel = document.createElement("label");
-    descriptionLabel.innerHTML = "Description: ";
-    var descriptionInput = document.createElement("textarea");
-    descriptionInput.className = "form-control";
-    var supprimerButton = document.createElement("input");
-    supprimerButton.type = "button";
-    supprimerButton.value = "Supprimer";
-    supprimerButton.className = "btn btn-danger";
-    supprimerButton.onclick = function() {
-      referencesDiv.removeChild(referenceDiv);
-    };
-  
-    referenceDiv.appendChild(responsableLabel);
-    referenceDiv.appendChild(responsableInput);
-    referenceDiv.appendChild(descriptionLabel);
-    referenceDiv.appendChild(descriptionInput);
-    referenceDiv.appendChild(supprimerButton);
-  
-    referencesDiv.appendChild(referenceDiv);
-  }
-  
-  var ajouterButton = document.createElement("input");
-  ajouterButton.type = "button";
-  ajouterButton.value = "Ajouter";
-  ajouterButton.className = "btn btn-primary";
-  ajouterButton.onclick = ajouterReference;
-  document.getElementById("ajouterreference").appendChild(ajouterButton);
-  </script>
-  
-
 @endsection
 <!-- </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
