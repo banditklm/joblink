@@ -132,13 +132,11 @@
                                         @csrf
 
                                         <div class="form-group">
-                                            <label for="Title">Title:</label>
+                                            <label for="Title">Type Experience</label>
                                             <select name="title" id="Title" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" required>
-                                                <option selected disabled>Title</option>
-                                                <option value="Etude">Etude</option>
-                                                <option value="Formation">Formation</option>
-                                                <option value="Stage">Stage</option>
-                                                <option value="Emploi">Emploi</option>
+                                            @foreach ($texperiences as $texperience)
+                                                <option value="{{ $texperience->name }}">{{ $texperience->name }}</option>
+                                            @endforeach
                                             </select>
                                         </div>
 
@@ -242,151 +240,333 @@
                 </div>
                 @endforeach
             </section>
-<!-- Diplome -->
-            <section class="experience"  > 
+
+<!-- Diplome --> 
+<section class="experience"  > 
                 <div  class="info"> 
-                    <div class="left d-flex gap-3">
+                    <div class="left d-flex">
                         <span><h3><i class="icone4 fa-solid fa-book-open"></i></h3></span>
                         <span class="p1"><h3>DIPLOMES</h3></span>
                     </div>
                     <div class="right">
-                        <button class="btn" data-bs-toggle="modal" data-bs-target="#editdiplome"  id="ajouterdiplome"></button>
-                        
+                        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#editdiplome" id="ajouter">Ajouter</button>
                     </div>
-
                     <div class="modal fade" id="editdiplome" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Ajouter diplome</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Ajouter diplome</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
-                                <div class="modal-body" id="diplomes">
-                                
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Understood</button>
-                                </div>
+                                <div class="modal-body" id="diplome">
+                                    <form method="POST" action="">
+                                        <!-- @csrf -->
+                                        <div class="form-group">
+                                            <label for="Title">Title:</label>
+                                            <select name="title" id="Title" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" required>
+                                                <option value="BAC">Bac</option>
+                                                <option value="DEUG">Deug</option>
+                                                <option value="DEUST">Deust</option>
+                                                <option value="DUT">Dut</option>
+                                                <option value="BTS">BTS</option>
+                                                <option value="licence">licence</option>
+                                                <option value="Licence  Professionnelle">Licence  Professionnelle</option>
+                                                <option value="Master">Master</option>
+                                                <option value="Master  Professionnelle">Master  Professionnelle</option>
+                                                <option value="Doctorat">Doctorat</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="start_date">Start Date:</label>
+                                            <input type="date" id="start_date" name="debut" class="form-control" required>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="end_date">End Date:</label>
+                                            <input type="date" id="end_date" name="fin" class="form-control">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="description">Description:</label>
+                                            <textarea id="description" name="description" class="form-control" rows="5" required></textarea>
+                                        </div>
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="submit" class="btn btn-primary">Ajouter Diplome</button>
+                                            <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                                        </div>
+                                    </form>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="fl">
-                    <span><h6><i class="fa-solid fa-circle-arrow-right"></i><h6></span>
-                    <span><strong> 2012 - 2015 </strong></span>
-                </div >
-                <div class="paragraphe">
-                    <strong>Junior Graphic DesignerBorcelle Studios</strong>
+                <!-- @foreach ($experiences as $experience) -->
+                <div class="exp">
+
+                    <div class="fl">
+                        <span class="title"><strong><span class="text-muted"> De </span>{{ $experience->debut }}<span class="text-muted"> A </span>{{ $experience->fin }}</strong></span>
+                        
+<!-- diplome.update -->
+                        <div class="modal fade" id="modifierdiplome" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="modifier">Modifier diplome</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form method="POST" action="">
+                                        <!-- @csrf
+                                        @method('PUT') -->
+
+                                        <div class="form-group">
+                                            <label for="Title">Title:</label>
+                                            <select name="title" id="Title" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" required>
+                                                <option selected disabled>{{ $experience->title }}</option>
+                                                <option value="BAC">Bac</option>
+                                                <option value="DEUG">Deug</option>
+                                                <option value="DEUST">Deust</option>
+                                                <option value="DUT">Dut</option>
+                                                <option value="BTS">BTS</option>
+                                                <option value="licence">licence</option>
+                                                <option value="Licence  Professionnelle">Licence  Professionnelle</option>
+                                                <option value="Master">Master</option>
+                                                <option value="Master  Professionnelle">Master  Professionnelle</option>
+                                                <option value="Doctorat">Doctorat</option>
+
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="start_date">Start Date:</label>
+                                            <input type="date" id="start_date" name="debut" class="form-control" value="{{ $experience->debut }}" required>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="end_date">End Date:</label>
+                                            <input type="date" id="end_date" name="fin" class="form-control" value="{{ $experience->fin }}" >
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="description">Description:</label>
+                                            <textarea id="description" name="description" class="form-control" rows="5" required>{{ $experience->description }}</textarea>
+                                        </div>
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="submit" class="btn btn-primary">modifier Diplome</button>
+                                            <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
+                    
+                    <div class="paragraphe">
+                        <strong>{{ $experience->title }}</strong>
+                    </div>
+                    <div class="description">
+                        <span>{{ $experience->description }}</span>
+                    </div>
+                    <div class="handel">
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modifierdiplome">
+                        Modifier
+                        </button>
+                        <form method="POST" action="" onsubmit="return confirm('Are you sure you want to delete this diplome?')">
+                            <!-- @csrf
+                            @method('DELETE') -->
+                            <button type="submit" class="btn btn-danger">Supprimer</button>
+                        </form>  
+                    </div>
                 </div>
-                <div class="paragraphe">
-                    <span>Working as graphic designer for 1 year Post Graduated in Website & Graphics Designing. Academic Excellence in Web Design.</span>
-                </div>
-                <div class="fl">
-                    <span><h6><i class="fa-solid fa-circle-arrow-right"></i><h6></span>
-                    <span><strong>2012 - 2015</strong><span>    
-                </div>
-                <div class="paragraphe">
-                    <strong>Junior Graphic DesignerBorcelle Studios</strong>
-                </div>
-                <div class="paragraphe">
-                    <span>Working as graphic designer for 1 year Post Graduated in Website & Graphics Designing. Academic Excellence in Web Design.</span>
-                </div>
-                <div class="fl">
-                    <span><h6><i class="fa-solid fa-circle-arrow-right"></i><h6></span>
-                    <span><strong>2012 - 2015</strong><span>
-                </div>
-                <div class="paragraphe"> 
-                    <strong>Junior Graphic DesignerBorcelle Studios</strong>
-                </div>
-                <div class="paragraphe">
-                    <span>Working as graphic designer for 1 year Post Graduated in Website & Graphics Designing. Academic Excellence in Web Design.</span>
-                </div>      
+                <!-- @endforeach -->
             </section>
-<!-- Competence -->
-            <section class="experience"> 
-                <div  class="info">
-                    <div class="left d-flex gap-3">
+<!-- Compétence -->            
+            <section class="experience" > 
+                <div  class="info"> 
+                    <div class="left d-flex">
                         <span><h3><i class="icone5 fa-solid fa-gear"></i></h3></span>
                         <span class="p1"><h3>COMPETENCE</h3></span>
                     </div>
-                    <div class="right"> 
-                        <button   class="btn" data-bs-toggle="modal" data-bs-target="#editcompetence"  id="ajoutercompetence"></button>
+
+
+                    <div class="right">
+                        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#editecompétence" id="ajouter">Ajouter</button>
                     </div>
-                    <div class="modal fade" id="editcompetence" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<!-- compétence.ajouter -->
+                    <div class="modal fade" id="editecompétence" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Ajouter compétence</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Ajouter compétence</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
-                                <div class="modal-body" id="competences">
-                            
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Understood</button>
-                                </div>
+                                <div class="modal-body" id="experience">
+
+                                    <form method="POST" action="">
+                                        <!-- @csrf -->
+                                        <div class="form-group">
+                                            <label for="Titre compétence">Titre compétence:</label>
+                                            <input type="text" id="compétence" name="compétence" class="form-control" value="" required> 
+                                        </div>
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="submit" class="btn btn-primary">Ajouter Compétence</button>
+                                            <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                                        </div>
+                                    </form>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="par paragraphe" >
-                    <h6><i class="fa-solid fa-circle"></i>{{$user->competences}}</h6>
-                    <h6><i class="fa-solid fa-circle"></i>Graphic & Web Design</h6>
-                    <h6><i class="fa-solid fa-circle"></i>Graphic & Web Design</h6>
+                <!-- @foreach ($experiences as $experience) -->
+                <div class="exp">
+                    <div class="fl">
+<!-- compétence.update -->
+                        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Modifier compétence</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form method="POST" action="">
+                                        <!-- @csrf
+                                        @method('PUT') -->
+
+                                        <div class="form-group">
+                                            <label for="Titre compétence">Titre de compétence:</label>
+                                           <input type="text" id="compétence" name="compétence" class="form-control" value="" required> 
+                                        </div>
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="submit" class="btn btn-primary">modifier compétence</button>
+                                            <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
                     
+                    <!-- <div class="paragraphe">
+                        <strong>{{ $experience->title }}</strong>
+                    </div> -->
+                    <div class="description">
+                        <span>{{ $experience->description }}</span>
+                    </div>
+                    <div class="handel">
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                        Modifier
+                        </button>
+                        <form method="POST" action="" onsubmit="return confirm('Are you sure you want to delete this compétence?')">
+                            <!-- @csrf
+                            @method('DELETE') -->
+                            <button type="submit" class="btn btn-danger">Supprimer</button>
+                        </form>  
+                    </div>
                 </div>
+                <!-- @endforeach -->
             </section>
-<!-- Reference -->
+<!-- Réferencee -->
             <section class="experience" >
-                <div  class="info">
-                    <div class="left d-flex gap-3">
+                 <div  class="info">
+                    <div class="left d-flex">
                         <span><h3><i class="icone5 fa-solid fa-book"></i></h3></span>
-                        <span class="p1"><h3>REFERENCE</h3></span>
+                         <span class="p1"><h3>REFERENCE</h3></span>
                     </div>
                     <div class="right">
-                        <button class="btn" data-bs-toggle="modal" data-bs-target="#editreference" id="ajouterreference"></button>
+                        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#editereference" id="ajouter">Ajouter</button>
                     </div>
-                    <div class="modal fade" id="editreference" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Ajouter reference</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body " id="references" >
-
-                            
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Understood</button>
+        <!-- réference.ajouter -->
+                            <div class="modal fade" id="editereference" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Ajouter Réference</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body" id="experience">
+        
+                                            <form method="POST" action="">
+                                                <!-- @csrf -->
+                                                <div class="form-group">
+                                                    <label for="Nom de résponsable">Nom de résponsable</label>:</label>
+                                                    <input type="text" id="Nom de résponsable" name="Nom de résponsable" class="form-control" value="" required> 
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="description">Description:</label>
+                                                    <textarea id="description" name="description" class="form-control" rows="5" required></textarea>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="submit" class="btn btn-primary">Ajouter Réference</button>
+                                                    <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                                                </div>
+                                            </form>
+                                    </div>
                                 </div>
                             </div>
+                        
+
+                        <div class="exp">
+                            <div class="fl">
+<!-- réference.update -->
+                                <div class="modal fade" id="modifierreference" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Modifier Réference</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                        <div class="modal-body">
+                                            <form method="POST" action="">
+                                                 @csrf
+                                                @method('PUT') 
+        
+                                                <div class="form-group">
+                                                    <label for="Nom de résponsable">Nom de résponsable:</label>
+                                                   <input type="text" id="réference" name="réference" class="form-control" value="" required> 
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="description">Description:</label>
+                                                    <textarea id="description" name="description" class="form-control" rows="5" required></textarea>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="submit" class="btn btn-primary">modifier Réference</button>
+                                                    <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div> 
+                            </div>
+                            
+                            <div class="paragraphe">
+                                <strong>Nom responsable</strong>
+                            </div>
+                            <div class="description">
+                                <span>description</span>
+                            </div>
+                            <div class="handel">
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modifierreference">
+                                Modifier
+                                </button>
+                                <form method="POST" action="" onsubmit="return confirm('Are you sure you want to delete this réference?')">
+                                     @csrf
+                                    @method('DELETE') 
+                                    <button type="submit" class="btn btn-danger">Supprimer</button>
+                                </form>  
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="paragraphe"> 
-                    <strong>Junior Graphic </strong>
-                </div>
-                <div class="paragraphe">
-                    <span>Wardiere Inc. / CEO</span>
-                </div>
-                <div class="paragraphe"> 
-                    <strong>Junior Graphic </strong>
-                </div>
-                <div class="paragraphe">
-                    <span>Wardiere Inc. / CEO</span>
-                </div>
-                <div class="paragraphe"> 
-                    <strong>Junior Graphic</strong>
-                </div>
-                <div class="paragraphe">
-                    <span>Wardiere Inc. / CEO</span>
-                </div>
-            </section>
-        </div>
+
+                    </section>
+</div></div>
 @endsection
 <!-- </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>

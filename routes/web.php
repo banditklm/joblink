@@ -32,6 +32,7 @@ Route::put('/users/{user}/update-description', [UserController::class, 'updateDe
 Route::post('/experiences', [UserController::class, 'storeExperiences'])->name('experiences.store');
 Route::delete('/experiences/{experience}',[UserController::class, 'destroy'])->name('experiences.destroy');
 Route::put('/users/{experience}/experiences-update', [UserController::class, 'experiencesUpdate'])->name('experiences.update');
+Route::get('/experience', [UserController::class, 'testmodel'])->name('testmodel');
 
 
 

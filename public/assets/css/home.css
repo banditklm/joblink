@@ -17,7 +17,12 @@
 }
 .container .card .head_post{
     gap: 10px;
+    justify-content: center;
 }
-.container .card .dropdown button{
+.container .card .dropdown .point{
     margin:0 0 3px 300px ;
+}
+
+.fiter{
+    justify-content: end;
 }

@@ -27,48 +27,52 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{asset('assets/css/profile.css')}}" rel="stylesheet"> <!--add by me-->
     <link href="{{asset('assets/css/home.css')}}" rel="stylesheet"> <!--add by me-->
+    <link href="{{asset('assets/css/app.css')}}" rel="stylesheet"> <!--add by me-->
+    <!-- <link href="{{asset('assets/css/apropos.css')}}" rel="stylesheet"> -->
 
 
 </head>
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm d fixed-top">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'laravel') }}
-                </a>
-                @auth
-                <a class="navbar-brand" href="{{ url('/') }}">
-                 Search 
-                 </a>
-                <a class="navbar-brand mr-5" href="{{ url('/home') }}">
-                    Offres
-                </a>
-                @if (Auth::user()->role == 2)
-                <a class="navbar-brand" href="{{ url('/monCv') }}">
-                    Mon Cv
-                </a>
-                @else
-                <a class="navbar-brand" href="{{ url('/apropos') }}">
-                    A propos
-                </a>
-                @endif
-                <a class="navbar-brand" href="{{ url('/profile') }}">
-                Profile
-                </a>
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    Recomendation
-                </a>
-                @endauth
+            <div class="container-fluid justify-content-center">
+                <!-- Left Side Of Navbar -->
+                <div class=".navLift">
+                    <a class="navbar-brand" href="{{ url('/') }}">
+                        {{ config('app.name', 'laravel') }}
+                    </a>
+                </div>
+                <div>
+                    @auth
+                        <a class="navbar-brand" href="{{ url('recherche') }}">
+                            Search 
+                        </a>
+                        <a class="navbar-brand mr-5" href="{{ url('/home') }}">
+                            Offres
+                        </a>
+                        @if (Auth::user()->role == 2)
+                        <a class="navbar-brand" href="{{ url('/monCv') }}">
+                            Mon Cv
+                        </a>
+                        @else
+                        <a class="navbar-brand" href="{{ url('/apropos') }}">
+                            A propos
+                        </a>
+                        @endif
+                        <a class="navbar-brand" href="{{ url('/profile') }}">
+                        Profile
+                        </a>
+                        <a class="navbar-brand" href="{{ url('/') }}">
+                            Recomendation
+                        </a>
+                    @endauth
+                </div>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
                     
-                    </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
@@ -117,6 +121,7 @@
             @yield('cv')
             @yield('profile')
             @yield('search')
+            @yield('apropos')
             
 
         </main>

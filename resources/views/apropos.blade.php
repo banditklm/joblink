@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -14,9 +14,10 @@
 <link href="{{asset('assets/css/apropos.css')}}" rel="stylesheet">
 
 </head> 
-<body>
+<body> -->
 
-
+@extends('layouts.app')
+@section('apropos')
 
 
 <!-- Apropos Display -->
@@ -180,8 +181,11 @@
                 </div>
             </section>
         </div>
-</body>
+
+@endsection
+
+<!-- </body>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 
-</html>
+</html> -->

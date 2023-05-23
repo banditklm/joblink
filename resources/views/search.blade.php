@@ -7,9 +7,36 @@
 <!--TestModal-->
 
 <br><br>
-<button class=" btn btn-outline-secondary navbar-brand" type="button" data-bs-toggle="modal" data-bs-target="#searchModal" >
-        <i class="fa-solid fa-magnifying-glass"></i>&nbsp;&nbsp;Search 
-    </button>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card w-100 mb-5">
+                <div class="card-body">
+                    <div class="d-flex">
+                            <div class="image-container">
+                                <img src="{{asset('assets/images/woman.jpg')}}" alt="" class=" rounded-circle profile-pic mr-3">
+                            </div>
+                            <div class="d-grid gap-2 col-10 mx-auto">
+                                <button class="btn btn-outline-secondary" type="button" data-bs-toggle="modal" data-bs-target="#searchModal">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                    &nbsp;&nbsp;Rechercher une Offre
+                                </button>
+                            </div>
+                    </div>
+                </div>
+            </div>
+
+    </div>
+</div>
+
+
+
+
+    <!-- <button class=" btn btn-outline-secondary navbar-brand" type="button" data-bs-toggle="modal" data-bs-target="#searchModal" >
+            <i class="fa-solid fa-magnifying-glass"></i>
+            &nbsp;&nbsp;Search 
+    </button> -->
 
 
 
@@ -61,7 +88,7 @@
                         </select>
                     </div>
                     <div class="col-md-6">
-                        &nbsp;&nbsp;<label class="labels">Date de dèbut</label>
+                        &nbsp;&nbsp;<label class="labels">Date de début</label>
                         <input type="date" class="form-control mt-2 mb-2" name="debut" id="debut" style="height: 50px;" value="">
                         &nbsp;&nbsp;<label class="labels">Date de fin</label>
                         <input type="date" class="form-control mt-2 mb-2" name="fin" id="fin" style="height: 50px;" value="">

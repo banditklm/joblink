@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use App\Models\Candidat;
+use App\Models\Recruteur;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -30,7 +31,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = RouteServiceProvider::PROFILE;
 
     /**
      * Create a new controller instance.
@@ -52,8 +53,9 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'nom' => ['required', 'string', 'max:255'],
-            'prenom' => ['required', 'string', 'max:255'],
+            // 'prenom' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'role' => ['required'],
             'password' => ['required', 'string', 'min:4', 'confirmed'],
         ]);
     }
@@ -87,14 +89,23 @@ class RegisterController extends Controller
         // ]);
         $user = new User();
         $user->nom =  $data['nom'];
+        if($data['role']==2)
         $user->prenom = $data['prenom'];
         $user->role =  $data['role'];
         $user->email = $data['email'];
         $user->password = Hash::make($data['password']);
         $user->save();
-        $candidat = new Candidat();
-        $candidat->user_id = $user->id;
-        $candidat->save();
+            if($data['role']==2){
+                $candidat = new Candidat();
+                $candidat->user_id = $user->id;
+                $candidat->save();
+            }else if($data['role']==3){
+                $recruteur = new Recruteur();
+                $recruteur->user_id = $user->id;
+                $recruteur->save();
+            }
+
+
         return $user;
 
     }

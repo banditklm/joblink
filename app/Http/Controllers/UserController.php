@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Candidat;
 use App\Models\Recruteur;
 use App\Models\Experience;
+use App\Models\Texperience;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 class UserController extends Controller
@@ -24,10 +25,11 @@ class UserController extends Controller
         $user= User::find($id);
         $candidate = Candidat::where('user_id',$id)->first();
         $experiences = $candidate->experiences;
+        $texperiences = Texperience::all();
         // return $experiences;
         // return $experiences;
         // $experiences = Experience::all();
-        return view('cv', ['user'=> $user,'experiences'=> $experiences]);
+        return view('cv', ['user'=> $user,'experiences'=> $experiences,'texperiences'=> $texperiences]);
     }
     public function apropos()
     {   
@@ -140,6 +142,9 @@ class UserController extends Controller
         $experience->save();
 
         return redirect()->back()->with('success', 'Experience added successfully.');
+    }
+    public function testmodel(){
+        return $experiences = Texperience::all();
     }
 
 }
