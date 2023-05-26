@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Candidat;
+use App\Models\Candidature;
 use App\Models\Recruteur;
 use App\Models\Experience;
 use App\Models\Texperience;
@@ -15,14 +16,14 @@ class UserController extends Controller
     public function display()
     {
         $id = Auth::id();
-        $info = Recruteur::where('user_id',$id)->first()->id;
-        
+        $info = Candidat::where('user_id',$id)->first()->id;
+
         // return $info;
 
-        $recruteurs = Recruteur::with('offres.adresse')->find(2);
+        $mesCandidatures = Candidature::with('offre')->find(1);
         // $recruteurs = Recruteur::find(1);
 
-        return $recruteurs;
+        return $mesCandidatures;
     }
     public function __construct()
     {
