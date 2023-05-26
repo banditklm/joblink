@@ -25,6 +25,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/monCv', [App\Http\Controllers\UserController::class, 'monCv'])->name('monCv');
+Route::get('/display', [App\Http\Controllers\UserController::class, 'display'])->name('display');
 Route::get('/apropos', [App\Http\Controllers\UserController::class, 'apropos'])->name('apropos');//add by me
 Route::get('/profile', [App\Http\Controllers\UserController::class, 'profile'])->name('profile');
 Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update');

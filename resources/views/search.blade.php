@@ -1,11 +1,5 @@
 @extends('layouts.app')
 @section('search')
-
-
-
-
-<!--TestModal-->
-
 <br><br>
 
 <div class="container">
@@ -14,32 +8,18 @@
             <div class="card w-100 mb-5">
                 <div class="card-body">
                     <div class="d-flex">
-                            <div class="image-container">
-                                <img src="{{asset('assets/images/woman.jpg')}}" alt="" class=" rounded-circle profile-pic mr-3">
-                            </div>
-                            <div class="d-grid gap-2 col-10 mx-auto">
-                                <button class="btn btn-outline-secondary" type="button" data-bs-toggle="modal" data-bs-target="#searchModal">
-                                    <i class="fa-solid fa-magnifying-glass"></i>
-                                    &nbsp;&nbsp;Rechercher une Offre
-                                </button>
-                            </div>
+                        <div class="image-container">
+                            <img src="{{asset('assets/images/woman.jpg')}}" alt="" class=" rounded-circle profile-pic mr-3">
+                        </div>
+                        <div class="d-grid gap-2 col-10 mx-auto">
+                            <button class="btn btn-outline-secondary" type="button" data-bs-toggle="modal" data-bs-target="#searchModal">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                &nbsp;&nbsp;Rechercher une Offre
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
-
-    </div>
-</div>
-
-
-
-
-    <!-- <button class=" btn btn-outline-secondary navbar-brand" type="button" data-bs-toggle="modal" data-bs-target="#searchModal" >
-            <i class="fa-solid fa-magnifying-glass"></i>
-            &nbsp;&nbsp;Search 
-    </button> -->
-
-
-
 <!-- Modal -->
     <div class="modal fade" id="searchModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -113,6 +93,20 @@
         </div>
     </div>
 <!--/Modal--> 
+<!-- Affihe Result Of Search -->
+            <div class="card w-100 mb-5">
+                <div class="card-body">
+                    <div class="d-flex">
+                        <table class="table">
+                            
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 
 

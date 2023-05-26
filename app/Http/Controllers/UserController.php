@@ -12,6 +12,18 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 class UserController extends Controller
 {
+    public function display()
+    {
+        $id = Auth::id();
+        $info = Recruteur::where('user_id',$id)->first()->id;
+        
+        // return $info;
+
+        $recruteurs = Recruteur::with('offres.adresse')->find(2);
+        // $recruteurs = Recruteur::find(1);
+
+        return $recruteurs;
+    }
     public function __construct()
     {
        $this->middleware('auth');
