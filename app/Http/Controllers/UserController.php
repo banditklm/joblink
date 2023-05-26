@@ -21,9 +21,11 @@ class UserController extends Controller
         // return $info;
 
         $mesCandidatures = Candidature::with('offre')->find(1);
+        $mesCandidatures = Candidature::with('offre')->get();
         // $recruteurs = Recruteur::find(1);
 
         return $mesCandidatures;
+        return dd($mesCandidatures);
     }
     public function __construct()
     {
