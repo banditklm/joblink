@@ -26,3 +26,6 @@
 .fiter{
     justify-content: end;
 }
+.modal .modal-body .card .card-body .candidature{
+    gap: 250px;
+}

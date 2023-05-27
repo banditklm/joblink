@@ -209,7 +209,44 @@
             </div>
             
 <!-- /afficher Offres -->
-
+<!-- Modal Candidature -->
+            <div class="modal fade" id="modalCandidature" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-xl modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Les Candidatures</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <form action="">
+                            <div class="modal-body">
+                                <div class="card w-100">
+                                    <div class="card-body">
+                                        <div class="candidature d-flex">
+                                            <div class="d-flex">
+                                                <div>
+                                                    <img src="{{ asset('assets/images/cat.jpg')}}" class="rounded-circle profile-pic mr-3" alt="profil_img">
+                                                </div>
+                                                <div>
+                                                    <h5 class="mb-0 mt-3 ms-2 font-weight-normal">Kaltoum Elmounjid</h5>
+                                                </div> 
+                                            </div>
+                                            <div class="d-flex gap-2 justify-content-end">
+                                                <div><a href=""><button class="btn btn-outline-secondary btn-sm mt-2"><i class="fa-solid fa-eye"></i> Voir Profile</button></a></div>
+                                                <div><button class="btn btn-outline-secondary btn-sm mt-2"><i class="fa-solid fa-handshake"></i> Demandé à le voir</button></div>
+                                                <div><button class="btn btn-outline-secondary btn-sm mt-2"><i class="fa-solid fa-circle-check"></i> Accepter</button></div>
+                                                <div><button class="btn btn-outline-secondary btn-sm mt-2"><i class="fa-solid fa-xmark"></i> Rejeter</button></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 @else
