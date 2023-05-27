@@ -235,8 +235,8 @@
                                             <div class="d-flex gap-2 justify-content-end">
                                                 <div><a href=""><button class="btn btn-outline-secondary btn-sm mt-2"><i class="fa-solid fa-eye"></i> Voir Profile</button></a></div>
                                                 <div><button class="btn btn-outline-secondary btn-sm mt-2"><i class="fa-solid fa-handshake"></i> Demandé à le voir</button></div>
-                                                <div><button class="btn btn-outline-secondary btn-sm mt-2"><i class="fa-solid fa-circle-check"></i> Accepter</button></div>
-                                                <div><button class="btn btn-outline-secondary btn-sm mt-2"><i class="fa-solid fa-xmark"></i> Rejeter</button></div>
+                                                <div><button class="btn btn-outline-success btn-sm mt-2"><i class="fa-solid fa-circle-check"></i> Accepter</button></div>
+                                                <div><button class="btn btn-outline-danger btn-sm mt-2"><i class="fa-solid fa-xmark"></i> Rejeter</button></div>
                                             </div>
                                         </div>
                                     </div>

@@ -10,7 +10,7 @@
         <nav aria-label="breadcrumb" class="main-breadcrumb">
             <ul class="nav nav-tabs">
                 <li class="nav-item btn">
-                    <a class="nav-link active" aria-current="page" href="#Mescandidature">Mes Candidature</a>
+                    <a class="nav-link active" aria-current="page" href="#Mescandidatures">Mes Candidatures</a>
                 </li>
                 <li class="nav-item dropdown btn">
                     <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Notification</a>
@@ -282,7 +282,31 @@
 <!-- /third Card --> 
             </div>
         </div>  
-        
+        <div class="row justify-content-center" id="Mescandidaturs">
+            <div class="col-md-8">
+                <div class="card w-100 mb-5">
+                    <div class="card-body d-flex gap-5">
+                        <div class="d-flex">
+                            <div>
+                                <img src="{{ asset('assets/images/oracle.png')}}" class="rounded-circle profile-pic mr-3" alt="profil_img">
+                            </div>
+                            <div>
+                                <h5 class="mb-0 mt-3 ms-2 font-weight-normal">Oracle Corporation</h5>
+                            </div>
+                        </div>
+                        <div class="d-flex gap-2">
+                            <span class="mt-2 fs-6 border-end border-secondary p-2">Categorie</span>
+                            <span class="mt-2 fs-6 border-end border-secondary p-2">Domaine</span>
+                            <span class="mt-2 fs-6 border-end border-secondary p-2">Emplacement</span>
+                            <span class="mt-2 fs-6 p-2">Etat</span>
+                        </div>
+                        <div>
+                            <button class="btn btn-outline-secondary btn-sm mt-2">Annuler</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>  
     </div>
 <!-- /Candidat -->
 @else
