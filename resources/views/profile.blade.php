@@ -282,17 +282,7 @@
 <!-- /third Card --> 
             </div>
         </div>  
-        <div class="row justify-content-center" id="Mescandidatur">
-            <div class="col-md-8">
-                <div class="card w-100 mb-5">
-                    <div class="card-body">
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                    </div>
-                </div>
-            </div>
-        </div>  
+        
     </div>
 <!-- /Candidat -->
 @else
