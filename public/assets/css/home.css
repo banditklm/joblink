@@ -30,9 +30,6 @@
     gap: 250px;
 }
  /* Candidat offres  */
- .container .row .col-md-6 {
-    background-color: brown;
- }
  table tbody tr th {
     display: flex;
     align-items: center;

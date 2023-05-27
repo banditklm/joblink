@@ -23,7 +23,7 @@
 
 
 <br><br>
-@if (Auth::user()->role == 2)
+@if (Auth::user()->role != 2)
 <!-- Recruteur home -->
     <div class="container ">
         <div class="row justify-content-center">
@@ -292,17 +292,29 @@
                     <td>Design</td>
                     <td>Casablanca</td>
                     <td>
-                        <button class="btn btn-primary btn-sm">Voir Offre</button>
-                        <a href="#"><button class="btn btn-primary btn-sm">Postuler</button></a>
+                        <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">Voir Offre</button>
+                        <a href="#"><button id="post2" class="btn btn-primary btn-sm" onclick="toggleButtons2()">Postuler</button></a>
+                        <a href="#"><button id="annuler2" class="btn btn-danger btn-sm d-none" onclick="toggleButtons2()">Annuler</button></a>
                     </td>
+                    <script>
+                        function toggleButtons2() {
+                            var post2 = document.getElementById("post2");
+                            var annuler2 = document.getElementById("annuler2");
+
+                            post2.classList.toggle("d-none");
+                            annuler2.classList.toggle("d-none");
+                            }
+
+                    </script>
                 </tr>
                 <tr>
                     <th scope="row" class="img"><img src="{{asset('assets/images/cat.jpg')}}" alt="" class="rounded-circle"></th>
                     <td>Informatique</td>
                     <td>United states</td>
                     <td>
-                        <button class="btn btn-primary btn-sm">Voir Offre</button>
-                        <a href="#"><button class="btn btn-primary btn-sm">Postuler</button></a>
+                        <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">Voir Offre</button>
+                        <a href="#"><button id="post" class="btn btn-primary btn-sm" >Postuler</button></a>
+                        <a href="#"><button id="annuler" class="btn btn-danger btn-sm d-none" >Annuler</button></a>
                     </td>
                 </tr>
             </tbody>

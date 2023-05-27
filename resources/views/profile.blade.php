@@ -281,7 +281,77 @@
             </div>
 <!-- /third Card --> 
             </div>
-        </div>  
+        </div>
+        <h1>Mes candidatures</h1>
+<!-- Candidat offres table -->
+<div class="container mt-3 mb-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+        <table class="table table-info table-hover table-bordered border-primary">
+            <thead>
+                <tr>
+                    <th scope="col">Entreprise</th>
+                    <th scope="col">DOMAINE</th>
+                    <th scope="col">Emplacement</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr id="tr-1">
+                    <th scope="row" class="img"><img src="{{asset('assets/images/oracle.png')}}" alt="" class="rounded-circle"></th>
+                    <td>Informatique</td>
+                    <td>United states</td>
+                    <td id="td-2">
+                        <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">Voir Offre</button>
+                        <a href="#"><button id="post" class="btn btn-primary btn-sm d-none" onclick="toggleButtons()">Postuler</button></a>
+                        <a href="#"><button id="annuler" class="btn btn-danger btn-sm" onclick="removeRow1();toggleButtons()">Annuler</button></a>
+                    </td>
+                    <script>
+                        function removeRow1() {
+                            var row = document.getElementById("tr-1");
+                            row.remove();
+                        }
+                        function toggleButtons() {
+                            var post = document.getElementById("post");
+                            var annuler = document.getElementById("annuler");
+
+                            post.classList.toggle("d-none");
+                            annuler.classList.toggle("d-none");
+                            }
+
+                    </script>
+                </tr>
+                <tr id="tr-2">
+                    <th scope="row" class="img"><img src="{{asset('assets/images/woman2.jpg')}}" alt="" class="rounded-circle"></th>
+                    <td>Design</td>
+                    <td>Casablanca</td>
+                    <td>
+                        <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">Voir Offre</button>
+                        <a href="#"><button id="post2" class="btn btn-primary btn-sm  d-none" onclick="toggleButtons2()">Postuler</button></a>
+                        <a href="#"><button id="annuler2" class="btn btn-danger btn-sm" onclick="removeRow();toggleButtons2()">Annuler</button></a>
+                    </td>
+                    <script>
+                        function removeRow() {
+                            var row = document.getElementById("tr-2");
+                            row.remove();
+                        }
+                        
+                        function toggleButtons2() {
+                            var post2 = document.getElementById("post2");
+                            var annuler2 = document.getElementById("annuler2");
+
+                            post2.classList.toggle("d-none");
+                            annuler2.classList.toggle("d-none");
+
+                            }
+
+                    </script>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+    </div>
+</div> 
         <div class="row justify-content-center" id="Mescandidaturs">
             <div class="col-md-8">
                 <div class="card w-100 mb-5">
