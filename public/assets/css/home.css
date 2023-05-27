@@ -1,25 +1,25 @@
 
 
-.container .card .profile-pic{
+.card .profile-pic{
     width: 50px;
     height: 50px;
 }
-.container .card button{
+.card button{
     font-weight: 600;
     font-size:larger;
 }
-.container .card .modal img{
+.card .modal img{
     height: 200px;
     
 }
-.container .card .modal textarea{
+.card .modal textarea{
     border: none;
 }
-.container .card .head_post{
+.card .head_post{
     gap: 10px;
     justify-content: center;
 }
-.container .card .dropdown .point{
+.card .dropdown .point{
     margin:0 0 3px 300px ;
 }
 
@@ -29,3 +29,18 @@
 .modal .modal-body .card .card-body .candidature{
     gap: 250px;
 }
+ /* Candidat offres  */
+ .container .row .col-md-6 {
+    background-color: brown;
+ }
+ table tbody tr th {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: red !important; */
+ }
+ table th img {
+    width: 50px;
+    height: 50px;
+ }
+ 
