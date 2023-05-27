@@ -122,13 +122,148 @@
                     </div>
                 </div>
             </div>
-<!-- Afficher Offre -->
-            <!-- <div class="col-md-6"> -->
-                <div class="card w-100 mb-4">
+<!-- Afficher Offres -->
+            <div class="card w-100 mb-4">
+                <div class="card-body">
+                    <div class="head_post d-flex">
+                        <div>
+                            <img src="{{ asset('assets/images/woman.jpg')}}" class="rounded-circle profile-pic mr-3" alt="profil_img">
+                        </div>
+                        <div>
+                            <h5 class="mb-0 mt-3 ms-2 font-weight-normal">Oracle Corporation</h5>
+                        </div> 
+                        <div class="dropdown">
+                            <button class="btn point" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">supprimer l'offre</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center gap-3">
+                        <span class="text text-muted">#Formation</span>
+                        <span class="text text-muted">#Web</span>
+                        <span class="text text-muted">#Casablanca</span>
+                    </div>
+                    <div>
+                        <span class="text text-muted">From: 12-05-2023</span><br>
+                        <span class="text text-muted">To: 12-06-2023</span>
+                    </div>
+                    <div>
+                        <p>𝙂𝙤𝙤𝙜𝙡𝙚 𝘽𝙖𝙧𝙙 𝘼𝙄 is an incredibly powerful tool that can help digital marketers to create high-quality content, engage with customers more effectively, gain valuable insights into customer behavior, and save time.
+                                As AI technology continues to evolve, 𝘽𝙖𝙧𝙙 will undoubtedly become an even more essential tool for businesses looking to stay ahead of the curve and thrive in an increasingly competitive digital landscape.
+                            Try for free: https://www.bardaiinsights.co
+                        </p>
+                    </div>
+                    <div>
+                        <img src="{{ asset('assets/photos/google.jpg')}}" alt="" class="w-100 h-auto">
+                    </div>
+                    <div class="fiter d-flex mt-3">
+                        <button class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#modalCandidature" >Voir Candidature</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card w-100 mb-4">
+                <div class="card-body">
+                    <div class="head_post d-flex">
+                        <div>
+                            <img src="{{ asset('assets/images/woman.jpg')}}" class="rounded-circle profile-pic mr-3" alt="profil_img">
+                        </div>
+                        <div>
+                            <h5 class="mb-0 mt-3 ms-2 font-weight-normal">Oracle Corporation</h5>
+                        </div> 
+                        <div class="dropdown">
+                            <button class="btn point" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">supprimer l'offre</a></li>
+                                <!-- <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li> -->
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center gap-3">
+                        <span class="text text-muted">#Formation</span>
+                        <span class="text text-muted">#Web</span>
+                        <span class="text text-muted">#Casablanca</span>
+                    </div>
+                    <div>
+                        <span class="text text-muted">From: 12-05-2023</span><br>
+                        <span class="text text-muted">To: 12-06-2023</span>
+                    </div>
+                    <div>
+                        <p>𝙂𝙤𝙤𝙜𝙡𝙚 𝘽𝙖𝙧𝙙 𝘼𝙄 is an incredibly powerful tool that can help digital marketers to create high-quality content, engage with customers more effectively, gain valuable insights into customer behavior, and save time.
+                                As AI technology continues to evolve, 𝘽𝙖𝙧𝙙 will undoubtedly become an even more essential tool for businesses looking to stay ahead of the curve and thrive in an increasingly competitive digital landscape.
+                            Try for free: https://www.bardaiinsights.co
+                        </p>
+                    </div>
+                    <div>
+                        <img src="{{ asset('assets/photos/google.jpg')}}" alt="" class="w-100 h-auto">
+                    </div>
+                    <div class="fiter d-flex mt-3">
+                        <a href="#" class="btn btn-outline-secondary btn-pill" >Voir Candidature</a>
+                    </div>
+                </div>
+            </div>
+            
+<!-- /afficher Offres -->
+
+        </div>
+    </div>
+@else
+<!-- Candidat Home -->
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card w-100 mb-5">
+                    <div class="card-body">
+                        <div class="d-flex">
+                            <div class="image-container">
+                                <img src="{{asset('assets/images/oracle.png')}}" alt="" class=" rounded-circle profile-pic mr-3">
+                            </div>
+                            <div class="d-grid gap-2 col-10 mx-auto">
+                                <div><h5>Oracle Corporation</h5></div>
+                                <div>
+                                <span class="text-muted">categorie . </span>
+                                <span class="text-muted">Domain . </span>
+                                <span class="text-muted">Emplacement </span>
+                                <div class=" d-flex justify-content-end gap-2">
+                                    <span><button class="btn btn-outline-secondary btn-sm">Postuler</button></span>
+                                    <span><a href="#"><button class="btn btn-outline-secondary btn-sm">Voir Offre</button></a></span>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card w-100 mb-5">
+                    <div class="card-body">
+                        <div class="d-flex">
+                            <div class="image-container">
+                                <img src="{{asset('assets/images/woman2.jpg')}}" alt="" class=" rounded-circle profile-pic mr-3">
+                            </div>
+                            <div class="d-grid gap-2 col-10 mx-auto">
+                                <div><h5>Google</h5></div>
+                                <div>
+                                <span class="text-muted">categorie . </span>
+                                <span class="text-muted">Domain . </span>
+                                <span class="text-muted">Emplacement </span>
+                                <div class=" d-flex justify-content-end gap-2">
+                                    <span><button class="btn btn-outline-secondary btn-sm">Postuler</button></span>
+                                    <span><a href="#"><button class="btn btn-outline-secondary btn-sm">Voir Offre</button></a></span>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card w-100 mb-5">
                     <div class="card-body">
                         <div class="head_post d-flex">
                             <div>
-                                <img src="{{ asset('assets/images/woman.jpg')}}" class="rounded-circle profile-pic mr-3" alt="profil_img">
+                                <img src="{{ asset('assets/images/oracle.png')}}" class="rounded-circle profile-pic mr-3" alt="profil_img">
                             </div>
                             <div>
                                 <h5 class="mb-0 mt-3 ms-2 font-weight-normal">Oracle Corporation</h5>
@@ -138,9 +273,8 @@
                                     <i class="fa-solid fa-ellipsis"></i>
                                 </button>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">supprimer l'offre</a></li>
-                                    <!-- <li><a class="dropdown-item" href="#">Another action</a></li>
-                                    <li><a class="dropdown-item" href="#">Something else here</a></li> -->
+                                    <li><button class=" btn dropdown-item" type="button"><i class="fa-solid fa-bookmark"></i>&nbsp;&nbsp;Save post</button></li>
+                                    <li><button class=" btn dropdown-item" type="button"><i class="fa-solid fa-flag"></i>&nbsp;&nbsp;Report post</button></li>
                                 </ul>
                             </div>
                         </div>
@@ -163,68 +297,15 @@
                             <img src="{{ asset('assets/photos/google.jpg')}}" alt="" class="w-100 h-auto">
                         </div>
                         <div class="fiter d-flex mt-3">
-                            <a href="#" class="btn btn-outline-secondary btn-pill" >Voir Candidature</a>
-                        </div>
-                    </div>
-                </div>
-            <!-- </div> -->
-<!-- /afficher Offre -->
-        </div>
-    </div>
-@else
-<!-- Candidat home -->
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="card w-50 mb-4">
-                <div class="card-body">
-                    <div class="head_post d-flex">
-                        <div>
-                            <img src="{{ asset('assets/images/woman.jpg')}}" class="rounded-circle profile-pic mr-3" alt="profil_img">
-                        </div>
-                        <div>
-                            <h5 class="mb-0 mt-3 ms-2 font-weight-normal">Oracle Corporation</h5>
-                        </div> 
-                        <div class="dropdown">
-                            <button class="btn point " type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fa-solid fa-ellipsis"></i>
+                            <button class="btn btn-outline-secondary mt-3">
+                                Postuler
                             </button>
-                            <ul class="dropdown-menu">
-                                <li><button class=" btn dropdown-item" type="button"><i class="fa-solid fa-bookmark"></i>&nbsp;&nbsp;Save post</button></li>
-                                <li><button class=" btn dropdown-item" type="button"><i class="fa-solid fa-flag"></i>&nbsp;&nbsp;Report post</button></li>
-                                <!-- <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li> -->
-                            </ul>
                         </div>
-                    </div>
-                    <div class="d-flex justify-content-center gap-3">
-                        <span class="text text-muted">#Formation</span>
-                        <span class="text text-muted">#Web</span>
-                        <span class="text text-muted">#Casablanca</span>
-                    </div>
-                    <div>
-                        <span class="text text-muted">From: 12-05-2023</span><br>
-                        <span class="text text-muted">To: 12-06-2023</span>
-                    </div>
-                    <div>
-                        <p>𝙂𝙤𝙤𝙜𝙡𝙚 𝘽𝙖𝙧𝙙 𝘼𝙄 is an incredibly powerful tool that can help digital marketers to create high-quality content, engage with customers more effectively, gain valuable insights into customer behavior, and save time.
-                            As AI technology continues to evolve, 𝘽𝙖𝙧𝙙 will undoubtedly become an even more essential tool for businesses looking to stay ahead of the curve and thrive in an increasingly competitive digital landscape.
-                            Try for free: https://www.bardaiinsights.co
-                        </p>
-                    </div>
-                    <div>
-                        <img src="{{ asset('assets/photos/google.jpg')}}" alt="" class="w-100 h-auto">
-                    </div>
-                    <div class="fiter d-flex">
-                        <button class="btn btn-outline-secondary mt-3">
-                            Postuler
-                        </button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-
 @endif
 
 @endsection
