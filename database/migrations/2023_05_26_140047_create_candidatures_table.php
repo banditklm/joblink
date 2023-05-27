@@ -17,9 +17,7 @@ class CreateCandidaturesTable extends Migration
             $table->id();
             $table->foreignId('offre_id');
             $table->foreignId('candidat_id');
-
-            
-
+            $table->string('etat')->nullable();
             $table->foreign('offre_id')->references('id')->on('offres');
             $table->foreign('candidat_id')->references('id')->on('candidats');
             $table->timestamps();
