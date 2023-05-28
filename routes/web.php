@@ -23,7 +23,8 @@ Route::get('/recherche', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\UserController::class, 'index'])->name('home');
 Route::get('/monCv', [App\Http\Controllers\UserController::class, 'monCv'])->name('monCv');
 Route::get('/display', [App\Http\Controllers\UserController::class, 'display'])->name('display');
 Route::get('/apropos', [App\Http\Controllers\UserController::class, 'apropos'])->name('apropos');//add by me
@@ -34,6 +35,8 @@ Route::post('/experiences', [UserController::class, 'storeExperiences'])->name('
 Route::delete('/experiences/{experience}',[UserController::class, 'destroy'])->name('experiences.destroy');
 Route::put('/users/{experience}/experiences-update', [UserController::class, 'experiencesUpdate'])->name('experiences.update');
 Route::get('/experience', [UserController::class, 'testmodel'])->name('testmodel');
+// OFFRES
+Route::post('/offresStore', [UserController::class, 'offresStore'])->name('offres.store');
 
 
 

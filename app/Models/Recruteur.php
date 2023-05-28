@@ -11,6 +11,10 @@ class Recruteur extends Model
     {
         return $this->hasMany(Offre::class);
     }
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
     use HasFactory;
     protected $casts = [
