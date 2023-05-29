@@ -25,7 +25,7 @@ class UserController extends Controller
         $offers = Offre::join('recruteurs', 'offres.recruteur_id', '=', 'recruteurs.id')
                 ->join('users', 'recruteurs.user_id', '=', 'users.id')
                 ->join('adresses', 'offres.adresse_id', '=', 'adresses.id')
-                ->select('offres.*', 'users.*')
+                ->select('offres.*', 'users.nom','users.path','adresses.ville')
                 ->orderBy('offres.created_at', 'desc')
                 ->get();
 
