@@ -23,7 +23,7 @@
             </div>
 <!-- Modal -->
     <div class="modal fade" id="searchModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-xl">
         <div class="modal-content bg-body-secondary">
             <div class="modal-header">
             <h1 class="modal-title fs-5" id="staticBackdropLabel">Rechercher une Offre</h1>
@@ -68,8 +68,6 @@
                                 <option value="3">Ingénierie</option>
                                 <option value="3">Tourisme et hôtellerie </option>
                             </select>
-                            &nbsp;&nbsp;<label class="labels">Mot Clés</label>
-                            <input type="text" class="form-control mt-2 mb-2" name="text" id="text" style="height: 50px;" value="">
                         </div>
                         <div class="col-md-6">
                             &nbsp;&nbsp;<label class="labels">Date de début</label>
@@ -86,6 +84,8 @@
                                 <option value="3">Tétouan</option>
                                 <option value="3">Ifrane</option>
                             </select>
+                            &nbsp;&nbsp;<label class="labels">Mot Clés</label>
+                            <input type="text" class="form-control mt-2 mb-2" name="text" id="text" style="height: 50px;" value="">
                         </div>
                     </div>
                 </div>
@@ -99,70 +99,8 @@
     </div>
 <!--/Modal--> 
 <!-- Affihe Result Of Search -->
-            <div class="card w-100 mb-5">
+            <div class="card w-100 mb-3">
                 <div class="card-body">
-                    <!-- <div class="table-responsive">
-                        <table class="table">
-                            <tbody class="">
-                                <tr>
-                                    <th>
-                                        <span>Categorie</span>&nbsp;&nbsp;
-                                    </th>
-                                    <th>
-                                        <span>Niveau</span>
-                                    </th>
-                                    <td>
-                                        <span>Domaine</span>
-                                    </td>
-                                    <td>
-                                        <span>Domaine</span>
-                                    </td>
-                                    <td>
-                                        <span>Domaine</span>
-                                    </td>
-                                    <th>
-                                        <span>Deplacement</span>
-                                    </th>
-                                    <th>
-                                        <button class="btn btn-outline-secondary btn-sm">Postuler</button>
-                                    </th>
-                                    <th>
-                                        <a href="#"><button class="btn btn-outline-secondary btn-sm">Voir Offre</button></a>
-                                    </th>
-                                </tr>
-
-                                
-
-                                <tr>
-                                    <th>
-                                        <span>Categorie</span>&nbsp;&nbsp;
-                                    </th>
-                                    <th>
-                                        <span>Niveau</span>
-                                    </th>
-                                     <th>
-                                        <span>Domaine</span>
-                                    </th>
-                                   <td>
-                                        <span>Domaine</span>
-                                    </td>
-                                    <td>
-                                        <span>Domaine</span>
-                                    </td>
-                                    <th class="custom-column">
-                                        Deplacement 
-                                    </th>
-                                    <th>
-                                        <button class="btn btn-outline-secondary btn-sm text-nowrap">Postuler</button>
-                                    </th>
-                                    <th>
-                                        <a href="#"><button class="btn btn-outline-secondary btn-sm">Voir Offre</button></a>
-                                    </th>
-                                </tr>
-
-                            </tbody>
-                        </table>
-                    </div> -->
                     <div class="d-flex">
                         <div class="image-container">
                             <img src="{{asset('assets/images/oracle.png')}}" alt="" class=" rounded-circle profile-pic mr-3">
@@ -170,19 +108,19 @@
                         <div class="d-grid gap-2 col-10 mx-auto">
                             <div><h5>Oracle Corporation</h5></div>
                             <div>
-                            <span class="text-muted">categorie . </span>
-                            <span class="text-muted">Domain . </span>
-                            <span class="text-muted">Emplacement </span>
-                            <div class=" d-flex justify-content-end gap-2">
-                                <span><button class="btn btn-outline-secondary btn-sm">Postuler</button></span>
-                                <span><a href="#"><button class="btn btn-outline-secondary btn-sm">Voir Offre</button></a></span>
-                            </div>
+                                <span class="text-muted">categorie . </span>
+                                <span class="text-muted">Domain . </span>
+                                <span class="text-muted">Emplacement </span>
+                                <div class=" d-flex justify-content-end gap-2">
+                                    <span><a href="#"><button class="btn btn-outline-secondary btn-sm">Voir Offre</button></a></span>
+                                    <span><button class="btn btn-outline-secondary btn-sm">Postuler</button></span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="card w-100 mb-5">
+            <div class="card w-100 mb-3">
                 <div class="card-body">
                     <div class="d-flex">
                         <div class="image-container">
@@ -191,13 +129,13 @@
                         <div class="d-grid gap-2 col-10 mx-auto">
                             <div><h5>Google</h5></div>
                             <div>
-                            <span class="text-muted">categorie . </span>
-                            <span class="text-muted">Domain . </span>
-                            <span class="text-muted">Emplacementt </span>
-                            <div class=" d-flex justify-content-end gap-2">
-                                <span><button class="btn btn-outline-secondary btn-sm">Postuler</button></span>
-                                <span><a href="#"><button class="btn btn-outline-secondary btn-sm">Voir Offre</button></a></span>
-                            </div>
+                                <span class="text-muted">categorie . </span>
+                                <span class="text-muted">Domain . </span>
+                                <span class="text-muted">Emplacementt </span>
+                                <div class=" d-flex justify-content-end gap-2">
+                                    <span><a href="#"><button class="btn btn-outline-secondary btn-sm">Voir Offre</button></a></span>
+                                    <span><button class="btn btn-outline-secondary btn-sm">Postuler</button></span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -206,15 +144,6 @@
         </div>
     </div>
 </div>
-
-
-
-
-
-
-
-
-
 
 
 

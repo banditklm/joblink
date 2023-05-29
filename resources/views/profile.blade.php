@@ -10,10 +10,10 @@
         <nav aria-label="breadcrumb" class="main-breadcrumb">
             <ul class="nav nav-tabs">
                 <li class="nav-item btn">
-                    <a class="nav-link active" aria-current="page" href="#Mescandidatures">Mes Candidatures</a>
+                    <a class="nav-link active text text-dark" aria-current="page" href="#Mescandidatures">Mes Candidatures</a>
                 </li>
                 <li class="nav-item dropdown btn">
-                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Notification</a>
+                    <a class="nav-link dropdown-toggle text text-dark" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Notification</a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="#">Une offre d'étude est disponible</a></li>
                         <li><a class="dropdown-item" href="#">Une offre de formation est disponible</a></li>
@@ -24,66 +24,61 @@
                     </ul>
                 </li>
                 <li class="nav-item btn">
-                    <a class="nav-link" href="{{route('monCv')}}">Mon CV</a>
+                    <a class="nav-link text text-dark" href="{{route('monCv')}}">Mon CV</a>
                 </li>
                 <li class="nav-item btn">
-                    <a class="nav-link" href="#">Mes sauvgardes</a>
+                    <a class="nav-link text text-dark" href="#">Mes sauvgardes</a>
                 </li>
                 <li class="nav-item dropdown btn">
                 <!-- Button trigger modal -->
-                <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#interet">
                     Intérets
                 </button>
 <!-- Modal -->
-                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-lg">
-                <div class="modal-content">
-                <div class="modal-header">
-                <h1 class="modal-title fs-5" id="staticBackdropLabel">Intérets</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <!-- modal body -->
-                <div class="modal-body">
-                <div class="" role="group" aria-label="Basic checkbox toggle button group">
-                    <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
-                    <label class="btn btn-outline-primary" for="btncheck1">Disign graphique</label>
+                <div class="modal fade" id="interet" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Intérets</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <!-- modal body -->
+                            <div class="modal-body">
+                                <div class="" role="group" aria-label="Basic checkbox toggle button group">
+                                    <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
+                                    <label class="btn btn-outline-primary mt-2" for="btncheck1">Disign graphique</label>
 
-                    <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off">
-                    <label class="btn btn-outline-primary" for="btncheck2">Comptabilité</label>
+                                    <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off">
+                                    <label class="btn btn-outline-primary mt-2" for="btncheck2">Comptabilité</label>
 
-                    <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off">
-                    <label class="btn btn-outline-primary" for="btncheck3">Photoshop</label>
+                                <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off">
+                                <label class="btn btn-outline-primary mt-2" for="btncheck3">Photoshop</label>
 
-                    <input type="checkbox" class="btn-check" id="btncheck4" autocomplete="off">
-                    <label class="btn btn-outline-primary" for="btncheck4">Illustration</label>
+                                <input type="checkbox" class="btn-check" id="btncheck4" autocomplete="off">
+                                <label class="btn btn-outline-primary mt-2" for="btncheck4">Illustration</label>
 
-                    <input type="checkbox" class="btn-check" id="btncheck5" autocomplete="off">
-                    <label class="btn btn-outline-primary" for="btncheck5">Juridique</label>
+                                <input type="checkbox" class="btn-check" id="btncheck5" autocomplete="off">
+                                <label class="btn btn-outline-primary mt-2" for="btncheck5">Juridique</label>
 
-                    <input type="checkbox" class="btn-check" id="btncheck6" autocomplete="off">
-                    <label class="btn btn-outline-primary" for="btncheck6">Finance</label>
+                                <input type="checkbox" class="btn-check" id="btncheck6" autocomplete="off">
+                                <label class="btn btn-outline-primary mt-2" for="btncheck6">Finance</label>
 
-                    <input type="checkbox" class="btn-check" id="btncheck7" autocomplete="off">
-                    <label class="btn btn-outline-primary" for="btncheck7">Web scraping</label>
+                                <input type="checkbox" class="btn-check" id="btncheck7" autocomplete="off">
+                                <label class="btn btn-outline-primary mt-2" for="btncheck7">Web scraping</label>
 
-                    <input type="checkbox" class="btn-check" id="btncheck8" autocomplete="off">
-                    <label class="btn btn-outline-primary" for="btncheck8">Marketing</label>
+                                <input type="checkbox" class="btn-check" id="btncheck8" autocomplete="off">
+                                <label class="btn btn-outline-primary mt-2" for="btncheck8">Marketing</label>
 
-                    <input type="checkbox" class="btn-check" id="btncheck9" autocomplete="off">
-                    <label class="btn btn-outline-primary" for="btncheck9">eCommerce</label>
+                                <input type="checkbox" class="btn-check" id="btncheck9" autocomplete="off">
+                                <label class="btn btn-outline-primary mt-2" for="btncheck9">eCommerce</label>
 
-                </div>
-                </div>    
-
-                <!-- modal body -->
-                <!-- modal footer -->
-                <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save</button>
-                </div>
-                <!-- modal footer -->
-                </div>
-                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save</button>
+                            </div>
+                        </div>    
+                    </div>
                 </div>
 <!-- /Modal -->    
                 </li>
@@ -284,74 +279,77 @@
         </div>
         <h1>Mes candidatures</h1>
 <!-- Candidat offres table -->
-<div class="container mt-3 mb-4">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-        <table class="table table-info table-hover table-bordered border-primary">
-            <thead>
-                <tr>
-                    <th scope="col">Entreprise</th>
-                    <th scope="col">DOMAINE</th>
-                    <th scope="col">Emplacement</th>
-                    <th scope="col"></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr id="tr-1">
-                    <th scope="row" class="img"><img src="{{asset('assets/images/oracle.png')}}" alt="" class="rounded-circle"></th>
-                    <td>Informatique</td>
-                    <td>United states</td>
-                    <td id="td-2">
-                        <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">Voir Offre</button>
-                        <a href="#"><button id="post" class="btn btn-primary btn-sm d-none" onclick="toggleButtons()">Postuler</button></a>
-                        <a href="#"><button id="annuler" class="btn btn-danger btn-sm" onclick="removeRow1();toggleButtons()">Annuler</button></a>
-                    </td>
-                    <script>
-                        function removeRow1() {
-                            var row = document.getElementById("tr-1");
-                            row.remove();
-                        }
-                        function toggleButtons() {
-                            var post = document.getElementById("post");
-                            var annuler = document.getElementById("annuler");
+    <div class="container mt-3 mb-4">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <table class="table table-info table-hover table-bordered border-primary">
+                    <thead>
+                        <tr>
+                            <th scope="col">Recruteur</th>
+                            <th scope="col">Domaine</th>
+                            <th scope="col">Emplacement</th>
+                            <th scope="col">Etat</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr id="tr-1">
+                            <th scope="row" class="img"><img src="{{asset('assets/images/oracle.png')}}" alt="" class="rounded-circle"></th>
+                            <td>Informatique</td>
+                            <td>United states</td>
+                            <td>En attente</td>
+                            <td id="td-2">
+                                <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">Voir Offre</button>
+                                <a href="#"><button id="post" class="btn btn-primary btn-sm d-none" onclick="toggleButtons()">Postuler</button></a>
+                                <a href="#"><button id="annuler" class="btn btn-danger btn-sm" onclick="removeRow1();toggleButtons()">Annuler</button></a>
+                            </td>
+                            <script>
+                                function removeRow1() {
+                                    var row = document.getElementById("tr-1");
+                                    row.remove();
+                                }
+                                function toggleButtons() {
+                                    var post = document.getElementById("post");
+                                    var annuler = document.getElementById("annuler");
 
-                            post.classList.toggle("d-none");
-                            annuler.classList.toggle("d-none");
-                            }
+                                    post.classList.toggle("d-none");
+                                    annuler.classList.toggle("d-none");
+                                }
 
-                    </script>
-                </tr>
-                <tr id="tr-2">
-                    <th scope="row" class="img"><img src="{{asset('assets/images/woman2.jpg')}}" alt="" class="rounded-circle"></th>
-                    <td>Design</td>
-                    <td>Casablanca</td>
-                    <td>
-                        <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">Voir Offre</button>
-                        <a href="#"><button id="post2" class="btn btn-primary btn-sm  d-none" onclick="toggleButtons2()">Postuler</button></a>
-                        <a href="#"><button id="annuler2" class="btn btn-danger btn-sm" onclick="removeRow();toggleButtons2()">Annuler</button></a>
-                    </td>
-                    <script>
-                        function removeRow() {
-                            var row = document.getElementById("tr-2");
-                            row.remove();
-                        }
-                        
-                        function toggleButtons2() {
-                            var post2 = document.getElementById("post2");
-                            var annuler2 = document.getElementById("annuler2");
+                            </script>
+                        </tr>
+                        <tr id="tr-2">
+                            <th scope="row" class="img"><img src="{{asset('assets/images/woman2.jpg')}}" alt="" class="rounded-circle"></th>
+                            <td>Design</td>
+                            <td>Casablanca</td>
+                            <td>Accepter</td>
+                            <td>
+                                <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">Voir Offre</button>
+                                <a href="#"><button id="post2" class="btn btn-primary btn-sm  d-none" onclick="toggleButtons2()">Postuler</button></a>
+                                <a href="#"><button id="annuler2" class="btn btn-danger btn-sm" onclick="removeRow();toggleButtons2()">Annuler</button></a>
+                            </td>
+                            <script>
+                                function removeRow() {
+                                    var row = document.getElementById("tr-2");
+                                    row.remove();
+                                }
+                                
+                                function toggleButtons2() {
+                                    var post2 = document.getElementById("post2");
+                                    var annuler2 = document.getElementById("annuler2");
 
-                            post2.classList.toggle("d-none");
-                            annuler2.classList.toggle("d-none");
+                                    post2.classList.toggle("d-none");
+                                    annuler2.classList.toggle("d-none");
 
-                            }
-
-                    </script>
-                </tr>
-            </tbody>
-        </table>
+                                }
+                            </script>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-    </div>
-</div> 
+    </div> 
+<!-- Mes Candidature -->
         <div class="row justify-content-center" id="Mescandidaturs">
             <div class="col-md-8">
                 <div class="card w-100 mb-5">

@@ -254,74 +254,74 @@
 @else
 <!-- Candidat Home -->
 <!-- Candidat offres table -->
-<div class="container mt-3 mb-4">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-        <table class="table table-info table-hover table-bordered border-primary">
-            <thead>
-                <tr>
-                    <th scope="col">Entreprise</th>
-                    <th scope="col">DOMAINE</th>
-                    <th scope="col">Emplacement</th>
-                    <th scope="col"></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row" class="img"><img src="{{asset('assets/images/oracle.png')}}" alt="" class="rounded-circle"></th>
-                    <td>Informatique</td>
-                    <td>United states</td>
-                    <td>
-                        <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">Voir Offre</button>
-                        <a href="#"><button id="post" class="btn btn-primary btn-sm" onclick="toggleButtons()">Postuler</button></a>
-                        <a href="#"><button id="annuler" class="btn btn-danger btn-sm d-none" onclick="toggleButtons()">Annuler</button></a>
-                    </td>
-                    <script>
-                        function toggleButtons() {
-                            var post = document.getElementById("post");
-                            var annuler = document.getElementById("annuler");
+    <div class="container mt-3 mb-4">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <table class="table table-info table-hover table-bordered border-primary">
+                    <thead>
+                        <tr>
+                            <th scope="col">Recruteur</th>
+                            <th scope="col">Domaine</th>
+                            <th scope="col">Emplacement</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row" class="img"><img src="{{asset('assets/images/oracle.png')}}" alt="" class="rounded-circle"></th>
+                            <td>Informatique</td>
+                            <td>United states</td>
+                            <td>
+                                <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">Voir Offre</button>
+                                <a href="#"><button id="post" class="btn btn-primary btn-sm" onclick="toggleButtons()">Postuler</button></a>
+                                <a href="#"><button id="annuler" class="btn btn-danger btn-sm d-none" onclick="toggleButtons()">Annuler</button></a>
+                            </td>
+                            <script>
+                                function toggleButtons() {
+                                    var post = document.getElementById("post");
+                                    var annuler = document.getElementById("annuler");
 
-                            post.classList.toggle("d-none");
-                            annuler.classList.toggle("d-none");
-                            }
+                                    post.classList.toggle("d-none");
+                                    annuler.classList.toggle("d-none");
+                                }
 
-                    </script>
-                </tr>
-                <tr>
-                    <th scope="row" class="img"><img src="{{asset('assets/images/woman2.jpg')}}" alt="" class="rounded-circle"></th>
-                    <td>Design</td>
-                    <td>Casablanca</td>
-                    <td>
-                        <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">Voir Offre</button>
-                        <a href="#"><button id="post2" class="btn btn-primary btn-sm" onclick="toggleButtons2()">Postuler</button></a>
-                        <a href="#"><button id="annuler2" class="btn btn-danger btn-sm d-none" onclick="toggleButtons2()">Annuler</button></a>
-                    </td>
-                    <script>
-                        function toggleButtons2() {
-                            var post2 = document.getElementById("post2");
-                            var annuler2 = document.getElementById("annuler2");
+                            </script>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="img"><img src="{{asset('assets/images/woman2.jpg')}}" alt="" class="rounded-circle"></th>
+                            <td>Design</td>
+                            <td>Casablanca</td>
+                            <td>
+                                <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">Voir Offre</button>
+                                <a href="#"><button id="post2" class="btn btn-primary btn-sm" onclick="toggleButtons2()">Postuler</button></a>
+                                <a href="#"><button id="annuler2" class="btn btn-danger btn-sm d-none" onclick="toggleButtons2()">Annuler</button></a>
+                            </td>
+                            <script>
+                                function toggleButtons2() {
+                                    var post2 = document.getElementById("post2");
+                                    var annuler2 = document.getElementById("annuler2");
 
-                            post2.classList.toggle("d-none");
-                            annuler2.classList.toggle("d-none");
-                            }
+                                    post2.classList.toggle("d-none");
+                                    annuler2.classList.toggle("d-none");
+                                }
 
-                    </script>
-                </tr>
-                <tr>
-                    <th scope="row" class="img"><img src="{{asset('assets/images/cat.jpg')}}" alt="" class="rounded-circle"></th>
-                    <td>Informatique</td>
-                    <td>United states</td>
-                    <td>
-                        <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">Voir Offre</button>
-                        <a href="#"><button id="post" class="btn btn-primary btn-sm" >Postuler</button></a>
-                        <a href="#"><button id="annuler" class="btn btn-danger btn-sm d-none" >Annuler</button></a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+                            </script>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="img"><img src="{{asset('assets/images/cat.jpg')}}" alt="" class="rounded-circle"></th>
+                            <td>Informatique</td>
+                            <td>United states</td>
+                            <td>
+                                <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">Voir Offre</button>
+                                <a href="#"><button id="post" class="btn btn-primary btn-sm" >Postuler</button></a>
+                                <a href="#"><button id="annuler" class="btn btn-danger btn-sm d-none" >Annuler</button></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-</div>
 <!-- Candidat Home no table -->
     <div class="container">
         <div class="row justify-content-center">
@@ -416,66 +416,63 @@
         </div>
     </div>
 <!-- Candidat offres Modle -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-      <div class="card w-100 mb-5">
-        <div class="card-body">
-            <div class="head_post d-flex">
-                <div>
-                    <img src="{{ asset('assets/images/oracle.png')}}" class="rounded-circle profile-pic mr-3" alt="profil_img">
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div>
-                    <h5 class="mb-0 mt-3 ms-2 font-weight-normal">Oracle Corporation</h5>
-                </div> 
-                <div class="dropdown">
-                    <button class="btn point" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fa-solid fa-ellipsis"></i>
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><button class=" btn dropdown-item" type="button"><i class="fa-solid fa-bookmark"></i>&nbsp;&nbsp;Save post</button></li>
-                        <li><button class=" btn dropdown-item" type="button"><i class="fa-solid fa-flag"></i>&nbsp;&nbsp;Report post</button></li>
-                    </ul>
+                <div class="modal-body">
+                    <div class="card w-100 mb-5">
+                        <div class="card-body">
+                            <div class="head_post d-flex gap-5">
+                                <div class="d-flex">
+                                    <div>
+                                        <img src="{{ asset('assets/images/oracle.png')}}" class="rounded-circle profile-pic mr-3" alt="profil_img">
+                                    </div>
+                                    <div>
+                                        <h5 class="mb-0 mt-3 ms-2 font-weight-normal">Oracle Corporation</h5>
+                                    </div> 
+                                </div>
+                                <div class="dropdown">
+                                    <button class="btn point" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="fa-solid fa-ellipsis"></i>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><button class=" btn dropdown-item" type="button"><i class="fa-solid fa-bookmark"></i>&nbsp;&nbsp;Save post</button></li>
+                                        <li><button class=" btn dropdown-item" type="button"><i class="fa-solid fa-flag"></i>&nbsp;&nbsp;Report post</button></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-center gap-3">
+                                <span class="text text-muted">#Formation</span>
+                                <span class="text text-muted">#Web</span>
+                                <span class="text text-muted">#Casablanca</span>
+                            </div>
+                            <div>
+                                <span class="text text-muted">From: 12-05-2023</span><br>
+                                <span class="text text-muted">To: 12-06-2023</span>
+                            </div>
+                            <div>
+                                <p>𝙂𝙤𝙤𝙜𝙡𝙚 𝘽𝙖𝙧𝙙 𝘼𝙄 is an incredibly powerful tool that can help digital marketers to create high-quality content, engage with customers more effectively, gain valuable insights into customer behavior, and save time.
+                                        As AI technology continues to evolve, 𝘽𝙖𝙧𝙙 will undoubtedly become an even more essential tool for businesses looking to stay ahead of the curve and thrive in an increasingly competitive digital landscape.
+                                    Try for free: https://www.bardaiinsights.co
+                                </p>
+                            </div>
+                            <div>
+                                <img src="{{ asset('assets/photos/google.jpg')}}" alt="" class="w-100 h-auto">
+                            </div>
+                            <div class="fiter d-flex mt-3">
+                                <button class="btn btn-outline-secondary mt-3">
+                                    Postuler
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="d-flex justify-content-center gap-3">
-                <span class="text text-muted">#Formation</span>
-                <span class="text text-muted">#Web</span>
-                <span class="text text-muted">#Casablanca</span>
-            </div>
-            <div>
-                <span class="text text-muted">From: 12-05-2023</span><br>
-                <span class="text text-muted">To: 12-06-2023</span>
-            </div>
-            <div>
-                <p>𝙂𝙤𝙤𝙜𝙡𝙚 𝘽𝙖𝙧𝙙 𝘼𝙄 is an incredibly powerful tool that can help digital marketers to create high-quality content, engage with customers more effectively, gain valuable insights into customer behavior, and save time.
-                        As AI technology continues to evolve, 𝘽𝙖𝙧𝙙 will undoubtedly become an even more essential tool for businesses looking to stay ahead of the curve and thrive in an increasingly competitive digital landscape.
-                    Try for free: https://www.bardaiinsights.co
-                </p>
-            </div>
-            <div>
-                <img src="{{ asset('assets/photos/google.jpg')}}" alt="" class="w-100 h-auto">
-            </div>
-            <div class="fiter d-flex mt-3">
-                <button class="btn btn-outline-secondary mt-3">
-                    Postuler
-                </button>
             </div>
         </div>
     </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
 
 @endif
 
