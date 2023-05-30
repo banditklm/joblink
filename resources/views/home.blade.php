@@ -453,37 +453,20 @@
         </div>
     </div>
 <!-- Candidat offres Modle -->
-
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 @foreach($offers as $offer)
 <div class="modal fade" id="exampleModal-{{ $offer->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-      <div class="card w-100 mb-5">
-        <div class="card-body">
-            <div class="head_post d-flex">
-                <div>
-                    <img src="{{ asset('assets/images/oracle.png')}}" class="rounded-circle profile-pic mr-3" alt="profil_img">
-                </div>
                 <div class="modal-body">
                     <div class="card w-100 mb-5">
                         <div class="card-body">
                             <div class="head_post d-flex gap-5">
                                 <div class="d-flex">
                                     <div>
-                                        <img src="{{ asset('assets/images/oracle.png')}}" class="rounded-circle profile-pic mr-3" alt="profil_img">
+                                        <img src="{{ asset('assets/images/'.$offer->path)}}" class="rounded-circle profile-pic mr-3" alt="profil_img">
                                     </div>
                                     <div>
-                                        <h5 class="mb-0 mt-3 ms-2 font-weight-normal">Oracle Corporation</h5>
+                                        <h5 class="mb-0 mt-3 ms-2 font-weight-normal">{{ $offer->nom }}</h5>
                                     </div> 
                                 </div>
                                 <div class="dropdown">
@@ -497,22 +480,21 @@
                                 </div>
                             </div>
                             <div class="d-flex justify-content-center gap-3">
-                                <span class="text text-muted">#Formation</span>
-                                <span class="text text-muted">#Web</span>
-                                <span class="text text-muted">#Casablanca</span>
+                                <span class="text text-muted">#{{ $offer->categorie }}</span>
+                                <span class="text text-muted">#{{ $offer->domaine }}</span>
+                                <span class="text text-muted">#{{ $offer->ville}}</span>
                             </div>
                             <div>
-                                <span class="text text-muted">From: 12-05-2023</span><br>
-                                <span class="text text-muted">To: 12-06-2023</span>
+                                <span class="text text-muted">From: {{ $offer->debut }}</span><br>
+                                <span class="text text-muted">To: {{ $offer->fin }}</span>
                             </div>
                             <div>
-                                <p>𝙂𝙤𝙤𝙜𝙡𝙚 𝘽𝙖𝙧𝙙 𝘼𝙄 is an incredibly powerful tool that can help digital marketers to create high-quality content, engage with customers more effectively, gain valuable insights into customer behavior, and save time.
-                                        As AI technology continues to evolve, 𝘽𝙖𝙧𝙙 will undoubtedly become an even more essential tool for businesses looking to stay ahead of the curve and thrive in an increasingly competitive digital landscape.
-                                    Try for free: https://www.bardaiinsights.co
+                                <p>
+                                    {{ $offer->descriptionOffre }}
                                 </p>
                             </div>
                             <div>
-                                <img src="{{ asset('assets/photos/google.jpg')}}" alt="" class="w-100 h-auto">
+                                <img src="{{ asset('assets/images/'.$offer->pathOffre)}}" alt="" class="w-100 h-auto">
                             </div>
                             <div class="fiter d-flex mt-3">
                                 <button class="btn btn-outline-secondary mt-3">
