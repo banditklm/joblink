@@ -23,7 +23,7 @@
 
 
 <br><br>
-@if (Auth::user()->role != 2)
+@if (Auth::user()->role == 2)
 <!-- Recruteur home -->
     <div class="container ">
         <div class="row justify-content-center">
@@ -135,7 +135,6 @@
 <!-- Afficher Offres by table -->
 
 <!-- Afficher Offres -->
-
 @foreach($offers as $offer)          
             <div class="card w-100 mb-4">
                 <div class="card-body">
@@ -219,6 +218,7 @@
                     </div>
                 </div>
             </div>
+
             
 <!-- /afficher Offres -->
 <!-- Modal Candidature -->
@@ -330,6 +330,33 @@
                     </tbody>
                 </table>
             </div>
+<div class="container mt-3 mb-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+        <table class="table table-info table-hover table-bordered border-primary">
+            <thead>
+                <tr>
+                    <th scope="col">Entreprise</th>
+                    <th scope="col">DOMAINE</th>
+                    <th scope="col">Emplacement</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach($offers as $offer)
+                <tr>
+                    <th scope="row" class="img"><img src="{{ asset('assets/images/'.$offer->path)}}" alt="" class="rounded-circle"></th>
+                    <td>{{ $offer->domaine }}-{{ $offer->id }}</td>
+                    <td>{{ $offer->ville }}</td>
+                    <td>
+                        <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal-{{ $offer->id }}">Voir Offre</button>
+                        <a href="#"><button id="post-{{ $offer->id }}" class="btn btn-primary btn-sm" onclick="toggleButtons({{ $offer->id }})">Postuler</button></a>
+                        <a href="#"><button id="annuler-{{ $offer->id }}" class="btn btn-danger btn-sm d-none" onclick="toggleButtons({{ $offer->id }})">Annuler</button></a>
+                    </td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
         </div>
     </div>
 <!-- Candidat Home no table -->
@@ -431,6 +458,20 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+@foreach($offers as $offer)
+<div class="modal fade" id="exampleModal-{{ $offer->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      <div class="card w-100 mb-5">
+        <div class="card-body">
+            <div class="head_post d-flex">
+                <div>
+                    <img src="{{ asset('assets/images/oracle.png')}}" class="rounded-circle profile-pic mr-3" alt="profil_img">
                 </div>
                 <div class="modal-body">
                     <div class="card w-100 mb-5">
@@ -483,7 +524,24 @@
             </div>
         </div>
     </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+@endforeach
+<script>
+    function toggleButtons(id) {
+        var post = document.getElementById("post-"+id);
+        var annuler = document.getElementById("annuler-"+id);
 
+        post.classList.toggle("d-none");
+        annuler.classList.toggle("d-none");
+        }
+</script>
 @endif
 
 @endsection
