@@ -21,6 +21,5 @@ class Offre extends Model
     {
         return $this->belongsToMany(Candidat::class);
     }
-    // protected $fillable = ['recruteur_id'];
     use HasFactory;
 }

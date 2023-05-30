@@ -23,7 +23,7 @@
 
 
 <br><br>
-@if (Auth::user()->role == 2)
+@if (Auth::user()->role != 2)
 <!-- Recruteur home -->
     <div class="container ">
         <div class="row justify-content-center">
@@ -453,6 +453,7 @@
         </div>
     </div>
 <!-- Candidat offres Modle -->
+
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
