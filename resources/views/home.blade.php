@@ -23,7 +23,7 @@
 
 
 <br><br>
-@if (Auth::user()->role == 2)
+@if (Auth::user()->role != 2)
 <!-- Recruteur home -->
     <div class="container ">
         <div class="row justify-content-center">
@@ -453,26 +453,10 @@
         </div>
     </div>
 <!-- Candidat offres Modle -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 @foreach($offers as $offer)
 <div class="modal fade" id="exampleModal-{{ $offer->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-      <div class="card w-100 mb-5">
-        <div class="card-body">
-            <div class="head_post d-flex">
-                <div>
-                    <img src="{{ asset('assets/images/oracle.png')}}" class="rounded-circle profile-pic mr-3" alt="profil_img">
-                </div>
                 <div class="modal-body">
                     <div class="card w-100 mb-5">
                         <div class="card-body">
