@@ -46,71 +46,81 @@
                                             <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
-                                        <form action="">
+<!-- form post offre -->
+                                        <form method="POST" action="{{ route('offres.store') }}" enctype="multipart/form-data">
+                                            @csrf
                                             <div class="modal-body">
                                                 <div class="row">
                                                     <div class="col-md-4">
-                                                        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                                                        <select name="categorie" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
                                                             <option selected>Catégorie</option>
-                                                            <option value="1">Etude</option>
-                                                            <option value="2">Formation</option>
-                                                            <option value="3">Stage</option>
-                                                            <option value="3">Emploi</option>
+                                                            <option value="Etude">Etude</option>
+                                                            <option value="Formation">Formation</option>
+                                                            <option value="Stage">Stage</option>
+                                                            <option value="4">Emploi</option>
                                                         </select>
-                                                        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                                                        <select name="domaine" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
                                                             <option selected>Niveau</option>
-                                                            <option value="1">Bac</option>
-                                                            <option value="2">Licence</option>
-                                                            <option value="3">Master</option>
-                                                            <option value="3">Doctorat</option>
+                                                            <option value="Bac">Bac</option>
+                                                            <option value="Licence">Licence</option>
+                                                            <option value="Master">Master</option>
+                                                            <option value="4">Doctorat</option>
                                                         </select>
-                                                        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                                                        <select name="domaine" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
                                                             <option selected>Domaine</option>
                                                             <option value="1">Data</option>
                                                             <option value="2">Design</option>
                                                             <option value="3">Web</option>
-                                                            <option value="3">Marketing</option>
+                                                            <option value="4">Marketing</option>
                                                         </select>
-                                                        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                                                        <select name="domaine" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
                                                             <option selected>Domaine</option>
-                                                            <option value="1">Technologie de l'information (TI)</option>
-                                                            <option value="2">Finance et comptabilité</option>
+                                                            <option value="1">Technologie</option>
+                                                            <option value="2">Finance</option>
                                                             <option value="3">Ingénierie</option>
-                                                            <option value="3">Tourisme et hôtellerie </option>
+                                                            <option value="4">Tourisme</option>
                                                         </select>
-                                                        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                                                        <select name="domaine" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
                                                             <option selected>Domaine</option>
-                                                            <option value="1">Technologie de l'information (TI)</option>
-                                                            <option value="2">Finance et comptabilité</option>
+                                                            <option value="1">Technologie</option>
+                                                            <option value="2">comptabilité</option>
                                                             <option value="3">Ingénierie</option>
-                                                            <option value="3">Tourisme et hôtellerie </option>
+                                                            <option value="4">hôtellerie </option>
                                                         </select>
 
                                                     </div>
                                                     <div class="col-md-4">
-                                                        <textarea name="description" id="description" cols="39" rows="3" placeholder="Ajouter quelque chose!"></textarea>
-                                                        <img src="{{asset('assets/photos/hire.jpg')}}" alt="" class="rounded mx-auto d-block w-100">
+                                                        <textarea name="descriptionOffre" id="description" cols="39" rows="3" placeholder="Ajouter quelque chose!"></textarea>
+                                                        <input type="file" name="image" onChange="displayImage(this)" id="postImage" class="form-control" accept="image/*" style="display: none;">
+                                                        <img src="{{asset('assets/photos/hire.jpg')}}" alt="" class="rounded mx-auto d-block w-100" onClick="triggerClick()" id="postDisplay">
                                                     </div>
                                                     <div class="col-md-4">
                                                         &nbsp;&nbsp;<label class="labels">Date de début</label>
                                                         <input type="date" class="form-control mt-2 mb-2" name="debut" id="debut" style="height: 50px;" value="">
                                                         &nbsp;&nbsp;<label class="labels">Date de fin</label>
                                                         <input type="date" class="form-control mt-2 mb-2" name="fin" id="fin" style="height: 50px;" value="">
-                                                        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                                                        <select name="ville" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
                                                             <option selected>Emplacement</option>
-                                                            <option value="1">Casablanca</option>
-                                                            <option value="2">Eljadida</option>
-                                                            <option value="3">Rabat</option>
-                                                            <option value="3">Tanger</option>
-                                                            <option value="3">Safi</option>
-                                                            <option value="3">Tétouan</option>
+                                                            <option value="Casablanca">Casablanca</option>
+                                                            <option value="Eljadida">Eljadida</option>
+                                                            <option value="Rabat">Rabat</option>
+                                                            <option value="Tanger">Tanger</option>
+                                                            <option value="Safi">Safi</option>
+                                                            <option value="Tetouan">Tétouan</option>
                                                             <option value="3">Ifrane</option>
                                                         </select>
+                                                    </div>
+                                                    <div class="col-md-4" type="hidden">
+                                                        <input type="hidden" name="region" value="Région">
+                                                        <input type="hidden" name="pays" value="Pays">
+                                                        <input type="hidden" name="add1" value="Adresse 1">
+                                                        <input type="hidden" name="add2" value="Adresse 2">
+                                                        <input type="hidden" name="codepostale" value="Code Postal">
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
+                                                <button type="reset" class="btn" data-bs-dismiss="modal">Close</button>
                                                 <button type="submit" class="btn">Post</button>
                                             </div>
                                         </form>
@@ -125,14 +135,16 @@
 <!-- Afficher Offres by table -->
 
 <!-- Afficher Offres -->
+
+@foreach($offers as $offer)          
             <div class="card w-100 mb-4">
                 <div class="card-body">
                     <div class="head_post d-flex">
                         <div>
-                            <img src="{{ asset('assets/images/woman.jpg')}}" class="rounded-circle profile-pic mr-3" alt="profil_img">
+                            <img src="{{ asset('assets/images/'.$offer->path)}}" class="rounded-circle profile-pic mr-3" alt="profil_img">
                         </div>
                         <div>
-                            <h5 class="mb-0 mt-3 ms-2 font-weight-normal">Oracle Corporation</h5>
+                            <h5 class="mb-0 mt-3 ms-2 font-weight-normal">{{ $offer->nom }}</h5>
                         </div> 
                         <div class="dropdown">
                             <button class="btn point" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -144,28 +156,26 @@
                         </div>
                     </div>
                     <div class="d-flex justify-content-center gap-3">
-                        <span class="text text-muted">#Formation</span>
-                        <span class="text text-muted">#Web</span>
-                        <span class="text text-muted">#Casablanca</span>
+                        <span class="text text-muted">#{{ $offer->categorie }}</span>
+                        <span class="text text-muted">#{{ $offer->domaine }}</span>
+                        <span class="text text-muted">#{{ $offer->ville }}</span>
                     </div>
                     <div>
-                        <span class="text text-muted">From: 12-05-2023</span><br>
-                        <span class="text text-muted">To: 12-06-2023</span>
+                        <span class="text text-muted">From: {{ $offer->debut}}</span><br>
+                        <span class="text text-muted">To: {{ $offer->fin }}</span>
                     </div>
                     <div>
-                        <p>𝙂𝙤𝙤𝙜𝙡𝙚 𝘽𝙖𝙧𝙙 𝘼𝙄 is an incredibly powerful tool that can help digital marketers to create high-quality content, engage with customers more effectively, gain valuable insights into customer behavior, and save time.
-                                As AI technology continues to evolve, 𝘽𝙖𝙧𝙙 will undoubtedly become an even more essential tool for businesses looking to stay ahead of the curve and thrive in an increasingly competitive digital landscape.
-                            Try for free: https://www.bardaiinsights.co
-                        </p>
+                        <p>{{ $offer->descriptionOffre }}</p>
                     </div>
                     <div>
-                        <img src="{{ asset('assets/photos/google.jpg')}}" alt="" class="w-100 h-auto">
+                        <img src="{{ asset('assets/images/'.$offer->pathOffre)}}" alt="" class="w-100 h-auto">
                     </div>
                     <div class="fiter d-flex mt-3">
                         <button class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#modalCandidature" >Voir Candidature</button>
                     </div>
                 </div>
             </div>
+@endforeach
             <div class="card w-100 mb-4">
                 <div class="card-body">
                     <div class="head_post d-flex">

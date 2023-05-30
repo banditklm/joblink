@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+use App\Models\Recruteurs;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -40,6 +41,10 @@ class User extends Authenticatable
     public function adresse()
     {
         return $this->belongsTo(Adresse::class);
+    }
+    public function recruteur()
+    {
+        return $this->HasOne(Recruteurs::class);
     }
 
     

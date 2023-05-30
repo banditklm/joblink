@@ -1,17 +1,22 @@
-$table->id();
-            $table->unsignedBigInteger('rec_id');
-            $table->unsignedBigInteger('adr_id');
-            $table->string('description')->nullable();
-            $table->date('debut')->nullable();
-            $table->date('fin')->nullable();
-            $table->string('path')->nullable();
-            $table->string('categorie')->nullable();
-            $table->string('domaine')->nullable();
-            $table->foreign('rec_id')->references('id')->on('recruteurs');
-            $table->foreign('adr_id')->references('id')->on('adresses');
-            $table->timestamps();
+i need to Post offre with laravel 8
+i have 3 table already exist
+Recruteurs Offres Adresses
+attribut for offre is 
+(recruteur_id,adresse_id,description,debut,fin,photo,categorie,domaine)
+recruteur_id and adresse_id is foreignkey
+for adresse
+-attribut is (ville,region,pays,add1,add2,codepostale)
+i need for you to help me create :
+-form html
+-Route
+name of controller is UserController already exist
+Model name is Offre already exist
+Model name is Adresse already exist
 
 
 
+<<<<<<< HEAD
 
             
+=======
+>>>>>>> 4d505485081e9dda56eacb1e58207aaed03dcab9

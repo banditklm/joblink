@@ -9,13 +9,41 @@ use App\Models\Candidature;
 use App\Models\Recruteur;
 use App\Models\Experience;
 use App\Models\Texperience;
+use App\Models\Offre;
+use App\Models\Adresse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 class UserController extends Controller
 {
+    public function __construct()
+    {
+       $this->middleware('auth');
+    }
+    public function index()
+    {
+        $user= Auth::user();
+        $offers = Offre::join('recruteurs', 'offres.recruteur_id', '=', 'recruteurs.id')
+                ->join('users', 'recruteurs.user_id', '=', 'users.id')
+                ->join('adresses', 'offres.adresse_id', '=', 'adresses.id')
+                ->select('offres.*', 'users.*')
+                ->orderBy('offres.created_at', 'asc')
+                ->get();
+
+        // return dd($offers);
+
+        return view('home', 
+        [
+            'user'=> $user,
+            'offers'=> $offers,
+
+        ]);
+    }
     public function display()
     {
+        // $user = Recruteur::with('user')->find(1);
+        $user = User::with('adresse')->find(4);
         $id = Auth::id();
+        return $id;
         $info = Candidat::where('user_id',$id)->first()->id;
 
         // return $info;
@@ -26,10 +54,6 @@ class UserController extends Controller
 
         return $mesCandidatures;
         return dd($mesCandidatures);
-    }
-    public function __construct()
-    {
-       $this->middleware('auth');
     }
     public function monCv()
     {   
@@ -160,6 +184,78 @@ class UserController extends Controller
     }
     public function testmodel(){
         return $experiences = Texperience::all();
+    }
+    // OOFRES
+    public function offresStore(Request $request)
+    {
+        // $request->validate([
+        //     'recruteur_id' => 'required',
+        //     'ville' => 'required',
+        //     'region' => 'required',
+        //     'pays' => 'required',
+        //     'add1' => 'required',
+        //     'add2' => 'nullable',
+        //     'codepostale' => 'required',
+        //     'description' => 'required',
+        //     'debut' => 'required|date',
+        //     'fin' => 'required|date',
+        //     'photo' => 'image',
+        //     'categorie' => 'required',
+        //     'domaine' => 'required',
+        // ]);
+        $imageName = null;
+        if($request->hasFile('image')){
+            $imageFile = $request->file('image');
+            $imageName = time() . '_' . Str::random(10) . '.' . $imageFile->getClientOriginalExtension();
+            $image = $request->image->move(public_path('assets\images'),$imageName);
+            // $user->path= $imageName ;
+        }
+        
+        // $adresse = Adresse::create([
+        //     'ville' => $request->input('ville'),
+        //     'region' => $request->input('region'),
+        //     'pays' => $request->input('pays'),
+        //     'add1' => $request->input('add1'),
+        //     'add2' => $request->input('add2'),
+        //     'codepostale' => $request->input('codepostale'),
+        // ]);
+        $adresse= new Adresse();
+        $adresse->ville = $request->input('ville');
+        $adresse->region = $request->input('region');
+        $adresse->pays = $request->input('pays');
+        $adresse->add1 = $request->input('add1');
+        $adresse->add2 = $request->input('add2');
+        $adresse->codepostale = $request->input('codepostale');
+        $adresse->save();
+
+
+        $id = Recruteur::where('user_id',Auth::id())->first()->id;
+        // $offre = Offre::create([
+        //     'recruteur_id' => $id,
+        //     'adresse_id' => $adresse->id,
+        //     'description' => $request->input('description'),
+        //     'debut' => $request->input('debut'),
+        //     'fin' => $request->input('fin'),
+        //     'photo' => $imageName,
+        //     'categorie' => $request->input('categorie'),
+        //     'domaine' => $request->input('domaine'),
+        // ]);
+        $offre = new Offre();
+        $offre->recruteur_id = $id;
+        $offre->adresse_id = $adresse->id;
+        $offre->descriptionOffre = $request->input('descriptionOffre');
+        $offre->debut = $request->input('debut');
+        $offre->fin = $request->input('fin');
+        $offre->pathOffre = $imageName;
+        $offre->categorie = $request->input('categorie');
+        $offre->domaine = $request->input('domaine');
+        $offre->adresse()->associate($adresse);
+        $offre->save();
+
+        // Optionally, you can redirect the user to a success page or perform additional actions
+
+        return redirect()->back()->with('success', 'Experience added successfully.');
+
     }
 
 }
