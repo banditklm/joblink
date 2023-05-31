@@ -260,5 +260,19 @@ class UserController extends Controller
         return redirect()->back()->with('success', 'Experience added successfully.');
 
     }
+    public function searchOffre(Request $request)
+    {
+        $ville = $request->input('ville');
+        
+        $offres = Offre::join('adresses', 'offres.adresse_id', '=', 'adresses.id')
+            ->join('recruteurs', 'offres.recruteur_id', '=', 'recruteurs.id')
+            ->join('users', 'recruteurs.user_id', '=', 'users.id')
+            ->where('adresses.ville', $ville)
+            ->select('offres.*', 'users.nom','users.path','adresses.ville')
+            ->get();
+        // return $results;
+        
+        return view('search', compact('offres'));
+    }
 
 }

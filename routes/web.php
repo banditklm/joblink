@@ -17,9 +17,7 @@ use App\Http\Controllers\UserController;
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
-Route::get('/recherche', function () {
-    return view('search');
-})->name('search');
+
 
 Auth::routes();
 
@@ -37,6 +35,7 @@ Route::put('/users/{experience}/experiences-update', [UserController::class, 'ex
 Route::get('/experience', [UserController::class, 'testmodel'])->name('testmodel');
 // OFFRES
 Route::post('/offresStore', [UserController::class, 'offresStore'])->name('offres.store');
+Route::get('/recherche', [UserController::class, 'searchOffre'])->name('search.offers');
 
 
 

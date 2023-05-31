@@ -264,7 +264,7 @@
 @else
 <!-- Candidat Home -->
 <!-- Candidat offres table -->
-    <div class="container mt-3 mb-4">
+<div class="container mt-3 mb-4">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <table class="table table-info table-hover table-bordered border-primary">

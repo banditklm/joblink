@@ -29,7 +29,8 @@
             <h1 class="modal-title fs-5" id="staticBackdropLabel">Rechercher une Offre</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form>
+            <form action="{{ route('search.offers') }}" method="GET">
+                @csrf
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-6">
@@ -74,15 +75,15 @@
                             <input type="date" class="form-control mt-2 mb-2" name="debut" id="debut" style="height: 50px;" value="">
                             &nbsp;&nbsp;<label class="labels">Date de fin</label>
                             <input type="date" class="form-control mt-2 mb-2" name="fin" id="fin" style="height: 50px;" value="">
-                            <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                            <select type="text" name="ville" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
                                 <option selected>Emplacement</option>
-                                <option value="1">Casablanca</option>
-                                <option value="2">Eljadida</option>
-                                <option value="3">Rabat</option>
-                                <option value="3">Tanger</option>
-                                <option value="3">Safi</option>
-                                <option value="3">Tétouan</option>
-                                <option value="3">Ifrane</option>
+                                <option value="Casablanca">Casablanca</option>
+                                <option value="Eljadida">Eljadida</option>
+                                <option value="Rabat">Rabat</option>
+                                <option value="Tanger">Tanger</option>
+                                <option value="Safi">Safi</option>
+                                <option value="Tetouan">Tetouan</option>
+                                <option value="Ifrane">Ifrane</option>
                             </select>
                             &nbsp;&nbsp;<label class="labels">Mot Clés</label>
                             <input type="text" class="form-control mt-2 mb-2" name="text" id="text" style="height: 50px;" value="">
@@ -90,8 +91,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Retour</button>
-                    <button type="button" class="btn btn-primary">Rechercher</button>
+                    <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Retour</button>
+                    <button type="submit" class="btn btn-primary">Rechercher</button>
                 </div>
             </form> 
         </div>
@@ -99,14 +100,41 @@
     </div>
 <!--/Modal--> 
 <!-- Affihe Result Of Search -->
+@if($offres->isEmpty())
+        <p>No offers found for the specified location.</p>
+@else
+@foreach($offres as $offre)
             <div class="card w-100 mb-3">
                 <div class="card-body">
                     <div class="d-flex">
                         <div class="image-container">
-                            <img src="{{asset('assets/images/oracle.png')}}" alt="" class=" rounded-circle profile-pic mr-3">
+                            <img src="{{asset('assets/images/'.$offre->path)}}" alt="" class=" rounded-circle profile-pic mr-3">
                         </div>
                         <div class="d-grid gap-2 col-10 mx-auto">
-                            <div><h5>Oracle Corporation</h5></div>
+                            <div><h5></h5></div>
+                            <div>
+                                <span class="text-muted"> {{$offre->categorie}}. </span>
+                                <span class="text-muted"> {{$offre->domain}}. </span>
+                                <span class="text-muted">{{$offre->ville}} </span>
+                                <div class=" d-flex justify-content-end gap-2">
+                                    <span><a href="#"><button class="btn btn-outline-secondary btn-sm">Voir Offre</button></a></span>
+                                    <span><button class="btn btn-outline-secondary btn-sm">Postuler</button></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+@endforeach
+@endif
+            <!-- <div class="card w-100 mb-3">
+                <div class="card-body">
+                    <div class="d-flex">
+                        <div class="image-container">
+                            <img src="{{asset('assets/images/woman2.jpg')}}" alt="" class=" rounded-circle profile-pic mr-3">
+                        </div>
+                        <div class="d-grid gap-2 col-10 mx-auto">
+                            <div><h5>Google</h5></div>
                             <div>
                                 <span class="text-muted">categorie . </span>
                                 <span class="text-muted">Domain . </span>
@@ -119,28 +147,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="card w-100 mb-3">
-                <div class="card-body">
-                    <div class="d-flex">
-                        <div class="image-container">
-                            <img src="{{asset('assets/images/woman2.jpg')}}" alt="" class=" rounded-circle profile-pic mr-3">
-                        </div>
-                        <div class="d-grid gap-2 col-10 mx-auto">
-                            <div><h5>Google</h5></div>
-                            <div>
-                                <span class="text-muted">categorie . </span>
-                                <span class="text-muted">Domain . </span>
-                                <span class="text-muted">Emplacementt </span>
-                                <div class=" d-flex justify-content-end gap-2">
-                                    <span><a href="#"><button class="btn btn-outline-secondary btn-sm">Voir Offre</button></a></span>
-                                    <span><button class="btn btn-outline-secondary btn-sm">Postuler</button></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>
