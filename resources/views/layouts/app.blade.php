@@ -29,7 +29,7 @@
     <link href="{{asset('assets/css/home.css')}}" rel="stylesheet"> <!--add by me-->
     <link href="{{asset('assets/css/app.css')}}" rel="stylesheet"> <!--add by me-->
     <!-- <link href="{{asset('assets/css/apropos.css')}}" rel="stylesheet"> -->
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 </head>
 <body>

@@ -21,5 +21,9 @@ class Offre extends Model
     {
         return $this->belongsToMany(Candidat::class);
     }
+    public function candidatures()
+    {
+        return $this->hasMany(Candidature::class);
+    }
     use HasFactory;
 }
