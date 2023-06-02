@@ -11,6 +11,8 @@ use App\Models\Experience;
 use App\Models\Texperience;
 use App\Models\Offre;
 use App\Models\Adresse;
+use App\Models\Niveau;
+use App\Models\Dformation;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 class UserController extends Controller
@@ -31,6 +33,8 @@ class UserController extends Controller
                 ->orderBy('offres.created_at', 'desc')
 
                 ->get();
+                $niveaux = Niveau::all();
+                $dformations = Dformation::all();
 
         // return dd($offers);
 
@@ -38,6 +42,8 @@ class UserController extends Controller
         [
             'user'=> $user,
             'offers'=> $offers,
+            'niveaux'=>$niveaux,
+            'dformations'=>$dformations
 
         ]);
     }

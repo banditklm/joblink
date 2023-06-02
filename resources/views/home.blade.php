@@ -60,18 +60,16 @@
                                                             <option value="4">Emploi</option>
                                                         </select>
                                                         <select name="domaine" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                                                            <option selected>Niveau</option>
-                                                            <option value="Bac">Bac</option>
-                                                            <option value="Licence">Licence</option>
-                                                            <option value="Master">Master</option>
-                                                            <option value="4">Doctorat</option>
+                                                            <option selected disabled>Niveau</option>
+                                                            @foreach ($niveaux as $niveau)
+                                                            <option value="{{ $niveau->niveau }}">{{ $niveau->niveau }}</option>
+                                                            @endforeach
                                                         </select>
                                                         <select name="domaine" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
                                                             <option selected>Domaine</option>
-                                                            <option value="1">Data</option>
-                                                            <option value="2">Design</option>
-                                                            <option value="3">Web</option>
-                                                            <option value="4">Marketing</option>
+                                                            @foreach ($dformations as $dformation)
+                                                            <option value="{{ $dformation->nom }}">{{ $dformation->nom }}</option>
+                                                            @endforeach
                                                         </select>
                                                         <select name="domaine" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
                                                             <option selected>Domaine</option>
@@ -175,7 +173,7 @@
                 </div>
             </div>
 @endforeach
-            <div class="card w-100 mb-4">
+            <!-- <div class="card w-100 mb-4">
                 <div class="card-body">
                     <div class="head_post d-flex">
                         <div>
@@ -190,8 +188,6 @@
                             </button>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="#">supprimer l'offre</a></li>
-                                <!-- <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li> -->
                             </ul>
                         </div>
                     </div>
@@ -217,9 +213,8 @@
                         <a href="#" class="btn btn-outline-secondary btn-pill" >Voir Candidature</a>
                     </div>
                 </div>
-            </div>
-
-            
+            </div> -->
+   
 <!-- /afficher Offres -->
 <!-- Modal Candidature -->
             <div class="modal fade" id="modalCandidature" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -264,9 +259,9 @@
 @else
 <!-- Candidat Home -->
 <!-- Candidat offres table -->
-<div class="container mt-3 mb-4">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
+<!-- <div class="container mt-3 mb-4">
+        <div class="row justify-content-center"> -->
+            <!-- <div class="col-md-8">
                 <table class="table table-info table-hover table-bordered border-primary">
                     <thead>
                         <tr>
@@ -329,7 +324,7 @@
                         </tr>
                     </tbody>
                 </table>
-            </div>
+            </div> -->
 <div class="container mt-3 mb-4">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -454,9 +449,9 @@
     </div>
 <!-- Candidat offres Modle -->
 @foreach($offers as $offer)
-<div class="modal fade" id="exampleModal-{{ $offer->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
+    <div class="modal fade" id="exampleModal-{{ $offer->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
                 <div class="modal-body">
                     <div class="card w-100 mb-5">
                         <div class="card-body">
@@ -507,14 +502,6 @@
             </div>
         </div>
     </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
 @endforeach
 <script>
     function toggleButtons(id) {
