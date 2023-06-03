@@ -69,42 +69,53 @@
                                             <div class="modal-body">
                                                 <div class="row">
                                                     <div class="col-md-4">
-                                                        <select name="categorie" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                                                        <select id="categorie" name="categorie" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
                                                             <option selected>Catégorie</option>
-                                                            <option value="Etude">Etude</option>
-                                                            <option value="Formation">Formation</option>
-                                                            <option value="Stage">Stage</option>
-                                                            <option value="4">Emploi</option>
+                                                            <option value="etude">Etude</option>
+                                                            <option value="formation">Formation</option>
+                                                            <option value="stage">Stage</option>
+                                                            <option value="emploi">Emploi</option>
                                                         </select>
-                                                        <select name="domaine" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                                                        <select id="etude" onChange="change(this.value)" onChange="change(this.value)" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
                                                             <option selected>Niveau</option>
                                                             <option value="Bac">Bac</option>
                                                             <option value="Licence">Licence</option>
                                                             <option value="Master">Master</option>
-                                                            <option value="4">Doctorat</option>
+                                                            <option value="Doctorat">Doctorat</option>
                                                         </select>
-                                                        <select name="domaine" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                                                            <option selected>Domaine</option>
-                                                            <option value="1">Data</option>
-                                                            <option value="2">Design</option>
-                                                            <option value="3">Web</option>
-                                                            <option value="4">Marketing</option>
+                                                        <select id="formation" onChange="change(this.value)" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                                                            <option selected>Formation</option>
+                                                            <option value="Data">Data</option>
+                                                            <option value="Design">Design</option>
+                                                            <option value="Web">Web</option>
+                                                            <option value="Marketing">Marketing</option>
                                                         </select>
-                                                        <select name="domaine" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                                                            <option selected>Domaine</option>
-                                                            <option value="1">Technologie</option>
-                                                            <option value="2">Finance</option>
-                                                            <option value="3">Ingénierie</option>
-                                                            <option value="4">Tourisme</option>
+                                                        <select id="stage" onChange="change(this.value)" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                                                            <option selected>Stage</option>
+                                                            <option value="Technologie">Technologie</option>
+                                                            <option value="Finance">Finance</option>
+                                                            <option value="Ingenierie">Ingénierie</option>
+                                                            <option value="Tourisme">Tourisme</option>
                                                         </select>
-                                                        <select name="domaine" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                                                            <option selected>Domaine</option>
-                                                            <option value="1">Technologie</option>
-                                                            <option value="2">comptabilité</option>
-                                                            <option value="3">Ingénierie</option>
-                                                            <option value="4">hôtellerie </option>
+                                                        <select id="emploi" onChange="change(this.value)" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                                                            <option selected>Emploi</option>
+                                                            <option value="Technologie">Technologie</option>
+                                                            <option value="Finance">Finance</option>
+                                                            <option value="Ingenierie">Ingénierie</option>
+                                                            <option value="Tourisme">Tourisme</option>
                                                         </select>
-
+                                                        <input type="hidden" name="domaine" value="">
+                                                    <script>
+                                                        function change(value){
+                                                            $('input[name=domaine]').val(value);
+                                                        }
+                                                        $('#categorie').on('change', function() {
+                                                            var selectedCategorie = $(this).val();
+                                                            $('#etude, #formation, #stage, #emploi').hide();
+                                                            $('#' + selectedCategorie).show();
+                                                            $('input[name=domaine]').val($('#categorie').val());
+                                                        });
+                                                    </script>
                                                     </div>
                                                     <div class="col-md-4">
                                                         <textarea name="descriptionOffre" id="description" cols="39" rows="3" placeholder="Ajouter quelque chose!"></textarea>
@@ -152,7 +163,7 @@
 <!-- Afficher Offres by table -->
 
 <!-- Afficher Offres -->
-@foreach($offers as $offer)          
+    @foreach($offers as $offer)          
             <div class="card w-100 mb-4">
                 <div class="card-body">
                     <div class="head_post d-flex">
@@ -191,7 +202,7 @@
                     </div>
                 </div>
             </div>
-@endforeach
+    @endforeach
             <div class="card w-100 mb-4">
                 <div class="card-body">
                     <div class="head_post d-flex">
@@ -280,13 +291,65 @@
     </div>
 @else
 <!-- Candidat Home -->
+
+<!-- Candidat voir offres -->
+@foreach($offers as $offer)
+<div class="modal fade" id="exampleModal-{{ $offer->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+            <div class="card w-100 mb-4">
+                <div class="card-body">
+                    <div class="head_post d-flex">
+                        <div>
+                            <img src="{{ asset('assets/images/'.$offer->path)}}" class="rounded-circle profile-pic mr-3" alt="profil_img">
+                        </div>
+                        <div>
+                            <h5 class="mb-0 mt-3 ms-2 font-weight-normal">{{ $offer->nom }}</h5>
+                        </div> 
+                        <div class="dropdown">
+                            <button class="btn point" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Signaler l'offre</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center gap-3">
+                        <span class="text text-muted">#{{ $offer->categorie }}</span>
+                        <span class="text text-muted">#{{ $offer->domaine }}</span>
+                        <span class="text text-muted">#{{ $offer->ville }}</span>
+                    </div>
+                    <div>
+                        <span class="text text-muted">From: {{ $offer->debut}}</span><br>
+                        <span class="text text-muted">To: {{ $offer->fin }}</span>
+                    </div>
+                    <div>
+                        <p>{{ $offer->descriptionOffre }}</p>
+                    </div>
+                    <div class="w-100" style="display:flex;">
+                        <img src="{{ asset('assets/images/'.$offer->pathOffre)}}" alt="" class="w-50" style="max-height: 250px;display: block; margin: 0 auto;">
+                    </div>
+                </div>
+            </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">POSTULER</button>
+      </div>
+    </div>
+  </div>
+</div>
+@endforeach
 <!-- Candidat offres table -->
-
-
-
 <div class="container mt-3 mb-4">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
         <table style="background:#cff4fc;" class="table table-info table-hover table-bordered border-primary">
             <thead>
                 <tr>
@@ -303,8 +366,8 @@
                     <td>{{ $offer->domaine }}-{{ $offer->id }}</td>
                     <td>{{ $offer->city }}</td>
                     <td style="display:flex;gap:20px;">
-                        <form action="{{ route('candidatures.store') }}" method="POST">
                         <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal-{{ $offer->id }}">Voir Offre</button>
+                        <form action="{{ route('candidatures.store') }}" method="POST">
                             @csrf
                             <input type="hidden" name="offre_id" value="{{ $offer->id }}">
                             <button tupe="submit"  id="post-{{ $offer->id }}" class="btn btn-primary btn-sm" onclick="toggleButtons({{ $offer->id }})">Postuler</button>
