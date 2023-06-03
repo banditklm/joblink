@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use App\Models\User;
 use App\Models\Candidat;
 use App\Models\Candidature;
@@ -20,6 +21,15 @@ class UserController extends Controller
     public function __construct()
     {
        $this->middleware('auth');
+    }
+    public function getRoleId(){
+        $id = Auth::id();
+        $role = User::find($id)->role;
+        if($role == 2)
+        return Candidat::where('user_id',$id)->first()->id;
+        else if($role == 3)
+        return Recruteur::where('user_id',$id)->first()->id;
+        else return NULL;
     }
     public function index()
     {
@@ -50,6 +60,7 @@ class UserController extends Controller
     public function display()
     {
         // $user = Recruteur::with('user')->find(1);
+        return $this->getRoleId();
         $user = User::with('adresse')->find(4);
         $id = Auth::id();
         return $id;
@@ -57,7 +68,7 @@ class UserController extends Controller
 
         // return $info;
 
-        $mesCandidatures = Candidature::with('offre')->find(1);
+        $mesCandidatures = Candidature::with('offre')->find($this->getRoleId());
         $mesCandidatures = Candidature::with('offre')->get();
         // $recruteurs = Recruteur::find(1);
 
@@ -71,13 +82,17 @@ class UserController extends Controller
 
         $id = Auth::id();
         $user= User::find($id);
-        $candidate = Candidat::where('user_id',$id)->first();
+        $candidate = Candidat::find($this->getRoleId());
         $experiences = $candidate->experiences;
         $texperiences = Texperience::all();
         // return $experiences;
         // return $experiences;
         // $experiences = Experience::all();
-        return view('cv', ['user'=> $user,'experiences'=> $experiences,'texperiences'=> $texperiences]);
+        return view('cv',
+         ['user'=> $user,
+         'experiences'=> $experiences,
+         'texperiences'=> $texperiences
+        ]);
     }
     public function apropos()
     {   
@@ -95,15 +110,20 @@ class UserController extends Controller
         $role = Auth::user()->role;
         if($role == 2){
             $user= User::find($id);
-            $info= Candidat::where('user_id',$id)->first();
-            // return $info/;
+            $info= Candidat::find($this->getRoleId());
+            $mesCandidatures = Candidature::join('offres', 'Candidatures.offre_id','=','offres.id')
+            ->where("candidat_id",$this->getRoleId())
+            ->select('offres.*')
+            ->get();
+            // return $mesCandidatures;
             return view('profile', 
             [
                 'user'=> $user,
-                'info'=> $info
+                'info'=> $info,
+                'mesCandidatures'=>$mesCandidatures
             ]);
         }else if($role == 3) {
-            $info= Recruteur::where('user_id',$id)->first();
+            $info= Recruteur::find($this->getRoleId());
             // return dd($info);
             $user= User::find($id);
             return view('profile', 
@@ -194,7 +214,7 @@ class UserController extends Controller
     public function testmodel(){
         return $experiences = Texperience::all();
     }
-    // OOFRES
+    // OFFRES
     public function offresStore(Request $request)
     {
         // $request->validate([
@@ -251,6 +271,7 @@ class UserController extends Controller
         // ]);
         $offre = new Offre();
         $offre->recruteur_id = $id;
+        $offre->city = $request->input('ville');
         $offre->adresse_id = $adresse->id;
         $offre->descriptionOffre = $request->input('descriptionOffre');
         $offre->debut = $request->input('debut');
@@ -263,7 +284,7 @@ class UserController extends Controller
 
         // Optionally, you can redirect the user to a success page or perform additional actions
 
-        return redirect()->back()->with('success', 'Experience added successfully.');
+        return redirect()->back()->with('success', 'Your Offre added successfully.');
 
     }
     public function searchOffre(Request $request)
@@ -280,5 +301,40 @@ class UserController extends Controller
         
         return view('search', compact('offres'));
     }
+    //Candidatures
+    public function storeCandidature(Request $request)
+    {
+        $offreId = $request->input('offre_id');
+        $candidatId = $this->getRoleId();
+        $state = 'En attente';
+
+        // Save the candidature
+        $candidature = new Candidature();
+        $candidature->offre_id = $offreId;
+        $candidature->candidat_id = $candidatId;
+        $candidature->etat = $state;
+        $candidature->save();
+
+        // Send a notification to the recruiter
+        // $this->sendNotification('recruteur', 'You have a new candidate.');
+
+        // Redirect or display a success message
+        return redirect()->back()->with('success', 'Candidature added successfully.');
+    }
+    //delete Candidatures
+    public function deleteCandidature(Request $request)
+    {
+        // Delete the candidature
+        // return $request->offre_id;
+        $candidature = Candidature::where('offre_id',$request->offre_id)->first();
+        if ($candidature) {
+            // Delete the candidature
+            $candidature->delete();
+        // Redirect or display a success message
+        return redirect()->back()->with('success', 'Candidature deleted successfully.');
+        }
+    }
+
+
 
 }

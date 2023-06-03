@@ -16,6 +16,10 @@ class Candidat extends Model
     {
         return $this->belongsToMany(Offre::class);
     }
+    public function candidatures()
+    {
+        return $this->hasMany(Candidature::class);
+    }
     use HasFactory;
     protected $casts = [
         'email_verified_at' => 'datetime',
