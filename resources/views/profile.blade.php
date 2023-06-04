@@ -307,6 +307,7 @@
                     <thead>
                         <tr>
                             <th scope="col">Recruteur</th>
+                            <th scope="col">Image</th>
                             <th scope="col">Domaine</th>
                             <th scope="col">Emplacement</th>
                             <th scope="col">Etat</th>
@@ -316,8 +317,9 @@
                     <tbody>
                     @foreach($mesCandidatures as $offer)
                         <tr>
+                            <td>{{ $offer->ville }}</td>
                             <th scope="row" class="img"><img src="{{ asset('assets/images/'.$offer->pathOffre)}}" alt="no image"></th>
-                            <td>{{ $offer->domaine }}-{{ $offer->id }}</td>
+                            <td>{{ $offer->domaine }}</td>
                             <td>{{ $offer->ville }}</td>
                             <td>En attend</td>
                             <td style="display:flex;gap:20px;">
