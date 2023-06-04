@@ -56,18 +56,16 @@
                                                             <option value="emploi">Emploi</option>
                                                         </select>
                                                         <select id="etude" onChange="change(this.value)" onChange="change(this.value)" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                                                            <option selected>Niveau</option>
-                                                            <option value="Bac">Bac</option>
-                                                            <option value="Licence">Licence</option>
-                                                            <option value="Master">Master</option>
-                                                            <option value="Doctorat">Doctorat</option>
+                                                        <option selected disabled>Niveau</option>
+                                                            @foreach ($niveaux as $niveau)
+                                                            <option value="{{ $niveau->niveau }}">{{ $niveau->niveau }}</option>
+                                                            @endforeach
                                                         </select>
                                                         <select id="formation" onChange="change(this.value)" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                                                            <option selected>Formation</option>
-                                                            <option value="Data">Data</option>
-                                                            <option value="Design">Design</option>
-                                                            <option value="Web">Web</option>
-                                                            <option value="Marketing">Marketing</option>
+                                                            <option selected disabled>Domaine</option>
+                                                            @foreach ($dformations as $dformation)
+                                                            <option value="{{ $dformation->nom }}">{{ $dformation->nom }}</option>
+                                                            @endforeach
                                                         </select>
                                                         <select id="stage" onChange="change(this.value)" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
                                                             <option selected>Stage</option>

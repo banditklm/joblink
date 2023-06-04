@@ -60,6 +60,21 @@ class UserController extends Controller
     public function display()
     {
         // $user = Recruteur::with('user')->find(1);
+        // $niveaux = Niveau::all();
+        // $dformations = Dformation::all();
+        $res = [
+'Data',
+'Design',
+'Web',
+'Marketing',
+'Game',
+];
+        for($i=0; $i < count($res);$i++){
+            $niveaux = new Dformation();
+            $niveaux->name = $res[$i];
+            $niveaux->save();
+        }
+        return "niveau has been selected";
         return $this->getRoleId();
         $user = User::with('adresse')->find(4);
         $id = Auth::id();
