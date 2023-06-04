@@ -48,40 +48,53 @@
                                             <div class="modal-body">
                                                 <div class="row">
                                                     <div class="col-md-4">
-                                                        <select name="categorie" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                                                        <select id="categorie" name="categorie" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
                                                             <option selected>Catégorie</option>
-                                                            <option value="Etude">Etude</option>
-                                                            <option value="Formation">Formation</option>
-                                                            <option value="Stage">Stage</option>
-                                                            <option value="4">Emploi</option>
+                                                            <option value="etude">Etude</option>
+                                                            <option value="formation">Formation</option>
+                                                            <option value="stage">Stage</option>
+                                                            <option value="emploi">Emploi</option>
                                                         </select>
-                                                        <select name="domaine" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                                                            <option selected disabled>Niveau</option>
-                                                            @foreach ($niveaux as $niveau)
-                                                            <option value="{{ $niveau->niveau }}">{{ $niveau->niveau }}</option>
-                                                            @endforeach
+                                                        <select id="etude" onChange="change(this.value)" onChange="change(this.value)" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                                                            <option selected>Niveau</option>
+                                                            <option value="Bac">Bac</option>
+                                                            <option value="Licence">Licence</option>
+                                                            <option value="Master">Master</option>
+                                                            <option value="Doctorat">Doctorat</option>
                                                         </select>
-                                                        <select name="domaine" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                                                            <option selected>Domaine</option>
-                                                            @foreach ($dformations as $dformation)
-                                                            <option value="{{ $dformation->nom }}">{{ $dformation->nom }}</option>
-                                                            @endforeach
+                                                        <select id="formation" onChange="change(this.value)" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                                                            <option selected>Formation</option>
+                                                            <option value="Data">Data</option>
+                                                            <option value="Design">Design</option>
+                                                            <option value="Web">Web</option>
+                                                            <option value="Marketing">Marketing</option>
                                                         </select>
-                                                        <select name="domaine" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                                                            <option selected>Domaine</option>
-                                                            <option value="1">Technologie</option>
-                                                            <option value="2">Finance</option>
-                                                            <option value="3">Ingénierie</option>
-                                                            <option value="4">Tourisme</option>
+                                                        <select id="stage" onChange="change(this.value)" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                                                            <option selected>Stage</option>
+                                                            <option value="Technologie">Technologie</option>
+                                                            <option value="Finance">Finance</option>
+                                                            <option value="Ingenierie">Ingénierie</option>
+                                                            <option value="Tourisme">Tourisme</option>
                                                         </select>
-                                                        <select name="domaine" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                                                            <option selected>Domaine</option>
-                                                            <option value="1">Technologie</option>
-                                                            <option value="2">comptabilité</option>
-                                                            <option value="3">Ingénierie</option>
-                                                            <option value="4">hôtellerie </option>
+                                                        <select id="emploi" onChange="change(this.value)" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                                                            <option selected>Emploi</option>
+                                                            <option value="Technologie">Technologie</option>
+                                                            <option value="Finance">Finance</option>
+                                                            <option value="Ingenierie">Ingénierie</option>
+                                                            <option value="Tourisme">Tourisme</option>
                                                         </select>
-
+                                                        <input type="hidden" name="domaine" value="">
+                                                    <script>
+                                                        function change(value){
+                                                            $('input[name=domaine]').val(value);
+                                                        }
+                                                        $('#categorie').on('change', function() {
+                                                            var selectedCategorie = $(this).val();
+                                                            $('#etude, #formation, #stage, #emploi').hide();
+                                                            $('#' + selectedCategorie).show();
+                                                            $('input[name=domaine]').val($('#categorie').val());
+                                                        });
+                                                    </script>
                                                     </div>
                                                     <div class="col-md-4">
                                                         <textarea name="descriptionOffre" id="description" cols="39" rows="3" placeholder="Ajouter quelque chose!"></textarea>
@@ -168,8 +181,51 @@
                 </div>
             </div>
     @endforeach
-           
-   
+            <div class="card w-100 mb-4">
+                <div class="card-body">
+                    <div class="head_post d-flex">
+                        <div>
+                            <img src="{{ asset('assets/images/woman.jpg')}}" class="rounded-circle profile-pic mr-3" alt="profil_img">
+                        </div>
+                        <div>
+                            <h5 class="mb-0 mt-3 ms-2 font-weight-normal">Oracle Corporation</h5>
+                        </div> 
+                        <div class="dropdown">
+                            <button class="btn point" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">supprimer l'offre</a></li>
+                                <!-- <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li> -->
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center gap-3">
+                        <span class="text text-muted">#Formation</span>
+                        <span class="text text-muted">#Web</span>
+                        <span class="text text-muted">#Casablanca</span>
+                    </div>
+                    <div>
+                        <span class="text text-muted">From: 12-05-2023</span><br>
+                        <span class="text text-muted">To: 12-06-2023</span>
+                    </div>
+                    <div>
+                        <p>𝙂𝙤𝙤𝙜𝙡𝙚 𝘽𝙖𝙧𝙙 𝘼𝙄 is an incredibly powerful tool that can help digital marketers to create high-quality content, engage with customers more effectively, gain valuable insights into customer behavior, and save time.
+                                As AI technology continues to evolve, 𝘽𝙖𝙧𝙙 will undoubtedly become an even more essential tool for businesses looking to stay ahead of the curve and thrive in an increasingly competitive digital landscape.
+                            Try for free: https://www.bardaiinsights.co
+                        </p>
+                    </div>
+                    <div>
+                        <img src="{{ asset('assets/photos/google.jpg')}}" alt="" class="w-100 h-auto">
+                    </div>
+                    <div class="fiter d-flex mt-3">
+                        <a href="#" class="btn btn-outline-secondary btn-pill" >Voir Candidature</a>
+                    </div>
+                </div>
+            </div>
+
+            
 <!-- /afficher Offres -->
 <!-- Modal Candidature -->
             <div class="modal fade" id="modalCandidature" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -214,15 +270,70 @@
     </div>
 @else
 <!-- Candidat Home -->
+
+<!-- Candidat voir offres -->
+@foreach($offers as $offer)
+<div class="modal fade" id="exampleModal-{{ $offer->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+            <div class="card w-100 mb-4">
+                <div class="card-body">
+                    <div class="head_post d-flex">
+                        <div>
+                            <img src="{{ asset('assets/images/'.$offer->path)}}" class="rounded-circle profile-pic mr-3" alt="profil_img">
+                        </div>
+                        <div>
+                            <h5 class="mb-0 mt-3 ms-2 font-weight-normal">{{ $offer->nom }}</h5>
+                        </div> 
+                        <div class="dropdown">
+                            <button class="btn point" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Signaler l'offre</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center gap-3">
+                        <span class="text text-muted">#{{ $offer->categorie }}</span>
+                        <span class="text text-muted">#{{ $offer->domaine }}</span>
+                        <span class="text text-muted">#{{ $offer->ville }}</span>
+                    </div>
+                    <div>
+                        <span class="text text-muted">From: {{ $offer->debut}}</span><br>
+                        <span class="text text-muted">To: {{ $offer->fin }}</span>
+                    </div>
+                    <div>
+                        <p>{{ $offer->descriptionOffre }}</p>
+                    </div>
+                    <div class="w-100" style="display:flex;">
+                        <img src="{{ asset('assets/images/'.$offer->pathOffre)}}" alt="" class="w-50" style="max-height: 250px;display: block; margin: 0 auto;">
+                    </div>
+                </div>
+            </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+        <button type="button" class="btn btn-primary">Postuler</button>
+      </div>
+    </div>
+  </div>
+</div>
+@endforeach
 <!-- Candidat offres table -->
 <div class="container mt-3 mb-4">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
         <table style="background:#cff4fc;" class="table table-info table-hover table-bordered border-primary">
             <thead>
                 <tr>
-                    <th scope="col">Entreprise</th>
-                    <th scope="col">DOMAINE</th>
+                    <th scope="col">Recruteur</th>
+                    <th scope="col">Domaine</th>
+                    <th scope="col">Catégorie</th>
                     <th scope="col">Emplacement</th>
                     <th scope="col"></th>
                 </tr>
@@ -232,10 +343,11 @@
                 <tr>
                     <th scope="row" class="img"><img src="{{ asset('assets/images/'.$offer->path)}}" alt="" class="rounded-circle"></th>
                     <td>{{ $offer->domaine }}-{{ $offer->id }}</td>
+                    <td>{{ $offer->categorie }}-{{ $offer->id }}</td>
                     <td>{{ $offer->city }}</td>
                     <td style="display:flex;gap:20px;">
+                        <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal-{{ $offer->id }}">Voir Offre</button>
                         <form action="{{ route('candidatures.store') }}" method="POST">
-                            <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#VoirOffre-{{ $offer->id }}">Voir Offre</button>
                             @csrf
                             <input type="hidden" name="offre_id" value="{{ $offer->id }}">
                             <button tupe="submit"  id="post-{{ $offer->id }}" class="btn btn-primary btn-sm" onclick="toggleButtons({{ $offer->id }})">Postuler</button>

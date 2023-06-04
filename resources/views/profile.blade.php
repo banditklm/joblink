@@ -294,11 +294,11 @@
 
             </div>
         </div>
-        <h1>Mes candidatures</h1>
+        <!-- <h1 class="text-center">Mes candidatures</h1><br><br><br><br> -->
 <!-- Candidat offres table -->
 
 @if($mesCandidatures->isEmpty())
-        <h3>No Candidatures found ...</h3>
+        <h3 class="text-center">Aucune candidature trouvée ...</h3>
 @else
     <div class="container mt-3 mb-4">
         <div class="row justify-content-center">
@@ -318,7 +318,8 @@
                         <tr>
                             <th scope="row" class="img"><img src="{{ asset('assets/images/'.$offer->pathOffre)}}" alt="no image"></th>
                             <td>{{ $offer->domaine }}-{{ $offer->id }}</td>
-                            <td>{{ $offer->city }}</td>
+                            <td>{{ $offer->ville }}</td>
+                            <td>En attend</td>
                             <td style="display:flex;gap:20px;">
                                 <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal-{{ $offer->id }}">Voir Offre</button>
                                 <form action="{{ route('candidatures.delete', $offer->id) }}" method="POST">

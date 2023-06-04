@@ -201,3 +201,15 @@ Model name is Adresse already exist
                         </div>
                     </div>
                 </div>
+
+
+
+
+
+
+
+                <form action="{{ route('candidatures.store') }}" method="POST">
+                            <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#VoirOffre-{{ $offer->id }}">Voir Offre</button>
+=======
+                        <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal-{{ $offer->id }}">Voir Offre</button>
+                        <form action="{{ route('candidatures.store') }}" method="POST">
