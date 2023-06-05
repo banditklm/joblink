@@ -18,7 +18,7 @@ use App\Models\Diplome;
 use App\Models\Tdiplome;
 use App\Models\Competence;
 use App\Models\Referenece;
-
+use App\Models\Sauvgarde;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 class UserController extends Controller
@@ -64,41 +64,25 @@ class UserController extends Controller
     }
     public function display()
     {
-        $res = [
-            'Data',
-            'Design',
-            'Web',
-            'Marketing',
-            'Game',
-            ];
-            for($i=0; $i < count($res);$i++){
-                        $niveaux = new Dformation();
-                        $niveaux->nom = $res[$i];
-                        // $niveaux->save();
-                    }
-                    // return "dformation has been selected";
-        // $user = Recruteur::with('user')->find(1);
-        // $niveaux = Niveau::all();
-        // $dformations = Dformation::all();
 
 
         
-        $res = [
-'BAC',
-'DEUG',
-'DUST',
-'DUT',
-'LICENCE',
-'MASTER',
-'DOCTORAT',
-];
+                    $res = [
+            'BAC',
+            'DEUG',
+            'DUST',
+            'DUT',
+            'LICENCE',
+            'MASTER',
+            'DOCTORAT',
+            ];
         for($i=0; $i < count($res);$i++){
             $niveaux = new Tdiplome();
             $niveaux->title = $res[$i];
             $niveaux->save();
         }
 
-        return "niveau has been selected";
+        return " Tdiplome has been selected";
         return $this->getRoleId();
         $user = User::with('adresse')->find(4);
         $id = Auth::id();
@@ -154,12 +138,20 @@ class UserController extends Controller
             ->where("candidat_id",$this->getRoleId())
             ->select('offres.*','Candidatures.etat')
             ->get();
+            $offers = Sauvgarde::where('candidat_id', $this->getRoleId())
+            ->join('offres', 'Sauvgardes.offre_id', '=', 'offres.id')
+            ->join('recruteurs', 'offres.recruteur_id', '=', 'recruteurs.id')
+            ->join('users', 'recruteurs.user_id', '=', 'users.id')
+            ->select('offres.*', 'users.nom','users.path')
+                ->orderBy('offres.created_at', 'desc')
+            ->get();
             // return $mesCandidatures;
             return view('profile', 
             [
                 'user'=> $user,
                 'info'=> $info,
-                'mesCandidatures'=>$mesCandidatures
+                'mesCandidatures'=>$mesCandidatures,
+                'offers'=>$offers,
             ]);
         }else if($role == 3) {
             $info= Recruteur::find($this->getRoleId());
