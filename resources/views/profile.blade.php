@@ -294,7 +294,6 @@
 
             </div>
         </div>
-        <!-- <h1 class="text-center">Mes candidatures</h1><br><br><br><br> -->
 <!-- Candidat offres table -->
 <h1 id="Mescandidatures">Mes Candidatures</h1>
 @if($mesCandidatures->isEmpty())
@@ -341,31 +340,6 @@
     </div>
 @endif
 <!-- Mes Candidature -->
-        <div class="row justify-content-center" id="Mescandidaturs">
-            <div class="col-md-8">
-                <div class="card w-100 mb-5">
-                    <div class="card-body d-flex gap-5">
-                        <div class="d-flex">
-                            <div>
-                                <img src="{{ asset('assets/images/oracle.png')}}" class="rounded-circle profile-pic mr-3" alt="profil_img">
-                            </div>
-                            <div>
-                                <h5 class="mb-0 mt-3 ms-2 font-weight-normal">Oracle Corporation</h5>
-                            </div>
-                        </div>
-                        <div class="d-flex gap-2">
-                            <span class="mt-2 fs-6 border-end border-secondary p-2">Categorie</span>
-                            <span class="mt-2 fs-6 border-end border-secondary p-2">Domaine</span>
-                            <span class="mt-2 fs-6 border-end border-secondary p-2">Emplacement</span>
-                            <span class="mt-2 fs-6 p-2">Etat</span>
-                        </div>
-                        <div>
-                            <button class="btn btn-outline-secondary btn-sm mt-2">Annuler</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>  
     </div>
 
 <h1 id="messauvgardes">Mes Sauvgardes</h1>
@@ -475,7 +449,7 @@
                     <nav aria-label="breadcrumb" class="main-breadcrumb">
                         <ul class="nav nav-tabs">
                                 <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="#">Mes Post</a>
+                                    <a class="nav-link active" aria-current="page" href="#mespost">Mes Post</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{route('apropos')}}">A propos</a>
@@ -552,8 +526,6 @@
                                             <h4>{{$user->nom}} {{$user->prenom}}</h4>
                                             <p class="text-secondary mb-1">{{$user->domaine}}</p>
                                             <p class="text-muted font-size-sm">{{$user->adresse}}</p>
-                                            <!-- <button class="btn btn-primary">Follow</button>
-                                            <button class="btn btn-outline-primary">Message</button> -->
                                         </div>
                                     </div>
                                 </div>
@@ -722,7 +694,7 @@
             </div>
         </div>
 <!-- /Recruteur -->
-<h1>Mes Post</h1>
+<h1 id="mespost">Mes Post</h1>
 <!-- Afficher Offres -->
 <div class="container ">
     <div class="row justify-content-center">
@@ -770,6 +742,45 @@
 @endforeach
     </div>
 </div>
+<!-- Modal Candidature -->
+            <div class="modal fade" id="modalCandidature" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-xl modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Les Candidatures</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <form action="">
+                            <div class="modal-body">
+                                <div class="card w-100">
+                                    <div class="card-body">
+                                        <div class="candidature d-flex">
+                                            <div class="d-flex">
+                                                <div>
+                                                    <img src="{{ asset('assets/images/cat.jpg')}}" class="rounded-circle profile-pic mr-3" alt="profil_img">
+                                                </div>
+                                                <div>
+                                                    <h5 class="mb-0 mt-3 ms-2 font-weight-normal">Kaltoum Elmounjid</h5>
+                                                </div> 
+                                            </div>
+                                            <div class="d-flex gap-2 justify-content-end">
+                                                <div><a href=""><button class="btn btn-outline-secondary btn-sm mt-2"><i class="fa-solid fa-eye"></i> Voir Profile</button></a></div>
+                                                <div><button class="btn btn-outline-secondary btn-sm mt-2"><i class="fa-solid fa-handshake"></i> Demandé à le voir</button></div>
+                                                <div><button class="btn btn-outline-success btn-sm mt-2"><i class="fa-solid fa-circle-check"></i> Accepter</button></div>
+                                                <div><button class="btn btn-outline-danger btn-sm mt-2"><i class="fa-solid fa-xmark"></i> Rejeter</button></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+<!-- /modal candidature -->
 @endif
 
 
