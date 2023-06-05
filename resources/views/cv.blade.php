@@ -135,7 +135,7 @@
                                             <label for="Title">Type Experience</label>
                                             <select name="title" id="Title" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" required>
                                             @foreach ($texperiences as $texperience)
-                                                <option value="{{ $texperience->name }}">{{ $texperience->name }}</option>
+                                                <option value="{{ $texperience->title }}">{{ $texperience->title }}</option>
                                             @endforeach
                                             </select>
                                         </div>
