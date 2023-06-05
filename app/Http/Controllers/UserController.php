@@ -128,7 +128,7 @@ class UserController extends Controller
             $info= Candidat::find($this->getRoleId());
             $mesCandidatures = Candidature::join('offres', 'Candidatures.offre_id','=','offres.id')
             ->where("candidat_id",$this->getRoleId())
-            ->select('offres.*')
+            ->select('offres.*','Candidatures.etat')
             ->get();
             // return $mesCandidatures;
             return view('profile', 

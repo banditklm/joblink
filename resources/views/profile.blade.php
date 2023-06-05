@@ -44,7 +44,7 @@
                     <a class="nav-link text text-dark" href="{{route('monCv')}}">Mon CV</a>
                 </li>
                 <li class="nav-item btn">
-                    <a class="nav-link text text-dark" href="#">Mes sauvgardes</a>
+                    <a class="nav-link text text-dark" href="#messauvgardes">Mes sauvgardes</a>
                 </li>
                 <li class="nav-item dropdown btn">
                 <!-- Button trigger modal -->
@@ -296,7 +296,7 @@
         </div>
         <!-- <h1 class="text-center">Mes candidatures</h1><br><br><br><br> -->
 <!-- Candidat offres table -->
-
+<h1 id="Mescandidatures">Mes Candidatures</h1>
 @if($mesCandidatures->isEmpty())
         <h3 class="text-center">Aucune candidature trouvée ...</h3>
 @else
@@ -306,22 +306,23 @@
                 <table style="background:#cff4fc;" class="table table-info table-hover table-bordered border-primary">
                     <thead>
                         <tr>
-                            <th scope="col">Recruteur</th>
-                            <th scope="col">Image</th>
+                            <th scope="col">Offres</th>
+                            <th scope="col">Categorie</th>
                             <th scope="col">Domaine</th>
                             <th scope="col">Emplacement</th>
                             <th scope="col">Etat</th>
-                            <th scope="col"></th>
+                            <th scope="col">...</th>
                         </tr>
                     </thead>
                     <tbody>
                     @foreach($mesCandidatures as $offer)
                         <tr>
-                            <td>{{ $offer->ville }}</td>
+                            <!-- <td>{{ $offer->ville }}</td> -->
                             <th scope="row" class="img"><img src="{{ asset('assets/images/'.$offer->pathOffre)}}" alt="no image"></th>
+                            <td>{{ $offer->categorie }}</td>
                             <td>{{ $offer->domaine }}</td>
-                            <td>{{ $offer->ville }}</td>
-                            <td>En attend</td>
+                            <td>{{ $offer->city }}</td>
+                            <td>{{ $offer->etat }}</td>
                             <td style="display:flex;gap:20px;">
                                 <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal-{{ $offer->id }}">Voir Offre</button>
                                 <form action="{{ route('candidatures.delete', $offer->id) }}" method="POST">
@@ -367,6 +368,7 @@
         </div>  
     </div>
 <!-- /Candidat -->
+<h1 id="messauvgardes">Mes Sauvgardes</h1>
 @else
 <!-- Recruteur -->
     <div class="container mt-4">
