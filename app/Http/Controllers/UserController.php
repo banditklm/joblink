@@ -160,6 +160,7 @@ class UserController extends Controller
                 ->join('adresses', 'offres.adresse_id', '=', 'adresses.id')
                 ->select('offres.*', 'users.nom','users.path','adresses.ville')
                 ->where('recruteurs.id',$this->getRoleId())
+<<<<<<< HEAD
                 ->orderBy('offres.created_at', 'desc')->get();
                 // return dd($info);
                 $user= User::find($id);
@@ -169,6 +170,18 @@ class UserController extends Controller
                     'info'=> $info,
                     'offers'=> $offers
                 ]);
+=======
+                ->orderBy('offres.created_at', 'desc')
+                ->get();
+            // return dd($info);
+            $user= User::find($id);
+            return view('profile', 
+            [
+                'user'=> $user,
+                'info'=> $info,
+                'offers'=> $offers
+            ]);
+>>>>>>> d472bd9d6a9682d0ecba2717a579af9e6b37b66a
         }else {
             $user= User::find($id);
             return view('admine', ['user'=> $user]);
@@ -375,7 +388,27 @@ class UserController extends Controller
         return redirect()->back()->with('success', 'Candidature deleted successfully.');
         }
     }
+<<<<<<< HEAD
     
+=======
+    //sauvgard
+    public function createSauvgarde(Request $request)
+    {
+        $sauvgarde = Sauvgarde::create([
+            'candidat_id' => $this->getRoleId(),
+            'offre_id' => $request->input('offre_id')
+        ]);
+        // $sauvgarde = new Sauvgarde();
+        // $sauvgarde->offre_id = ;
+        // $sauvgarde->offre_id = ;
+
+        if ($sauvgarde) {
+            return redirect()->back()->with('success', 'Offer saved successfully.');
+        }
+
+        return redirect()->back()->with('error', 'Failed to save offer.');
+    }
+>>>>>>> d472bd9d6a9682d0ecba2717a579af9e6b37b66a
 
 
 
