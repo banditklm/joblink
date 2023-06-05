@@ -155,13 +155,21 @@ class UserController extends Controller
             ]);
         }else if($role == 3) {
             $info= Recruteur::find($this->getRoleId());
-            // return dd($info);
-            $user= User::find($id);
-            return view('profile', 
-            [
-                'user'=> $user,
-                'info'=> $info
-            ]);
+            $offers = Offre::join('recruteurs', 'offres.recruteur_id', '=', 'recruteurs.id')
+                ->join('users', 'recruteurs.user_id', '=', 'users.id')
+                ->join('adresses', 'offres.adresse_id', '=', 'adresses.id')
+                ->select('offres.*', 'users.nom','users.path','adresses.ville')
+                ->where('recruteurs.id',$this->getRoleId())
+                ->orderBy('offres.created_at', 'desc')>get();
+                // return dd($info);
+                $user= User::find($id);
+                return view('profile', 
+                [
+                    'user'=> $user,
+                    'info'=> $info,
+                    'info'=> $info,
+                    'offers'=> $offers
+                ]);
         }else {
             $user= User::find($id);
             return view('admine', ['user'=> $user]);
