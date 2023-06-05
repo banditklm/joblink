@@ -73,6 +73,21 @@ class UserController extends Controller
                     }
                     return "dformation has been selected";
         // $user = Recruteur::with('user')->find(1);
+        // $niveaux = Niveau::all();
+        // $dformations = Dformation::all();
+        $res = [
+'Data',
+'Design',
+'Web',
+'Marketing',
+'Game',
+];
+        for($i=0; $i < count($res);$i++){
+            $niveaux = new Dformation();
+            $niveaux->name = $res[$i];
+            $niveaux->save();
+        }
+        return "niveau has been selected";
         return $this->getRoleId();
         $user = User::with('adresse')->find(4);
         $id = Auth::id();
@@ -126,7 +141,7 @@ class UserController extends Controller
             $info= Candidat::find($this->getRoleId());
             $mesCandidatures = Candidature::join('offres', 'Candidatures.offre_id','=','offres.id')
             ->where("candidat_id",$this->getRoleId())
-            ->select('offres.*')
+            ->select('offres.*','Candidatures.etat')
             ->get();
             // return $mesCandidatures;
             return view('profile', 

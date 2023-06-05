@@ -15,8 +15,8 @@
                             <label for="role" class="col-md-4 col-form-label text-md-end">{{ __('Role') }}</label>
                             <div class="col-md-6">
                                 <select id="mySelect" name="role" class="form-select form-control @error('role') is-invalid @enderror" id="inputGroupSelect04" aria-label="Example select with button addon">
-                                    <option selected value="2">CANDIDAT</option>
-                                    <option value="3">Entreprise</option>
+                                    <option selected value="2">Candidat</option>
+                                    <option value="3">Recruteure</option>
                                 </select>
                             </div>
                         </div>
