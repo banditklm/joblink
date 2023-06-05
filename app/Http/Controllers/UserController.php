@@ -14,6 +14,11 @@ use App\Models\Offre;
 use App\Models\Adresse;
 use App\Models\Niveau;
 use App\Models\Dformation;
+use App\Models\Diplome;
+use App\Models\Tdiplome;
+use App\Models\Competence;
+use App\Models\Referenece;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 class UserController extends Controller
@@ -69,24 +74,30 @@ class UserController extends Controller
             for($i=0; $i < count($res);$i++){
                         $niveaux = new Dformation();
                         $niveaux->nom = $res[$i];
-                        $niveaux->save();
+                        // $niveaux->save();
                     }
-                    return "dformation has been selected";
+                    // return "dformation has been selected";
         // $user = Recruteur::with('user')->find(1);
         // $niveaux = Niveau::all();
         // $dformations = Dformation::all();
+
+
+        
         $res = [
-'Data',
-'Design',
-'Web',
-'Marketing',
-'Game',
+'BAC',
+'DEUG',
+'DUST',
+'DUT',
+'LICENCE',
+'MASTER',
+'DOCTORAT',
 ];
         for($i=0; $i < count($res);$i++){
-            $niveaux = new Dformation();
-            $niveaux->name = $res[$i];
+            $niveaux = new Tdiplome();
+            $niveaux->title = $res[$i];
             $niveaux->save();
         }
+
         return "niveau has been selected";
         return $this->getRoleId();
         $user = User::with('adresse')->find(4);
