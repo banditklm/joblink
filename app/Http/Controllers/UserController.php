@@ -160,17 +160,6 @@ class UserController extends Controller
                 ->join('adresses', 'offres.adresse_id', '=', 'adresses.id')
                 ->select('offres.*', 'users.nom','users.path','adresses.ville')
                 ->where('recruteurs.id',$this->getRoleId())
-<<<<<<< HEAD
-                ->orderBy('offres.created_at', 'desc')->get();
-                // return dd($info);
-                $user= User::find($id);
-                return view('profile', 
-                [
-                    'user'=> $user,
-                    'info'=> $info,
-                    'offers'=> $offers
-                ]);
-=======
                 ->orderBy('offres.created_at', 'desc')
                 ->get();
             // return dd($info);
@@ -181,7 +170,6 @@ class UserController extends Controller
                 'info'=> $info,
                 'offers'=> $offers
             ]);
->>>>>>> d472bd9d6a9682d0ecba2717a579af9e6b37b66a
         }else {
             $user= User::find($id);
             return view('admine', ['user'=> $user]);
@@ -246,6 +234,16 @@ class UserController extends Controller
         return redirect()->back()->with('success', 'Experience added successfully.');
     }
     public function storeDiplome(Request $request){
+        $diplome = new Diplome();
+
+        $diplome->candidat_id = Candidat::where('user_id',Auth::id())->first()->id;
+        $diplome->title = $request->input('title');
+        $diplome->debut = $request->input('debut');
+        $diplome->fin = $request->input('fin');
+        $diplome->description = $request->input('description');
+        $diplome->save();
+
+        return redirect()->back()->with('success', 'Diplome added successfully.');
 
     }
     public function destroy(Experience $experience)
@@ -388,9 +386,6 @@ class UserController extends Controller
         return redirect()->back()->with('success', 'Candidature deleted successfully.');
         }
     }
-<<<<<<< HEAD
-    
-=======
     //sauvgard
     public function createSauvgarde(Request $request)
     {
@@ -408,7 +403,6 @@ class UserController extends Controller
 
         return redirect()->back()->with('error', 'Failed to save offer.');
     }
->>>>>>> d472bd9d6a9682d0ecba2717a579af9e6b37b66a
 
 
 
