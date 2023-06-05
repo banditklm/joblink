@@ -259,8 +259,8 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body" id="diplome">
-                                    <form method="POST" action="{{ route('diplomes.store') }}">
-                                        @csrf 
+                                    <form method="POST" action="">
+                                        <!-- @csrf -->
                                         <div class="form-group">
                                             <label for="Title">Title:</label>
                                             <select name="title" id="Title" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" required>
