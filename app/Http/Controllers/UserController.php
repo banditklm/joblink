@@ -20,7 +20,7 @@ class UserController extends Controller
 {
     public function __construct()
     {
-       $this->middleware('auth');
+    //    $this->middleware('auth');
     }
     public function getRoleId(){
         $id = Auth::id();
@@ -59,6 +59,19 @@ class UserController extends Controller
     }
     public function display()
     {
+        $res = [
+            'Data',
+            'Design',
+            'Web',
+            'Marketing',
+            'Game',
+            ];
+            for($i=0; $i < count($res);$i++){
+                        $niveaux = new Dformation();
+                        $niveaux->nom = $res[$i];
+                        $niveaux->save();
+                    }
+                    return "dformation has been selected";
         // $user = Recruteur::with('user')->find(1);
         return $this->getRoleId();
         $user = User::with('adresse')->find(4);
