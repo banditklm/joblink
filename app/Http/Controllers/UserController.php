@@ -160,6 +160,7 @@ class UserController extends Controller
                 ->join('adresses', 'offres.adresse_id', '=', 'adresses.id')
                 ->select('offres.*', 'users.nom','users.path','adresses.ville')
                 ->where('recruteurs.id',$this->getRoleId())
+<<<<<<< HEAD
                 ->orderBy('offres.created_at', 'desc')
                 ->get();
             // return dd($info);
@@ -170,6 +171,17 @@ class UserController extends Controller
                 'info'=> $info,
                 'offers'=> $offers
             ]);
+=======
+                ->orderBy('offres.created_at', 'desc')->get();
+                // return dd($info);
+                $user= User::find($id);
+                return view('profile', 
+                [
+                    'user'=> $user,
+                    'info'=> $info,
+                    'offers'=> $offers
+                ]);
+>>>>>>> 1080a44e5301578fafb2fd94c7ed5705b689f10f
         }else {
             $user= User::find($id);
             return view('admine', ['user'=> $user]);
@@ -233,6 +245,7 @@ class UserController extends Controller
 
         return redirect()->back()->with('success', 'Experience added successfully.');
     }
+<<<<<<< HEAD
     public function storeDiplome(Request $request){
         $diplome = new Diplome();
 
@@ -246,6 +259,8 @@ class UserController extends Controller
         return redirect()->back()->with('success', 'Diplome added successfully.');
 
     }
+=======
+>>>>>>> 1080a44e5301578fafb2fd94c7ed5705b689f10f
     public function destroy(Experience $experience)
     {
         $experience->delete();
@@ -386,6 +401,7 @@ class UserController extends Controller
         return redirect()->back()->with('success', 'Candidature deleted successfully.');
         }
     }
+<<<<<<< HEAD
     //sauvgard
     public function createSauvgarde(Request $request)
     {
@@ -403,6 +419,8 @@ class UserController extends Controller
 
         return redirect()->back()->with('error', 'Failed to save offer.');
     }
+=======
+>>>>>>> 1080a44e5301578fafb2fd94c7ed5705b689f10f
 
 
 

@@ -402,8 +402,8 @@
                                     <form method="POST" action="">
                                         <!-- @csrf -->
                                         <div class="form-group">
-                                            <label for="Titre compétence">Titre compétence:</label>
-                                            <input type="text" id="compétence" name="compétence" class="form-control" value="" required> 
+                                            <label for="competence">compétence:</label>
+                                            <input type="text" id="competence" name="competence" class="form-control" value="" required> 
                                         </div>
 
                                         </div>
