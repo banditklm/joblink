@@ -15,8 +15,9 @@ class AddInfoColumnToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             
-            $table->string('nom')->nullable();
             $table->string('prenom')->nullable();
+            $table->string('nom')->nullable();
+            $table->string('path')->nullable();
             $table->string('adresse')->nullable();
             $table->string('domaine')->nullable();
             $table->string('tel')->unique()->nullable();       

@@ -14,14 +14,18 @@ use App\Models\Offre;
 use App\Models\Adresse;
 use App\Models\Niveau;
 use App\Models\Dformation;
-use App\Models\Sauvgarde;
+use App\Models\Diplome;
+use App\Models\Tdiplome;
+use App\Models\Competence;
+use App\Models\Referenece;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 class UserController extends Controller
 {
     public function __construct()
     {
-       $this->middleware('auth');
+    //    $this->middleware('auth');
     }
     public function getRoleId(){
         $id = Auth::id();
@@ -60,21 +64,40 @@ class UserController extends Controller
     }
     public function display()
     {
+        $res = [
+            'Data',
+            'Design',
+            'Web',
+            'Marketing',
+            'Game',
+            ];
+            for($i=0; $i < count($res);$i++){
+                        $niveaux = new Dformation();
+                        $niveaux->nom = $res[$i];
+                        // $niveaux->save();
+                    }
+                    // return "dformation has been selected";
         // $user = Recruteur::with('user')->find(1);
         // $niveaux = Niveau::all();
         // $dformations = Dformation::all();
-                $res = [
-        'Data',
-        'Design',
-        'Web',
-        'Marketing',
-        'Game',
-        ];
+
+
+        
+        $res = [
+'BAC',
+'DEUG',
+'DUST',
+'DUT',
+'LICENCE',
+'MASTER',
+'DOCTORAT',
+];
         for($i=0; $i < count($res);$i++){
-            $niveaux = new Dformation();
-            $niveaux->name = $res[$i];
+            $niveaux = new Tdiplome();
+            $niveaux->title = $res[$i];
             $niveaux->save();
         }
+
         return "niveau has been selected";
         return $this->getRoleId();
         $user = User::with('adresse')->find(4);
@@ -127,48 +150,25 @@ class UserController extends Controller
         if($role == 2){
             $user= User::find($id);
             $info= Candidat::find($this->getRoleId());
-            $sauvgardes = Sauvgarde::where('candidat_id', $this->getRoleId())->get();
-            $offers = Sauvgarde::where('candidat_id', $this->getRoleId())
-            ->join('offres', 'Sauvgardes.offre_id', '=', 'offres.id')
-            ->join('recruteurs', 'offres.recruteur_id', '=', 'recruteurs.id')
-            ->join('users', 'recruteurs.user_id', '=', 'users.id')
-            ->select('offres.*', 'users.nom','users.path')
-                ->orderBy('offres.created_at', 'desc')
-            ->get();
-
-
-            // ->select('offres.*', 'users.nom','users.path','Offres.city')
-            // ->orderBy('offres.created_at', 'desc')
-
-            // ->get();;
             $mesCandidatures = Candidature::join('offres', 'Candidatures.offre_id','=','offres.id')
             ->where("candidat_id",$this->getRoleId())
             ->select('offres.*','Candidatures.etat')
             ->get();
-            // return $offers;
+            // return $mesCandidatures;
             return view('profile', 
             [
                 'user'=> $user,
                 'info'=> $info,
-                'mesCandidatures'=>$mesCandidatures,
-                'offers'=>$offers
+                'mesCandidatures'=>$mesCandidatures
             ]);
         }else if($role == 3) {
             $info= Recruteur::find($this->getRoleId());
-            $offers = Offre::join('recruteurs', 'offres.recruteur_id', '=', 'recruteurs.id')
-                ->join('users', 'recruteurs.user_id', '=', 'users.id')
-                ->join('adresses', 'offres.adresse_id', '=', 'adresses.id')
-                ->select('offres.*', 'users.nom','users.path','adresses.ville')
-                ->where('recruteurs.id',$this->getRoleId())
-                ->orderBy('offres.created_at', 'desc')
-                ->get();
             // return dd($info);
             $user= User::find($id);
             return view('profile', 
             [
                 'user'=> $user,
-                'info'=> $info,
-                'offers'=> $offers
+                'info'=> $info
             ]);
         }else {
             $user= User::find($id);
@@ -372,22 +372,6 @@ class UserController extends Controller
         // Redirect or display a success message
         return redirect()->back()->with('success', 'Candidature deleted successfully.');
         }
-    }
-    public function createSauvgarde(Request $request)
-    {
-        $sauvgarde = Sauvgarde::create([
-            'candidat_id' => $this->getRoleId(),
-            'offre_id' => $request->input('offre_id')
-        ]);
-        // $sauvgarde = new Sauvgarde();
-        // $sauvgarde->offre_id = ;
-        // $sauvgarde->offre_id = ;
-
-        if ($sauvgarde) {
-            return redirect()->back()->with('success', 'Offer saved successfully.');
-        }
-
-        return redirect()->back()->with('error', 'Failed to save offer.');
     }
 
 

@@ -43,7 +43,7 @@
         <div class="container welcome">
     <!--left  -->
             <div class="left">
-                <span>Vous chercher un emploi ?</span> <br>
+                <span>Vous chercher un etude,formation,stage ou           un emploi?</span> <br>
                 <span>Rejoignez-nous !</span>
             </div>
     <!-- right -->
