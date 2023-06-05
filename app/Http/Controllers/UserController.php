@@ -14,6 +14,7 @@ use App\Models\Offre;
 use App\Models\Adresse;
 use App\Models\Niveau;
 use App\Models\Dformation;
+use App\Models\Sauvgarde;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 class UserController extends Controller
@@ -126,16 +127,18 @@ class UserController extends Controller
         if($role == 2){
             $user= User::find($id);
             $info= Candidat::find($this->getRoleId());
+            $sauvgardes = Sauvgarde::where('candidat_id', $this->getRoleId())->get();
             $mesCandidatures = Candidature::join('offres', 'Candidatures.offre_id','=','offres.id')
             ->where("candidat_id",$this->getRoleId())
             ->select('offres.*','Candidatures.etat')
             ->get();
-            // return $mesCandidatures;
+            return $sauvgardes;
             return view('profile', 
             [
                 'user'=> $user,
                 'info'=> $info,
-                'mesCandidatures'=>$mesCandidatures
+                'mesCandidatures'=>$mesCandidatures,
+                'sauvgardes'=>$sauvgardes
             ]);
         }else if($role == 3) {
             $info= Recruteur::find($this->getRoleId());
