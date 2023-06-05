@@ -93,7 +93,7 @@
                                 @csrf
                                 @method('PUT')
                                 <div class="modal-body">
-									<textarea name="description" id="info_profile"  placeholder="decrivez vous profile" cols="50" rows="5"></textarea>
+									<textarea name="description" id="info_profile"  placeholder="decrivez vous profile" cols="50" rows="5">{{$user->description}}</textarea>
 								</div>
 								<div class="modal-footer">
 								<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
@@ -104,8 +104,8 @@
                         </div>
                     </div>
                 </div> 
-                <div class="paragraphe"><p> 
-                {{$user->description}} </p>
+                <div class="paragraphe">
+                    <p>{{$user->description}} </p>
                 </div>
             </section>
 <!-- Experience -->
@@ -259,21 +259,14 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body" id="diplome">
-                                    <form method="POST" action="">
-                                        <!-- @csrf -->
+                                    <form action="{{ route('diplomes.store') }}" method="POST">
+                                        @csrf
                                         <div class="form-group">
                                             <label for="Title">Title:</label>
                                             <select name="title" id="Title" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" required>
                                                 <option value="BAC">Bac</option>
                                                 <option value="DEUG">Deug</option>
-                                                <option value="DEUST">Deust</option>
-                                                <option value="DUT">Dut</option>
-                                                <option value="BTS">BTS</option>
-                                                <option value="licence">licence</option>
-                                                <option value="Licence  Professionnelle">Licence  Professionnelle</option>
-                                                <option value="Master">Master</option>
-                                                <option value="Master  Professionnelle">Master  Professionnelle</option>
-                                                <option value="Doctorat">Doctorat</option>
+                                                
                                             </select>
                                         </div>
 

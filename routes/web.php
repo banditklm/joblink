@@ -41,6 +41,8 @@ Route::post('/candidatures', [UserController::class, 'storeCandidature'])->name(
 Route::delete('/candidatures/{candidature}', [UserController::class, 'deleteCandidature'])->name('candidatures.delete');
 //Sauvgards
 Route::post('/sauvgardes', [UserController::class, 'createSauvgarde'])->name('sauvgardes.create');
+//Diplome
+Route::post('/diplomes', [UserController::class, 'storeDiplome'])->name('diplomes.store');
 
 
 
