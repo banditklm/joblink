@@ -1,6 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
+
+<style>
+    body{background-image: ;
+        background-image: url('/assets/photos/wallpaper1.webp');
+        background-attachment: fixed;
+    }
+</style>
+
+<br><br><br>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">

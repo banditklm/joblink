@@ -1,6 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+    body{background-image: ;
+        background-image: url('/assets/photos/wallpaper1.webp');
+        background-attachment: fixed;    }
+</style>
+
 <br><br>
 @if(session('success'))
 <div id="success-message" class="row justify-content-center mt-4">
@@ -159,106 +165,100 @@
 <!-- Candidat Home -->
 
 <!-- Candidat voir offres -->
-@foreach($offers as $offer)
-<div class="modal fade" id="exampleModal-{{ $offer->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-            <div class="card w-100 mb-4">
-                <div class="card-body">
-                    <div class="head_post d-flex">
-                        <div>
-                            <img src="{{ asset('assets/images/'.$offer->path)}}" class="rounded-circle profile-pic mr-3" alt="profil_img">
-                        </div>
-                        <div>
-                            <h5 class="mb-0 mt-3 ms-2 font-weight-normal">{{ $offer->nom }}</h5>
-                        </div> 
-                        <div class="dropdown">
-                            <button class="btn point" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fa-solid fa-ellipsis"></i>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Signaler l'offre</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="d-flex justify-content-center gap-3">
-                        <span class="text text-muted">#{{ $offer->categorie }}</span>
-                        <span class="text text-muted">#{{ $offer->domaine }}</span>
-                        <span class="text text-muted">#{{ $offer->ville }}</span>
-                    </div>
-                    <div>
-                        <span class="text text-muted">From: {{ $offer->debut}}</span><br>
-                        <span class="text text-muted">To: {{ $offer->fin }}</span>
-                    </div>
-                    <div>
-                        <p>{{ $offer->descriptionOffre }}</p>
-                    </div>
-                    <div class="w-100" style="display:flex;">
-                        <img src="{{ asset('assets/images/'.$offer->pathOffre)}}" alt="" class="w-50" style="max-height: 250px;display: block; margin: 0 auto;">
-                    </div>
-                </div>
+    @foreach($offers as $offer)
+        <div class="modal fade" id="exampleModal-{{ $offer->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-        <button type="button" class="btn btn-primary">Postuler</button>
-      </div>
-    </div>
-  </div>
-</div>
-@endforeach
-<!-- Candidat offres table -->
-<div class="container mt-3 mb-4">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <table style="background:#cff4fc;" class="table table-info table-hover table-bordered border-primary">
-                <thead>
-                    <tr>
-                        <th scope="col">Recruteur</th>
-                        <th scope="col">Domaine</th>
-                        <th scope="col">Catégorie</th>
-                        <th scope="col">Emplacement</th>
-                        <th scope="col"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                @foreach($offers as $offer)
-                    <tr>
-                        <th scope="row" class="img"><img src="{{ asset('assets/images/'.$offer->path)}}" alt="" class="rounded-circle"></th>
-                        <td>{{ $offer->domaine }}</td>
-                        <td>{{ $offer->categorie }}</td>
-                        <td>{{ $offer->city }}</td>
-                        <td style="display:flex;gap:10px;">
-                            <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal-{{ $offer->id }}">Voir Offre</button>
-                            <form action="{{ route('candidatures.store') }}" method="POST">
-                                @csrf
-                                <input type="hidden" name="offre_id" value="{{ $offer->id }}">
-                                <button type="submit"  id="post-{{ $offer->id }}" class="btn btn-primary btn-sm" onclick="toggleButtons({{ $offer->id }})">Postuler</button>
-                            </form>
-                            <form action="{{ route('sauvgardes.create') }}" method="POST">
-                                @csrf
-                                <input type="hidden" name="offre_id" value="{{ $offer->id }}">
-                                <button type="submit" class="btn btn-primary btn-sm">Sauvgarder</button>
-                            </form>
-                        </td>
-                    </tr>
-                @endforeach
-                </tbody>
-            </table>
+            <div class="modal-body">
+                    <div class="card w-100 mb-4">
+                        <div class="card-body">
+                            <div class="head_post d-flex">
+                                <div>
+                                    <img src="{{ asset('assets/images/'.$offer->path)}}" class="rounded-circle profile-pic mr-3" alt="profil_img">
+                                </div>
+                                <div>
+                                    <h5 class="mb-0 mt-3 ms-2 font-weight-normal">{{ $offer->nom }}</h5>
+                                </div> 
+                                <div class="dropdown">
+                                    <button class="btn point" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="fa-solid fa-ellipsis"></i>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">Signaler l'offre</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-center gap-3">
+                                <span class="text text-muted">#{{ $offer->categorie }}</span>
+                                <span class="text text-muted">#{{ $offer->domaine }}</span>
+                                <span class="text text-muted">#{{ $offer->ville }}</span>
+                            </div>
+                            <div>
+                                <span class="text text-muted">From: {{ $offer->debut}}</span><br>
+                                <span class="text text-muted">To: {{ $offer->fin }}</span>
+                            </div>
+                            <div>
+                                <p>{{ $offer->descriptionOffre }}</p>
+                            </div>
+                            <div class="w-100" style="display:flex;">
+                                <img src="{{ asset('assets/images/'.$offer->pathOffre)}}" alt="" class="w-50" style="max-height: 250px;display: block; margin: 0 auto;">
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                <button type="button" class="btn btn-primary">Postuler</button>
+            </div>
+            </div>
         </div>
-        <!-- </div> -->
+        </div>
+    @endforeach
+<!-- Candidat offres table -->
+    <div class="container mt-3 mb-4">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <table style="background:#cff4fc;" class="table table-info table-hover table-bordered border-primary">
+                    <thead>
+                        <tr>
+                            <th scope="col">Recruteur</th>
+                            <th scope="col">Domaine</th>
+                            <th scope="col">Catégorie</th>
+                            <th scope="col">Emplacement</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($offers as $offer)
+                        <tr>
+                            <th scope="row" class="img"><img src="{{ asset('assets/images/'.$offer->path)}}" alt="" class="rounded-circle"></th>
+                            <td>{{ $offer->domaine }}</td>
+                            <td>{{ $offer->categorie }}</td>
+                            <td>{{ $offer->city }}</td>
+                            <td style="display:flex;gap:10px;">
+                                <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal-{{ $offer->id }}">Voir Offre</button>
+                                <form action="{{ route('candidatures.store') }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="offre_id" value="{{ $offer->id }}">
+                                    <button type="submit"  id="post-{{ $offer->id }}" class="btn btn-primary btn-sm" onclick="toggleButtons({{ $offer->id }})">Postuler</button>
+                                </form>
+                                <form action="{{ route('sauvgardes.create') }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="offre_id" value="{{ $offer->id }}">
+                                    <button type="submit" class="btn btn-primary btn-sm">Sauvgarder</button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 
-<!-- Candidat Home no table -->
-    <div class="container">
-        <div class="row justify-content-center">
-        </div>
-    </div>
-<!-- Candidat offres Modle -->
 
 
 <script>

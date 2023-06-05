@@ -1,6 +1,14 @@
 
 @extends('layouts.app')
 @section('profile')
+
+<style>
+    body{background-image: ;
+        background-image: url('/assets/photos/wallpaper1.webp');
+        background-attachment: fixed;
+    }
+</style>
+
 @if (Auth::user()->role == 2)
 @if(session('success'))
 <div id="success-message" class="row justify-content-center mt-4">
@@ -455,11 +463,9 @@
                                     <a class="nav-link" href="{{route('apropos')}}">A propos</a>
                                 </li>
                                 <li class="nav-item dropdown">
-                                    <!-- Button trigger modal -->
                                         <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                         Intérets
                                         </button>
-                                    <!-- /Button trigger modal -->
 <!-- Modal -->
                                         <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered modal-lg">
@@ -702,7 +708,7 @@
         <div class="col-md-8">        
             <div class="card w-100 mb-4">
                 <div class="card-body">
-                    <div class="head_post d-flex">
+                    <div class="head_post d-flex ">
                         <div>
                             <img src="{{ asset('assets/images/'.$offer->path)}}" class="rounded-circle profile-pic mr-3" alt="profil_img">
                         </div>
