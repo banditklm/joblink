@@ -40,7 +40,7 @@ Route::get('/recherche', [UserController::class, 'searchOffre'])->name('search.o
 Route::post('/candidatures', [UserController::class, 'storeCandidature'])->name('candidatures.store');
 Route::delete('/candidatures/{candidature}', [UserController::class, 'deleteCandidature'])->name('candidatures.delete');
 //Sauvgards
-Route::get('/sauvgardes/{candidatId}', [UserController::class, 'displaySauvgardes'])->name('sauvgardes.display');
+Route::post('/sauvgardes', [UserController::class, 'createSauvgarde'])->name('sauvgardes.create');
 
 
 

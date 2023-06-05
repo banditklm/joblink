@@ -399,7 +399,7 @@
                     <div class="d-flex justify-content-center gap-3">
                         <span class="text text-muted">#{{ $offer->categorie }}</span>
                         <span class="text text-muted">#{{ $offer->domaine }}</span>
-                        <span class="text text-muted">#{{ $offer->ville }}</span>
+                        <span class="text text-muted">#{{ $offer->city }}</span>
                     </div>
                     <div>
                         <span class="text text-muted">From: {{ $offer->debut}}</span><br>
@@ -424,47 +424,47 @@
 @endforeach
 <!-- /VOIR OFFRE -->
 
-
-<div class="container mt-3 mb-4">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <table style="background:#cff4fc;" class="table table-info table-hover table-bordered border-primary">
-                <thead>
-                    <tr>
-                        <th scope="col">Recruteur</th>
-                        <th scope="col">Domaine</th>
-                        <th scope="col">Catégorie</th>
-                        <th scope="col">Emplacement</th>
-                        <th scope="col"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                @foreach($offers as $offer)
-                    <tr>
-                        <th scope="row" class="img"><img src="{{ asset('assets/images/'.$offer->path)}}" alt="" class="rounded-circle"></th>
-                        <td>{{ $offer->domaine }}</td>
-                        <td>{{ $offer->categorie }}</td>
-                        <td>{{ $offer->city }}</td>
-                        <td style="display:flex;gap:10px;">
-                            <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal-{{ $offer->id }}">Voir Offre</button>
-                            <form action="{{ route('candidatures.store') }}" method="POST">
-                                @csrf
-                                <input type="hidden" name="offre_id" value="{{ $offer->id }}">
-                                <button type="submit"  id="post-{{ $offer->id }}" class="btn btn-primary btn-sm" onclick="toggleButtons({{ $offer->id }})">Postuler</button>
-                            </form>
-                            <form action="{{ route('candidature.store') }}" method="POST">
-                                @csrf
-                                <input type="hidden" name="offre_id" value="{{ $offer->id }}">
-                                <button type="submit" class="btn btn-primary btn-sm">Supprimer</button>
-                            </form>
-                        </td>
-                    </tr>
-                @endforeach
-                </tbody>
-            </table>
+<!-- Table Sauvgards -->
+    <div class="container mt-3 mb-4">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <table style="background:#cff4fc;" class="table table-info table-hover table-bordered border-primary">
+                    <thead>
+                        <tr>
+                            <th scope="col">Recruteur</th>
+                            <th scope="col">Domaine</th>
+                            <th scope="col">Catégorie</th>
+                            <th scope="col">Emplacement</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($offers as $offer)
+                        <tr>
+                            <th scope="row" class="img"><img src="{{ asset('assets/images/'.$offer->path)}}" alt="" class="rounded-circle"></th>
+                            <td>{{ $offer->domaine }}</td>
+                            <td>{{ $offer->categorie }}</td>
+                            <td>{{ $offer->city }}</td>
+                            <td style="display:flex;gap:10px;">
+                                <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal-{{ $offer->id }}">Voir Offre</button>
+                                <form action="{{ route('candidatures.store') }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="offre_id" value="{{ $offer->id }}">
+                                    <button type="submit"  id="post-{{ $offer->id }}" class="btn btn-primary btn-sm" onclick="toggleButtons({{ $offer->id }})">Postuler</button>
+                                </form>
+                                <form action="{{ route('candidatures.store') }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="offre_id" value="{{ $offer->id }}">
+                                    <button type="submit" class="btn btn-primary btn-sm">Supprimer</button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-</div>
 <!-- /Candidat -->
 @else
 <!-- Recruteur -->
@@ -721,7 +721,55 @@
 <!-- /recruteur body -->
             </div>
         </div>
-    <!-- /Recruteur --> 
+<!-- /Recruteur -->
+<h1>Mes Post</h1>
+<!-- Afficher Offres -->
+<div class="container ">
+    <div class="row justify-content-center">
+@foreach($offers as $offer)
+        <div class="col-md-8">        
+            <div class="card w-100 mb-4">
+                <div class="card-body">
+                    <div class="head_post d-flex">
+                        <div>
+                            <img src="{{ asset('assets/images/'.$offer->path)}}" class="rounded-circle profile-pic mr-3" alt="profil_img">
+                        </div>
+                        <div>
+                            <h5 class="mb-0 mt-3 ms-2 font-weight-normal">{{ $offer->nom }}</h5>
+                        </div> 
+                        <div class="dropdown">
+                            <button class="btn point" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">supprimer l'offre</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center gap-3">
+                        <span class="text text-muted">#{{ $offer->categorie }}</span>
+                        <span class="text text-muted">#{{ $offer->domaine }}</span>
+                        <span class="text text-muted">#{{ $offer->ville }}</span>
+                    </div>
+                    <div>
+                        <span class="text text-muted">From: {{ $offer->debut}}</span><br>
+                        <span class="text text-muted">To: {{ $offer->fin }}</span>
+                    </div>
+                    <div>
+                        <p>{{ $offer->descriptionOffre }}</p>
+                    </div>
+                    <div style="display:flex;">
+                        <img src="{{ asset('assets/images/'.$offer->pathOffre)}}" alt="" class="w-50 h-auto" class="w-100" style="max-height: 500px;display: block; margin: 0 auto;">
+                    </div>
+                    <div class="fiter d-flex mt-3">
+                        <button class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#modalCandidature">Voir Candidature</button>
+                    </div>
+                </div>
+            </div>
+        </div> 
+@endforeach
+    </div>
+</div>
 @endif
 
 

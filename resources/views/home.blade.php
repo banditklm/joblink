@@ -350,7 +350,7 @@
                                 <input type="hidden" name="offre_id" value="{{ $offer->id }}">
                                 <button type="submit"  id="post-{{ $offer->id }}" class="btn btn-primary btn-sm" onclick="toggleButtons({{ $offer->id }})">Postuler</button>
                             </form>
-                            <form action="{{ route('candidatures.store') }}" method="POST">
+                            <form action="{{ route('sauvgardes.create') }}" method="POST">
                                 @csrf
                                 <input type="hidden" name="offre_id" value="{{ $offer->id }}">
                                 <button type="submit" class="btn btn-primary btn-sm">Sauvgarder</button>
