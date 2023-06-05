@@ -213,3 +213,51 @@ Model name is Adresse already exist
 =======
                         <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal-{{ $offer->id }}">Voir Offre</button>
                         <form action="{{ route('candidatures.store') }}" method="POST">
+
+
+
+
+
+    <!-- Afficher Offre in Recruteur Home -->
+
+    @foreach($offers as $offer)          
+            <div class="card w-100 mb-4">
+                <div class="card-body">
+                    <div class="head_post d-flex">
+                        <div>
+                            <img src="{{ asset('assets/images/'.$offer->path)}}" class="rounded-circle profile-pic mr-3" alt="profil_img">
+                        </div>
+                        <div>
+                            <h5 class="mb-0 mt-3 ms-2 font-weight-normal">{{ $offer->nom }}</h5>
+                        </div> 
+                        <div class="dropdown">
+                            <button class="btn point" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">supprimer l'offre</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center gap-3">
+                        <span class="text text-muted">#{{ $offer->categorie }}</span>
+                        <span class="text text-muted">#{{ $offer->domaine }}</span>
+                        <span class="text text-muted">#{{ $offer->ville }}</span>
+                    </div>
+                    <div>
+                        <span class="text text-muted">From: {{ $offer->debut}}</span><br>
+                        <span class="text text-muted">To: {{ $offer->fin }}</span>
+                    </div>
+                    <div>
+                        <p>{{ $offer->descriptionOffre }}</p>
+                    </div>
+                    <div>
+                        <img src="{{ asset('assets/images/'.$offer->pathOffre)}}" alt="" class="w-100 h-auto">
+                    </div>
+                    <div class="fiter d-flex mt-3">
+                        <button class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#modalCandidature" >Voir Candidature</button>
+                    </div>
+                </div>
+            </div>
+    @endforeach
+    <!-- /Afficher Offre in Recruteur Home -->
