@@ -93,7 +93,7 @@
                                 @csrf
                                 @method('PUT')
                                 <div class="modal-body">
-									<textarea name="description" id="info_profile"  placeholder="decrivez vous profile" cols="50" rows="5"></textarea>
+									<textarea name="description" id="info_profile"  placeholder="decrivez vous profile" cols="50" rows="5">{{$user->description}}</textarea>
 								</div>
 								<div class="modal-footer">
 								<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
@@ -104,8 +104,8 @@
                         </div>
                     </div>
                 </div> 
-                <div class="paragraphe"><p> 
-                {{$user->description}} </p>
+                <div class="paragraphe">
+                    <p>{{$user->description}} </p>
                 </div>
             </section>
 <!-- Experience -->
@@ -259,21 +259,14 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body" id="diplome">
-                                    <form method="POST" action="">
-                                        <!-- @csrf -->
+                                    <form action="{{ route('diplomes.store') }}" method="POST">
+                                        @csrf
                                         <div class="form-group">
                                             <label for="Title">Title:</label>
                                             <select name="title" id="Title" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" required>
                                                 <option value="BAC">Bac</option>
                                                 <option value="DEUG">Deug</option>
-                                                <option value="DEUST">Deust</option>
-                                                <option value="DUT">Dut</option>
-                                                <option value="BTS">BTS</option>
-                                                <option value="licence">licence</option>
-                                                <option value="Licence  Professionnelle">Licence  Professionnelle</option>
-                                                <option value="Master">Master</option>
-                                                <option value="Master  Professionnelle">Master  Professionnelle</option>
-                                                <option value="Doctorat">Doctorat</option>
+                                                
                                             </select>
                                         </div>
 
@@ -302,11 +295,11 @@
                         </div>
                     </div>
                 </div>
-                <!-- @foreach ($experiences as $experience) -->
+                @foreach ($diplomes as $diplome)
                 <div class="exp">
 
                     <div class="fl">
-                        <span class="title"><strong><span class="text-muted"> De </span>{{ $experience->debut }}<span class="text-muted"> A </span>{{ $experience->fin }}</strong></span>
+                        <span class="title"><strong><span class="text-muted"> De </span>{{ $diplome->debut }}<span class="text-muted"> A </span>{{ $experience->fin }}</strong></span>
                         
 <!-- diplome.update -->
                         <div class="modal fade" id="modifierdiplome" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -366,10 +359,10 @@
                     </div>
                     
                     <div class="paragraphe">
-                        <strong>{{ $experience->title }}</strong>
+                        <strong>{{ $diplome->title }}</strong>
                     </div>
                     <div class="description">
-                        <span>{{ $experience->description }}</span>
+                        <span>{{ $diplome->description }}</span>
                     </div>
                     <div class="handel">
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modifierdiplome">
@@ -382,7 +375,7 @@
                         </form>  
                     </div>
                 </div>
-                <!-- @endforeach -->
+                @endforeach
             </section>
 <!-- Compétence -->            
             <section class="experience" > 
@@ -409,8 +402,8 @@
                                     <form method="POST" action="">
                                         <!-- @csrf -->
                                         <div class="form-group">
-                                            <label for="Titre compétence">Titre compétence:</label>
-                                            <input type="text" id="compétence" name="compétence" class="form-control" value="" required> 
+                                            <label for="competence">compétence:</label>
+                                            <input type="text" id="competence" name="competence" class="form-control" value="" required> 
                                         </div>
 
                                         </div>

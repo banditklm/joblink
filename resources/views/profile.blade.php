@@ -4,15 +4,15 @@
 
 <style>
     body{background-image: ;
-        background-image: url('/assets/photos/wallpaper1.webp');
-        background-attachment: fixed;
+        background-image: url('/assets/photos/wallpaper8.jpg');
+        background-attachment: fixed; 
     }
 </style>
 
 @if(session('success'))
 <div id="success-message" class="row justify-content-center mt-4">
     <div class="col-md-4">
-        <div style="background:#000;" class="alert alert-dark mt-6 justify-content-center">
+        <div style="background:#000;" class="alert alert-success mt-6 justify-content-center">
         <a style="color:#fff" class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover w-100 justify-content-center" href="/profile">
             {{ session('success') }}</a>
         </div>
@@ -303,7 +303,7 @@
             </div>
         </div>
 <!-- Candidat offres table -->
-<h1 id="Mescandidatures">Mes Candidatures</h1>
+<h1 id="Mescandidatures" class="text text-center">Mes Candidatures</h1>
 @if($mesCandidatures->isEmpty())
         <h3 class="text-center">Aucune candidature trouvée ...</h3>
 @else
@@ -350,8 +350,9 @@
 <!-- Mes Candidature -->
     </div>
 
-<h1 id="messauvgardes">Mes Sauvgardes</h1>
+<h1 id="messauvgardes" class="text text-center">Mes Sauvgardes</h1>
 <!-- VOIR OFFRE -->
+<<<<<<< HEAD
 @foreach($offres as $offre)
 <div class="modal fade" id="exampleModal-{{ $offre->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
@@ -392,20 +393,61 @@
                     </div>
                     <div class="w-100" style="display:flex;">
                         <img src="{{ asset('assets/images/'.$offre->pathOffre)}}" alt="" class="w-50" style="max-height: 250px;display: block; margin: 0 auto;">
+=======
+    @foreach($offers as $offer)
+    <div class="modal fade" id="exampleModal-{{ $offer->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+                <div class="card w-100 mb-4">
+                    <div class="card-body">
+                        <div class="head_post d-flex">
+                            <div>
+                                <img src="{{ asset('assets/images/'.$offer->path)}}" class="rounded-circle profile-pic mr-3" alt="profil_img">
+                            </div>
+                            <div>
+                                <h5 class="mb-0 mt-3 ms-2 font-weight-normal">{{ $offer->nom }}</h5>
+                            </div> 
+                            <div class="dropdown">
+                                <button class="btn point" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa-solid fa-ellipsis"></i>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Signaler l'offre</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-center gap-3">
+                            <span class="text text-muted">#{{ $offer->categorie }}</span>
+                            <span class="text text-muted">#{{ $offer->domaine }}</span>
+                            <span class="text text-muted">#{{ $offer->city }}</span>
+                        </div>
+                        <div>
+                            <span class="text text-muted">From: {{ $offer->debut}}</span><br>
+                            <span class="text text-muted">To: {{ $offer->fin }}</span>
+                        </div>
+                        <div>
+                            <p>{{ $offer->descriptionOffre }}</p>
+                        </div>
+                        <div class="w-100" style="display:flex;">
+                            <img src="{{ asset('assets/images/'.$offer->pathOffre)}}" alt="" class="w-50" style="max-height: 250px;display: block; margin: 0 auto;">
+                        </div>
+>>>>>>> bcf3885510824b99c66dbee0d34bfa74b77c986b
                     </div>
                 </div>
-            </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-        <button type="button" class="btn btn-primary">Postuler</button>
-      </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+            <button type="button" class="btn btn-primary">Postuler</button>
+        </div>
+        </div>
     </div>
-  </div>
-</div>
-@endforeach
+    </div>
+    @endforeach
 <!-- /VOIR OFFRE -->
-
 <!-- Table Sauvgards -->
     <div class="container mt-3 mb-4">
         <div class="row justify-content-center">
@@ -466,7 +508,6 @@
                                         <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                         Intérets
                                         </button>
-<!-- Modal -->
                                         <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered modal-lg">
                                                 <div class="modal-content">
@@ -511,8 +552,7 @@
                                                         </div>
                                                 </div>
                                             </div>
-                                        </div>
-<!-- /Modal -->    
+                                        </div>   
                                 </li>
                         </ul>
                     </nav>
@@ -700,7 +740,7 @@
             </div>
         </div>
 <!-- /Recruteur -->
-<h1 id="mespost">Mes Post</h1>
+<h1 id="mespost" class="text text-center">Mes Post</h1>
 <!-- Afficher Offres -->
 <div class="container ">
     <div class="row justify-content-center">
