@@ -43,14 +43,14 @@
         <div class="container welcome">
     <!--left  -->
             <div class="left">
-                <span>Vous chercher un etude,formation,stage ou           un emploi?</span> <br>
+                <span>Vous chercher Etude ,Formation,Stage ou Emploi?</span> <br>
                 <span>Rejoignez-nous !</span>
             </div>
     <!-- right -->
             <div class="right">
                 <!-- <img src="{{asset('assets/photos/images.jpg')}}" alt=""> -->
                 <span>Pas encore de compte ?</span><br>
-                <button class="btn btn-primary"><a href="{{ route('login') }}">Je m'inscrire</a></button>
+                <button class="btn btn-primary"><a href="{{ route('login') }}">S'inscrire</a></button>
             </div>
         </div>
 <!-- description -->

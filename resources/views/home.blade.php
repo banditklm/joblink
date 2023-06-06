@@ -165,7 +165,7 @@
 <!-- Candidat Home -->
 
 <!-- Candidat voir offres -->
-    @foreach($offers as $offer)
+    @foreach($offres as $offer)
         <div class="modal fade" id="exampleModal-{{ $offer->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -232,7 +232,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                    @foreach($offers as $offer)
+                    @foreach($offres as $offer)
                         <tr>
                             <th scope="row" class="img"><img src="{{ asset('assets/images/'.$offer->path)}}" alt="" class="rounded-circle"></th>
                             <td>{{ $offer->domaine }}</td>

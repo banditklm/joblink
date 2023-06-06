@@ -122,6 +122,7 @@
             @yield('profile')
             @yield('search')
             @yield('apropos')
+            @yield('cvdetail')
             
 
         </main>

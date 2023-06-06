@@ -41,6 +41,11 @@ Route::post('/candidatures', [UserController::class, 'storeCandidature'])->name(
 Route::delete('/candidatures/{candidature}', [UserController::class, 'deleteCandidature'])->name('candidatures.delete');
 //Sauvgards
 Route::post('/sauvgardes', [UserController::class, 'createSauvgarde'])->name('sauvgardes.create');
+//SHOW CV details
+Route::get('/cvdetail/{user_id}/{candidat_id}', [UserController::class, 'cvdetail'])->name('cvdetail');
+// Change eta candidatures
+Route::put('/cvdetail', [UserController::class, 'changeEtat'])->name('cvdetail.update');
+
 
 
 
