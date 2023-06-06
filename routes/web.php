@@ -43,6 +43,9 @@ Route::delete('/candidatures/{candidature}', [UserController::class, 'deleteCand
 Route::post('/sauvgardes', [UserController::class, 'createSauvgarde'])->name('sauvgardes.create');
 //Diplome
 Route::post('/diplomes', [UserController::class, 'storeDiplome'])->name('diplomes.store');
+Route::get('/diplomes', [UserController::class, 'showDiplomes'])->name('diplomes.index');
+//diplomeUpdate
+
 
 
 

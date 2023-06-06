@@ -2,6 +2,12 @@
 @section('search')
 <br><br>
 
+<style>
+    body{background-image: ;
+        background-image: url('/assets/photos/wallpaper8.jpg');
+        background-attachment: fixed; 
+    }
+</style>
 
 <div class="container">
     <div class="row justify-content-center">

@@ -3,8 +3,9 @@
 @section('content')
 <style>
     body{background-image: ;
-        background-image: url('/assets/photos/wallpaper1.webp');
-        background-attachment: fixed;    }
+        background-image: url('/assets/photos/wallpaper8.jpg');
+        background-attachment: fixed; 
+    }
 </style>
 
 <br><br>
