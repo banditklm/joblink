@@ -303,7 +303,7 @@
             </div>
         </div>
 <!-- Candidat offres table -->
-<h1 id="Mescandidatures" class="text text-center">Mes Candidatures</h1>
+<h1 id="Mescandidatures" class="text text-center" style="color:#fff">Mes Candidatures</h1>
 @if($mesCandidatures->isEmpty())
         <h3 class="text-center">Aucune candidature trouvée ...</h3>
 @else
@@ -350,7 +350,7 @@
 <!-- Mes Candidature -->
     </div>
 
-<h1 id="messauvgardes" class="text text-center">Mes Sauvgardes</h1>
+<h1 id="messauvgardes" class="text text-center" style="color:#fff">Mes Sauvgardes</h1>
 <!-- VOIR OFFRE -->
     @foreach($offers as $offer)
     <div class="modal fade" id="exampleModal-{{ $offer->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -406,6 +406,9 @@
     @endforeach
 <!-- /VOIR OFFRE -->
 <!-- Table Sauvgards -->
+@if(count($offers)==0)
+        <h3 class="text-center" >Aucune sauvgardes trouvée ...</h3>
+@else
     <div class="container mt-3 mb-4">
         <div class="row justify-content-center">
             <div class="col-md-8">
@@ -446,6 +449,7 @@
             </div>
         </div>
     </div>
+@endif
 <!-- /Candidat -->
 @else
 <!-- Recruteur -->

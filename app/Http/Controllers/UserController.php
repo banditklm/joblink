@@ -148,6 +148,7 @@ class UserController extends Controller
                 ->orderBy('offres.created_at', 'desc')
             ->get();
             // return $mesCandidatures;
+            // $offers = [];
             return view('profile', 
             [
                 'user'=> $user,
