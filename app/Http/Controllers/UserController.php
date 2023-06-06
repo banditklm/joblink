@@ -39,7 +39,7 @@ class UserController extends Controller
     public function index()
     {
         $user= Auth::user();
-        $offers = Offre::join('recruteurs', 'offres.recruteur_id', '=', 'recruteurs.id')
+        $offres = Offre::join('recruteurs', 'offres.recruteur_id', '=', 'recruteurs.id')
                 ->join('users', 'recruteurs.user_id', '=', 'users.id')
                 ->join('adresses', 'offres.adresse_id', '=', 'adresses.id')
 
@@ -51,12 +51,12 @@ class UserController extends Controller
                 $niveaux = Niveau::all();
                 $dformations = Dformation::all();
 
-        // return dd($offers);
+        // return dd($offres);
 
         return view('home', 
         [
             'user'=> $user,
-            'offers'=> $offers,
+            'offres'=> $offres,
             'niveaux'=>$niveaux,
             'dformations'=>$dformations
 
@@ -140,12 +140,12 @@ class UserController extends Controller
             ->where("candidat_id",$this->getRoleId())
             ->select('offres.*','Candidatures.etat')
             ->get();
-            $offers = Sauvgarde::where('candidat_id', $this->getRoleId())
+            $offres = Sauvgarde::where('candidat_id', $this->getRoleId())
             ->join('offres', 'Sauvgardes.offre_id', '=', 'offres.id')
             ->join('recruteurs', 'offres.recruteur_id', '=', 'recruteurs.id')
             ->join('users', 'recruteurs.user_id', '=', 'users.id')
             ->select('offres.*', 'users.nom','users.path')
-                ->orderBy('offres.created_at', 'desc')
+            ->orderBy('offres.created_at', 'desc')
             ->get();
             // return $mesCandidatures;
             // $offers = [];
@@ -154,10 +154,58 @@ class UserController extends Controller
                 'user'=> $user,
                 'info'=> $info,
                 'mesCandidatures'=>$mesCandidatures,
-                'offers'=>$offers,
+                'offres'=>$offres,
             ]);
         }else if($role == 3) {
             $info= Recruteur::find($this->getRoleId());
+<<<<<<< HEAD
+            // $offres = Offre::join('recruteurs', 'offres.recruteur_id', '=', 'recruteurs.id')
+            //     ->join('users', 'recruteurs.user_id', '=', 'users.id')
+            //     ->join('adresses', 'offres.adresse_id', '=', 'adresses.id')
+            //     ->join('candidatures','offres.id','=','candidatures.offre_id')
+            //     ->join('candidats','candidatures.candidat_id','=','candidats.id')
+            //     ->select('offres.*', 'users.nom','users.path','adresses.ville','candidats.age')
+            //     ->where('recruteurs.id',$this->getRoleId())
+            //     ->orderBy('offres.created_at', 'desc')
+            //     ->get();
+            // $offres5 = Offre::with('candidature','candidat','user')
+            $offres5 = Offre::with('candidatures.candidat.user')
+            // $offres5 = Offre::with({'candidature','candidat','user'})
+            ->select('offres.*')
+            ->where('offres.recruteur_id',$this->getRoleId())
+            ->orderBy('offres.created_at', 'desc')
+            ->get();
+            $offres4 = Offre::select('offres.*')
+            //     ->select('offres.*', 'users.nom','users.path','adresses.ville','candidats.age')
+            //     ->where('recruteurs.id',$this->getRoleId())
+            ->where('offres.recruteur_id',$this->getRoleId())
+            ->orderBy('offres.created_at', 'desc')
+            ->get();
+            $offres3 = Offre::all();
+            // $offres3 = Offre::with('candidature','candidat','user')
+
+                // ->join('users', 'Offres.user_id', '=', 'users.id')
+            //     ->join('adresses', 'offres.adresse_id', '=', 'adresses.id')
+                // ->join('candidatures','offres.id','=','candidatures.offre_id')
+            //     ->join('candidats','candidatures.candidat_id','=','candidats.id')
+            //     ->select('offres.*', 'users.nom','users.path','adresses.ville','candidats.age')
+            //     ->where('recruteurs.id',$this->getRoleId())
+            //     ->orderBy('offres.created_at', 'desc')
+            //     ->get();
+                // ->orderBy('offres.created_at', 'desc')
+                // ->get();
+            // return $offres5;
+            // return $offres5[0]->candidatures[0]->candidat['user']->nom;
+
+            // return  dump($offres5);
+            $user= User::find($id);
+            return view('profile', 
+            [
+                'user'=> $user,
+                'info'=> $info,
+                'offres'=> $offres5
+            ]);
+=======
             $offers = Offre::join('recruteurs', 'offres.recruteur_id', '=', 'recruteurs.id')
                 ->join('users', 'recruteurs.user_id', '=', 'users.id')
                 ->join('adresses', 'offres.adresse_id', '=', 'adresses.id')
@@ -172,6 +220,7 @@ class UserController extends Controller
                     'info'=> $info,
                     'offers'=> $offers
                 ]);
+>>>>>>> bcf3885510824b99c66dbee0d34bfa74b77c986b
         }else {
             $user= User::find($id);
             return view('admine', ['user'=> $user]);
@@ -366,6 +415,7 @@ class UserController extends Controller
         $candidature = new Candidature();
         $candidature->offre_id = $offreId;
         $candidature->candidat_id = $candidatId;
+        $candidature->user_id = Auth::user()->id;
         $candidature->etat = $state;
         $candidature->save();
 
@@ -400,10 +450,30 @@ class UserController extends Controller
         // $sauvgarde->offre_id = ;
 
         if ($sauvgarde) {
-            return redirect()->back()->with('success', 'Offer saved successfully.');
+            return redirect()->back()->with('success', 'offre saved successfully.');
         }
 
-        return redirect()->back()->with('error', 'Failed to save offer.');
+        return redirect()->back()->with('error', 'Failed to save offre.');
+    }
+    //cvdetail
+    public function cvdetail($user_id, $candidat_id)
+    {
+        $user = User::findOrFail($user_id);
+        $candidat = Candidat::findOrFail($candidat_id);
+        $experiences = $candidat->experiences;
+        return view('cvdetail',
+         ['user'=> $user,
+         'experiences'=> $experiences
+        ]);
+    }
+        public function changeEtat(Request $request)
+    {
+        $candidature = Candidature::findOrFail($request->input('candidature_id'));
+        $candidature->etat = $request->input('etat');
+        // return $request->input('etat');
+        $candidature->save();
+
+        return redirect()->back()->with('success', '$candidature change successfully.');
     }
 
 

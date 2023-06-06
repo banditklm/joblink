@@ -8,6 +8,10 @@ use App\Models\Experience;
 class Candidat extends Model
 {
     protected $fillable = ['user_id', 'age', 'portfolio'];
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
     public function experiences()
     {
         return $this->hasMany(Experience::class);

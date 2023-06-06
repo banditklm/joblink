@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Offre extends Model
 {
-        public function recruteur()
+    public function recruteur()
     {
         return $this->belongsTo(Recruteur::class);
     }
@@ -24,6 +24,10 @@ class Offre extends Model
     public function candidatures()
     {
         return $this->hasMany(Candidature::class);
+    }
+    public function users()
+    {
+        return $this->hasMany(User::class);
     }
     use HasFactory;
 }
