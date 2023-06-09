@@ -67,7 +67,7 @@ class UserController extends Controller
 
 
         
-                    $res = [
+        $res = [
             'BAC',
             'DEUG',
             'DUST',
@@ -112,11 +112,13 @@ class UserController extends Controller
         // return $experiences;
         // return $experiences;
         // $experiences = Experience::all();
+        $tdiplomes = Tdiplome::all();
         return view('cv',
          ['user'=> $user,
          'experiences'=> $experiences,
          'texperiences'=> $texperiences,
          'diplomes'=> $diplomes,
+         'tdiplomes'=> $tdiplomes,
         ]);
     }
     public function apropos()
@@ -158,7 +160,6 @@ class UserController extends Controller
             ]);
         }else if($role == 3) {
             $info= Recruteur::find($this->getRoleId());
-<<<<<<< HEAD
             // $offres = Offre::join('recruteurs', 'offres.recruteur_id', '=', 'recruteurs.id')
             //     ->join('users', 'recruteurs.user_id', '=', 'users.id')
             //     ->join('adresses', 'offres.adresse_id', '=', 'adresses.id')
@@ -205,22 +206,6 @@ class UserController extends Controller
                 'info'=> $info,
                 'offres'=> $offres5
             ]);
-=======
-            $offers = Offre::join('recruteurs', 'offres.recruteur_id', '=', 'recruteurs.id')
-                ->join('users', 'recruteurs.user_id', '=', 'users.id')
-                ->join('adresses', 'offres.adresse_id', '=', 'adresses.id')
-                ->select('offres.*', 'users.nom','users.path','adresses.ville')
-                ->where('recruteurs.id',$this->getRoleId())
-                ->orderBy('offres.created_at', 'desc')->get();
-                // return dd($info);
-                $user= User::find($id);
-                return view('profile', 
-                [
-                    'user'=> $user,
-                    'info'=> $info,
-                    'offers'=> $offers
-                ]);
->>>>>>> bcf3885510824b99c66dbee0d34bfa74b77c986b
         }else {
             $user= User::find($id);
             return view('admine', ['user'=> $user]);
@@ -303,6 +288,12 @@ class UserController extends Controller
 
         return redirect()->back()->with('success', 'Experience deleted successfully.');
     }
+    public function destroyDiplome(Diplome $diplome)
+    {
+        $diplome->delete();
+
+return redirect()->back()->with('success', 'Diplome deleted successfully.');
+    }
     public function experiencesUpdate(Request $request, Experience $experience)
     {
 
@@ -313,6 +304,17 @@ class UserController extends Controller
         $experience->save();
 
         return redirect()->back()->with('success', 'Experience added successfully.');
+    }
+    public function diplomesUpdate(Request $request, Diplome $diplome)
+    {
+
+        $diplome->title = $request->input('title');
+        $diplome->debut = $request->input('debut');
+        $diplome->fin = $request->input('fin');
+        $diplome->description = $request->input('description');
+        $diplome->save();
+
+        return redirect()->back()->with('success', 'Diplome added successfully.');
     }
     public function testmodel(){
         return $experiences = Texperience::all();

@@ -41,29 +41,26 @@ Route::post('/candidatures', [UserController::class, 'storeCandidature'])->name(
 Route::delete('/candidatures/{candidature}', [UserController::class, 'deleteCandidature'])->name('candidatures.delete');
 //Sauvgards
 Route::post('/sauvgardes', [UserController::class, 'createSauvgarde'])->name('sauvgardes.create');
-<<<<<<< HEAD
 //SHOW CV details
 Route::get('/cvdetail/{user_id}/{candidat_id}', [UserController::class, 'cvdetail'])->name('cvdetail');
 // Change eta candidatures
 Route::put('/cvdetail', [UserController::class, 'changeEtat'])->name('cvdetail.update');
-=======
 //Diplome
 Route::post('/diplomes', [UserController::class, 'storeDiplome'])->name('diplomes.store');
 Route::get('/diplomes', [UserController::class, 'showDiplomes'])->name('diplomes.index');
 //diplomeUpdate
->>>>>>> bcf3885510824b99c66dbee0d34bfa74b77c986b
+Route::put('/users/{diplome}/diplomes-update', [UserController::class, 'diplomesUpdate'])->name('diplomes.update');
+//diplomeDestroy
+Route::delete('/diplomes/{diplome}',[UserController::class, 'destroyDiplome'])->name('diplomes.destroy');
+
+
+Route::get('/welcome2', function () { return view('welcome2');})->name('welcome2');
+Route::get('/admine', function () { return view('admine');})->name('admine');
 
 
 
 
-
-
-
-
-// Route::get('/apropos', function () { //add by me
-//     return view('apropos');
-// })->name('apropos');
-
+//add by me
 
 // Route::get('/test2', function () {
 //     return view('/test/test');

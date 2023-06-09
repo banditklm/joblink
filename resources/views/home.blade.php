@@ -222,44 +222,6 @@
     <div class="container mt-3 mb-4">
         <div class="row justify-content-center">
             <div class="col-md-8">
-<<<<<<< HEAD
-                <div class="table-wrap">
-                    <table style="background:#cff4fc;" class="table table-info table-hover table-bordered border-primary">
-                        <thead class="thead-primary">
-                            <tr scope="row">
-                                <th scope="col">Recruteur</th>
-                                <th scope="col">Catégorie</th>
-                                <th scope="col">Domaine</th>
-                                <th scope="col">Emplacement</th>
-                                <th scope="col"></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        @foreach($offers as $offer)
-                            <tr>
-                                <th scope="row" class="img"><img src="{{ asset('assets/images/'.$offer->path)}}" alt="" class="rounded-circle"></th>
-                                <td>{{ $offer->domaine }}</td>
-                                <td>{{ $offer->categorie }}</td>
-                                <td>{{ $offer->city }}</td>
-                                <td style="display:flex;gap:10px;">
-                                    <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal-{{ $offer->id }}">Voir Offre</button>
-                                    <form action="{{ route('candidatures.store') }}" method="POST">
-                                        @csrf
-                                        <input type="hidden" name="offre_id" value="{{ $offer->id }}">
-                                        <button type="submit"  id="post-{{ $offer->id }}" class="btn btn-primary btn-sm" onclick="toggleButtons({{ $offer->id }})">Postuler</button>
-                                    </form>
-                                    <form action="{{ route('sauvgardes.create') }}" method="POST">
-                                        @csrf
-                                        <input type="hidden" name="offre_id" value="{{ $offer->id }}">
-                                        <button type="submit" class="btn btn-primary btn-sm">Sauvgarder</button>
-                                    </form>
-                                </td>
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
-                </div>
-=======
                 <table style="background:#cff4fc;" class="table table-info table-hover table-bordered border-primary">
                     <thead>
                         <tr>
@@ -294,7 +256,6 @@
                     @endforeach
                     </tbody>
                 </table>
->>>>>>> d5991eeede02b29fb0925e49b970ae8e066783b6
             </div>
         </div>
     </div>

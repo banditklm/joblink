@@ -352,7 +352,6 @@
 
 <h1 id="messauvgardes" class="text text-center" style="color:#fff">Mes Sauvgardes</h1>
 <!-- VOIR OFFRE -->
-<<<<<<< HEAD
 @foreach($offres as $offre)
 <div class="modal fade" id="exampleModal-{{ $offre->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
@@ -393,49 +392,6 @@
                     </div>
                     <div class="w-100" style="display:flex;">
                         <img src="{{ asset('assets/images/'.$offre->pathOffre)}}" alt="" class="w-50" style="max-height: 250px;display: block; margin: 0 auto;">
-=======
-    @foreach($offers as $offer)
-    <div class="modal fade" id="exampleModal-{{ $offer->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-        <div class="modal-header">
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-                <div class="card w-100 mb-4">
-                    <div class="card-body">
-                        <div class="head_post d-flex">
-                            <div>
-                                <img src="{{ asset('assets/images/'.$offer->path)}}" class="rounded-circle profile-pic mr-3" alt="profil_img">
-                            </div>
-                            <div>
-                                <h5 class="mb-0 mt-3 ms-2 font-weight-normal">{{ $offer->nom }}</h5>
-                            </div> 
-                            <div class="dropdown">
-                                <button class="btn point" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="fa-solid fa-ellipsis"></i>
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Signaler l'offre</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="d-flex justify-content-center gap-3">
-                            <span class="text text-muted">#{{ $offer->categorie }}</span>
-                            <span class="text text-muted">#{{ $offer->domaine }}</span>
-                            <span class="text text-muted">#{{ $offer->city }}</span>
-                        </div>
-                        <div>
-                            <span class="text text-muted">From: {{ $offer->debut}}</span><br>
-                            <span class="text text-muted">To: {{ $offer->fin }}</span>
-                        </div>
-                        <div>
-                            <p>{{ $offer->descriptionOffre }}</p>
-                        </div>
-                        <div class="w-100" style="display:flex;">
-                            <img src="{{ asset('assets/images/'.$offer->pathOffre)}}" alt="" class="w-50" style="max-height: 250px;display: block; margin: 0 auto;">
-                        </div>
->>>>>>> bcf3885510824b99c66dbee0d34bfa74b77c986b
                     </div>
                 </div>
         </div>
@@ -449,9 +405,7 @@
     @endforeach
 <!-- /VOIR OFFRE -->
 <!-- Table Sauvgards -->
-@if(count($offers)==0)
-        <h3 class="text-center" >Aucune sauvgardes trouvée ...</h3>
-@else
+
     <div class="container mt-3 mb-4">
         <div class="row justify-content-center">
             <div class="col-md-8">
@@ -492,7 +446,7 @@
             </div>
         </div>
     </div>
-@endif
+
 <!-- /Candidat -->
 @else
 <!-- Recruteur -->
