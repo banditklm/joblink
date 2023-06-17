@@ -1,7 +1,16 @@
 
     @extends('layouts.app')
     @section('cv')
-
+    @if(session('success'))
+<div id="success-message" class="row justify-content-center mt-4">
+    <div class="col-md-4">
+        <div style="background:#000;" class="alert alert-success mt-6 justify-content-center">
+        <a style="color:#fff" class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover w-100 justify-content-center" href="/profile">
+            {{ session('success') }}</a>
+        </div>
+    </div>
+</div>
+@endif
 
 <!-- CV Display -->
     <div class="container-fluid row">
@@ -241,8 +250,9 @@
                                         <div class="form-group">
                                             <label for="Title">Title:</label>
                                             <select name="title" id="Title" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" required>
-                                                <option value="BAC">Bac</option>
-                                                <option value="DEUG">Deug</option>
+                                                @foreach ($tdiplomes as $tdiplome)
+                                                    <option value="{{ $tdiplome->title }}">{{ $tdiplome->title }}</option>
+                                                @endforeach
                                                 
                                             </select>
                                         </div>
@@ -276,10 +286,10 @@
                 <div class="exp">
 
                     <div class="fl">
-                        <span class="title"><strong><span class="text-muted"> De </span>{{ $diplome->debut }}<span class="text-muted"> A </span>{{ $experience->fin }}</strong></span>
+                        <span class="title"><strong><span class="text-muted"> De </span>{{ $diplome->debut }}<span class="text-muted"> A </span>{{ $diplome->fin }}</strong></span>
                         
 <!-- diplome.update -->
-                        <div class="modal fade" id="modifierdiplome" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal fade" id="modifierdiplome-{{ $diplome->id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                 <div class="modal-header">
@@ -287,41 +297,34 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <form method="POST" action="">
-                                        <!-- @csrf
-                                        @method('PUT') -->
+                                    <form method="POST" action="{{ route('diplomes.update', $diplome->id) }}">
+                                        @csrf
+                                        @method('PUT')
 
                                         <div class="form-group">
                                             <label for="Title">Title:</label>
                                             <select name="title" id="Title" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" required>
-                                                <option selected disabled>{{ $experience->title }}</option>
-                                                <option value="BAC">Bac</option>
-                                                <option value="DEUG">Deug</option>
-                                                <option value="DEUST">Deust</option>
-                                                <option value="DUT">Dut</option>
-                                                <option value="BTS">BTS</option>
-                                                <option value="licence">licence</option>
-                                                <option value="Licence  Professionnelle">Licence  Professionnelle</option>
-                                                <option value="Master">Master</option>
-                                                <option value="Master  Professionnelle">Master  Professionnelle</option>
-                                                <option value="Doctorat">Doctorat</option>
+                                                <option selected disabled>{{ $diplome->title }}</option>
+                                                @foreach ($tdiplomes as $tdiplome)
+                                                    <option value="{{ $tdiplome->title }}">{{ $tdiplome->title }}</option>
+                                                @endforeach
 
                                             </select>
                                         </div>
 
                                         <div class="form-group">
                                             <label for="start_date">Start Date:</label>
-                                            <input type="date" id="start_date" name="debut" class="form-control" value="{{ $experience->debut }}" required>
+                                            <input type="date" id="start_date" name="debut" class="form-control" value="{{ $diplome->debut }}" required>
                                         </div>
 
                                         <div class="form-group">
                                             <label for="end_date">End Date:</label>
-                                            <input type="date" id="end_date" name="fin" class="form-control" value="{{ $experience->fin }}" >
+                                            <input type="date" id="end_date" name="fin" class="form-control" value="{{ $diplome->fin }}" >
                                         </div>
 
                                         <div class="form-group">
                                             <label for="description">Description:</label>
-                                            <textarea id="description" name="description" class="form-control" rows="5" required>{{ $experience->description }}</textarea>
+                                            <textarea id="description" name="description" class="form-control" rows="5" required>{{ $diplome->description }}</textarea>
                                         </div>
 
                                         </div>
@@ -342,12 +345,12 @@
                         <span>{{ $diplome->description }}</span>
                     </div>
                     <div class="handel">
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modifierdiplome">
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modifierdiplome-{{ $diplome->id }}">
                         Modifier
                         </button>
-                        <form method="POST" action="" onsubmit="return confirm('Are you sure you want to delete this diplome?')">
-                            <!-- @csrf
-                            @method('DELETE') -->
+                        <form method="POST" action="{{ route('diplomes.destroy', $diplome->id) }}" onsubmit="return confirm('Are you sure you want to delete this diplome?')">
+                            @csrf
+                            @method('DELETE')
                             <button type="submit" class="btn btn-danger">Supprimer</button>
                         </form>  
                     </div>

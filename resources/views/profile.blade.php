@@ -309,6 +309,7 @@
 
             </div>
         </div>
+<<<<<<< HEAD
 <!-- Candidat Mes candidatures table -->
 <h1 id="Mescandidatures" class="text text-center">Mes Candidatures</h1>
     @if($mesCandidatures->isEmpty())
@@ -350,10 +351,54 @@
                         </tbody>
                     </table>
                 </div>
+=======
+<!-- Candidat offres table -->
+<h1 id="Mescandidatures" class="text text-center" style="color:#fff">Mes Candidatures</h1>
+@if($mesCandidatures->isEmpty())
+        <h3 class="text-center">Aucune candidature trouvée ...</h3>
+@else
+    <div class="container mt-3 mb-4">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <table style="background:#cff4fc;" class="table table-info table-hover table-bordered border-primary">
+                    <thead>
+                        <tr>
+                            <th scope="col">Offres</th>
+                            <th scope="col">Categorie</th>
+                            <th scope="col">Domaine</th>
+                            <th scope="col">Emplacement</th>
+                            <th scope="col">Etat</th>
+                            <th scope="col">...</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($mesCandidatures as $offre)
+                        <tr>
+                            <!-- <td>{{ $offre->ville }}</td> -->
+                            <th scope="row" class="img"><img src="{{ asset('assets/images/'.$offre->pathOffre)}}" alt="no image"></th>
+                            <td>{{ $offre->categorie }}</td>
+                            <td>{{ $offre->domaine }}</td>
+                            <td>{{ $offre->city }}</td>
+                            <td>{{ $offre->etat }}</td>
+                            <td style="display:flex;gap:20px;">
+                                <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal-{{ $offre->id }}">Voir Offre</button>
+                                <form action="{{ route('candidatures.delete', $offre->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <input type="hidden" name="offre_id" value="{{ $offre->id }}">
+                                    <button tupe="submit" class="btn btn-danger btn-sm">Annuler</button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+>>>>>>> 08e532b0f93569efad504f6614fc9cf87b403c88
             </div>
         </div>
     @endif
 
+<<<<<<< HEAD
 <!-- voirs Mes candidatures details -->
 
     @foreach($mesCandidatures as $offre)
@@ -397,6 +442,50 @@
                         <div class="w-100" style="display:flex;">
                             <img src="{{ asset('assets/images/'.$offre->pathOffre)}}" alt="" class="w-50" style="max-height: 250px;display: block; margin: 0 auto;">
                         </div>
+=======
+<h1 id="messauvgardes" class="text text-center" style="color:#fff">Mes Sauvgardes</h1>
+<!-- VOIR OFFRE -->
+@foreach($offres as $offre)
+<div class="modal fade" id="exampleModal-{{ $offre->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+            <div class="card w-100 mb-4">
+                <div class="card-body">
+                    <div class="head_post d-flex">
+                        <div>
+                            <img src="{{ asset('assets/images/'.$offre->path)}}" class="rounded-circle profile-pic mr-3" alt="profil_img">
+                        </div>
+                        <div>
+                            <h5 class="mb-0 mt-3 ms-2 font-weight-normal">{{ $offre->nom }}</h5>
+                        </div> 
+                        <div class="dropdown">
+                            <button class="btn point" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Signaler l'offre</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center gap-3">
+                        <span class="text text-muted">#{{ $offre->categorie }}</span>
+                        <span class="text text-muted">#{{ $offre->domaine }}</span>
+                        <span class="text text-muted">#{{ $offre->city }}</span>
+                    </div>
+                    <div>
+                        <span class="text text-muted">From: {{ $offre->debut}}</span><br>
+                        <span class="text text-muted">To: {{ $offre->fin }}</span>
+                    </div>
+                    <div>
+                        <p>{{ $offre->descriptionOffre }}</p>
+                    </div>
+                    <div class="w-100" style="display:flex;">
+                        <img src="{{ asset('assets/images/'.$offre->pathOffre)}}" alt="" class="w-50" style="max-height: 250px;display: block; margin: 0 auto;">
+>>>>>>> 08e532b0f93569efad504f6614fc9cf87b403c88
                     </div>
             </div>
             <div class="modal-footer">
@@ -413,9 +502,13 @@
 <h1 id="messauvgardes" class="text text-center">Mes Sauvgardes</h1>
 
 <!-- Table Sauvgards -->
+<<<<<<< HEAD
     @if($offres->isEmpty())
             <h3 class="text-center">Aucune Sauvgardes trouvée ...</h3>
     @else
+=======
+
+>>>>>>> 08e532b0f93569efad504f6614fc9cf87b403c88
     <div class="container mt-3 mb-4">
         <div class="row justify-content-center">
             <div class="col-md-8">
@@ -457,6 +550,7 @@
             </div>
         </div>
     </div>
+<<<<<<< HEAD
     @endif
 <!-- voirs Mes sauvgards details -->
 
@@ -512,6 +606,9 @@
     </div>
     </div>
     @endforeach
+=======
+
+>>>>>>> 08e532b0f93569efad504f6614fc9cf87b403c88
 <!-- /Candidat -->
 <style>
     .button-active {
