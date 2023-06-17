@@ -44,26 +44,26 @@
                 </div>
                 <div>
                     @auth
+                    @if (Auth::user()->role == 2)
                         <a class="navbar-brand" href="{{ url('recherche') }}">
                             Search 
                         </a>
                         <a class="navbar-brand mr-5" href="{{ url('/home') }}">
-                            Offres
+                            Recomendation
                         </a>
-                        @if (Auth::user()->role == 2)
                         <a class="navbar-brand" href="{{ url('/monCv') }}">
                             Mon Cv
                         </a>
                         @else
+                        <a class="navbar-brand" href="{{ url('/home') }}">
+                            Post-offre
+                        </a>
                         <a class="navbar-brand" href="{{ url('/apropos') }}">
                             A propos
                         </a>
                         @endif
                         <a class="navbar-brand" href="{{ url('/profile') }}">
                         Profile
-                        </a>
-                        <a class="navbar-brand" href="{{ url('/') }}">
-                            Recomendation
                         </a>
                     @endauth
                 </div>

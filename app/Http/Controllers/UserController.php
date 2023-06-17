@@ -19,6 +19,7 @@ use App\Models\Tdiplome;
 use App\Models\Competence;
 use App\Models\Referenece;
 use App\Models\Sauvgarde;
+use App\Models\Notification;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 class UserController extends Controller
@@ -147,17 +148,24 @@ class UserController extends Controller
             ->select('offres.*', 'users.nom','users.path')
             ->orderBy('offres.created_at', 'desc')
             ->get();
-            // return $mesCandidatures;
+            // $offres =[];
+            $notifications = Notification::where('read',1)->where('user',$id)
+            ->join('offres', 'notifications.offre', '=', 'offres.id')
+            ->orderBy('notifications.created_at', 'desc')
+            ->get();
+            $count = count($notifications);
+            // return $notifications;
             return view('profile', 
             [
                 'user'=> $user,
                 'info'=> $info,
                 'mesCandidatures'=>$mesCandidatures,
                 'offres'=>$offres,
+                'notifications'=>$notifications,
+                'count'=>$count,
             ]);
         }else if($role == 3) {
             $info= Recruteur::find($this->getRoleId());
-<<<<<<< HEAD
             // $offres = Offre::join('recruteurs', 'offres.recruteur_id', '=', 'recruteurs.id')
             //     ->join('users', 'recruteurs.user_id', '=', 'users.id')
             //     ->join('adresses', 'offres.adresse_id', '=', 'adresses.id')
@@ -174,13 +182,13 @@ class UserController extends Controller
             ->where('offres.recruteur_id',$this->getRoleId())
             ->orderBy('offres.created_at', 'desc')
             ->get();
-            $offres4 = Offre::select('offres.*')
-            //     ->select('offres.*', 'users.nom','users.path','adresses.ville','candidats.age')
-            //     ->where('recruteurs.id',$this->getRoleId())
-            ->where('offres.recruteur_id',$this->getRoleId())
-            ->orderBy('offres.created_at', 'desc')
-            ->get();
-            $offres3 = Offre::all();
+            // $offres4 = Offre::select('offres.*')
+            // //     ->select('offres.*', 'users.nom','users.path','adresses.ville','candidats.age')
+            // //     ->where('recruteurs.id',$this->getRoleId())
+            // ->where('offres.recruteur_id',$this->getRoleId())
+            // ->orderBy('offres.candidatures', 'desc')
+            // ->get();
+            // $offres3 = Offre::all();
             // $offres3 = Offre::with('candidature','candidat','user')
 
                 // ->join('users', 'Offres.user_id', '=', 'users.id')
@@ -198,28 +206,19 @@ class UserController extends Controller
 
             // return  dump($offres5);
             $user= User::find($id);
+            $notifications = Notification::where('read',1)->where('user',$id)
+            ->join('users', 'notifications.from', '=', 'users.id')
+            ->orderBy('notifications.created_at', 'desc')
+            ->get();
+            $count = count($notifications);
             return view('profile', 
             [
                 'user'=> $user,
                 'info'=> $info,
-                'offres'=> $offres5
+                'offres'=> $offres5,
+                'notifications'=>$notifications,
+                'count'=>$count,
             ]);
-=======
-            $offers = Offre::join('recruteurs', 'offres.recruteur_id', '=', 'recruteurs.id')
-                ->join('users', 'recruteurs.user_id', '=', 'users.id')
-                ->join('adresses', 'offres.adresse_id', '=', 'adresses.id')
-                ->select('offres.*', 'users.nom','users.path','adresses.ville')
-                ->where('recruteurs.id',$this->getRoleId())
-                ->orderBy('offres.created_at', 'desc')->get();
-                // return dd($info);
-                $user= User::find($id);
-                return view('profile', 
-                [
-                    'user'=> $user,
-                    'info'=> $info,
-                    'offers'=> $offers
-                ]);
->>>>>>> bcf3885510824b99c66dbee0d34bfa74b77c986b
         }else {
             $user= User::find($id);
             return view('admine', ['user'=> $user]);
@@ -313,9 +312,6 @@ class UserController extends Controller
 
         return redirect()->back()->with('success', 'Experience added successfully.');
     }
-    public function testmodel(){
-        return $experiences = Texperience::all();
-    }
     // OFFRES
     public function offresStore(Request $request)
     {
@@ -392,34 +388,51 @@ class UserController extends Controller
     public function searchOffre(Request $request)
     {
         $ville = $request->input('ville');
+        $MotCles = $request->input('MotCles');
         
-        $offres = Offre::join('adresses', 'offres.adresse_id', '=', 'adresses.id')
-            ->join('recruteurs', 'offres.recruteur_id', '=', 'recruteurs.id')
+        // return $request;
+        $offres = Offre::join('recruteurs', 'offres.recruteur_id', '=', 'recruteurs.id')
             ->join('users', 'recruteurs.user_id', '=', 'users.id')
-            ->where('adresses.ville', $ville)
-            ->select('offres.*', 'users.nom','users.path','adresses.ville')
+            ->where('offres.city', $ville)
+            ->where('offres.descriptionOffre', 'LIKE', '%'.$MotCles.'%')
+            ->select('offres.*', 'users.nom','users.path')
             ->get();
         // return $results;
         
         return view('search', compact('offres'));
     }
+    //Notificatio
+    public function sendNotification($text,$read,$user,$from,$offre)
+    {   
+        $notification = new Notification();
+        $notification->text = $text;
+        $notification->read = $read;
+        $notification->user = $user;
+        $notification->from = $from;
+        $notification->offre = $offre;
+        $notification->save();
+    }
     //Candidatures
     public function storeCandidature(Request $request)
-    {
+    {   
+        $id = Auth::user()->id;
         $offreId = $request->input('offre_id');
+        $recruteur_id = $request->input('recruteur_id');
         $candidatId = $this->getRoleId();
         $state = 'En attente';
+        $sendTo = Recruteur::find($recruteur_id)->user_id;
+        // return $user ;
+
 
         // Save the candidature
         $candidature = new Candidature();
         $candidature->offre_id = $offreId;
         $candidature->candidat_id = $candidatId;
-        $candidature->user_id = Auth::user()->id;
+        $candidature->user_id = $id;
         $candidature->etat = $state;
         $candidature->save();
-
-        // Send a notification to the recruiter
-        // $this->sendNotification('recruteur', 'You have a new candidate.');
+        // Send a notification to the recruteur
+        $this->sendNotification('You have a new candidat.',1,$sendTo,$id,$offreId);
 
         // Redirect or display a success message
         return redirect()->back()->with('success', 'Candidature added successfully.');
@@ -436,6 +449,24 @@ class UserController extends Controller
         // Redirect or display a success message
         return redirect()->back()->with('success', 'Candidature deleted successfully.');
         }
+    }
+    //change Candidatures etat
+    public function changeEtat(Request $request)
+    {   
+        $candidature = Candidature::findOrFail($request->input('candidature_id'));
+        $etat = $request->input('etat');
+        $candidature->etat = $etat;
+        $candidature->save();
+        // return $user;
+        // return $request->input('etat');
+        $sendTo = $request->input('user');
+        $offre = $request->input('offre_ID');
+        $id = Auth::user()->id; 
+        $msg ='Le statut de candidature est passé à '.$etat.'.';
+
+        $this->sendNotification($msg,1,$sendTo,$id,$offre);
+
+        return redirect()->back()->with('success', 'Candidature change successfully.');
     }
     //sauvgard
     public function createSauvgarde(Request $request)
@@ -465,15 +496,7 @@ class UserController extends Controller
          'experiences'=> $experiences
         ]);
     }
-        public function changeEtat(Request $request)
-    {
-        $candidature = Candidature::findOrFail($request->input('candidature_id'));
-        $candidature->etat = $request->input('etat');
-        // return $request->input('etat');
-        $candidature->save();
 
-        return redirect()->back()->with('success', '$candidature change successfully.');
-    }
 
 
 

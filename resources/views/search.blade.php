@@ -41,23 +41,23 @@
                                     <div class="col-md-6">
                                         <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
                                             <option selected>Catégorie</option>
-                                            <option value="1">Etude</option>
-                                            <option value="2">Formation</option>
-                                            <option value="3">Stage</option>
-                                            <option value="3">Emploi</option>
+                                            <option value="Etude">Etude</option>
+                                            <option value="Formation">Formation</option>
+                                            <option value="Stage">Stage</option>
+                                            <option value="Emploi">Emploi</option>
                                         </select>
                                         <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
                                             <option selected>Niveau</option>
-                                            <option value="1">Bac</option>
-                                            <option value="2">Licence</option>
-                                            <option value="3">Master</option>
-                                            <option value="3">Doctorat</option>
+                                            <option value="Bac">Bac</option>
+                                            <option value="Licence">Licence</option>
+                                            <option value="Master">Master</option>
+                                            <option value="Doctorat">Doctorat</option>
                                         </select>
                                         <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
                                             <option selected>Domaine</option>
-                                            <option value="1">Data</option>
-                                            <option value="2">Design</option>
-                                            <option value="3">Web</option>
+                                            <option value="Data">Data</option>
+                                            <option value="Design">Design</option>
+                                            <option value="Web">Web</option>
                                             <option value="3">Marketing</option>
                                         </select>
                                         <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
@@ -91,7 +91,7 @@
                                             <option value="Ifrane">Ifrane</option>
                                         </select>
                                         &nbsp;&nbsp;<label class="labels">Mot Clés</label>
-                                        <input type="text" class="form-control mt-2 mb-2" name="text" id="text" style="height: 50px;" value="">
+                                        <input type="text" class="form-control mt-2 mb-2" name="MotCles" id="text" style="height: 50px;" value="">
                                     </div>
                                 </div>
                             </div>
