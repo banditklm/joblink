@@ -219,6 +219,15 @@
         </div>
     @endforeach
 <!-- Candidat offres table -->
+
+<div class="cont">
+    <div class="row justify-content-center">
+        <div class="col-8">
+            <h1 class="d-flex align-items-center">Nouveaux offres recommandée </h1>
+        </div>
+    </div>
+</div>
+@if (!$offres->isEmpty())
     <div class="container mt-3 mb-4">
         <div class="row justify-content-center">
             <div class="col-md-8">
@@ -239,12 +248,13 @@
                             <td>{{ $offer->domaine }}</td>
                             <td>{{ $offer->categorie }}</td>
                             <td>{{ $offer->city }}</td>
-                            <td style="display:flex;gap:10px;">
+                            <td style="display:flex;gap:10px;" >
                                 <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal-{{ $offer->id }}">Voir Offre</button>
                                 <form action="{{ route('candidatures.store') }}" method="POST">
                                     @csrf
                                     <input type="hidden" name="offre_id" value="{{ $offer->id }}">
-                                    <button type="submit"  id="post-{{ $offer->id }}" class="btn btn-primary btn-sm" onclick="toggleButtons({{ $offer->id }})">Postuler</button>
+                                    <input type="hidden" name="recruteur_id" value="{{ $offer->recruteur_id }}">
+                                    <button type="submit"  id="post-{{ $offer->id }}" class="btn btn-primary btn-sm">Postuler</button>
                                 </form>
                                 <form action="{{ route('sauvgardes.create') }}" method="POST">
                                     @csrf
@@ -259,9 +269,39 @@
             </div>
         </div>
     </div>
-
-
-
+@endif
+<div class="cont">
+    <div class="row justify-content-center">
+        <div class="col-8 ">
+            <h1 class="d-flex align-items-center">Offre recommandée proche de votre emplacement</h1>
+        </div>
+    </div>
+    <h5>en cours de traitement ...</h5>
+</div>
+<div class="cont">
+    <div class="row justify-content-center">
+        <div class="col-8 ">
+            <h1 class="d-flex align-items-center">Offres recommandée selon votre domaine</h1>
+        </div>
+    </div>
+    <h5>en cours de traitement ...</h5>
+</div>
+<style>
+.cont{
+    margin: 20px;
+    background: red;
+    border-radius: 30px;
+    padding: 10px;
+}
+.col-8{
+    color: yellow;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    padding: 20px auto;
+}
+</style>
 <script>
     function toggleButtons(id) {
         var post = document.getElementById("post-"+id);

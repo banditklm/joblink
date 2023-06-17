@@ -37,17 +37,6 @@
                 <li class="nav-item btn">
                     <a class="nav-link active text text-dark" aria-current="page" href="#Mescandidatures">Mes Candidatures</a>
                 </li>
-                <li class="nav-item dropdown btn">
-                    <a class="nav-link dropdown-toggle text text-dark" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Notification</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Une offre d'étude est disponible</a></li>
-                        <li><a class="dropdown-item" href="#">Une offre de formation est disponible</a></li>
-                        <li><a class="dropdown-item" href="#">Une offre de stage est disponible</a></li>
-                        <li><a class="dropdown-item" href="#">Une offre d'emploi est disponible</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">Google vous envoyer une message</a></li>
-                    </ul>
-                </li>
                 <li class="nav-item btn">
                     <a class="nav-link text text-dark" href="{{route('monCv')}}">Mon CV</a>
                 </li>
@@ -59,7 +48,7 @@
                 <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#interet">
                     Intérets
                 </button>
-<!-- Modal -->
+                <!-- Modal -->
                 <div class="modal fade" id="interet" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered modal-lg">
                         <div class="modal-content">
@@ -107,12 +96,30 @@
                 </div>
 <!-- /Modal -->    
                 </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text text-dark" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
+                        <i class="fa-regular fa-bell fa-lg"></i>
+                        @if($count)
+                            <span style="display: inline-block;justify-content: center; color: #fff; background-color: red; height: 20px; width: 20px;border-radius:10px;">&nbsp;{{$count}}</span>
+                        @endif
+                        </a>
+                        <ul class="dropdown-menu" style="background-color: #abdbe3;">
+                            @foreach($notifications as $notification)
+                            <li onclick="flashNotification('offre-{{ $notification->offre }}');">
+                                <a class="dropdown-item" href="#offre-{{ $notification->offre }}"  style="display: flex; color: #111;">
+                                    <img src="{{ asset('assets/images/'.$notification->pathOffre)}}" alt="notif" class="rounded-circle" width="50">
+                                    &nbsp;{{$notification->text}}
+                                </a>
+                            </li>
+                            @endforeach
+                            <li><a class="dropdown-item" href="#">make all read</a></li>
+                        </ul>
+                    </li>
             </ul>
         </nav>
 <!-- /Nav -->
 <!-- Candidat body -->
         <div class="row gutters-sm">
-<!-- first Card -->
             <div class="col-md-2">
                 <div class="card pb-5">
                     <div class="card-body">
@@ -302,6 +309,49 @@
 
             </div>
         </div>
+<<<<<<< HEAD
+<!-- Candidat Mes candidatures table -->
+<h1 id="Mescandidatures" class="text text-center">Mes Candidatures</h1>
+    @if($mesCandidatures->isEmpty())
+            <h3 class="text-center">Aucune candidature trouvée ...</h3>
+    @else
+        <div class="container mt-3 mb-4">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <table style="background:#cff4fc;" class="table table-info table-hover table-bordered border-primary">
+                        <thead>
+                            <tr>
+                                <th scope="col">Offres</th>
+                                <th scope="col">Categorie</th>
+                                <th scope="col">Domaine</th>
+                                <th scope="col">Emplacement</th>
+                                <th scope="col">Etat</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($mesCandidatures as $offre)
+                            <tr id="offre-{{ $offre->id }}">
+                                <th scope="row" class="img"><img src="{{ asset('assets/images/'.$offre->pathOffre)}}" alt="no image"></th>
+                                <td class="offre-{{ $offre->id }}">{{ $offre->categorie }}</td>
+                                <td class="offre-{{ $offre->id }}">{{ $offre->domaine }}</td>
+                                <td class="offre-{{ $offre->id }}">{{ $offre->city }}</td>
+                                <td class="offre-{{ $offre->id }}">{{ $offre->etat }}</td>
+                                <td style="display:flex;gap:20px;">
+                                    <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#Candidature-{{ $offre->id }}">Voir Offre</button>
+                                    <form action="{{ route('candidatures.delete', $offre->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <input type="hidden" name="offre_id" value="{{ $offre->id }}">
+                                        <button tupe="submit" class="btn btn-danger btn-sm">Annuler</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
+=======
 <!-- Candidat offres table -->
 <h1 id="Mescandidatures" class="text text-center" style="color:#fff">Mes Candidatures</h1>
 @if($mesCandidatures->isEmpty())
@@ -343,13 +393,56 @@
                     @endforeach
                     </tbody>
                 </table>
+>>>>>>> 08e532b0f93569efad504f6614fc9cf87b403c88
             </div>
         </div>
-    </div>
-@endif
-<!-- Mes Candidature -->
-    </div>
+    @endif
 
+<<<<<<< HEAD
+<!-- voirs Mes candidatures details -->
+
+    @foreach($mesCandidatures as $offre)
+    <div class="modal fade" id="Candidature-{{ $offre->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+                <div class="card w-100 mb-4">
+                    <div class="card-body">
+                        <div class="head_post d-flex">
+                            <div>
+                                <img src="{{ asset('assets/images/'.$offre->path)}}" class="rounded-circle profile-pic mr-3" alt="profil_img">
+                            </div>
+                            <div>
+                                <h5 class="mb-0 mt-3 ms-2 font-weight-normal">{{ $offre->nom }}</h5>
+                            </div> 
+                            <div class="dropdown">
+                                <button class="btn point" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa-solid fa-ellipsis"></i>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Signaler l'offre</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-center gap-3">
+                            <span class="text text-muted">#{{ $offre->categorie }}</span>
+                            <span class="text text-muted">#{{ $offre->domaine }}</span>
+                            <span class="text text-muted">#{{ $offre->city }}</span>
+                        </div>
+                        <div>
+                            <span class="text text-muted">From: {{ $offre->debut}}</span><br>
+                            <span class="text text-muted">To: {{ $offre->fin }}</span>
+                        </div>
+                        <div>
+                            <p>{{ $offre->descriptionOffre }}</p>
+                        </div>
+                        <div class="w-100" style="display:flex;">
+                            <img src="{{ asset('assets/images/'.$offre->pathOffre)}}" alt="" class="w-50" style="max-height: 250px;display: block; margin: 0 auto;">
+                        </div>
+=======
 <h1 id="messauvgardes" class="text text-center" style="color:#fff">Mes Sauvgardes</h1>
 <!-- VOIR OFFRE -->
 @foreach($offres as $offre)
@@ -392,20 +485,30 @@
                     </div>
                     <div class="w-100" style="display:flex;">
                         <img src="{{ asset('assets/images/'.$offre->pathOffre)}}" alt="" class="w-50" style="max-height: 250px;display: block; margin: 0 auto;">
+>>>>>>> 08e532b0f93569efad504f6614fc9cf87b403c88
                     </div>
-                </div>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-            <button type="button" class="btn btn-primary">Postuler</button>
-        </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                <button type="button" class="btn btn-primary">Postuler</button>
+            </div>
+            </div>
         </div>
     </div>
     </div>
     @endforeach
 <!-- /VOIR OFFRE -->
-<!-- Table Sauvgards -->
 
+<h1 id="messauvgardes" class="text text-center">Mes Sauvgardes</h1>
+
+<!-- Table Sauvgards -->
+<<<<<<< HEAD
+    @if($offres->isEmpty())
+            <h3 class="text-center">Aucune Sauvgardes trouvée ...</h3>
+    @else
+=======
+
+>>>>>>> 08e532b0f93569efad504f6614fc9cf87b403c88
     <div class="container mt-3 mb-4">
         <div class="row justify-content-center">
             <div class="col-md-8">
@@ -416,7 +519,7 @@
                             <th scope="col">Domaine</th>
                             <th scope="col">Catégorie</th>
                             <th scope="col">Emplacement</th>
-                            <th scope="col"></th>
+                            <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -427,13 +530,14 @@
                             <td>{{ $offre->categorie }}</td>
                             <td>{{ $offre->city }}</td>
                             <td style="display:flex;gap:10px;">
-                                <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal-{{ $offre->id }}">Voir Offre</button>
+                                <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#sauvgard-{{ $offre->id }}">Voir Offre</button>
                                 <form action="{{ route('candidatures.store') }}" method="POST">
                                     @csrf
                                     <input type="hidden" name="offre_id" value="{{ $offre->id }}">
-                                    <button type="submit"  id="post-{{ $offre->id }}" class="btn btn-primary btn-sm" onclick="toggleButtons({{ $offre->id }})">Postuler</button>
+                                    <input type="hidden" name="recruteur_id" value="{{ $offre->recruteur_id }}">
+                                    <button type="submit" class="btn btn-primary btn-sm">Postuler</button>
                                 </form>
-                                <form action="{{ route('candidatures.store') }}" method="POST">
+                                <form action="" method="POST">
                                     @csrf
                                     <input type="hidden" name="offre_id" value="{{ $offre->id }}">
                                     <button type="submit" class="btn btn-primary btn-sm">Supprimer</button>
@@ -446,14 +550,90 @@
             </div>
         </div>
     </div>
+<<<<<<< HEAD
+    @endif
+<!-- voirs Mes sauvgards details -->
 
+    @foreach($offres as $offre)
+    <div class="modal fade" id="sauvgard-{{ $offre->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+                <div class="card w-100 mb-4">
+                    <div class="card-body">
+                        <div class="head_post d-flex">
+                            <div>
+                                <img src="{{ asset('assets/images/'.$offre->path)}}" class="rounded-circle profile-pic mr-3" alt="profil_img">
+                            </div>
+                            <div>
+                                <h5 class="mb-0 mt-3 ms-2 font-weight-normal">{{ $offre->nom }}</h5>
+                            </div> 
+                            <div class="dropdown">
+                                <button class="btn point" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa-solid fa-ellipsis"></i>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Signaler l'offre</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-center gap-3">
+                            <span class="text text-muted">#{{ $offre->categorie }}</span>
+                            <span class="text text-muted">#{{ $offre->domaine }}</span>
+                            <span class="text text-muted">#{{ $offre->city }}</span>
+                        </div>
+                        <div>
+                            <span class="text text-muted">From: {{ $offre->debut}}</span><br>
+                            <span class="text text-muted">To: {{ $offre->fin }}</span>
+                        </div>
+                        <div>
+                            <p>{{ $offre->descriptionOffre }}</p>
+                        </div>
+                        <div class="w-100" style="display:flex;">
+                            <img src="{{ asset('assets/images/'.$offre->pathOffre)}}" alt="" class="w-50" style="max-height: 250px;display: block; margin: 0 auto;">
+                        </div>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                <button type="button" class="btn btn-primary">Postuler</button>
+            </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    @endforeach
+=======
+
+>>>>>>> 08e532b0f93569efad504f6614fc9cf87b403c88
 <!-- /Candidat -->
+<style>
+    .button-active {
+  background-color: yellow!important;
+  
+  transition: background-color 2s;
+}
+</style>
+<script>
+function flashNotification(className) {
+  var buttons = document.getElementsByClassName(className);
+
+  for (var i = 0; i < buttons.length; i++) {
+    buttons[i].classList.add('button-active'); // Activate each button with the specified class
+    setTimeout(function(button) {
+      button.classList.remove('button-active'); // Remove 'button-active' class after 5 seconds
+    }, 5000, buttons[i]);
+  }
+}
+
+</script>
 @else
 <!-- Recruteur -->
     <div class="container mt-4">
         <div class="main-body">
-        
-<!-- Nav -->
                     <nav aria-label="breadcrumb" class="main-breadcrumb">
                         <ul class="nav nav-tabs">
                                 <li class="nav-item">
@@ -463,54 +643,23 @@
                                     <a class="nav-link" href="{{route('apropos')}}">A propos</a>
                                 </li>
                                 <li class="nav-item dropdown">
-                                        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                        Intérets
-                                        </button>
-                                        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-centered modal-lg">
-                                                <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Intérets</h1>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <div class="" role="group" aria-label="Basic checkbox toggle button group">
-                                                                <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
-                                                                <label class="btn btn-outline-primary" for="btncheck1">Disign graphique</label>
-
-                                                                <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off">
-                                                                <label class="btn btn-outline-primary" for="btncheck2">Comptabilité</label>
-
-                                                                <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off">
-                                                                <label class="btn btn-outline-primary" for="btncheck3">Photoshop</label>
-
-                                                                <input type="checkbox" class="btn-check" id="btncheck4" autocomplete="off">
-                                                                <label class="btn btn-outline-primary" for="btncheck4">Illustration</label>
-
-                                                                <input type="checkbox" class="btn-check" id="btncheck5" autocomplete="off">
-                                                                <label class="btn btn-outline-primary" for="btncheck5">Juridique</label>
-
-                                                                <input type="checkbox" class="btn-check" id="btncheck6" autocomplete="off">
-                                                                <label class="btn btn-outline-primary" for="btncheck6">Finance</label>
-
-                                                                <input type="checkbox" class="btn-check" id="btncheck7" autocomplete="off">
-                                                                <label class="btn btn-outline-primary" for="btncheck7">Web scraping</label>
-
-                                                                <input type="checkbox" class="btn-check" id="btncheck8" autocomplete="off">
-                                                                <label class="btn btn-outline-primary" for="btncheck8">Marketing</label>
-
-                                                                <input type="checkbox" class="btn-check" id="btncheck9" autocomplete="off">
-                                                                <label class="btn btn-outline-primary" for="btncheck9">eCommerce</label>
-
-                                                            </div>
-                                                        </div>    
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                            <button type="button" class="btn btn-primary">Save</button>
-                                                        </div>
-                                                </div>
-                                            </div>
-                                        </div>   
+                                    <a class="nav-link dropdown-toggle text text-dark" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
+                                    <i class="fa-regular fa-bell fa-lg"></i>
+                                    @if($count)
+                                        <span style="display: inline-block;justify-content: center; color: #fff; background-color: red; height: 20px; width: 20px;border-radius:10px;">&nbsp;{{$count}}</span>
+                                    @endif
+                                    </a>
+                                    <ul class="dropdown-menu" style="background-color: #abdbe3;">
+                                        @foreach($notifications as $notification)
+                                        <li>
+                                            <a class="dropdown-item" href="#" style="display: flex; color: #111;" data-bs-toggle="modal" data-bs-target="#modalCandidature-{{ $notification->offre }}">
+                                                <img src="{{ asset('assets/images/'.$notification->path)}}" alt="notif" class="rounded-circle" width="50">
+                                                &nbsp;{{$notification->text}}
+                                            </a>
+                                        </li>
+                                        @endforeach
+                                        <li><a class="dropdown-item" href="#">make all read</a></li>
+                                    </ul>
                                 </li>
                         </ul>
                     </nav>
@@ -698,7 +847,10 @@
             </div>
         </div>
 <!-- /Recruteur -->
-<h1 id="mespost" class="text text-center">Mes Post</h1>
+@if (!$offres->isEmpty())
+    <h1 id="mespost" class="text text-center">Mes Post</h1>
+@endif
+
 <!-- Afficher Offres -->
 <div class="container ">
     <div class="row justify-content-center">
@@ -725,7 +877,7 @@
                     <div class="d-flex justify-content-center gap-3">
                         <span class="text text-muted">#{{ $offre->categorie }}</span>
                         <span class="text text-muted">#{{ $offre->domaine }}</span>
-                        <span class="text text-muted">#{{ $offre->ville }}</span>
+                        <span class="text text-muted">#{{ $offre->city }}</span>
                     </div>
                     <div>
                         <span class="text text-muted">From: {{ $offre->debut}}</span><br>
@@ -756,7 +908,6 @@
                             <h1 class="modal-title fs-5" id="staticBackdropLabel">Les Candidatures</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <form action="">
                             <div class="modal-body">
                             @if ($offre->candidatures->isEmpty())
                                 <p>Aucune candidature postulée pour cette offre.</p>
@@ -781,10 +932,15 @@
                                                             <i class="fa-solid fa-eye"></i>
                                                             Voirs Cv
                                                     </a>
-                                                    <input type="hidden" name="candidat_id" value="{{ $candidature->candidat->id }}">
-                                                    <p id="btn1" class="voir-btn btn btn-outline-secondary" data-action="voir" data-candidature="{{$candidature->id}}"><i class="fa-solid fa-handshake"></i> Demandé à le voir</p>
-                                                    <p id="btn2" class="accepter-btn btn btn-outline-success" data-action="accepter" data-candidature="{{$candidature->id}}"><i class="fa-solid fa-circle-check"></i> Accepter</p>
-                                                    <p id="btn3" class="rejeter-btn btn btn-outline-danger" data-action="rejeter" data-candidature="{{$candidature->id}}"><i class="fa-solid fa-xmark"></i> Rejeter</p>
+                                                    <p id="btn1" class="voir-btn btn btn-outline-secondary" data-offre="{{ $candidature->offre_id }}" data-user="{{ $candidature->candidat->user->id }}" data-action="Demandé à le voir" data-candidature="{{$candidature->id}}">
+                                                        <i class="fa-solid fa-handshake"></i>
+                                                         Demandé à le voir</p>
+                                                    <p id="btn2" class="accepter-btn btn btn-outline-success" data-offre="{{ $candidature->offre_id }}" data-user="{{ $candidature->candidat->user->id }}" data-action="accepter" data-candidature="{{$candidature->id}}">
+                                                        <i class="fa-solid fa-circle-check"></i>
+                                                         Accepter</p>
+                                                    <p id="btn3" class="rejeter-btn btn btn-outline-danger" data-offre="{{ $candidature->offre_id }}" data-user="{{ $candidature->candidat->user->id }}" data-action="rejeter" data-candidature="{{$candidature->id}}">
+                                                        <i class="fa-solid fa-xmark"></i>
+                                                         Rejeter</p>
 
                                                 </div>
                                             </div>
@@ -796,15 +952,17 @@
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">Close</button>
                             </div>
-                        </form>
                     </div>
                 </div>
             </div>
 @endforeach
 <!-- /modal candidature -->
-<form  id="update" action="{{ route('cvdetail.update') }}" method="POST">
+<form  id="update" action="{{ route('change.etat') }}" method="POST">
     @csrf
     @method('PUT')
+
+    <input type="hidden" name="offre_ID" value="">
+    <input type="hidden" name="user" value="">
     <input type="hidden" name="candidature_id" value="">
     <input type="hidden" name="etat" value="">
 </form>
@@ -812,18 +970,24 @@
     $(document).ready(function() {
         $("#btn1, #btn2, #btn3").click(function() {
             // alert("hey");
-            alert($(this).data('action'));
-            alert($(this).data('candidature'))
+            // alert($(this).data('action'));
+            // alert($(this).data('candidature'))
+            var user = $(this).data('user');
+            var offre = $(this).data('offre');
             var action = $(this).data('action');
             var candidature=$(this).data('candidature');
-
+            // alert(offre);
+            // alert(user);
             // Set the values in hidden inputs
+            $('input[name="offre_ID"]').val(offre);
+            $('input[name="user"]').val(user);
             $('input[name="etat"]').val(action);
             $('input[name="candidature_id"]').val(candidature);
 
             // Submit the form
             $('#update').submit();
         });
+
     });
 </script>
 

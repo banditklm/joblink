@@ -1,5 +1,4 @@
 
-    
     @extends('layouts.app')
     @section('cv')
     @if(session('success'))
@@ -12,12 +11,6 @@
     </div>
 </div>
 @endif
-
-
-
-
-
-
 
 <!-- CV Display -->
     <div class="container-fluid row">
