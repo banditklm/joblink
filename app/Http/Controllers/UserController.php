@@ -411,8 +411,9 @@ return redirect()->back()->with('success', 'Diplome deleted successfully.');
     {
         $ville = $request->input('ville');
         $MotCles = $request->input('MotCles');
+        $pic = Auth::user()->path;
         
-        // return $request;
+        // return $pic;
         $offres = Offre::join('recruteurs', 'offres.recruteur_id', '=', 'recruteurs.id')
             ->join('users', 'recruteurs.user_id', '=', 'users.id')
             ->where('offres.city', $ville)
@@ -421,7 +422,7 @@ return redirect()->back()->with('success', 'Diplome deleted successfully.');
             ->get();
         // return $results;
         
-        return view('search', compact('offres'));
+        return view('search',  ['offres'=> $offres,'pic'=> $pic]);
     }
     //Notificatio
     public function sendNotification($text,$read,$user,$from,$offre)
