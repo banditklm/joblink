@@ -3,7 +3,8 @@
 @section('content')
 <style>
     body{background-image: ;
-        background-image: url('/assets/photos/wallpaper8.jpg');
+        /* background-image: url('/assets/photos/wallpaper8.jpg'); */
+        background-color: #37517e;
         background-attachment: fixed; 
     }
 </style>
@@ -176,19 +177,24 @@
             <div class="modal-body">
                     <div class="card w-100 mb-4">
                         <div class="card-body">
-                            <div class="head_post d-flex">
-                                <div>
-                                    <img src="{{ asset('assets/images/'.$offer->path)}}" class="rounded-circle profile-pic mr-3" alt="profil_img">
-                                </div>
-                                <div>
-                                    <h5 class="mb-0 mt-3 ms-2 font-weight-normal">{{ $offer->nom }}</h5>
+                            <div class="head_post d-flex gap-5">
+                                <div class="d-flex">
+                                    <div class="">
+                                        <img src="{{ asset('assets/images/'.$offer->path)}}" class="rounded-circle profile-pic mr-3" alt="profil_img">
+                                    </div>
+                                    <div>
+                                        <h5 class="mb-0 mt-3 ms-2 font-weight-normal">{{ $offer->nom }}</h5>
+                                    </div>
                                 </div> 
-                                <div class="dropdown">
+                                <div class="dropdown d-flex">
                                     <button class="btn point" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         <i class="fa-solid fa-ellipsis"></i>
                                     </button>
-                                    <ul class="dropdown-menu">
+                                    <ul class="dropdown-menu ">
+                                    <div class="d-flex">
+                                        <i class="fa-solid fa-flag p-2"></i>
                                         <li><a class="dropdown-item" href="#">Signaler l'offre</a></li>
+                                    </div>
                                     </ul>
                                 </div>
                             </div>
@@ -220,13 +226,13 @@
     @endforeach
 <!-- Candidat offres table -->
 
-<div class="cont">
+<!-- <div class="cont">
     <div class="row justify-content-center">
-        <div class="col-8">
-            <h1 class="d-flex align-items-center">Nouveaux offres recommandée </h1>
-        </div>
+        <div class="col-8"> -->
+            <h1 class="d-flex justify-content-center text-light">Nouveaux offres recommandée </h1>
+        <!-- </div>
     </div>
-</div>
+</div> -->
 @if (!$offres->isEmpty())
     <div class="container mt-3 mb-4">
         <div class="row justify-content-center">
@@ -235,8 +241,8 @@
                     <thead>
                         <tr>
                             <th scope="col">Recruteur</th>
-                            <th scope="col">Domaine</th>
                             <th scope="col">Catégorie</th>
+                            <th scope="col">Domaine</th>
                             <th scope="col">Emplacement</th>
                             <th scope="col"></th>
                         </tr>
@@ -245,8 +251,8 @@
                     @foreach($offres as $offer)
                         <tr>
                             <th scope="row" class="img"><img src="{{ asset('assets/images/'.$offer->path)}}" alt="" class="rounded-circle"></th>
-                            <td>{{ $offer->domaine }}</td>
                             <td>{{ $offer->categorie }}</td>
+                            <td>{{ $offer->domaine }}</td>
                             <td>{{ $offer->city }}</td>
                             <td style="display:flex;gap:10px;" >
                                 <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal-{{ $offer->id }}">Voir Offre</button>
@@ -270,38 +276,38 @@
         </div>
     </div>
 @endif
-<div class="cont">
+<!-- <div class="cont">
     <div class="row justify-content-center">
-        <div class="col-8 ">
-            <h1 class="d-flex align-items-center">Offre recommandée proche de votre emplacement</h1>
-        </div>
-    </div>
+        <div class="col-8 "> -->
+            <!-- </div>
+        </div> -->
+        <!-- </div> -->
+        <!-- <div class="cont">
+            <div class="row justify-content-center">
+                <div class="col-8 "> -->
+                    <!-- </div>
+                </div> -->
+                <!-- </div> -->
+        <h1 class="d-flex justify-content-center text-light">Offre recommandée proche de votre emplacement</h1>
     <h5>en cours de traitement ...</h5>
-</div>
-<div class="cont">
-    <div class="row justify-content-center">
-        <div class="col-8 ">
-            <h1 class="d-flex align-items-center">Offres recommandée selon votre domaine</h1>
-        </div>
-    </div>
+        <h1 class="d-flex justify-content-center text-light">Offres recommandée selon votre domaine</h1>
     <h5>en cours de traitement ...</h5>
-</div>
-<style>
-.cont{
-    margin: 20px;
-    background: red;
-    border-radius: 30px;
-    padding: 10px;
-}
-.col-8{
-    color: yellow;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 60px;
-    padding: 20px auto;
-}
-</style>
+<!-- <style>
+    .cont{
+        margin: 20px;
+        background: red;
+        border-radius: 30px;
+        padding: 10px;
+    }
+    .col-8{
+        color: yellow;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 60px;
+        padding: 20px auto;
+    }
+</style> -->
 <script>
     function toggleButtons(id) {
         var post = document.getElementById("post-"+id);

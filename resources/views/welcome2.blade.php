@@ -1,384 +1,250 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <title>Laravel</title>
 
-  <title>Espace Candidature</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+<!-- Fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link href="{{asset('assets/css/ec.css')}}" rel="stylesheet">
 
-  <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-  <!-- Google Fonts -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
-  <!-- Template Main CSS File -->
-  <link href="assets/css/welcome2.css" rel="stylesheet">
-
-  <!-- =======================================================
-  * Template Name: Arsha
-  * Updated: May 30 2023 with Bootstrap v5.3.0
-  * Template URL: https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
-</head>
-
-<body>
-
-<!-- ======= Header ======= -->
-  <header id="header" class="fixed-top ">
-    <div class="container d-flex align-items-center">
-
-      <h1 class="logo me-auto"><a href="index.html">Espace Candidature</a></h1>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-
-      <nav id="navbar" class="navbar">
-        <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Welcome</a></li>
-          <li><a class="nav-link scrollto" href="#about">About</a></li>
-          <li><a class="nav-link scrollto" href="#services">Services</a></li>
-          <li><a class="nav-link scrollto" href="#team">Team</a></li>
-          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-          <li><a class="getstarted scrollto" href="{{ route('login') }}">Login</a></li>
-          <li><a class="getstarted scrollto" href="{{ route('register') }}">Sign in</a></li>
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
-
-    </div>
-  </header><!-- End Header -->
-
-<!-- ======= Hero Section ======= -->
-  <section id="hero" class="d-flex align-items-center">
-
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
-          <h1>Vous chercher Etude, Formation,Stage ou Emploi?</h1>
-          <h2>Rejoignez-nous !</h2>
-          <div class="d-flex justify-content-center justify-content-lg-start">
-            <a href="{{ route('register') }}" class="btn-get-started scrollto">M'inscrire</a>
-            <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
-          </div>
-        </div>
-        <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
-          <img src="assets/img/welcome.png" class="img-fluid animated" alt="">
-        </div>
-      </div>
-    </div>
-
-  </section><!-- End Hero -->
-
-  <main id="main">
-<!-- ======= About Us Section ======= -->
-    <section id="about" class="about">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>About Us</h2>
-        </div>
-
-        <div class="row content">
-          <div class="col-lg-6">
-            <p>
-                Bienvenue sur notre plateforme dédiée à la gestion et à la recommandation des candidatures !
-
-                Chez Espace Candidature, nous comprenons les défis auxquels font face les employeurs et les demandeurs d'emploi sur le marché actuel, de plus en plus compétitif. C'est pourquoi nous avons créé une solution complète pour simplifier l'ensemble du processus de recrutement et fournir des recommandations précieuses afin d'optimiser les décisions d'embauche. <br>
-                Notre plateforme est conçue pour aider les entreprises à gérer efficacement l'afflux de candidatures tout en veillant à ce que les candidats les plus qualifiés se démarquent. Grâce à des algorithmes avancés et à un filtrage intelligent, nous analysons chaque candidature en prenant en compte les compétences, l'expérience et les qualifications pertinentes. Cela permet aux employeurs de gagner du temps et de se concentrer sur les candidats les plus prometteurs, en prenant des décisions éclairées.
-            </p>
-            <!-- <ul>
-              <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
-              <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate velit</li>
-              <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
-            </ul> -->
-          </div>
-          <div class="col-lg-6 pt-4 pt-lg-0">
-            <p>
-                Pour les demandeurs d'emploi, Espace Candidature offre un outil puissant pour améliorer la visibilité de leur candidature et augmenter leurs chances d'obtenir l'emploi de leurs rêves. Notre plateforme utilise les dernières technologies pour mettre en relation les candidats avec des opportunités d'emploi adaptées à leur profil, leurs compétences et leurs aspirations professionnelles. Nous proposons des recommandations personnalisées, aidant les candidats à se démarquer sur un marché du travail concurrentiel et à entrer en contact avec les bons employeurs.
-            </p>
-            <a href="#" class="btn-learn-more">Learn More</a>
-          </div>
-        </div>
-
-      </div>
-    </section><!-- End About Us Section -->
-
-<!-- ======= Services Section ======= -->
-    <section id="services" class="services section-bg">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>Services</h2>
-          <p>Nos services comprennent une gamme complète d'outils et de fonctionnalités conçus pour simplifier et améliorer le processus de recrutement et de recommandation des candidatures.</p>
-        </div>
-
-        <div class="row">
-          <div class="col-xl-3 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
-            <div class="icon-box">
-              <div class="icon"><i class="fa-solid fa-magnifying-glass"></i></div>
-              <h4><a href="">chercher un offre</a></h4>
-              <p>trouvez un offre d'étude , stage , formation , ou d'emploi facilement par des mots clés</p>
+<!-- Styles -->
+        <style>
+            /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}a{background-color:transparent}[hidden]{display:none}html{font-family:system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;line-height:1.5}*,:after,:before{box-sizing:border-box;border:0 solid #e2e8f0}a{color:inherit;text-decoration:inherit}svg,video{display:block;vertical-align:middle}video{max-width:100%;height:auto}.bg-white{--bg-opacity:1;background-color:#fff;background-color:rgba(255,255,255,var(--bg-opacity))}.bg-gray-100{--bg-opacity:1;background-color:#f7fafc;background-color:rgba(247,250,252,var(--bg-opacity))}.border-gray-200{--border-opacity:1;border-color:#edf2f7;border-color:rgba(237,242,247,var(--border-opacity))}.border-t{border-top-width:1px}.flex{display:flex}.grid{display:grid}.hidden{display:none}.items-center{align-items:center}.justify-center{justify-content:center}.font-semibold{font-weight:600}.h-5{height:1.25rem}.h-8{height:2rem}.h-16{height:4rem}.text-sm{font-size:.875rem}.text-lg{font-size:1.125rem}.leading-7{line-height:1.75rem}.mx-auto{margin-left:auto;margin-right:auto}.ml-1{margin-left:.25rem}.mt-2{margin-top:.5rem}.mr-2{margin-right:.5rem}.ml-2{margin-left:.5rem}.mt-4{margin-top:1rem}.ml-4{margin-left:1rem}.mt-8{margin-top:2rem}.ml-12{margin-left:3rem}.-mt-px{margin-top:-1px}.max-w-6xl{max-width:72rem}.min-h-screen{min-height:100vh}.overflow-hidden{overflow:hidden}.p-6{padding:1.5rem}.py-4{padding-top:1rem;padding-bottom:1rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.pt-8{padding-top:2rem}.fixed{position:fixed}.relative{position:relative}.top-0{top:0}.right-0{right:0}.shadow{box-shadow:0 1px 3px 0 rgba(0,0,0,.1),0 1px 2px 0 rgba(0,0,0,.06)}.text-center{text-align:center}.text-gray-200{--text-opacity:1;color:#edf2f7;color:rgba(237,242,247,var(--text-opacity))}.text-gray-300{--text-opacity:1;color:#e2e8f0;color:rgba(226,232,240,var(--text-opacity))}.text-gray-400{--text-opacity:1;color:#cbd5e0;color:rgba(203,213,224,var(--text-opacity))}.text-gray-500{--text-opacity:1;color:#a0aec0;color:rgba(160,174,192,var(--text-opacity))}.text-gray-600{--text-opacity:1;color:#718096;color:rgba(113,128,150,var(--text-opacity))}.text-gray-700{--text-opacity:1;color:#4a5568;color:rgba(74,85,104,var(--text-opacity))}.text-gray-900{--text-opacity:1;color:#1a202c;color:rgba(26,32,44,var(--text-opacity))}.underline{text-decoration:underline}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.w-5{width:1.25rem}.w-8{width:2rem}.w-auto{width:auto}.grid-cols-1{grid-template-columns:repeat(1,minmax(0,1fr))}@media (min-width:640px){.sm\:rounded-lg{border-radius:.5rem}.sm\:block{display:block}.sm\:items-center{align-items:center}.sm\:justify-start{justify-content:flex-start}.sm\:justify-between{justify-content:space-between}.sm\:h-20{height:5rem}.sm\:ml-0{margin-left:0}.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:pt-0{padding-top:0}.sm\:text-left{text-align:left}.sm\:text-right{text-align:right}}@media (min-width:768px){.md\:border-t-0{border-top-width:0}.md\:border-l{border-left-width:1px}.md\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}}@media (min-width:1024px){.lg\:px-8{padding-left:2rem;padding-right:2rem}}@media (prefers-color-scheme:dark){.dark\:bg-gray-800{--bg-opacity:1;background-color:#2d3748;background-color:rgba(45,55,72,var(--bg-opacity))}.dark\:bg-gray-900{--bg-opacity:1;background-color:#1a202c;background-color:rgba(26,32,44,var(--bg-opacity))}.dark\:border-gray-700{--border-opacity:1;border-color:#4a5568;border-color:rgba(74,85,104,var(--border-opacity))}.dark\:text-white{--text-opacity:1;color:#fff;color:rgba(255,255,255,var(--text-opacity))}.dark\:text-gray-400{--text-opacity:1;color:#cbd5e0;color:rgba(203,213,224,var(--text-opacity))}}
+        </style>
+        <style>
+            body {
+                font-family: 'Nunito';
+            }
+        </style>
+    </head>
+    <body>
+<!-- navbar -->
+        <div class="nav">
+        <!-- title -->
+            <div class="title">
+                <a href="{{ route('welcome') }}">
+                    <h1>E</h1><h3>space</h3><h1>C</h1><h3>andidature</h3>
+                </a>
             </div>
-          </div>
-
-          <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
-            <div class="icon-box">
-              <div class="icon"><i class="bx bx-file"></i></div>
-              <h4><a href="">postuler aux offres</a></h4>
-              <p>Vous pouvez demander une candidature aux offres disponibles</p>
-            </div>
-          </div>
-
-          <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0" data-aos="zoom-in" data-aos-delay="300">
-            <div class="icon-box">
-              <div class="icon"><i class="fa-regular fa-envelope"></i></div>
-              <h4><a href="">Contacter les recruteures</a></h4>
-              <p>Contactez facilement les recruteures pour obtenir une aide</p>
-            </div>
-          </div>
-
-          <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0" data-aos="zoom-in" data-aos-delay="400">
-            <div class="icon-box">
-              <div class="icon"><i class="fa-solid fa-pencil"></i></div>
-              <h4><a href="">Crée un offre</a></h4>
-              <p>Notre équipe talentueuse de recruteurs peut vous aider à trouver le meilleur freelance pour le travail et nos copilotes techniques peuvent même gérer le projet pour vous.</p>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- End Services Section -->
-
-<!-- ======= Team Section ======= -->
-    <section id="team" class="team section-bg">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>Team</h2>
-          <!-- <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p> -->
-        </div>
-
-        <div class="row">
-
-          <div class="col-lg-6" data-aos="zoom-in" data-aos-delay="100">
-            <div class="member d-flex align-items-start">
-              <div class="pic"><img src="assets/img/team/team5.jpg" class="img-fluid" alt=""></div>
-              <div class="member-info">
-                <h4>Ait Laarabi Hamza</h4>
-                <span>Chef du projet</span>
-                <!-- <p>Explicabo voluptatem mollitia et repellat qui dolorum quasi</p> -->
-                <div class="social">
-                  <a href="https://twitter.com/HamzaLaarabi"><i class="ri-twitter-fill"></i></a>
-                  <a href="https://www.facebook.com/hamza.ait.Laarabi"><i class="ri-facebook-fill"></i></a>
-                  <a href="https://www.instagram.com/hamza.laarabi/"><i class="ri-instagram-fill"></i></a>
-                  <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+            <!-- login -->
+            <div class="login">
+                <div class="flex ">
+                        <a href="{{ route('login') }}" class="btn btn-primary">Login</a>
+                        <a href="{{ route('register') }}" class="btn btn-primary">Sign in</a>
                 </div>
-              </div>
             </div>
-          </div>
-
-          <div class="col-lg-6 mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="200">
-            <div class="member d-flex align-items-start">
-              <div class="pic"><img src="assets/img/team/team6.jpg" class="img-fluid" alt=""></div>
-              <div class="member-info">
-                <h4>Elmounjid Kaltoum</h4>
-                <span>Designer</span>
-                <!-- <p>Aut maiores voluptates amet et quis praesentium qui senda para</p> -->
-                <div class="social">
-                  <a href="https://twitter.com/Kitu07098791"><i class="ri-twitter-fill"></i></a>
-                  <a href="https://www.facebook.com/kaltoum.monjid.9"><i class="ri-facebook-fill"></i></a>
-                  <a href="https://www.instagram.com/kaltoum_elmounjid/"><i class="ri-instagram-fill"></i></a>
-                  <a href="https://www.linkedin.com/in/kaltoum-elmounjid-a67a2a1b5/"> <i class="ri-linkedin-box-fill"></i> </a>
+        </div>
+<!-- welcome -->
+        <div class="container welcome">
+    <!--left  -->
+            <div class="left">
+                <span>Vous chercher Etude ,Formation,Stage ou Emploi?</span> <br>
+                <span>Rejoignez-nous !</span>
+            </div>
+    <!-- right -->
+            <div class="right">
+                <!-- <img src="{{asset('assets/photos/images.jpg')}}" alt=""> -->
+                <span>Pas encore de compte ?</span><br>
+                <button class="btn btn-primary"><a href="{{ route('login') }}">S'inscrire</a></button>
+            </div>
+        </div>
+<!-- description -->
+        <div class="container description">
+        <!-- condidat -->
+            <div class="candidat shadow">
+                <h1>Candidat</h1>
+                <div class="options">
+                    <div class="option">
+                        <div class="icon">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <span>chercher un offre</span>
+                        </div>  
+                        <div>
+                            <span class="desc">
+                                trouvez un offre d'étude , stage , formation , ou d'emploi facilement par des mots clés
+                            </span>
+                        </div>
+                    </div>
+                    <div class="option">
+                        <div class="icon">
+                            <i class="fa-brands fa-readme"></i>
+                            <span>postuler aux offres</span>
+                        </div>
+                        <div>
+                            <span class="desc">
+                                Vous pouvez demander une candidature aux offres disponibles
+                            </span>
+                        </div>
+                    </div>
+                    <div class="option">
+                        <div class="icon">
+                            <i class="fa-regular fa-envelope"></i>
+                            <span>Contacter les recruteures</span>
+                        </div>
+                        <div>
+                            <span class="desc">
+                                Contactez facilement les recruteures pour obtenir une aide
+                            </span>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
-
-          <div class="col-lg-6 mt-4" data-aos="zoom-in" data-aos-delay="300">
-            <div class="member d-flex align-items-start">
-              <div class="pic"><img src="assets/img/team/team7.jpg" class="img-fluid" alt=""></div>
-              <div class="member-info">
-                <h4>Denounne Fatimazahra</h4>
-                <span>Chef du rapport</span>
-                <!-- <p>Quisquam facilis cum velit laborum corrupti fuga rerum quia</p> -->
-                <div class="social">
-                  <a href=""><i class="ri-twitter-fill"></i></a>
-                  <a href=""><i class="ri-facebook-fill"></i></a>
-                  <a href=""><i class="ri-instagram-fill"></i></a>
-                  <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+        <!-- entreprise -->
+            <div class="entreprise">
+                 <h1>Entreprise</h1>
+                 <div class="options">
+                    <div class="option">
+                        <div class="icon">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <span>Chercher le bon candidat !</span>
+                        </div>
+                        <div class="">
+                            <span class="desc">Notre équipe talentueuse de recruteurs peut vous aider à trouver le meilleur freelance pour le travail et nos copilotes techniques peuvent même gérer le projet pour vous.</span>
+                        </div>
+                    </div>
+                    <div class="option">
+                        <div class="icon">
+                            <i class="fa-solid fa-pencil"></i>
+                            <span>Crée un offre</span>
+                    </div>
+                        <div>
+                            <span class="desc" >Notre équipe talentueuse de recruteurs peut vous aider à trouver le meilleur freelance pour le travail et nos copilotes techniques peuvent même gérer le projet pour vous.</span>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
-
         </div>
 
-      </div>
-    </section><!-- End Team Section -->
+<!-- footer -->
 
-<!-- ======= Contact Section ======= -->
-    <section id="contact" class="contact">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>Contact</h2>
-          <p>Nous serions ravis d'entrer en contact avec vous et de répondre à vos questions ou de vous fournir toute l'assistance dont vous avez besoin. Voici comment vous pouvez nous contacter: </p>
-        </div>
-
-        <div class="row">
-
-          <div class="col-lg-5 d-flex align-items-stretch">
-            <div class="info">
-              <div class="address">
-                <i class="bi bi-geo-alt"></i>
-                <h4>Location:</h4>
-                <p>Casablanca,20000, Maroc</p>
-              </div>
-
-              <div class="email">
-                <i class="bi bi-envelope"></i>
-                <h4>Email:</h4>
-                <p>EspaceCandidature.ma</p>
-              </div>
-
-              <div class="phone">
-                <i class="bi bi-phone"></i>
-                <h4>Call:</h4>
-                <p>+212666666666</p>
-              </div>
-
-              <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" style="border:0; width: 100%; height: 290px;" allowfullscreen></iframe>
-            </div>
-
-          </div>
-
-          <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-              <div class="row">
-                <div class="form-group col-md-6">
-                  <label for="name">Votre Nom</label>
-                  <input type="text" name="name" class="form-control" id="name" required>
+        <footer class="text-center text-lg-start bg-light text-muted">
+    <!-- Section: Social media -->
+            <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+        <!-- Left -->
+                <div class="me-5 d-none d-lg-block">
+                <span>Get connected with us on social networks:</span>
                 </div>
-                <div class="form-group col-md-6">
-                  <label for="name">Votre Email</label>
-                  <input type="email" class="form-control" name="email" id="email" required>
+        <!-- Left -->
+
+        <!-- Right -->
+                <div>
+                <a href="https://www.facebook.com/" class="me-4 text-reset">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-google"></i>
+                </a>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/banditklm/joblink" class="me-4 text-reset">
+                    <i class="fab fa-github"></i>
+                </a>
                 </div>
-              </div>
-              <div class="form-group">
-                <label for="name">Sujet</label>
-                <input type="text" class="form-control" name="subject" id="subject" required>
-              </div>
-              <div class="form-group">
-                <label for="name">Message</label>
-                <textarea class="form-control" name="message" rows="10" required></textarea>
-              </div>
-              <div class="my-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
-              </div>
-              <div class="text-center"><button type="submit">Envoyer Message</button></div>
-            </form>
-          </div>
+        <!-- Right -->
+            </section>
+    <!-- Section: Social media -->
 
-        </div>
+    <!-- Section: Links  -->
+            <section class="">
+                <div class="container text-center text-md-start mt-5">
+        <!-- Grid row -->
+                <div class="container footer row mt-3">
+            <!-- Grid column -->
+                    <div class="col-md-6 col-lg-4 col-xl-3 mx-auto mb-4">
+                <!-- Content -->
+                    <h6 class="text-uppercase fw-bold mb-4">
+                        <i class="fas fa-gem me-3"></i>Espace Candidature
+                    </h6>
+                   <p>
+                         Here you can use rows and columns to organize your footer content. Lorem ipsum
+                        dolor sit amet, consectetur adipisicing elit.
+                    </p>
+                    </div>
+            <!-- Grid column -->
 
-      </div>
-    </section><!-- End Contact Section -->
+            <!-- Grid column -->
+                <!-- <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                    
+                    <h6 class="text-uppercase fw-bold mb-4">
+                        Products
+                    </h6>
+                    <p>
+                        <a href="#!" class="text-reset">Angular</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-reset">React</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-reset">Vue</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-reset">Laravel</a>
+                    </p>
+                </div> -->
+            <!-- Grid column -->
 
-  </main><!-- End #main -->
+            <!-- Grid column -->
+                <!-- <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                    Links
+                    <h6 class="text-uppercase fw-bold mb-4">
+                        Useful links
+                    </h6>
+                    <p>
+                        <a href="#!" class="text-reset">Pricing</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-reset">Settings</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-reset">Orders</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-reset">Help</a>
+                    </p>
+                </div>-->
+            <!-- Grid column -->
 
-<!-- ======= Footer ======= -->
-  <footer id="footer">
+            <!-- Grid column -->
+                    <div class="col-md-6 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                    <!-- Links -->
+                    <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+                    <p><i class="fas fa-home me-3"></i>Casablanca,20000, Maroc</p>
+                    <p>
+                        <i class="fas fa-envelope me-3"></i>
+                        espaceC@gmail.com
+                    </p>
+                    <p><i class="fas fa-phone me-3"></i> +212666666666</p>
+                    <p><i class="fas fa-print me-3"></i> +212666666666</p>
+                    </div>
+            <!-- Grid column -->
+                </div>
+        <!-- Grid row -->
+                </div>
+            </section>
+    <!-- Section: Links  -->
 
-    <div class="footer-top">
-      <div class="container">
-        <div class="row">
-
-          <div class="col-lg-4 col-md-6 footer-contact">
-            <h3>Espace Candidature</h3>
-            <p>
-                Casablanca,20000, Maroc<br>
-              <strong>Phone:</strong> +212666666666<br>
-              <strong>Email:</strong> EspaceCandidature.ma<br>
-            </p>
-          </div>
-
-          <div class="col-lg-4 col-md-6 footer-links">
-            <h4>Useful Links</h4>
-            <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#hero">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#about">About us</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#services">Services</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
-            </ul>
-          </div>
-
-          
-
-          <div class="col-lg-4 col-md-6 footer-links">
-            <h4>Our Social Networks</h4>
-            <!-- <p>Cras fermentum odio eu feugiat lide par naso tierra videa magna derita valies</p> -->
-            <div class="social-links mt-3">
-              <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-              <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-              <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-              <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-              <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+    <!-- Copyright -->
+            <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+                © 2021 Copyright:
+                <a class="text-reset fw-bold" href="https://mdbootstrap.com/">EspaceCandidature.ma</a>
             </div>
-          </div>
+    <!-- Copyright -->
+            </footer>
+<!-- Footer -->
 
-        </div>
-      </div>
-    </div>
-
-    <div class="container footer-bottom clearfix">
-      <div class="copyright">
-        &copy; Copyright <strong><span>Arsha</span></strong>. All Rights Reserved
-      </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
-    </div>
-  </footer><!-- End Footer -->
-
-  <div id="preloader"></div>
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-<!-- Vendor JS Files -->
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-
-<!-- Template Main JS File -->
-  <script src="assets/js/welcome2.js"></script>
-
-</body>
-
+        
+    </body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </html>

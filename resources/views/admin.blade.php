@@ -313,9 +313,9 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Ait Laarabi Hamza</span>
                                 <img class="img-profile rounded-circle"
-                                    src="img/undraw_profile.svg">
+                                    src="assets/img/team/team5.jpg">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -350,7 +350,7 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Tableau des utilisateurs</h1>
+                        <h1 class="h3 mb-0 text-gray-800">L'utilisateurs signalé</h1>
                     </div>
                     <div class="row">
                         <div class="card col-md-12 flex">
@@ -399,7 +399,7 @@
                         </div>
                     </div>
                     <div class="d-sm-flex align-items-center justify-content-between mb-4 mt-5">
-                        <h1 class="h3 mb-0 text-gray-800">Tableau des offres</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Les offres signalé</h1>
                     </div>
                     <div class="row">
                         <div class="card col-md-12 flex">

@@ -150,7 +150,6 @@ class UserController extends Controller
             ->select('offres.*', 'users.nom','users.path')
             ->orderBy('offres.created_at', 'desc')
             ->get();
-<<<<<<< HEAD
             // $offres =[];
             $notifications = Notification::where('read',1)->where('user',$id)
             ->join('offres', 'notifications.offre', '=', 'offres.id')
@@ -158,10 +157,8 @@ class UserController extends Controller
             ->get();
             $count = count($notifications);
             // return $notifications;
-=======
             // return $mesCandidatures;
             // $offers = [];
->>>>>>> 08e532b0f93569efad504f6614fc9cf87b403c88
             return view('profile', 
             [
                 'user'=> $user,
@@ -325,8 +322,6 @@ return redirect()->back()->with('success', 'Diplome deleted successfully.');
 
         return redirect()->back()->with('success', 'Experience added successfully.');
     }
-<<<<<<< HEAD
-=======
     public function diplomesUpdate(Request $request, Diplome $diplome)
     {
 
@@ -341,7 +336,6 @@ return redirect()->back()->with('success', 'Diplome deleted successfully.');
     public function testmodel(){
         return $experiences = Texperience::all();
     }
->>>>>>> 08e532b0f93569efad504f6614fc9cf87b403c88
     // OFFRES
     public function offresStore(Request $request)
     {

@@ -4,7 +4,8 @@
 
 <style>
     body{background-image: ;
-        background-image: url('/assets/photos/wallpaper8.jpg');
+        /* background-image: url('/assets/photos/wallpaper8.jpg'); */
+        background-color: #37517e;
         background-attachment: fixed; 
     }
 </style>
@@ -309,96 +310,51 @@
 
             </div>
         </div>
-<<<<<<< HEAD
 <!-- Candidat Mes candidatures table -->
-<h1 id="Mescandidatures" class="text text-center">Mes Candidatures</h1>
-    @if($mesCandidatures->isEmpty())
-            <h3 class="text-center">Aucune candidature trouvée ...</h3>
-    @else
-        <div class="container mt-3 mb-4">
-            <div class="row justify-content-center">
-                <div class="col-md-8">
-                    <table style="background:#cff4fc;" class="table table-info table-hover table-bordered border-primary">
-                        <thead>
-                            <tr>
-                                <th scope="col">Offres</th>
-                                <th scope="col">Categorie</th>
-                                <th scope="col">Domaine</th>
-                                <th scope="col">Emplacement</th>
-                                <th scope="col">Etat</th>
-                                <th scope="col">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        @foreach($mesCandidatures as $offre)
-                            <tr id="offre-{{ $offre->id }}">
-                                <th scope="row" class="img"><img src="{{ asset('assets/images/'.$offre->pathOffre)}}" alt="no image"></th>
-                                <td class="offre-{{ $offre->id }}">{{ $offre->categorie }}</td>
-                                <td class="offre-{{ $offre->id }}">{{ $offre->domaine }}</td>
-                                <td class="offre-{{ $offre->id }}">{{ $offre->city }}</td>
-                                <td class="offre-{{ $offre->id }}">{{ $offre->etat }}</td>
-                                <td style="display:flex;gap:20px;">
-                                    <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#Candidature-{{ $offre->id }}">Voir Offre</button>
-                                    <form action="{{ route('candidatures.delete', $offre->id) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <input type="hidden" name="offre_id" value="{{ $offre->id }}">
-                                        <button tupe="submit" class="btn btn-danger btn-sm">Annuler</button>
-                                    </form>
-                                </td>
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
+    <h1 id="Mescandidatures" class="text text-center text-light">Mes Candidatures</h1>
+        @if($mesCandidatures->isEmpty())
+                <h3 class="text-center">Aucune candidature trouvée ...</h3>
+        @else
+            <div class="container mt-3 mb-4">
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <table style="background:#cff4fc;" class="table table-info table-hover table-bordered border-primary">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Offres</th>
+                                    <th scope="col">Categorie</th>
+                                    <th scope="col">Domaine</th>
+                                    <th scope="col">Emplacement</th>
+                                    <th scope="col">Etat</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($mesCandidatures as $offre)
+                                <tr id="offre-{{ $offre->id }}">
+                                    <th scope="row" class="img"><img src="{{ asset('assets/images/'.$offre->pathOffre)}}" alt="no image"></th>
+                                    <td class="offre-{{ $offre->id }}">{{ $offre->categorie }}</td>
+                                    <td class="offre-{{ $offre->id }}">{{ $offre->domaine }}</td>
+                                    <td class="offre-{{ $offre->id }}">{{ $offre->city }}</td>
+                                    <td class="offre-{{ $offre->id }}">{{ $offre->etat }}</td>
+                                    <td style="display:flex;gap:20px;">
+                                        <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#Candidature-{{ $offre->id }}">Voir Offre</button>
+                                        <form action="{{ route('candidatures.delete', $offre->id) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <input type="hidden" name="offre_id" value="{{ $offre->id }}">
+                                            <button tupe="submit" class="btn btn-danger btn-sm">Annuler</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-=======
-<!-- Candidat offres table -->
-<h1 id="Mescandidatures" class="text text-center" style="color:#fff">Mes Candidatures</h1>
-@if($mesCandidatures->isEmpty())
-        <h3 class="text-center">Aucune candidature trouvée ...</h3>
-@else
-    <div class="container mt-3 mb-4">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <table style="background:#cff4fc;" class="table table-info table-hover table-bordered border-primary">
-                    <thead>
-                        <tr>
-                            <th scope="col">Offres</th>
-                            <th scope="col">Categorie</th>
-                            <th scope="col">Domaine</th>
-                            <th scope="col">Emplacement</th>
-                            <th scope="col">Etat</th>
-                            <th scope="col">...</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    @foreach($mesCandidatures as $offre)
-                        <tr>
-                            <!-- <td>{{ $offre->ville }}</td> -->
-                            <th scope="row" class="img"><img src="{{ asset('assets/images/'.$offre->pathOffre)}}" alt="no image"></th>
-                            <td>{{ $offre->categorie }}</td>
-                            <td>{{ $offre->domaine }}</td>
-                            <td>{{ $offre->city }}</td>
-                            <td>{{ $offre->etat }}</td>
-                            <td style="display:flex;gap:20px;">
-                                <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal-{{ $offre->id }}">Voir Offre</button>
-                                <form action="{{ route('candidatures.delete', $offre->id) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <input type="hidden" name="offre_id" value="{{ $offre->id }}">
-                                    <button tupe="submit" class="btn btn-danger btn-sm">Annuler</button>
-                                </form>
-                            </td>
-                        </tr>
-                    @endforeach
-                    </tbody>
-                </table>
->>>>>>> 08e532b0f93569efad504f6614fc9cf87b403c88
             </div>
-        </div>
-    @endif
+        @endif
 
-<<<<<<< HEAD
 <!-- voirs Mes candidatures details -->
 
     @foreach($mesCandidatures as $offre)
@@ -423,7 +379,10 @@
                                     <i class="fa-solid fa-ellipsis"></i>
                                 </button>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Signaler l'offre</a></li>
+                                    <div class="d-flex">
+                                        <i class="fa-solid fa-flag p-2"></i>
+                                        <li><a class="dropdown-item" href="#">Signaler l'offre</a></li>
+                                    </div>
                                 </ul>
                             </div>
                         </div>
@@ -442,50 +401,6 @@
                         <div class="w-100" style="display:flex;">
                             <img src="{{ asset('assets/images/'.$offre->pathOffre)}}" alt="" class="w-50" style="max-height: 250px;display: block; margin: 0 auto;">
                         </div>
-=======
-<h1 id="messauvgardes" class="text text-center" style="color:#fff">Mes Sauvgardes</h1>
-<!-- VOIR OFFRE -->
-@foreach($offres as $offre)
-<div class="modal fade" id="exampleModal-{{ $offre->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-            <div class="card w-100 mb-4">
-                <div class="card-body">
-                    <div class="head_post d-flex">
-                        <div>
-                            <img src="{{ asset('assets/images/'.$offre->path)}}" class="rounded-circle profile-pic mr-3" alt="profil_img">
-                        </div>
-                        <div>
-                            <h5 class="mb-0 mt-3 ms-2 font-weight-normal">{{ $offre->nom }}</h5>
-                        </div> 
-                        <div class="dropdown">
-                            <button class="btn point" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fa-solid fa-ellipsis"></i>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Signaler l'offre</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="d-flex justify-content-center gap-3">
-                        <span class="text text-muted">#{{ $offre->categorie }}</span>
-                        <span class="text text-muted">#{{ $offre->domaine }}</span>
-                        <span class="text text-muted">#{{ $offre->city }}</span>
-                    </div>
-                    <div>
-                        <span class="text text-muted">From: {{ $offre->debut}}</span><br>
-                        <span class="text text-muted">To: {{ $offre->fin }}</span>
-                    </div>
-                    <div>
-                        <p>{{ $offre->descriptionOffre }}</p>
-                    </div>
-                    <div class="w-100" style="display:flex;">
-                        <img src="{{ asset('assets/images/'.$offre->pathOffre)}}" alt="" class="w-50" style="max-height: 250px;display: block; margin: 0 auto;">
->>>>>>> 08e532b0f93569efad504f6614fc9cf87b403c88
                     </div>
             </div>
             <div class="modal-footer">
@@ -499,16 +414,12 @@
     @endforeach
 <!-- /VOIR OFFRE -->
 
-<h1 id="messauvgardes" class="text text-center">Mes Sauvgardes</h1>
 
 <!-- Table Sauvgards -->
-<<<<<<< HEAD
+    <h1 id="messauvgardes" class="text text-center text-light">Mes Sauvgardes</h1>
     @if($offres->isEmpty())
             <h3 class="text-center">Aucune Sauvgardes trouvée ...</h3>
     @else
-=======
-
->>>>>>> 08e532b0f93569efad504f6614fc9cf87b403c88
     <div class="container mt-3 mb-4">
         <div class="row justify-content-center">
             <div class="col-md-8">
@@ -516,8 +427,8 @@
                     <thead>
                         <tr>
                             <th scope="col">Recruteur</th>
-                            <th scope="col">Domaine</th>
                             <th scope="col">Catégorie</th>
+                            <th scope="col">Domaine</th>
                             <th scope="col">Emplacement</th>
                             <th scope="col">Action</th>
                         </tr>
@@ -526,8 +437,8 @@
                     @foreach($offres as $offre)
                         <tr>
                             <th scope="row" class="img"><img src="{{ asset('assets/images/'.$offre->path)}}" alt="" class="rounded-circle"></th>
-                            <td>{{ $offre->domaine }}</td>
                             <td>{{ $offre->categorie }}</td>
+                            <td>{{ $offre->domaine }}</td>
                             <td>{{ $offre->city }}</td>
                             <td style="display:flex;gap:10px;">
                                 <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#sauvgard-{{ $offre->id }}">Voir Offre</button>
@@ -540,7 +451,7 @@
                                 <form action="" method="POST">
                                     @csrf
                                     <input type="hidden" name="offre_id" value="{{ $offre->id }}">
-                                    <button type="submit" class="btn btn-primary btn-sm">Supprimer</button>
+                                    <button type="submit" class="btn btn-danger btn-sm">Supprimer</button>
                                 </form>
                             </td>
                         </tr>
@@ -550,7 +461,6 @@
             </div>
         </div>
     </div>
-<<<<<<< HEAD
     @endif
 <!-- voirs Mes sauvgards details -->
 
@@ -576,7 +486,10 @@
                                     <i class="fa-solid fa-ellipsis"></i>
                                 </button>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Signaler l'offre</a></li>
+                                    <div class="d-flex">
+                                        <i class="fa-solid fa-flag p-2"></i>
+                                        <li><a class="dropdown-item" href="#">Signaler l'offre</a></li>
+                                    </div>
                                 </ul>
                             </div>
                         </div>
@@ -606,13 +519,11 @@
     </div>
     </div>
     @endforeach
-=======
-
->>>>>>> 08e532b0f93569efad504f6614fc9cf87b403c88
+<!-- /voirs Mes sauvgards details -->
 <!-- /Candidat -->
 <style>
     .button-active {
-  background-color: yellow!important;
+  background-color: grey!important;
   
   transition: background-color 2s;
 }
@@ -834,21 +745,21 @@ function flashNotification(className) {
                                                         </div>
                                                     </div>
                                                 </form>
-<!-- /Modal Edit Profile recruteur -->
                                             </div>
                                         </div>
-                                        </div>
                                     </div>
-                                </div>    
-                            </div>  
-                        </div>
+                                </div>
+                            </div>    
+                        </div>  
                     </div>
-<!-- /recruteur body -->
+                </div>
+<!-- /Modal Edit Profile recruteur -->
             </div>
         </div>
+<!-- /recruteur body -->
 <!-- /Recruteur -->
 @if (!$offres->isEmpty())
-    <h1 id="mespost" class="text text-center">Mes Post</h1>
+    <h1 id="mespost" class="text text-center text-light">Mes Post</h1>
 @endif
 
 <!-- Afficher Offres -->
@@ -858,7 +769,7 @@ function flashNotification(className) {
         <div class="col-md-8">        
             <div class="card w-100 mb-4">
                 <div class="card-body">
-                    <div class="head_post d-flex ">
+                    <div class="head_post d-flex">
                         <div>
                             <img src="{{ asset('assets/images/'.$user->path)}}" class="rounded-circle profile-pic mr-3" alt="profil_img">
                         </div>
@@ -870,7 +781,10 @@ function flashNotification(className) {
                                 <i class="fa-solid fa-ellipsis"></i>
                             </button>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">supprimer l'offre</a></li>
+                                <div class="d-flex">
+                                    <i class="fa-solid fa-trash-can p-2"></i>
+                                    <li><a class="dropdown-item" href="#">supprimer l'offre</a></li>
+                                </div>
                             </ul>
                         </div>
                     </div>
@@ -900,7 +814,7 @@ function flashNotification(className) {
 </div>
 
 <!-- Modal Candidature -->
-@foreach ($offres as $offre)
+    @foreach ($offres as $offre)
             <div class="modal fade" id="modalCandidature-{{ $offre->id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog modal-xl modal-dialog-centered">
                     <div class="modal-content">
@@ -915,8 +829,8 @@ function flashNotification(className) {
                                 @foreach ($offre->candidatures as $candidature)
                                     <div class="card w-100">
                                         <div class="card-body">
-                                            <div class="candidature d-flex">
-                                                <div class="d-flex">
+                                            <div class="candidature d-flex justify-content-end">
+                                                <div class="d-flex fixed-right">
                                                     <div>
                                                         <img src="{{ asset('assets/images/'.$candidature->candidat->user->path)}}" class="rounded-circle profile-pic mr-3" alt="profil_img">
                                                     </div>
@@ -927,21 +841,21 @@ function flashNotification(className) {
                                                         </h5>
                                                     </div> 
                                                 </div>
-                                                <div class="d-flex gap-2 justify-content-end">
+                                                <div class="d-flex gap-2 ">
+                                                    <div>
                                                     <a class="btn btn-outline-secondary" href="{{ route('cvdetail', ['user_id' => $candidature->candidat->user->id, 'candidat_id' => $candidature->candidat->id])  }}">
-                                                            <i class="fa-solid fa-eye"></i>
-                                                            Voirs Cv
-                                                    </a>
+                                                        <i class="fa-solid fa-eye"></i>
+                                                        Voirs Cv</a>
                                                     <p id="btn1" class="voir-btn btn btn-outline-secondary" data-offre="{{ $candidature->offre_id }}" data-user="{{ $candidature->candidat->user->id }}" data-action="Demandé à le voir" data-candidature="{{$candidature->id}}">
                                                         <i class="fa-solid fa-handshake"></i>
-                                                         Demandé à le voir</p>
+                                                        Demandé à le voir</p>
                                                     <p id="btn2" class="accepter-btn btn btn-outline-success" data-offre="{{ $candidature->offre_id }}" data-user="{{ $candidature->candidat->user->id }}" data-action="accepter" data-candidature="{{$candidature->id}}">
                                                         <i class="fa-solid fa-circle-check"></i>
-                                                         Accepter</p>
+                                                        Accepter</p>
                                                     <p id="btn3" class="rejeter-btn btn btn-outline-danger" data-offre="{{ $candidature->offre_id }}" data-user="{{ $candidature->candidat->user->id }}" data-action="rejeter" data-candidature="{{$candidature->id}}">
                                                         <i class="fa-solid fa-xmark"></i>
-                                                         Rejeter</p>
-
+                                                        Rejeter</p>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -955,7 +869,7 @@ function flashNotification(className) {
                     </div>
                 </div>
             </div>
-@endforeach
+    @endforeach
 <!-- /modal candidature -->
 <form  id="update" action="{{ route('change.etat') }}" method="POST">
     @csrf

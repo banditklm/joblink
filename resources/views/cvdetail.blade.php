@@ -110,6 +110,7 @@
             </section>
 
 <!-- Diplome --> 
+
 <section class="experience"  > 
                 <div  class="info"> 
                     <div class="left d-flex">
@@ -119,7 +120,7 @@
                 </div>
 
                 <div class="exp">
-
+                    @foreach ($experiences as $experience)
                     <div class="fl">
                         <span class="title"><strong><span class="text-muted"> De </span>{{ $experience->debut }}<span class="text-muted"> A </span>{{ $experience->fin }}</strong></span>
                     </div>
@@ -130,6 +131,7 @@
                     <div class="description">
                         <span>{{ $experience->description }}</span>
                     </div>
+                    @endforeach
                 </div>
 </section>
 <!-- Compétence -->            
@@ -140,7 +142,9 @@
                         <span class="p1"><h3>COMPETENCE</h3></span>
                     </div>
                 </div>
+
                 <div class="exp">
+                @foreach ($experiences as $experience)
                     <div class="fl">
 
                     </div>
@@ -151,6 +155,7 @@
                     <div class="description">
                         <span>{{ $experience->description }}</span>
                     </div>
+                    @endforeach
                 </div>
             </section>
 <!-- Réferencee -->

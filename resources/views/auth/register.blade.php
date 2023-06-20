@@ -117,8 +117,8 @@
             label.innerHTML  = 'Nom';
             prenom.classList.remove('d-none');
         }else if (selectedOption === '3'){
-            label.textContent = 'Nom Entreprise';
-            label.innerHTML  = 'Nom Entreprise';
+            label.textContent = 'Nom';
+            label.innerHTML  = 'Nom';
             prenom.classList.add('d-none');
         }
 
