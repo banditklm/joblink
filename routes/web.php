@@ -55,7 +55,7 @@ Route::delete('/diplomes/{diplome}',[UserController::class, 'destroyDiplome'])->
 
 
 Route::get('/welcome', function () { return view('welcome');})->name('welcome');
-Route::get('/admine', function () { return view('admine');})->name('admine');
+Route::get('/admin', function () { return view('admin');})->name('admin');
 
 
 
