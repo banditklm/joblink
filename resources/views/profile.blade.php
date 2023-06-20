@@ -829,8 +829,16 @@ function flashNotification(className) {
                                 @foreach ($offre->candidatures as $candidature)
                                     <div class="card w-100">
                                         <div class="card-body">
-                                            <div class="candidature d-flex justify-content-end">
-                                                <div class="d-flex fixed-right">
+                                            <style>
+                                                .candidats{
+                                                    width: 100%;
+                                                    position: relative;
+                                                    display: flex;
+                                                    justify-content: space-between;
+                                                }
+                                            </style>
+                                            <div class="d-flex candidats">
+                                                <div class="d-flex">
                                                     <div>
                                                         <img src="{{ asset('assets/images/'.$candidature->candidat->user->path)}}" class="rounded-circle profile-pic mr-3" alt="profil_img">
                                                     </div>
@@ -841,21 +849,26 @@ function flashNotification(className) {
                                                         </h5>
                                                     </div> 
                                                 </div>
-                                                <div class="d-flex gap-2 ">
-                                                    <div>
-                                                    <a class="btn btn-outline-secondary" href="{{ route('cvdetail', ['user_id' => $candidature->candidat->user->id, 'candidat_id' => $candidature->candidat->id])  }}">
-                                                        <i class="fa-solid fa-eye"></i>
-                                                        Voirs Cv</a>
+                                                <div class="d-flex gap-2 justify-content-end">
+                                                    <p class="voir-btn btn btn-outline-secondary"> 
+                                                        <a  href="{{ route('cvdetail', ['user_id' => $candidature->candidat->user->id, 'candidat_id' => $candidature->candidat->id])  }}">
+                                                                <i class="fa-solid fa-eye"></i>
+                                                                Voirs Cv
+                                                        </a>
+                                                    </p>
                                                     <p id="btn1" class="voir-btn btn btn-outline-secondary" data-offre="{{ $candidature->offre_id }}" data-user="{{ $candidature->candidat->user->id }}" data-action="Demandé à le voir" data-candidature="{{$candidature->id}}">
                                                         <i class="fa-solid fa-handshake"></i>
-                                                        Demandé à le voir</p>
+                                                         Demandé à le voir
+                                                    </p>
                                                     <p id="btn2" class="accepter-btn btn btn-outline-success" data-offre="{{ $candidature->offre_id }}" data-user="{{ $candidature->candidat->user->id }}" data-action="accepter" data-candidature="{{$candidature->id}}">
                                                         <i class="fa-solid fa-circle-check"></i>
-                                                        Accepter</p>
+                                                         Accepter
+                                                    </p>
                                                     <p id="btn3" class="rejeter-btn btn btn-outline-danger" data-offre="{{ $candidature->offre_id }}" data-user="{{ $candidature->candidat->user->id }}" data-action="rejeter" data-candidature="{{$candidature->id}}">
                                                         <i class="fa-solid fa-xmark"></i>
-                                                        Rejeter</p>
-                                                    </div>
+                                                         Rejeter
+                                                    </p>
+
                                                 </div>
                                             </div>
                                         </div>

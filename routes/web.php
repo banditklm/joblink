@@ -15,8 +15,8 @@ use App\Http\Controllers\UserController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
+    return view('welcome2');
+})->name('welcome2');
 
 
 Auth::routes();
@@ -55,7 +55,7 @@ Route::put('/users/{diplome}/diplomes-update', [UserController::class, 'diplomes
 Route::delete('/diplomes/{diplome}',[UserController::class, 'destroyDiplome'])->name('diplomes.destroy');
 
 
-Route::get('/welcome2', function () { return view('welcome2');})->name('welcome2');
+Route::get('/welcome', function () { return view('welcome');})->name('welcome');
 Route::get('/admin', function () { return view('admin');})->name('admin');
 
 
