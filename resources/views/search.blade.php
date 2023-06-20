@@ -17,7 +17,7 @@
                     <div class="card-body">
                         <div class="d-flex">
                             <div class="image-container">
-                                <img src="{{asset('assets/images/cat.jpg')}}" alt="" class=" rounded-circle profile-pic mr-3">
+                                <img src="{{ asset('assets/images/'.$pic)}}" alt="" class=" rounded-circle profile-pic mr-3">
                             </div>
                             <div class="d-grid gap-2 col-10 mx-auto">
                                 <button class="btn btn-outline-secondary" type="button" data-bs-toggle="modal" data-bs-target="#searchModal">
