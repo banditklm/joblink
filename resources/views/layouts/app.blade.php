@@ -46,7 +46,7 @@
                     @auth
                     @if (Auth::user()->role == 2)
                         <a class="navbar-brand" href="{{ url('recherche') }}">
-                            Search 
+                            Search Offres
                         </a>
                         <a class="navbar-brand mr-5" href="{{ url('/home') }}">
                             Recomendation
@@ -57,6 +57,9 @@
                         @else
                         <a class="navbar-brand" href="{{ url('/home') }}">
                             Post-offre
+                        </a>
+                        <a class="navbar-brand" href="{{ url('rechercheCandidats') }}">
+                        Rechercher-Candidats
                         </a>
                         <a class="navbar-brand" href="{{ url('/apropos') }}">
                             A propos
@@ -121,6 +124,7 @@
             @yield('cv')
             @yield('profile')
             @yield('search')
+            @yield('searchCandidats')
             @yield('apropos')
             @yield('cvdetail')
             

@@ -36,6 +36,7 @@ Route::get('/experience', [UserController::class, 'testmodel'])->name('testmodel
 // OFFRES
 Route::post('/offresStore', [UserController::class, 'offresStore'])->name('offres.store');
 Route::get('/recherche', [UserController::class, 'searchOffre'])->name('search.offers');
+Route::get('/rechercheCandidats', [UserController::class, 'searchCandidats'])->name('search.candidats');
 //Candidatures
 Route::post('/candidatures', [UserController::class, 'storeCandidature'])->name('candidatures.store');
 Route::delete('/candidatures/{candidature}', [UserController::class, 'deleteCandidature'])->name('candidatures.delete');
