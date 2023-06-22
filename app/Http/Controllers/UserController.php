@@ -424,6 +424,23 @@ return redirect()->back()->with('success', 'Diplome deleted successfully.');
         
         return view('search',  ['offres'=> $offres,'pic'=> $pic]);
     }
+    public function searchCandidats(Request $request)
+    {
+        $ville = $request->input('ville');
+        $MotCles = $request->input('MotCles');
+        $pic = Auth::user()->path;
+        
+        // return $pic;
+        $offres = Offre::join('recruteurs', 'offres.recruteur_id', '=', 'recruteurs.id')
+            ->join('users', 'recruteurs.user_id', '=', 'users.id')
+            ->where('offres.city', $ville)
+            ->where('offres.descriptionOffre', 'LIKE', '%'.$MotCles.'%')
+            ->select('offres.*', 'users.nom','users.path')
+            ->get();
+        // return $results;
+        
+        return view('searchCandidats',  ['offres'=> $offres,'pic'=> $pic]);
+    }
     //Notificatio
     public function sendNotification($text,$read,$user,$from,$offre)
     {   
