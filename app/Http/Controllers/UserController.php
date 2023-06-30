@@ -110,6 +110,7 @@ class UserController extends Controller
         $experiences = $candidate->experiences;
         $texperiences = Texperience::all();
         $diplomes = Diplome::all();
+        $competences = Competence::all();
         // return $experiences;
         // return $experiences;
         // $experiences = Experience::all();
@@ -120,6 +121,7 @@ class UserController extends Controller
          'texperiences'=> $texperiences,
          'diplomes'=> $diplomes,
          'tdiplomes'=> $tdiplomes,
+         'cometences'=>$competences,
         ]);
     }
     public function apropos()
@@ -299,6 +301,16 @@ class UserController extends Controller
         return redirect()->back()->with('success', 'Diplome added successfully.');
 
     }
+    public function storeCompetence(Request $request){
+        $competence = new Competence();
+
+        // $competence->candidat_id = Candidat::where('user_id',Auth::id())->first()->id;
+        $competence->title = $request->input('title');
+        $competence->save();
+
+        return redirect()->back()->with('success', 'Compétence added successfully.');
+
+    }
     public function destroy(Experience $experience)
     {
         $experience->delete();
@@ -309,7 +321,7 @@ class UserController extends Controller
     {
         $diplome->delete();
 
-return redirect()->back()->with('success', 'Diplome deleted successfully.');
+        return redirect()->back()->with('success', 'Diplome deleted successfully.');
     }
     public function experiencesUpdate(Request $request, Experience $experience)
     {
@@ -474,7 +486,7 @@ return redirect()->back()->with('success', 'Diplome deleted successfully.');
         $candidature->etat = $state;
         $candidature->save();
         // Send a notification to the recruteur
-        $this->sendNotification('You have a new candidat.',1,$sendTo,$id,$offreId);
+        $this->sendNotification('Vous avez un nouveau candidat.',1,$sendTo,$id,$offreId);
 
         // Redirect or display a success message
         return redirect()->back()->with('success', 'Candidature added successfully.');
@@ -533,9 +545,12 @@ return redirect()->back()->with('success', 'Diplome deleted successfully.');
         $user = User::findOrFail($user_id);
         $candidat = Candidat::findOrFail($candidat_id);
         $experiences = $candidat->experiences;
+        $diplomes = $candidat->diplomes;
         return view('cvdetail',
          ['user'=> $user,
-         'experiences'=> $experiences
+         'experiences'=> $experiences,
+         'diplomes'=> $diplomes,
+
         ]);
     }
 

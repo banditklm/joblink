@@ -54,6 +54,9 @@ Route::get('/diplomes', [UserController::class, 'showDiplomes'])->name('diplomes
 Route::put('/users/{diplome}/diplomes-update', [UserController::class, 'diplomesUpdate'])->name('diplomes.update');
 //diplomeDestroy
 Route::delete('/diplomes/{diplome}',[UserController::class, 'destroyDiplome'])->name('diplomes.destroy');
+//Competence
+Route::post('/competences', [UserController::class, 'storeCompetence'])->name('competences.store');
+Route::get('/competences', [UserController::class, 'showCompetences'])->name('competences.index');
 
 
 Route::get('/welcome', function () { return view('welcome');})->name('welcome');

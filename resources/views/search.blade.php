@@ -3,10 +3,8 @@
 <br><br>
 
 <style>
-    body{background-image: ;
-        /* background-image: url('/assets/photos/wallpaper8.jpg'); */
+    body{
         background-color: #37517e;
-        background-attachment: fixed; 
     }
 </style>
 
@@ -132,6 +130,27 @@
                 </div>
     @endforeach
     @endif
+                <!-- <div class="card w-100 mb-3">
+                    <div class="card-body">
+                        <div class="d-flex">
+                            <div class="image-container">
+                                <img src="{{asset('assets/images/woman2.jpg')}}" alt="" class=" rounded-circle profile-pic mr-3">
+                            </div>
+                            <div class="d-grid gap-2 col-10 mx-auto">
+                                <div><h5>Google</h5></div>
+                                <div>
+                                    <span class="text-muted">categorie . </span>
+                                    <span class="text-muted">Domain . </span>
+                                    <span class="text-muted">Emplacement </span>
+                                    <div class=" d-flex justify-content-end gap-2">
+                                        <span><a href="#"><button class="btn btn-outline-secondary btn-sm">Voir Offre</button></a></span>
+                                        <span><button class="btn btn-outline-secondary btn-sm">Postuler</button></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
             </div>
         </div>
     </div>

@@ -3,9 +3,8 @@
 <br><br>
 
 <style>
-    body{background-image: ;
-        background-image: url('/assets/photos/wallpaper8.jpg');
-        background-attachment: fixed; 
+    body{
+        background-color: #37517e;
     }
 </style>
 
@@ -21,7 +20,7 @@
                             <div class="d-grid gap-2 col-10 mx-auto">
                                 <button class="btn btn-outline-secondary" type="button" data-bs-toggle="modal" data-bs-target="#searchModal">
                                     <i class="fa-solid fa-magnifying-glass"></i>
-                                    &nbsp;&nbsp;Rechercher Candidats par expérience, diplôme ou compétence...
+                                    &nbsp;&nbsp;Rechercher Candidats
                                 </button>
                             </div>
                         </div>
@@ -39,11 +38,19 @@
                             <div class="modal-body">
                                 <div class="row">
                                     <div class="col-md-6 mt-4">
-                                        <select class="form-select form-select-lg mt-3" aria-label=".form-select-lg example">
-                                            <option selected>Catégorie: expérience, diplôme, compétence ..</option>
-                                            <option value="experience">expérience</option>
-                                            <option value="diplome">diplôme</option>
-                                            <option value="competence">compétence</option>
+                                    <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                                            <option selected>Expérience</option>
+                                            <option value="Etude">Etude</option>
+                                            <option value="Formation">Formation</option>
+                                            <option value="Stage">Stage</option>
+                                            <option value="Emploi">Emploi</option>
+                                        </select>
+                                        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                                            <option selected>Diplôme</option>
+                                            <option value="Bac">Bac</option>
+                                            <option value="Licence">Licence</option>
+                                            <option value="Master">Master</option>
+                                            <option value="Doctorat">Doctorat</option>
                                         </select>
                                     </div>
                                     <div class="col-md-6">
@@ -81,7 +88,7 @@
             <h2 class="text text-center">Aucune candidats ...</h2>
     @else
     @foreach($offres as $offre)
-                
+
     @endforeach
     @endif
             </div>
@@ -91,7 +98,6 @@
     <script>
     const experienceRange = document.getElementById('experienceRange');
     const experienceValue = document.getElementById('experienceValue');
-
     experienceRange.addEventListener('input', () => {
       experienceValue.textContent = experienceRange.value;
     });

@@ -2,10 +2,8 @@
 
 @section('content')
 <style>
-    body{background-image: ;
-        /* background-image: url('/assets/photos/wallpaper8.jpg'); */
+    body{
         background-color: #37517e;
-        background-attachment: fixed; 
     }
 </style>
 
@@ -41,31 +39,31 @@
                             <div class="col-md-4">
                                 <select id="categorie" name="categorie" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
                                     <option selected>Catégorie</option>
-                                    <option value="etude">Etude</option>
-                                    <option value="formation">Formation</option>
-                                    <option value="stage">Stage</option>
-                                    <option value="emploi">Emploi</option>
+                                    <option value="Etude">Etude</option>
+                                    <option value="Formation">Formation</option>
+                                    <option value="Stage">Stage</option>
+                                    <option value="Emploi">Emploi</option>
                                 </select>
-                                <select id="etude" onChange="change(this.value)" onChange="change(this.value)" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                                <select id="Etude" onChange="change(this.value)" onChange="change(this.value)" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
                                 <option selected disabled>Niveau</option>
                                     @foreach ($niveaux as $niveau)
                                     <option value="{{ $niveau->niveau }}">{{ $niveau->niveau }}</option>
                                     @endforeach
                                 </select>
-                                <select id="formation" onChange="change(this.value)" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                                <select id="Formation" onChange="change(this.value)" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
                                     <option selected disabled>Domaine</option>
                                     @foreach ($dformations as $dformation)
                                     <option value="{{ $dformation->nom }}">{{ $dformation->nom }}</option>
                                     @endforeach
                                 </select>
-                                <select id="stage" onChange="change(this.value)" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                                <select id="Stage" onChange="change(this.value)" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
                                     <option selected>Stage</option>
                                     <option value="Technologie">Technologie</option>
                                     <option value="Finance">Finance</option>
                                     <option value="Ingenierie">Ingénierie</option>
                                     <option value="Tourisme">Tourisme</option>
                                 </select>
-                                <select id="emploi" onChange="change(this.value)" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                                <select id="Emploi" onChange="change(this.value)" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
                                     <option selected>Emploi</option>
                                     <option value="Technologie">Technologie</option>
                                     <option value="Finance">Finance</option>
@@ -88,7 +86,7 @@
                             <div class="col-md-4">
                                 <textarea name="descriptionOffre" id="description" cols="39" rows="3" placeholder="Ajouter quelque chose!"></textarea>
                                 <input type="file" name="image" onChange="displayImage(this)" id="postImage" class="form-control" accept="image/*" style="display: none;">
-                                <img src="{{asset('assets/photos/hire.jpg')}}" alt="" class="rounded mx-auto d-block w-100" onClick="triggerClick()" id="postDisplay">
+                                <img src="{{asset('assets/photos/addPhoto.png')}}" alt="" class="rounded mx-auto d-block w-100" onClick="triggerClick()" id="postDisplay">
                             </div>
                             <div class="col-md-4">
                                 &nbsp;&nbsp;<label class="labels">Date de début</label>
@@ -116,8 +114,8 @@
                         </div>
                     </div>
                     <div class="card-footer">
-                        <button type="reset" class="btn" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn">Post</button>
+                        <button type="submit" class="btn">Poster</button>
+                        <button type="reset" class="btn" data-bs-dismiss="modal">Annuler</button>
                     </div>
                 </div>    
             </form>
@@ -148,6 +146,7 @@
                                                 <div><button class="btn btn-outline-secondary btn-sm mt-2"><i class="fa-solid fa-handshake"></i> Demandé à le voir</button></div>
                                                 <div><button class="btn btn-outline-success btn-sm mt-2"><i class="fa-solid fa-circle-check"></i> Accepter</button></div>
                                                 <div><button class="btn btn-outline-danger btn-sm mt-2"><i class="fa-solid fa-xmark"></i> Rejeter</button></div>
+
                                             </div>
                                         </div>
                                     </div>
@@ -229,7 +228,7 @@
 <!-- <div class="cont">
     <div class="row justify-content-center">
         <div class="col-8"> -->
-            <h1 class="d-flex justify-content-center text-light">Nouveaux offres recommandée </h1>
+            <h1 class="d-flex justify-content-center text-light">Nouveaux offres recommandées </h1>
         <!-- </div>
     </div>
 </div> -->
@@ -288,9 +287,9 @@
                     <!-- </div>
                 </div> -->
                 <!-- </div> -->
-        <h1 class="d-flex justify-content-center text-light">Offre recommandée proche de votre emplacement</h1>
+        <h1 class="d-flex justify-content-center text-light">Offres recommandées proche de votre emplacement</h1>
     <h5>en cours de traitement ...</h5>
-        <h1 class="d-flex justify-content-center text-light">Offres recommandée selon votre domaine</h1>
+        <h1 class="d-flex justify-content-center text-light">Offres recommandées selon votre domaine</h1>
     <h5>en cours de traitement ...</h5>
 <!-- <style>
     .cont{

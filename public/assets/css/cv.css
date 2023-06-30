@@ -16,7 +16,7 @@ span {
 body{
     /* background-color: blue; */
     position: relative;
-    height: 500px;
+    height: auto;
     font-family: "Nunito";
 }
 
@@ -31,6 +31,7 @@ body{
 .face-1{
     background-color: #3e3e3e ;
     color: beige !important;
+    height: auto;
 }
 
  
@@ -105,7 +106,6 @@ justify-content: center;
 }
 /* cont2 */
 .cont-2{
-    background-color: #3c4240;
     height: 500px;
     color: beige;
     display: block;

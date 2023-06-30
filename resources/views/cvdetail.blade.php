@@ -59,13 +59,13 @@
                 </div>
                 <div class="detailles">
                     <div class="detaill container-fluid">
-                        <span><i class="fa-solid fa-phone"></i></span>phone :<span> {{$user->tel}} </span>
+                        <span><i class="fa-solid fa-phone"></i>&nbsp;&nbsp;</span>phone :<span> {{$user->tel}} </span>
                     </div>
                     <div class="detaill container-fluid">
-                        <span><i class="fa-solid fa-envelope"></i></span>email :<span> {{$user->email}} </span>
+                        <span><i class="fa-solid fa-envelope"></i>&nbsp;&nbsp;</span>email :<span> {{$user->email}} </span>
                     </div>
                     <div class="detaill container-fluid ">
-                        <span><i class="fa-solid fa-house"></i></span><span>adresse: {{$user->adresse}}</span>
+                        <span><i class="fa-solid fa-house"></i>&nbsp;&nbsp;</span><span>adresse: {{$user->adresse}}</span>
                     </div>
                 </div>
             </section>

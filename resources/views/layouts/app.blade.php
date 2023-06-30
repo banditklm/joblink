@@ -46,7 +46,7 @@
                     @auth
                     @if (Auth::user()->role == 2)
                         <a class="navbar-brand" href="{{ url('recherche') }}">
-                            Search Offres
+                            Rechercher Offres
                         </a>
                         <a class="navbar-brand mr-5" href="{{ url('/home') }}">
                             Recomendation
@@ -59,10 +59,10 @@
                             Post-offre
                         </a>
                         <a class="navbar-brand" href="{{ url('rechercheCandidats') }}">
-                        Rechercher-Candidats
+                        Rechercher Candidats
                         </a>
                         <a class="navbar-brand" href="{{ url('/apropos') }}">
-                            A propos
+                            À propos
                         </a>
                         @endif
                         <a class="navbar-brand" href="{{ url('/profile') }}">
@@ -99,15 +99,15 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('profile') }}">
+                                        {{ __('Mon profile') }}
+                                    </a>
+                                    
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        {{ __('Déconnexion') }}
                                     </a>
-                                    <a class="dropdown-item" href="{{ route('profile') }}">
-                                        {{ __('my profile') }}
-                                    </a>
-
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>

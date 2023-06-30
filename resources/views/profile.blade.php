@@ -3,10 +3,8 @@
 @section('profile')
 
 <style>
-    body{background-image: ;
-        /* background-image: url('/assets/photos/wallpaper8.jpg'); */
+    body{
         background-color: #37517e;
-        background-attachment: fixed; 
     }
 </style>
 
@@ -45,77 +43,84 @@
                     <a class="nav-link text text-dark" href="#messauvgardes">Mes sauvgardes</a>
                 </li>
                 <li class="nav-item dropdown btn">
-                <!-- Button trigger modal -->
-                <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#interet">
-                    Intérets
-                </button>
-                <!-- Modal -->
-                <div class="modal fade" id="interet" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered modal-lg">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Intérets</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <!-- modal body -->
-                            <div class="modal-body">
-                                <div class="" role="group" aria-label="Basic checkbox toggle button group">
-                                    <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
-                                    <label class="btn btn-outline-primary mt-2" for="btncheck1">Disign graphique</label>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#interet">
+                        Intérets
+                    </button>
+                    <!-- Modal -->
+                    <div class="modal fade" id="interet" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Intérets</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <!-- modal body -->
+                                <div class="modal-body">
+                                    <div class="" role="group" aria-label="Basic checkbox toggle button group">
+                                        <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
+                                        <label class="btn btn-outline-primary mt-2" for="btncheck1">Disign graphique</label>
 
-                                    <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off">
-                                    <label class="btn btn-outline-primary mt-2" for="btncheck2">Comptabilité</label>
+                                        <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off">
+                                        <label class="btn btn-outline-primary mt-2" for="btncheck2">Comptabilité</label>
 
-                                <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off">
-                                <label class="btn btn-outline-primary mt-2" for="btncheck3">Photoshop</label>
+                                    <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off">
+                                    <label class="btn btn-outline-primary mt-2" for="btncheck3">Photoshop</label>
 
-                                <input type="checkbox" class="btn-check" id="btncheck4" autocomplete="off">
-                                <label class="btn btn-outline-primary mt-2" for="btncheck4">Illustration</label>
+                                    <input type="checkbox" class="btn-check" id="btncheck4" autocomplete="off">
+                                    <label class="btn btn-outline-primary mt-2" for="btncheck4">Illustration</label>
 
-                                <input type="checkbox" class="btn-check" id="btncheck5" autocomplete="off">
-                                <label class="btn btn-outline-primary mt-2" for="btncheck5">Juridique</label>
+                                    <input type="checkbox" class="btn-check" id="btncheck5" autocomplete="off">
+                                    <label class="btn btn-outline-primary mt-2" for="btncheck5">Juridique</label>
 
-                                <input type="checkbox" class="btn-check" id="btncheck6" autocomplete="off">
-                                <label class="btn btn-outline-primary mt-2" for="btncheck6">Finance</label>
+                                    <input type="checkbox" class="btn-check" id="btncheck6" autocomplete="off">
+                                    <label class="btn btn-outline-primary mt-2" for="btncheck6">Finance</label>
 
-                                <input type="checkbox" class="btn-check" id="btncheck7" autocomplete="off">
-                                <label class="btn btn-outline-primary mt-2" for="btncheck7">Web scraping</label>
+                                    <input type="checkbox" class="btn-check" id="btncheck7" autocomplete="off">
+                                    <label class="btn btn-outline-primary mt-2" for="btncheck7">Web scraping</label>
 
-                                <input type="checkbox" class="btn-check" id="btncheck8" autocomplete="off">
-                                <label class="btn btn-outline-primary mt-2" for="btncheck8">Marketing</label>
+                                    <input type="checkbox" class="btn-check" id="btncheck8" autocomplete="off">
+                                    <label class="btn btn-outline-primary mt-2" for="btncheck8">Marketing</label>
 
-                                <input type="checkbox" class="btn-check" id="btncheck9" autocomplete="off">
-                                <label class="btn btn-outline-primary mt-2" for="btncheck9">eCommerce</label>
+                                    <input type="checkbox" class="btn-check" id="btncheck9" autocomplete="off">
+                                    <label class="btn btn-outline-primary mt-2" for="btncheck9">eCommerce</label>
 
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save</button>
-                            </div>
-                        </div>    
-                    </div>
-                </div>
-<!-- /Modal -->    
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save</button>
+                                </div>
+                            </div>    
+                        </div>
+                    </div>   
                 </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text text-dark" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
-                        <i class="fa-regular fa-bell fa-lg"></i>
-                        @if($count)
-                            <span style="display: inline-block;justify-content: center; color: #fff; background-color: red; height: 20px; width: 20px;border-radius:10px;">&nbsp;{{$count}}</span>
-                        @endif
-                        </a>
-                        <ul class="dropdown-menu" style="background-color: #abdbe3;">
-                            @foreach($notifications as $notification)
-                            <li onclick="flashNotification('offre-{{ $notification->offre }}');">
-                                <a class="dropdown-item" href="#offre-{{ $notification->offre }}"  style="display: flex; color: #111;">
-                                    <img src="{{ asset('assets/images/'.$notification->pathOffre)}}" alt="notif" class="rounded-circle" width="50">
-                                    &nbsp;{{$notification->text}}
-                                </a>
-                            </li>
-                            @endforeach
-                            <li><a class="dropdown-item" href="#">make all read</a></li>
-                        </ul>
-                    </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text text-dark" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
+                    <i class="fa-sharp fa-solid fa-bell"></i>
+                    @if($count)
+                        <span style="display: inline-block;justify-content: center; color: #fff; background-color: red; height: 20px; width: 20px;border-radius:10px;">&nbsp;{{$count}}</span>
+                    @endif
+                    </a>
+                    <ul class="dropdown-menu" style="background-color: #abdbe3;">
+                        @foreach($notifications as $notification)
+                        <li onclick="flashNotification('offre-{{ $notification->offre }}');">
+                            <a class="dropdown-item" href="#offre-{{ $notification->offre }}"  style="display: flex; color: #111;">
+                                <img src="{{ asset('assets/images/'.$notification->pathOffre)}}" alt="notif" class="rounded-circle" width="50">
+                                &nbsp;{{$notification->text}}
+                            </a>
+                        </li>
+                        @endforeach
+                        <li><a class="dropdown-item" href="#"></a></li>
+                    </ul>
+                </li>
+                <li class="nav-item btn">
+                    <a class="text text-dark" href="#" role="button" aria-expanded="false">
+                        <i class="fa-solid fa-message"></i>
+                        
+                            <span style="display: inline-block;justify-content: center; color: #fff; background-color: red; height: 20px; width: 20px;border-radius:10px;">&nbsp;</span>
+                    </a>
+                </li>
+
             </ul>
         </nav>
 <!-- /Nav -->
@@ -237,7 +242,7 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal">
-                                    Edit Profile
+                                    Modifier Profile
                                 </button>
 <!-- Modal Edit Profile candidat -->
                                 <div class="modal fade edit" id="modal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -292,8 +297,8 @@
                                                             </div>
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                            <button type="submit" class="btn btn-primary">Save changes</button>
+                                                            <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                                                            <button type="submit" class="btn btn-primary">Enregistrer</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -416,7 +421,7 @@
 
 
 <!-- Table Sauvgards -->
-    <h1 id="messauvgardes" class="text text-center text-light">Mes Sauvgardes</h1>
+    <h1 id="messauvgardes" class="text text-center text-light">Mes Sauvegardes</h1>
     @if($offres->isEmpty())
             <h3 class="text-center">Aucune Sauvgardes trouvée ...</h3>
     @else
@@ -548,7 +553,7 @@ function flashNotification(className) {
                     <nav aria-label="breadcrumb" class="main-breadcrumb">
                         <ul class="nav nav-tabs">
                                 <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="#mespost">Mes Post</a>
+                                    <a class="nav-link active" aria-current="page" href="#mespost">Mes Offres</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{route('apropos')}}">A propos</a>
@@ -569,7 +574,7 @@ function flashNotification(className) {
                                             </a>
                                         </li>
                                         @endforeach
-                                        <li><a class="dropdown-item" href="#">make all read</a></li>
+                                        <li><a class="dropdown-item" href="#"></a></li>
                                     </ul>
                                 </li>
                         </ul>
@@ -680,7 +685,7 @@ function flashNotification(className) {
                                         <div class="row">
                                             <div class="col-sm-12">
                                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal2">
-                                                    Edit Profile
+                                                    Modifier profile
                                                 </button>
 
 <!-- Modal Edit Profile recruteur -->
@@ -726,14 +731,14 @@ function flashNotification(className) {
                                                                                 <!-- <br><br><br> -->
                                                                                 <div class="col-md-12">&nbsp;&nbsp;<label class="labels">Addresse</label><input type="text" class="form-control mt-2 mb-2" name="adresse" id="adresse" value="{{$user->adresse}}"></div>
                                                                                 <div class="col-md-12">&nbsp;&nbsp;<label class="labels">Ville</label><input type="text" class="form-control mt-2 mb-2" name="ville" id="ville" value="{{$user->ville}}"></div>
-                                                                                <div class="col-md-12">&nbsp;&nbsp;<label class="labels">Region</label><input type="text" class="form-control mt-2 mb-2" name="region" id="region" value="{{$user->region}}"></div>
+                                                                                <div class="col-md-12">&nbsp;&nbsp;<label class="labels">Région</label><input type="text" class="form-control mt-2 mb-2" name="region" id="region" value="{{$user->region}}"></div>
                                                                                 <div class="col-md-12">&nbsp;&nbsp;<label class="labels">Date de création</label><input type="date" class="form-control mt-2 mb-2" name="date_creation" id="creation" value="{{$info->date_creation}}"></div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                         <div class="modal-footer">
-                                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                                            <button type="submit" class="btn btn-primary">Save changes</button>
+                                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                                                                            <button type="submit" class="btn btn-primary">Enregistrer</button>
                                                                         </div>
                                                                     </div>
                                                                     </div>
@@ -759,7 +764,7 @@ function flashNotification(className) {
 <!-- /recruteur body -->
 <!-- /Recruteur -->
 @if (!$offres->isEmpty())
-    <h1 id="mespost" class="text text-center text-light">Mes Post</h1>
+    <h1 id="mespost" class="text text-center text-light">Mes Offres</h1>
 @endif
 
 <!-- Afficher Offres -->
@@ -868,6 +873,11 @@ function flashNotification(className) {
                                                         <i class="fa-solid fa-xmark"></i>
                                                          Rejeter
                                                     </p>
+                                                    <p id="btn3" class=" btn btn-outline-secondary" data-offre="{{ $candidature->offre_id }}" data-user="{{ $candidature->candidat->user->id }}" data-action="rejeter" data-candidature="{{$candidature->id}}">
+                                                        <i class="fa-solid fa-floppy-disk"></i>
+                                                         Sauvegarder
+                                                    </p>
+                                                    
 
                                                 </div>
                                             </div>
