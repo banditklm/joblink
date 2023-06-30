@@ -413,13 +413,9 @@
 <h1 id="messauvgardes" class="text text-center">Mes Sauvgardes</h1>
 
 <!-- Table Sauvgards -->
-<<<<<<< HEAD
     @if($offres->isEmpty())
             <h3 class="text-center">Aucune Sauvgardes trouvée ...</h3>
     @else
-=======
-
->>>>>>> 08e532b0f93569efad504f6614fc9cf87b403c88
     <div class="container mt-3 mb-4">
         <div class="row justify-content-center">
             <div class="col-md-8">
