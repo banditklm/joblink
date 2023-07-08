@@ -276,7 +276,7 @@
             <h1 class="d-flex align-items-center">Offre recommandée proche de votre emplacement</h1>
         </div>
     </div>
-    <h5>en cours de traitement ...</h5>
+    <!-- <h5>en cours de traitement ...</h5> -->
 </div>
 <div class="cont">
     <div class="row justify-content-center">
@@ -284,7 +284,7 @@
             <h1 class="d-flex align-items-center">Offres recommandée selon votre domaine</h1>
         </div>
     </div>
-    <h5>en cours de traitement ...</h5>
+    <!-- <h5>en cours de traitement ...</h5> -->
 </div>
 <style>
 .cont{
