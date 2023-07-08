@@ -261,3 +261,67 @@ Model name is Adresse already exist
             </div>
     @endforeach
     <!-- /Afficher Offre in Recruteur Home -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Candidat offres table -->
+<h1 id="Mescandidatures" class="text text-center" style="color:#fff">Mes Candidatures</h1>
+@if($mesCandidatures->isEmpty())
+        <h3 class="text-center">Aucune candidature trouvée ...</h3>
+@else
+    <div class="container mt-3 mb-4">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <table style="background:#cff4fc;" class="table table-info table-hover table-bordered border-primary">
+                    <thead>
+                        <tr>
+                            <th scope="col">Offres</th>
+                            <th scope="col">Categorie</th>
+                            <th scope="col">Domaine</th>
+                            <th scope="col">Emplacement</th>
+                            <th scope="col">Etat</th>
+                            <th scope="col">...</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($mesCandidatures as $offre)
+                        <tr>
+                            <!-- <td>{{ $offre->ville }}</td> -->
+                            <th scope="row" class="img"><img src="{{ asset('assets/images/'.$offre->pathOffre)}}" alt="no image"></th>
+                            <td>{{ $offre->categorie }}</td>
+                            <td>{{ $offre->domaine }}</td>
+                            <td>{{ $offre->city }}</td>
+                            <td>{{ $offre->etat }}</td>
+                            <td style="display:flex;gap:20px;">
+                                <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal-{{ $offre->id }}">Voir Offre</button>
+                                <form action="{{ route('candidatures.delete', $offre->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <input type="hidden" name="offre_id" value="{{ $offre->id }}">
+                                    <button tupe="submit" class="btn btn-danger btn-sm">Annuler</button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+>>>>>>> 08e532b0f93569efad504f6614fc9cf87b403c88
+            </div>
+        </div>
+    @endif

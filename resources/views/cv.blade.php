@@ -5,7 +5,7 @@
 <div id="success-message" class="row justify-content-center mt-4">
     <div class="col-md-4">
         <div style="background:#000;" class="alert alert-success mt-6 justify-content-center">
-        <a style="color:#fff" class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover w-100 justify-content-center" href="/profile">
+        <a style="color:#fff" class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover w-100 justify-content-center" href="/monCv">
             {{ session('success') }}</a>
         </div>
     </div>
@@ -29,14 +29,6 @@
                 <div class="domain">
                     <h4><span>{{$user->domaine}}</span></h4>
                 </div>
-
-                <!-- <div class="edit">
-                  <button type="button" class="mode" data-bs-toggle="modal" data-bs-target="#poste">
-                    Edit mon Cv
-                   </button> 
-                </div> -->
-
-                
             </section>
             <section class="cont-2">
                 <div class="contacte ">
@@ -45,13 +37,13 @@
                 </div>
                 <div class="detailles">
                     <div class="detaill container-fluid">
-                        <span><i class="fa-solid fa-phone"></i></span>phone :<span> {{$user->tel}} </span>
+                        <span><i class="fa-solid fa-phone"></i>&nbsp;</span>phone :<span> {{$user->tel}} </span>
                     </div>
                     <div class="detaill container-fluid">
-                        <span><i class="fa-solid fa-envelope"></i></span>email :<span> {{$user->email}} </span>
+                        <span><i class="fa-solid fa-envelope"></i>&nbsp;</span>email :<span> {{$user->email}} </span>
                     </div>
                     <div class="detaill container-fluid ">
-                        <span><i class="fa-solid fa-house"></i></span><span>adresse: {{$user->adresse}}</span>
+                        <span><i class="fa-solid fa-house"></i>&nbsp;</span><span>adresse: {{$user->adresse}}</span>
                     </div>
                 </div>
             </section>
@@ -377,10 +369,12 @@
                                 <h1 class="modal-title fs-5" id="staticBackdropLabel">Ajouter compétence</h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
+                                
                                 <div class="modal-body" id="experience">
 
-                                    <form method="POST" action="">
-                                        <!-- @csrf -->
+                                    <form method="POST" action="{{ route('competences.store') }}">
+                                        @csrf
+
                                         <div class="form-group">
                                             <label for="competence">compétence:</label>
                                             <input type="text" id="competence" name="competence" class="form-control" value="" required> 
@@ -392,6 +386,7 @@
                                             <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
                                         </div>
                                     </form>
+
                             </div>
                         </div>
                     </div>
@@ -428,9 +423,7 @@
                         </div> 
                     </div>
                     
-                    <!-- <div class="paragraphe">
-                        <strong>{{ $experience->title }}</strong>
-                    </div> -->
+                    
                     <div class="description">
                         <span>{{ $experience->description }}</span>
                     </div>

@@ -46,6 +46,7 @@ Route::post('/sauvgardes', [UserController::class, 'createSauvgarde'])->name('sa
 Route::get('/cvdetail/{user_id}/{candidat_id}', [UserController::class, 'cvdetail'])->name('cvdetail');
 // Change eta candidatures
 Route::put('/change_etat', [UserController::class, 'changeEtat'])->name('change.etat');
+// Route::put('/cvdetail', [UserController::class, 'changeEtat'])->name('cvdetail.update');
 //Diplome
 Route::post('/diplomes', [UserController::class, 'storeDiplome'])->name('diplomes.store');
 Route::get('/diplomes', [UserController::class, 'showDiplomes'])->name('diplomes.index');
@@ -53,6 +54,9 @@ Route::get('/diplomes', [UserController::class, 'showDiplomes'])->name('diplomes
 Route::put('/users/{diplome}/diplomes-update', [UserController::class, 'diplomesUpdate'])->name('diplomes.update');
 //diplomeDestroy
 Route::delete('/diplomes/{diplome}',[UserController::class, 'destroyDiplome'])->name('diplomes.destroy');
+//Competence
+Route::post('/competences', [UserController::class, 'storeCompetence'])->name('competences.store');
+Route::get('/competences', [UserController::class, 'showCompetences'])->name('competences.index');
 
 
 Route::get('/welcome', function () { return view('welcome');})->name('welcome');

@@ -3,9 +3,8 @@
 <br><br>
 
 <style>
-    body{background-image: ;
-        background-image: url('/assets/photos/wallpaper8.jpg');
-        background-attachment: fixed; 
+    body{
+        background-color: #37517e;
     }
 </style>
 

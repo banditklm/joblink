@@ -1,25 +1,6 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="./project.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800;900;1000&display=swap" rel="stylesheet">
-<link href="{{asset('assets/css/apropos.css')}}" rel="stylesheet">
-
-</head> 
-<body> -->
 
 @extends('layouts.app')
 @section('apropos')
-
-
 <!-- Apropos Display -->
     <div class="container-fluid row">
         <div class="face-1 col-md-3">
@@ -36,15 +17,7 @@
                 </div>
                 <div class="domain">
                     <h5><span>{{$user->domaine}}</span></h5>
-                </div>
-
-                <!-- <div class="edit">
-                  <button type="button" class="mode" data-bs-toggle="modal" data-bs-target="#poste">
-                    Edit 
-                   </button> 
-                </div> -->
-
-                
+                </div>                
             </section>
             <section class="cont-2">
                 <div class="contacte ">
@@ -53,13 +26,13 @@
                 </div>
                 <div class="detailles">
                     <div class="detaill container-fluid">
-                        <span><i class="fa-solid fa-phone"></i></span>phone :<span> {{$user->tel}} </span>
+                        <span><i class="fa-solid fa-phone"></i>&nbsp;&nbsp;</span>phone :<span> {{$user->tel}} </span>
                     </div>
                     <div class="detaill container-fluid">
-                        <span><i class="fa-solid fa-envelope"></i></span>email :<span> {{$user->email}} </span>
+                        <span><i class="fa-solid fa-envelope"></i>&nbsp;&nbsp;</span>email :<span> {{$user->email}} </span>
                     </div>
                     <div class="detaill container-fluid ">
-                        <span><i class="fa-solid fa-house"></i></span><span>adresse: {{$user->adresse}}</span>
+                        <span><i class="fa-solid fa-house"></i></span>&nbsp;&nbsp;<span>adresse: {{$user->adresse}}</span>
                     </div>
                 </div>
             </section>
@@ -68,10 +41,10 @@
             <section > 
                 <div class="info" >
                     <span><h3><i class=" icone2 fa-solid fa-user"></i></h3></span>
-                    <span class="p1"><h3>A propos</h3></span>
+                    <span class="p1"><h3>À propos de nous</h3></span>
                 </div> 
                 <div class="paragraphe"><p> 
-                {{$user->info}} </p>
+                Cisco Systems est une entreprise informatique américaine spécialisée, à l’origine, dans le matériel réseau</p>
                 </div>
             </section>
             <section class="experience" >
@@ -79,113 +52,50 @@
                     <span><h3><i class=" icone3 fa-sharp fa-solid fa-briefcase"></i></h3></span>
                     <span class="p1"><h3> Objectives</h3></span>
                 </div>
-                <div class="fl">
-                    <span><h6><i class="fa-solid fa-circle-arrow-right"></i><h6></span>
-                    <span><strong> 2012 - 2015 </strong></span>
-                </div>
-                <div class="paragraphe">
+                <!-- <div class="fl">
+                    <span><h6><h6></span>
+                </div> -->
+                <!-- <div class="paragraphe">
                     <strong>Junior Graphic DesignerBorcelle Studios</strong>
-                </div>
-                <div class="paragraphe">
-                    <span>Working as graphic designer for 1 year Post Graduated in Website & Graphics Designing. Academic Excellence in Web Design.</span>
-                </div>
-                <div class="fl">
-                    <span><h6><i class="fa-solid fa-circle-arrow-right"></i><h6></span>
-                    <span><strong>2012 - 2015</strong><span>    
-                </div>
-                <div class="paragraphe">
-                    <strong>Junior Graphic DesignerBorcelle Studios</strong>
-                </div>
-                <div class="paragraphe">
-                    <span>Working as graphic designer for 1 year Post Graduated in Website & Graphics Designing. Academic Excellence in Web Design.</span>
-                </div>
-                <div class="fl">
-                    <span><h6><i class="fa-solid fa-circle-arrow-right"></i><h6></span>
-                    <span><strong>2012 - 2015</strong><span>
-                </div>
-                <div class="paragraphe"> 
-                    <strong>Junior Graphic DesignerBorcelle Studios</strong>
-                </div>
-                <div class="paragraphe">
-                    <span>Working as graphic designer for 1 year Post Graduated in Website & Graphics Designing. Academic Excellence in Web Design.</span>
-                </div>
-            </section>
-            <section class="experience"  > 
-                <div  class="info"> <span><h3><i class="icone4 fa-solid fa-book-open"></i></h3></span>
-                    <span class="p1"><h3>Service</h3></span>
-                </div>
-                <div class="fl">
-                    <span><h6><i class="fa-solid fa-circle-arrow-right"></i><h6></span>
-                    <span><strong> 2012 - 2015 </strong></span>
-                </div >
-                <div class="paragraphe">
-                    <strong>Junior Graphic DesignerBorcelle Studios</strong>
-                </div>
-                <div class="paragraphe">
-                    <span>Working as graphic designer for 1 year Post Graduated in Website & Graphics Designing. Academic Excellence in Web Design.</span>
-                </div>
-                <div class="fl">
-                    <span><h6><i class="fa-solid fa-circle-arrow-right"></i><h6></span>
-                    <span><strong>2012 - 2015</strong><span>    
-                </div>
-                <div class="paragraphe">
-                    <strong>Junior Graphic DesignerBorcelle Studios</strong>
-                </div>
-                <div class="paragraphe">
-                    <span>Working as graphic designer for 1 year Post Graduated in Website & Graphics Designing. Academic Excellence in Web Design.</span>
-                </div>
-                <div class="fl">
-                    <span><h6><i class="fa-solid fa-circle-arrow-right"></i><h6></span>
-                    <span><strong>2012 - 2015</strong><span>
-                </div>
-                <div class="paragraphe"> 
-                    <strong>Junior Graphic DesignerBorcelle Studios</strong>
-                </div>
-                <div class="paragraphe">
-                    <span>Working as graphic designer for 1 year Post Graduated in Website & Graphics Designing. Academic Excellence in Web Design.</span>
-                </div>      
+                    </div> -->
+                    <div class="paragraphe">
+                        <i class="fa-solid fa-circle-arrow-right"></i>&nbsp;&nbsp;<span>Working as graphic designer for 1 year Post Graduated in Website & Graphics Designing. Academic Excellence in Web Design.</span>
+                    </div>
+                    <div class="paragraphe">
+                        <i class="fa-solid fa-circle-arrow-right"></i>&nbsp;&nbsp;<span>Working as graphic designer for 1 year Post Graduated in Website & Graphics Designing. Academic Excellence in Web Design.</span>
+                    </div>
+                    <div class="paragraphe">
+                        <i class="fa-solid fa-circle-arrow-right"></i>&nbsp;&nbsp;<span>Working as graphic designer for 1 year Post Graduated in Website & Graphics Designing. Academic Excellence in Web Design.</span>
+                    </div>
+                    <div class="paragraphe">
+                        <i class="fa-solid fa-circle-arrow-right"></i>&nbsp;&nbsp;<span>Working as graphic designer for 1 year Post Graduated in Website & Graphics Designing. Academic Excellence in Web Design.</span>
+                    </div>
+                     
             </section>
             <section > 
                 <div  class="info"><span><h3><i class="icone5 fa-solid fa-gear"></i></h3></span>
-                    <span class="p1"><h3>COMPETENCE</h3></span>
+                    <span class="p1"><h3>Produits et services</h3></span>
                 </div>
                 <div class="par paragraphe" >
-                    <h6><i class="fa-solid fa-circle"></i>{{$user->competences}}</h6>
-                    <h6><i class="fa-solid fa-circle"></i>Graphic & Web Design</h6>
-                    <h6><i class="fa-solid fa-circle"></i>Graphic & Web Design</h6>
+                    <h6><i class="fa-solid fa-circle"></i>Networking</h6>
+                    <h6><i class="fa-solid fa-circle"></i>Wireless and Mobility</h6>
+                    <h6><i class="fa-solid fa-circle"></i>Security</h6>
                     
                 </div>
             </section>
             <section class="experience" >
                  <div  class="info">
                     <span><h3><i class="icone5 fa-solid fa-book"></i></h3></span>
-                    <span class="p1"><h3>REFERENCE</h3></span>
+                    <span class="p1"><h3>Les Directeurs généraux</h3></span>
                 </div>
                 <div class="paragraphe"> 
-                    <strong>Junior Graphic </strong>
+                    <strong>Hassan Bahej</strong>
                 </div>
                 <div class="paragraphe">
-                    <span>Wardiere Inc. / CEO</span>
-                </div>
-                <div class="paragraphe"> 
-                    <strong>Junior Graphic </strong>
-                </div>
-                <div class="paragraphe">
-                    <span>Wardiere Inc. / CEO</span>
-                </div>
-                <div class="paragraphe"> 
-                    <strong>Junior Graphic</strong>
-                </div>
-                <div class="paragraphe">
-                    <span>Wardiere Inc. / CEO</span>
+                    <span>CEO</span>
                 </div>
             </section>
         </div>
 
 @endsection
 
-<!-- </body>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-
-</html> -->

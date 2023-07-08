@@ -2,9 +2,8 @@
 
 @section('content')
 <style>
-    body{background-image: ;
-        background-image: url('/assets/photos/wallpaper8.jpg');
-        background-attachment: fixed; 
+    body{
+        background-color: #37517e;
     }
 </style>
 
@@ -40,31 +39,31 @@
                             <div class="col-md-4">
                                 <select id="categorie" name="categorie" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
                                     <option selected>Catégorie</option>
-                                    <option value="etude">Etude</option>
-                                    <option value="formation">Formation</option>
-                                    <option value="stage">Stage</option>
-                                    <option value="emploi">Emploi</option>
+                                    <option value="Etude">Etude</option>
+                                    <option value="Formation">Formation</option>
+                                    <option value="Stage">Stage</option>
+                                    <option value="Emploi">Emploi</option>
                                 </select>
-                                <select id="etude" onChange="change(this.value)" onChange="change(this.value)" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                                <select id="Etude" onChange="change(this.value)" onChange="change(this.value)" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
                                 <option selected disabled>Niveau</option>
                                     @foreach ($niveaux as $niveau)
                                     <option value="{{ $niveau->niveau }}">{{ $niveau->niveau }}</option>
                                     @endforeach
                                 </select>
-                                <select id="formation" onChange="change(this.value)" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                                <select id="Formation" onChange="change(this.value)" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
                                     <option selected disabled>Domaine</option>
                                     @foreach ($dformations as $dformation)
                                     <option value="{{ $dformation->nom }}">{{ $dformation->nom }}</option>
                                     @endforeach
                                 </select>
-                                <select id="stage" onChange="change(this.value)" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                                <select id="Stage" onChange="change(this.value)" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
                                     <option selected>Stage</option>
                                     <option value="Technologie">Technologie</option>
                                     <option value="Finance">Finance</option>
                                     <option value="Ingenierie">Ingénierie</option>
                                     <option value="Tourisme">Tourisme</option>
                                 </select>
-                                <select id="emploi" onChange="change(this.value)" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                                <select id="Emploi" onChange="change(this.value)" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
                                     <option selected>Emploi</option>
                                     <option value="Technologie">Technologie</option>
                                     <option value="Finance">Finance</option>
@@ -87,7 +86,7 @@
                             <div class="col-md-4">
                                 <textarea name="descriptionOffre" id="description" cols="39" rows="3" placeholder="Ajouter quelque chose!"></textarea>
                                 <input type="file" name="image" onChange="displayImage(this)" id="postImage" class="form-control" accept="image/*" style="display: none;">
-                                <img src="{{asset('assets/photos/hire.jpg')}}" alt="" class="rounded mx-auto d-block w-100" onClick="triggerClick()" id="postDisplay">
+                                <img src="{{asset('assets/photos/addPhoto.png')}}" alt="" class="rounded mx-auto d-block w-100" onClick="triggerClick()" id="postDisplay">
                             </div>
                             <div class="col-md-4">
                                 &nbsp;&nbsp;<label class="labels">Date de début</label>
@@ -115,8 +114,8 @@
                         </div>
                     </div>
                     <div class="card-footer">
-                        <button type="reset" class="btn" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn">Post</button>
+                        <button type="submit" class="btn">Poster</button>
+                        <button type="reset" class="btn" data-bs-dismiss="modal">Annuler</button>
                     </div>
                 </div>    
             </form>
@@ -147,6 +146,7 @@
                                                 <div><button class="btn btn-outline-secondary btn-sm mt-2"><i class="fa-solid fa-handshake"></i> Demandé à le voir</button></div>
                                                 <div><button class="btn btn-outline-success btn-sm mt-2"><i class="fa-solid fa-circle-check"></i> Accepter</button></div>
                                                 <div><button class="btn btn-outline-danger btn-sm mt-2"><i class="fa-solid fa-xmark"></i> Rejeter</button></div>
+
                                             </div>
                                         </div>
                                     </div>
@@ -176,19 +176,24 @@
             <div class="modal-body">
                     <div class="card w-100 mb-4">
                         <div class="card-body">
-                            <div class="head_post d-flex">
-                                <div>
-                                    <img src="{{ asset('assets/images/'.$offer->path)}}" class="rounded-circle profile-pic mr-3" alt="profil_img">
-                                </div>
-                                <div>
-                                    <h5 class="mb-0 mt-3 ms-2 font-weight-normal">{{ $offer->nom }}</h5>
+                            <div class="head_post d-flex gap-5">
+                                <div class="d-flex">
+                                    <div class="">
+                                        <img src="{{ asset('assets/images/'.$offer->path)}}" class="rounded-circle profile-pic mr-3" alt="profil_img">
+                                    </div>
+                                    <div>
+                                        <h5 class="mb-0 mt-3 ms-2 font-weight-normal">{{ $offer->nom }}</h5>
+                                    </div>
                                 </div> 
-                                <div class="dropdown">
+                                <div class="dropdown d-flex">
                                     <button class="btn point" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         <i class="fa-solid fa-ellipsis"></i>
                                     </button>
-                                    <ul class="dropdown-menu">
+                                    <ul class="dropdown-menu ">
+                                    <div class="d-flex">
+                                        <i class="fa-solid fa-flag p-2"></i>
                                         <li><a class="dropdown-item" href="#">Signaler l'offre</a></li>
+                                    </div>
                                     </ul>
                                 </div>
                             </div>
@@ -220,13 +225,13 @@
     @endforeach
 <!-- Candidat offres table -->
 
-<div class="cont">
+<!-- <div class="cont">
     <div class="row justify-content-center">
-        <div class="col-8">
-            <h1 class="d-flex align-items-center">Nouveaux offres recommandée </h1>
-        </div>
+        <div class="col-8"> -->
+            <h1 class="d-flex justify-content-center text-light">Nouveaux offres recommandées </h1>
+        <!-- </div>
     </div>
-</div>
+</div> -->
 @if (!$offres->isEmpty())
     <div class="container mt-3 mb-4">
         <div class="row justify-content-center">
@@ -235,8 +240,8 @@
                     <thead>
                         <tr>
                             <th scope="col">Recruteur</th>
-                            <th scope="col">Domaine</th>
                             <th scope="col">Catégorie</th>
+                            <th scope="col">Domaine</th>
                             <th scope="col">Emplacement</th>
                             <th scope="col"></th>
                         </tr>
@@ -245,8 +250,8 @@
                     @foreach($offres as $offer)
                         <tr>
                             <th scope="row" class="img"><img src="{{ asset('assets/images/'.$offer->path)}}" alt="" class="rounded-circle"></th>
-                            <td>{{ $offer->domaine }}</td>
                             <td>{{ $offer->categorie }}</td>
+                            <td>{{ $offer->domaine }}</td>
                             <td>{{ $offer->city }}</td>
                             <td style="display:flex;gap:10px;" >
                                 <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal-{{ $offer->id }}">Voir Offre</button>
@@ -270,8 +275,9 @@
         </div>
     </div>
 @endif
-<div class="cont">
+<!-- <div class="cont">
     <div class="row justify-content-center">
+<<<<<<< HEAD
         <div class="col-8 ">
             <h1 class="d-flex align-items-center">Offre recommandée proche de votre emplacement</h1>
         </div>
@@ -302,6 +308,38 @@
     padding: 20px auto;
 }
 </style>
+=======
+        <div class="col-8 "> -->
+            <!-- </div>
+        </div> -->
+        <!-- </div> -->
+        <!-- <div class="cont">
+            <div class="row justify-content-center">
+                <div class="col-8 "> -->
+                    <!-- </div>
+                </div> -->
+                <!-- </div> -->
+        <h1 class="d-flex justify-content-center text-light">Offres recommandées proche de votre emplacement</h1>
+    <h5>en cours de traitement ...</h5>
+        <h1 class="d-flex justify-content-center text-light">Offres recommandées selon votre domaine</h1>
+    <h5>en cours de traitement ...</h5>
+<!-- <style>
+    .cont{
+        margin: 20px;
+        background: red;
+        border-radius: 30px;
+        padding: 10px;
+    }
+    .col-8{
+        color: yellow;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 60px;
+        padding: 20px auto;
+    }
+</style> -->
+>>>>>>> 8e897d15dd1c25fb429e35bd1a45abe87bef1c61
 <script>
     function toggleButtons(id) {
         var post = document.getElementById("post-"+id);

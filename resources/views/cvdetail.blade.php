@@ -59,13 +59,13 @@
                 </div>
                 <div class="detailles">
                     <div class="detaill container-fluid">
-                        <span><i class="fa-solid fa-phone"></i></span>phone :<span> {{$user->tel}} </span>
+                        <span><i class="fa-solid fa-phone"></i>&nbsp;&nbsp;</span>phone :<span> {{$user->tel}} </span>
                     </div>
                     <div class="detaill container-fluid">
-                        <span><i class="fa-solid fa-envelope"></i></span>email :<span> {{$user->email}} </span>
+                        <span><i class="fa-solid fa-envelope"></i>&nbsp;&nbsp;</span>email :<span> {{$user->email}} </span>
                     </div>
                     <div class="detaill container-fluid ">
-                        <span><i class="fa-solid fa-house"></i></span><span>adresse: {{$user->adresse}}</span>
+                        <span><i class="fa-solid fa-house"></i>&nbsp;&nbsp;</span><span>adresse: {{$user->adresse}}</span>
                     </div>
                 </div>
             </section>
@@ -110,6 +110,7 @@
             </section>
 
 <!-- Diplome --> 
+
 <section class="experience"  > 
                 <div  class="info"> 
                     <div class="left d-flex">
@@ -119,7 +120,7 @@
                 </div>
 
                 <div class="exp">
-
+                    @foreach ($experiences as $experience)
                     <div class="fl">
                         <span class="title"><strong><span class="text-muted"> De </span>{{ $experience->debut }}<span class="text-muted"> A </span>{{ $experience->fin }}</strong></span>
                     </div>
@@ -130,6 +131,7 @@
                     <div class="description">
                         <span>{{ $experience->description }}</span>
                     </div>
+                    @endforeach
                 </div>
 </section>
 <!-- Compétence -->            
@@ -140,7 +142,9 @@
                         <span class="p1"><h3>COMPETENCE</h3></span>
                     </div>
                 </div>
+
                 <div class="exp">
+                @foreach ($experiences as $experience)
                     <div class="fl">
 
                     </div>
@@ -151,6 +155,7 @@
                     <div class="description">
                         <span>{{ $experience->description }}</span>
                     </div>
+                    @endforeach
                 </div>
             </section>
 <!-- Réferencee -->
