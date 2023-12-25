@@ -46,11 +46,7 @@
                     @auth
                     @if (Auth::user()->role == 2)
                         <a class="navbar-brand" href="{{ url('recherche') }}">
-<<<<<<< HEAD
-                        Rechercher-Offres
-=======
                             Rechercher Offres
->>>>>>> 8e897d15dd1c25fb429e35bd1a45abe87bef1c61
                         </a>
                         <a class="navbar-brand mr-5" href="{{ url('/home') }}">
                             Recomendation

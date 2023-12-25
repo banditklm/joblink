@@ -3,7 +3,7 @@
 @section('content')
 <style>
     body{
-        background-color: #37517e;
+        background-color: #37517f;
     }
 </style>
 
@@ -277,38 +277,6 @@
 @endif
 <!-- <div class="cont">
     <div class="row justify-content-center">
-<<<<<<< HEAD
-        <div class="col-8 ">
-            <h1 class="d-flex align-items-center">Offre recommandée proche de votre emplacement</h1>
-        </div>
-    </div>
-    <!-- <h5>en cours de traitement ...</h5> -->
-</div>
-<div class="cont">
-    <div class="row justify-content-center">
-        <div class="col-8 ">
-            <h1 class="d-flex align-items-center">Offres recommandée selon votre domaine</h1>
-        </div>
-    </div>
-    <!-- <h5>en cours de traitement ...</h5> -->
-</div>
-<style>
-.cont{
-    margin: 20px;
-    background: red;
-    border-radius: 30px;
-    padding: 10px;
-}
-.col-8{
-    color: yellow;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 60px;
-    padding: 20px auto;
-}
-</style>
-=======
         <div class="col-8 "> -->
             <!-- </div>
         </div> -->
@@ -339,7 +307,6 @@
         padding: 20px auto;
     }
 </style> -->
->>>>>>> 8e897d15dd1c25fb429e35bd1a45abe87bef1c61
 <script>
     function toggleButtons(id) {
         var post = document.getElementById("post-"+id);
