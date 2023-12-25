@@ -127,7 +127,7 @@ class UserController extends Controller
     public function apropos()
     {   
         if(Auth::user()->role !=3)
-        abort(403, 'Unauthorized');
+        abort(403, 'hisashiburi dana');
 
 
         $id = Auth::id();
